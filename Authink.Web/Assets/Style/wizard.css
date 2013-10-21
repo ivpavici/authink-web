@@ -1,0 +1,409 @@
+﻿/*
+
+    AuThink
+
+    =======================
+         COLOR PALETTE
+    =======================
+    Blue            #1a6d97
+    Blue Hover      #2277a4
+    Blue Accent     #0c5371
+    Orange          #fe9b26
+    Orange Hover    #feaa26
+    Orange Accent   #e18520
+    
+*/
+
+@import url('reset.css');
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 10px;
+}
+
+input {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+textarea {
+    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+/* WIZARD */
+
+.task-wizard-container {
+    
+}
+
+    .task-wizard-title {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        background: #fe9b26;
+        font-size: 2.4em;
+        padding: 10px;
+    }
+
+        .task-wizard-title h1 {
+            float: left;
+        }
+
+        .task-wizard-progress {
+            float: right;
+            font-size: 0.7em;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+
+            .task-wizard-progress span {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+    .task-wizard-error {
+        display: block;
+        padding: 10px;
+        background: #d70000;    
+    }
+
+        .task-wizard-error span {
+            background: transparent url('../Images/Wizard/task-wizard-error.png') no-repeat left center;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            padding-left: 25px;
+        }
+
+    .task-wizard-content {
+        padding: 20px;
+        min-width: 1100px;
+        /*max-width:1300px;*/
+        margin: 0 auto;
+    }
+
+        /* CHOOSE TYPE */
+        .task-wizard-type-container {
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+        }
+
+            .task-wizard-type-item {
+                width: 200px;
+                float: left;
+                margin: 10px;
+                text-decoration: none;
+            }
+
+                .task-wizard-type-item:hover {
+                    cursor: pointer;
+                    background: #f0f0f0;
+                    border-radius: 8px;
+                }
+
+                .task-wizard-type-item:hover img {
+                    -webkit-filter: grayscale(0%);
+                }
+
+                .task-wizard-type-item img {
+                    display: block;
+                    width: 80%;
+                    margin: 20px auto;
+                    -webkit-filter: grayscale(100%);
+                }
+
+                .task-wizard-type-item span {
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 1.8em;
+                    margin-bottom: 20px;
+                    padding: 0 15px;
+                    color: #444;
+                }
+
+        .task-wizard-difficulty-container {
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+        }
+
+            .task-wizard-difficulty-item {
+                width: 200px;
+                float: left;
+                margin: 10px;
+                text-decoration: none;
+            }
+
+                .task-wizard-difficulty-item:hover {
+                    cursor: pointer;
+                    background: #f0f0f0;
+                    border-radius: 8px;
+                }
+
+                    .task-wizard-difficulty-item:hover h2 {
+                        color: #1a6d97;
+                    }
+
+                .task-wizard-difficulty-item h2 {
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 7em;
+                    margin: 30px auto;
+                    padding: 0 15px;
+                    color: #bbb;
+                }
+
+                .task-wizard-difficulty-item span {
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 1.2em;
+                    margin-bottom: 20px;
+                    padding: 0 15px;
+                    color: #444;
+                }
+
+        .task-wizard-upload-container {
+            
+        }
+
+            .task-wizard-upload-info {
+                padding: 10px 0 20px 0;
+            }
+
+                .task-wizard-upload-info span {
+                    font-size: 1.6em;
+                    color: #444;
+                    padding-left: 30px;
+                    background: transparent url('../Images/Wizard/task-wizard-info.png') no-repeat left center;
+                }
+
+            .task-wizard-upload-items {
+                display: -webkit-flex;
+                -webkit-flex-direction: row;
+                -webkit-flex-wrap: wrap;
+            }
+
+                .task-wizard-upload-item {
+                    width: 200px;
+                    float: left;
+                    margin: 10px;
+                    text-decoration: none;
+                }
+
+                    .task-wizard-upload-item:hover {
+                        background: #f0f0f0;
+                        border-radius: 8px;
+                    }
+
+                    .task-wizard-upload-item-filepicker {
+                        padding: 10px;
+                        overflow: hidden;
+                    }
+
+                    .task-wizard-upload-item-color {
+                        display: block;
+                        text-align: center;
+                        margin: 20px 0;
+                    }
+
+                        .task-wizard-upload-item-color span {
+                            display: block;
+                            text-align: center;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            font-size: 1.2em;
+                            padding-bottom: 5px;
+                        }
+
+                        .task-wizard-upload-item-color .sp-replacer {
+                            border: 1px solid #bbb !important;
+                            border-radius: 4px !important;
+                            background: #f0f0f0 !important;
+                        }
+
+                            .task-wizard-upload-item-color .sp-replacer:hover {
+                                border: 1px solid #1a6d97 !important;
+                            }
+
+            .task-wizard-upload-voice-item {
+                margin-bottom: 20px;
+            }
+
+                .task-wizard-upload-voice-item-info {
+                    float: left;
+                    height: 40px;
+                }
+
+                    .task-wizard-upload-voice-item-info-correct {
+                        display: block;float: left;
+                        width: 40px;height: 40px;
+                        background: #2e8015 url('../Images/Wizard/task-wizard-correct.png') no-repeat center center;
+                    }
+
+                    .task-wizard-upload-voice-item-info-incorrect {
+                        display: block;float: left;
+                        width: 40px;height: 40px;
+                        background: #c80000 url('../Images/Wizard/task-wizard-incorrect.png') no-repeat center center;
+                    }
+
+                    .task-wizard-upload-voice-item-info-voice {
+                        display: block;float: left;
+                        width: 40px;height: 40px;
+                        background: #e4e4e4 url('../Images/Wizard/task-wizard-voice.png') no-repeat center center;
+                    }
+
+                    .task-wizard-upload-voice-item-info-text {
+                        display: block;
+                        float: left;
+                        line-height: 40px;
+                        width: 300px;
+                        padding-left: 10px;
+                        background: #eee url('../Images/Wizard/task-wizard-arrow.png') no-repeat right center;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-size: 1.3em;
+                        color: #555;
+                    }
+
+                .task-wizard-upload-voice-item-filepicker {
+                    float: left;
+                    padding: 7px 0 0 10px;
+                }
+
+            .task-wizard-upload-options {
+                min-width: 600px;
+                margin: 0 auto;
+                padding-top: 100px;
+                
+            }
+
+                .task-wizard-upload-save {
+                    display: block;
+                    /*float: right;*/
+                    border: none;
+                    border-bottom: 5px solid #0c5371;
+                    background: #1a6d97;
+                    color: white;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    /*padding: 6px 14px;*/
+                    padding: 16px 38px;
+                    margin: 0 auto;
+                }
+
+                    .task-wizard-upload-save:hover {
+                        cursor: pointer;
+                        background: #2277a4;
+                    }
+
+        .task-wizard-meta-container {
+            padding: 10px 0 20px 0;
+        }
+
+            .task-wizard-meta-heading {
+                font-weight: bold;
+                font-size: 1.6em;
+                text-transform: uppercase;
+                color: #444;
+            }
+
+            .task-wizard-meta-field {
+                padding-top: 10px;
+            }
+
+                .task-wizard-meta-field input {
+                    width: 500px;
+                    font-size: 1.6em;
+                    color: #888;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    outline: none;
+                }
+
+                .task-wizard-meta-field textarea {
+                    width: 500px;
+                    height: 160px;
+                    font-size: 1.6em;
+                    color: #888;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    outline: none;
+                    resize: none;
+                }
+
+.task-wizard-feedback {
+    position: absolute;
+    left: 0;top: 0;right: 0;bottom: 0;
+    background: #5bb443 url('../Images/Wizard/task-wizard-star-background.png');
+}
+
+    .task-wizard-feedback-container {
+        margin-top: 100px;
+    }
+
+        .task-wizard-feedback img {
+            display: block;
+            width: 128px;
+            margin: 20px auto;
+            text-align: center;
+            }
+
+        .task-wizard-feedback h1 {
+            color: white;
+            display: block;
+            text-align: center;
+            width: 800px;
+            margin: 20px auto;
+            font-size: 6em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .task-wizard-feedback h2 {
+            color: white;
+            display: block;
+            text-align: center;
+            width: 800px;
+            margin: 10px auto;
+            font-size: 2.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .task-wizard-feedback p {
+            color: white;
+            display: block;
+            text-align: center;
+            width: 800px;
+            margin: 10px auto;
+            font-size: 1.6em;
+        }
+
+/* CLEARFIX */
+
+/* Clearfix for modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+/* Clearfix for IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
+

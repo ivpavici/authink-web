@@ -1,0 +1,93 @@
+﻿@using Combres.Mvc
+@model Authink.Web.Models.Picture.UploadPictures_DetectColorsModel
+@{
+    ViewBag.Title = "AuThink task wizard | Upload pictures";
+}
+
+@section StyleSection
+{
+    @Url.CombresLink("taskWizzardCss")
+    @Url.CombresLink("spectrumCss")
+ 
+}
+@section ViewScripts
+{
+    @Url.CombresLink("spectrumJs")
+    <script type="text/javascript">
+        $(function () {
+            $(".colorPickerHolder").each(function () {
+                var colorPicker = $(this),
+                    colorInput  = $(this).parent().find(".colorValueHolder");
+                    
+                colorPicker.spectrum({
+                    showPalette: true,
+                    showPaletteOnly:true,
+                    palette: [
+                        ['black', 'white', 'blue','red'],
+                        ['green', 'yellow','orange']
+                    ],
+                    change: function (color) {
+                        $(colorInput).val(color.toHexString());
+                    }
+                });
+    
+                colorInput.val(colorPicker.val());
+               
+            });
+            
+        });
+    </script>
+}
+
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Upload pictures</h1>
+        <div class="task-wizard-progress">STEP <span>3</span>/5</div>
+    </div>
+
+    @if(!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="task-wizard-error">
+            <span>@Model.ErrorMessage</span>
+        </div>
+    }
+
+    <div class="task-wizard-content">    
+        <div class="task-wizard-upload-container" class="clearfix">
+            @using (Html.BeginForm("UploadPictures_DetectColors", "Picture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="task-wizard-upload-info">
+                    <span>For every picture you upload, you have to choose a correct and an incorrect color.</span>
+                </div>
+                <div class="task-wizard-upload-items">
+                    @for (var i = 0; i < Model.NumberOfPicturesAndWrongColorsMapping.NumberOfPictures; i++)
+                    {
+                        <div class="task-wizard-upload-item">
+                            <div class="task-wizard-upload-item-filepicker">
+                                <input type="file" name="pictures"/>
+                            </div>
+                            <div class="task-wizard-upload-item-color">
+                                <span>Correct Color</span>
+                                @Html.HiddenFor(m=>m.Colors[i].CorrectColor, new{@class="colorValueHolder"})
+                                <input type='color' name='color' class="colorPickerHolder"/>
+                            </div>
+                            <div class="task-wizard-upload-item-color">
+                                <span>Incorrect Colors</span>
+                                @for (var j = 0; j < Model.NumberOfPicturesAndWrongColorsMapping.NumberOfWrongColorsPerPicture; j++)
+                                {
+                                    <div class="task-wizard-upload-item-color">
+                                     @Html.HiddenFor(m => m.Colors[i].WrongColors[j], new { @class = "colorValueHolder" })
+                                     <input type='color' name='color' class="colorPickerHolder"/>
+                                     </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="task-wizard-upload-options clearfix">
+                    <input type="submit" class="task-wizard-upload-save" name="Submit" value="Upload" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

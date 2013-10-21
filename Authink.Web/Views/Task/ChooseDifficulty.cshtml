@@ -1,0 +1,28 @@
+﻿@model Authink.Web.Models.Task.ChooseDifficultyModel
+@using Combres.Mvc
+
+@{
+    ViewBag.Title = "AuThink task wizard | Choose difficulty";
+}
+@section StyleSection
+{
+    @Url.CombresLink("taskWizzardCss")
+}
+
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Choose Difficulty</h1>
+        <div class="task-wizard-progress">STEP <span>2</span>/5</div>
+    </div>
+    <div class="task-wizard-content">
+        <div class="task-wizard-difficulty-container" class="clearfix">
+            @foreach(var difficulty in Model.AvailableTaskDifficulties)
+            {
+                <a class="task-wizard-difficulty-item" href="@Url.RouteUrl(Model.UploadPicturesRouteName,new { taskDifficulty = difficulty })">
+                    <h2>@difficulty.ToString()</h2>
+                    <span>Difficulty</span>
+                </a>
+            }
+        </div>
+    </div>
+</div>

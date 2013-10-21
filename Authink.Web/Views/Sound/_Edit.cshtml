@@ -1,0 +1,9 @@
+﻿@model Authink.Web.Models.Sound.EditModel
+
+@using(Html.BeginForm("Edit", "Sound", FormMethod.Post, new{enctype = "multipart/form-data"}))
+{
+    @Html.HiddenFor(m=>m.SoundId)
+
+    <input type="file" name="sound"/>
+    <input type="submit" value="Save"/>
+}

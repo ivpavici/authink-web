@@ -1,0 +1,36 @@
+﻿@using Combres.Mvc
+@model Authink.Web.Models.Picture.UploadPictures_OrderBySizeModel
+@{
+    ViewBag.Title = "AuThink task wizard | Upload pictures";
+}
+@section StyleSection
+{
+   @Url.CombresLink("taskWizzardCss") 
+}
+
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Upload pictures</h1>
+        <div class="task-wizard-progress">STEP <span>3</span>/5</div>
+    </div>
+    @if(!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="task-wizard-error">
+            <span>@Model.ErrorMessage</span>
+        </div>
+    }
+    <div class="task-wizard-content">    
+        <div class="task-wizard-upload-container" class="clearfix">
+            @using (Html.BeginForm("UploadPictures_OrderBySize", "Picture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="task-wizard-upload-info">
+                    <span>You need to upload a picture.</span>
+                </div>
+                <input type="file" name="picture"/>
+                <div class="task-wizard-upload-options clearfix">
+                    <input type="submit" class="task-wizard-upload-save" name="Submit" value="Upload" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

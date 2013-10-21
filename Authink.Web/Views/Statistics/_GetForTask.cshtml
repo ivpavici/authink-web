@@ -1,0 +1,32 @@
+﻿@model Authink.Web.Models.Statistics.GetForTaskModel
+
+<script type="text/javascript">
+    var kurcina = @Html.Raw(Model.Series_inJson)
+    $(function () {
+        var pickusina = @Html.Raw(Model.Categories_inJson)
+        
+        $('#container').highcharts({
+           chart: {
+               type: 'line'
+           },
+           title: {
+               text: 'Exercise summary'
+           },
+           xAxis: {
+               categories: pickusina,
+           },
+           yAxis: {
+               title: {
+                   text: 'Number of correct/incorrect answers'
+               },
+               plotLines: [{
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+           },
+           series: kurcina
+        });
+    });
+</script>
+<div id="container"></div>

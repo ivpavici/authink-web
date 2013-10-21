@@ -1,0 +1,78 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+
+.field-validation-error {
+    color: #ee0000;
+    font-weight: bold; font-size: 12px;
+    text-transform: uppercase;
+    line-height: 22px;
+    padding-left: 10px;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/* Overlay */
+#simplemodal-overlay {background-color:#000; opacity: 0.3}
+
+#popup-root {display:none;}
+
+/* Container */
+#simplemodal-container { color:#bbb; background-color:white; border:1px solid #fe9b26; padding-bottom: 12px;}
+#simplemodal-container .simplemodal-data {}
+#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container a {color:#ddd;}
+#simplemodal-container a.modalCloseImg {background:url(../Assets/Images/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-23px; /*right:-16px;*/ right: -3px; cursor:pointer;}
+#simplemodal-container h3 {color:#84b8d9;}

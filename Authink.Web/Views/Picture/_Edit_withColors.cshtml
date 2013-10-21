@@ -1,0 +1,65 @@
+﻿@model Authink.Web.Models.Picture.EditWithColorsModel
+@using Combres.Mvc
+
+@Url.CombresLink("spectrumCss")
+@Url.CombresLink("spectrumJs")
+<script type="text/javascript">
+    $(function () {
+        $(".colorPickerHolder").each(function () {
+            var colorPicker  = $(this),
+                colorInput   = $(this).parent().find(".colorValueHolder"),
+                currentColor = $(this).parent().find(".currentColorValueHolder").val();
+            
+            colorPicker.spectrum({
+                color: currentColor,
+                showPalette: true,
+                showPaletteOnly:true,
+                palette: [
+                    ['black', 'white', 'blue','red'],
+                    ['green', 'yellow','orange']
+                ],
+                change: function (color) {
+                    $(colorInput).val(color.toHexString());
+                }
+            });
+
+            colorInput.val(currentColor);
+        });
+        
+    });
+</script>
+
+@using (Html.BeginForm("Edit_withColors", "Picture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.HiddenFor(m => m.PictureId)
+    </div>
+    
+    <img src="/@Model.Picture.Url" alt="Task picture"/>
+    
+    <input type="file" name="picture"/>
+    
+    <div>
+        @Html.Label("Correct color")
+        @Html.HiddenFor(m => m.CorrectColorToEdit.Id)
+
+        @Html.HiddenFor(m => m.CorrectColorToEdit.Value, new { @class = "colorValueHolder" })
+        @Html.Hidden("holder", Model.CorrectColorToEdit.Value, new { @class = "currentColorValueHolder" })
+
+        <input type='color' name='color' class="colorPickerHolder"/> 
+    </div>
+    
+    <div>
+        @Html.Label("Wrong color")
+        @for (var i = 0; i < Model.WrongColorsToEdit.Count; i++)
+        {
+            <div>
+                @Html.HiddenFor(m=> Model.WrongColorsToEdit[i].Id)
+                @Html.HiddenFor(m => m.WrongColorsToEdit[i].Value, new { @class = "colorValueHolder" })
+                @Html.Hidden("holder", Model.WrongColorsToEdit[i].Value, new { @class = "currentColorValueHolder" })
+                <input type='color' name='color' class="colorPickerHolder"/> 
+            </div>
+        }
+    </div>
+    <input type="submit" value="Save"/>
+}

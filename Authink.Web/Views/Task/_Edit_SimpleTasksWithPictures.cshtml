@@ -1,0 +1,54 @@
+﻿@model Authink.Web.Models.Task.EditSimpleTasksWithPicturesModel
+
+<script type="text/javascript">
+    $(function () {
+        $(".edit-picture-link").click(function() {
+            var pictureId  = $(this).data('id'),
+                finisher   = function(data) {
+                    $("#popup-root").html(data);
+                };
+            authink.getDataFromUrl('@Url.RouteUrl("EditPicture", new{taskId=Model.Task.Id})', finisher, pictureId);
+        });
+    } );
+</script>
+
+@using (Ajax.BeginForm("Edit_SimpleTasksWithPictures", "Task", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "popup-root" }))
+{
+    <div class="task-edit-container">
+        @Html.HiddenFor(m=>m.Id)
+        <div>
+            <div class="task-edit-header clearfix">
+                <div class="task-edit-header-left">
+                    <img src="/@Model.Task.ProfilePictureUrl" alt="" />
+                </div>
+                <div class="task-edit-header-right">
+                    <div>
+                        <span class="task-edit-header-right-name">Name</span>
+                        @Html.TextBoxFor(m=>m.Name, new{@class="task-edit-name-field"})
+                        @Html.ValidationMessageFor(m=>m.Name)
+                    </div>
+                    <div>
+                        <span>Description</span>
+                        @Html.TextAreaFor(m=>m.Description , new{@class="task-edit-description-field"})
+                        @Html.ValidationMessageFor(m=>m.Description)
+                    </div>
+                </div>
+            </div>
+            <div class="task-edit-content clearfix">
+                <h2>Pictures</h2>
+                <div class="task-edit-pictures-container">
+                    @foreach (var picture in Model.PicturesForTask)
+                    {
+                        <a class="task-edit-picture-item edit-picture-link" data-id="@picture.Id">
+                            <img src="/@picture.Url" alt="" />
+                            <span>Upload new image</span>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="task-edit-options">
+                <input type="submit" value="Save" class="task-edit-save" />
+            </div>
+        </div>
+    </div>
+}

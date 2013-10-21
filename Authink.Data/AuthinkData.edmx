@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Authink.Data.Database.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AuthinkDataDatabaseStoreContainer">
+    <EntitySet Name="Children" EntityType="Authink.Data.Database.Store.Children" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Colors" EntityType="Authink.Data.Database.Store.Colors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pictures" EntityType="Authink.Data.Database.Store.Pictures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sounds" EntityType="Authink.Data.Database.Store.Sounds" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tasks" EntityType="Authink.Data.Database.Store.Tasks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tests" EntityType="Authink.Data.Database.Store.Tests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="Authink.Data.Database.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Statistics_Meta" EntityType="Authink.Data.Database.Store.Statistics_Meta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AS_Child_Test" EntityType="Authink.Data.Database.Store.AS_Child_Test" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AS_Picture_Task" EntityType="Authink.Data.Database.Store.AS_Picture_Task" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AS_Test_Task" EntityType="Authink.Data.Database.Store.AS_Test_Task" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserChild" EntityType="Authink.Data.Database.Store.UserChild" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PictureColor" Association="Authink.Data.Database.Store.FK_PictureColor">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="Colors" EntitySet="Colors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTask" Association="Authink.Data.Database.Store.FK_UserTask">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Child_Test_Children" Association="Authink.Data.Database.Store.FK_AS_Child_Test_Children">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="AS_Child_Test" EntitySet="AS_Child_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Child_Test_Tests" Association="Authink.Data.Database.Store.FK_AS_Child_Test_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="AS_Child_Test" EntitySet="AS_Child_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Picture_Task_Pictures" Association="Authink.Data.Database.Store.FK_AS_Picture_Task_Pictures">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="AS_Picture_Task" EntitySet="AS_Picture_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Picture_Task_Tasks" Association="Authink.Data.Database.Store.FK_AS_Picture_Task_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="AS_Picture_Task" EntitySet="AS_Picture_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Test_Task_Tasks" Association="Authink.Data.Database.Store.FK_AS_Test_Task_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="AS_Test_Task" EntitySet="AS_Test_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AS_Test_Task_Tests" Association="Authink.Data.Database.Store.FK_AS_Test_Task_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="AS_Test_Task" EntitySet="AS_Test_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserChild_Children" Association="Authink.Data.Database.Store.FK_UserChild_Children">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="UserChild" EntitySet="UserChild" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserChild_Users" Association="Authink.Data.Database.Store.FK_UserChild_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserChild" EntitySet="UserChild" />
+    </AssociationSet>
+    <AssociationSet Name="UserTest" Association="Authink.Data.Database.Store.UserTest">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="Statistics_MetaTask" Association="Authink.Data.Database.Store.Statistics_MetaTask">
+      <End Role="Statistics_Meta" EntitySet="Statistics_Meta" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="SoundTask" Association="Authink.Data.Database.Store.SoundTask">
+      <End Role="Sound" EntitySet="Sounds" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="SoundPicture" Association="Authink.Data.Database.Store.SoundPicture">
+      <End Role="Sound" EntitySet="Sounds" />
+      <End Role="Picture" EntitySet="Pictures" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Children">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Center" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Contact" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DescriptionOfCondition" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PlaceOfBirth" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ParentName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+    <Property Name="ProfilePictureUrl" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Colors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
+    <Property Name="IsCorrect" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+    <Property Name="Theme" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsAnswer" Type="bit" Nullable="true" />
+    <Property Name="Sound_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Sounds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+    <Property Name="Difficulty" Type="int" Nullable="false" />
+    <Property Name="ProfilePictureUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Statistics_MetaId" Type="int" Nullable="false" />
+    <Property Name="Sound_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LongDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Statistics_Meta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SucessfullClicks" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ErrorClicks" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TotalRunSummary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dates" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AS_Child_Test">
+    <Key>
+      <PropertyRef Name="Children_Id" />
+      <PropertyRef Name="Tests_Id" />
+    </Key>
+    <Property Name="Children_Id" Type="int" Nullable="false" />
+    <Property Name="Tests_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AS_Picture_Task">
+    <Key>
+      <PropertyRef Name="Pictures_Id" />
+      <PropertyRef Name="Tasks_Id" />
+    </Key>
+    <Property Name="Pictures_Id" Type="int" Nullable="false" />
+    <Property Name="Tasks_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AS_Test_Task">
+    <Key>
+      <PropertyRef Name="Tasks_Id" />
+      <PropertyRef Name="Tests_Id" />
+    </Key>
+    <Property Name="Tasks_Id" Type="int" Nullable="false" />
+    <Property Name="Tests_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserChild">
+    <Key>
+      <PropertyRef Name="Children_Id" />
+      <PropertyRef Name="Users_Id" />
+    </Key>
+    <Property Name="Children_Id" Type="int" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PictureColor">
+    <End Role="Pictures" Type="Authink.Data.Database.Store.Pictures" Multiplicity="1" />
+    <End Role="Colors" Type="Authink.Data.Database.Store.Colors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Colors">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTask">
+    <End Role="Users" Type="Authink.Data.Database.Store.Users" Multiplicity="1" />
+    <End Role="Tasks" Type="Authink.Data.Database.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserTest">
+    <End Role="User" Type="Authink.Data.Database.Store.Users" Multiplicity="1" />
+    <End Role="Test" Type="Authink.Data.Database.Store.Tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Statistics_MetaTask">
+    <End Role="Statistics_Meta" Type="Authink.Data.Database.Store.Statistics_Meta" Multiplicity="1" />
+    <End Role="Task" Type="Authink.Data.Database.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Statistics_Meta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Statistics_MetaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SoundTask">
+    <End Role="Sound" Type="Authink.Data.Database.Store.Sounds" Multiplicity="0..1" />
+    <End Role="Task" Type="Authink.Data.Database.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sound">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Sound_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SoundPicture">
+    <End Role="Sound" Type="Authink.Data.Database.Store.Sounds" Multiplicity="0..1" />
+    <End Role="Picture" Type="Authink.Data.Database.Store.Pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sound">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Picture">
+        <PropertyRef Name="Sound_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Child_Test_Children">
+    <End Role="Children" Type="Authink.Data.Database.Store.Children" Multiplicity="1" />
+    <End Role="AS_Child_Test" Type="Authink.Data.Database.Store.AS_Child_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Child_Test">
+        <PropertyRef Name="Children_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Child_Test_Tests">
+    <End Role="AS_Child_Test" Type="Authink.Data.Database.Store.AS_Child_Test" Multiplicity="*" />
+    <End Role="Tests" Type="Authink.Data.Database.Store.Tests" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Child_Test">
+        <PropertyRef Name="Tests_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Picture_Task_Pictures">
+    <End Role="Pictures" Type="Authink.Data.Database.Store.Pictures" Multiplicity="1" />
+    <End Role="AS_Picture_Task" Type="Authink.Data.Database.Store.AS_Picture_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Picture_Task">
+        <PropertyRef Name="Pictures_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Picture_Task_Tasks">
+    <End Role="AS_Picture_Task" Type="Authink.Data.Database.Store.AS_Picture_Task" Multiplicity="*" />
+    <End Role="Tasks" Type="Authink.Data.Database.Store.Tasks" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Picture_Task">
+        <PropertyRef Name="Tasks_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Test_Task_Tasks">
+    <End Role="Tasks" Type="Authink.Data.Database.Store.Tasks" Multiplicity="1" />
+    <End Role="AS_Test_Task" Type="Authink.Data.Database.Store.AS_Test_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Test_Task">
+        <PropertyRef Name="Tasks_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AS_Test_Task_Tests">
+    <End Role="AS_Test_Task" Type="Authink.Data.Database.Store.AS_Test_Task" Multiplicity="*" />
+    <End Role="Tests" Type="Authink.Data.Database.Store.Tests" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AS_Test_Task">
+        <PropertyRef Name="Tests_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserChild_Children">
+    <End Role="Children" Type="Authink.Data.Database.Store.Children" Multiplicity="1" />
+    <End Role="UserChild" Type="Authink.Data.Database.Store.UserChild" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserChild">
+        <PropertyRef Name="Children_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserChild_Users">
+    <End Role="UserChild" Type="Authink.Data.Database.Store.UserChild" Multiplicity="*" />
+    <End Role="Users" Type="Authink.Data.Database.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserChild">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Authink.Data.Database" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AuthinkDataModel" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Children" EntityType="Authink.Data.Database.Child" />
+          <EntitySet Name="Colors" EntityType="Authink.Data.Database.Color" />
+          <EntitySet Name="Pictures" EntityType="Authink.Data.Database.Picture" />
+          <EntitySet Name="Sounds" EntityType="Authink.Data.Database.Sound" />
+          <EntitySet Name="Tasks" EntityType="Authink.Data.Database.Task" />
+          <EntitySet Name="Tests" EntityType="Authink.Data.Database.Test" />
+          <EntitySet Name="Users" EntityType="Authink.Data.Database.User" />
+          <AssociationSet Name="FK_PictureColor" Association="Authink.Data.Database.FK_PictureColor">
+            <End Role="Pictures" EntitySet="Pictures" />
+            <End Role="Colors" EntitySet="Colors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTask" Association="Authink.Data.Database.FK_UserTask">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="AS_Child_Test" Association="Authink.Data.Database.AS_Child_Test">
+            <End Role="Children" EntitySet="Children" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="AS_Picture_Task" Association="Authink.Data.Database.AS_Picture_Task">
+            <End Role="Pictures" EntitySet="Pictures" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="AS_Test_Task" Association="Authink.Data.Database.AS_Test_Task">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="UserChild" Association="Authink.Data.Database.UserChild">
+            <End Role="Children" EntitySet="Children" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserTest" Association="Authink.Data.Database.UserTest">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <EntitySet Name="Statistics_Meta" EntityType="Authink.Data.Database.Statistics_Meta" />
+          <AssociationSet Name="Statistics_MetaTask" Association="Authink.Data.Database.Statistics_MetaTask">
+            <End Role="Statistics_Meta" EntitySet="Statistics_Meta" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="SoundTask" Association="Authink.Data.Database.SoundTask">
+            <End Role="Sound" EntitySet="Sounds" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="SoundPicture" Association="Authink.Data.Database.SoundPicture">
+            <End Role="Sound" EntitySet="Sounds" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="String" Nullable="true" />
+          <Property Name="Notes" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Center" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Contact" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DescriptionOfCondition" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PlaceOfBirth" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ParentName" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.AS_Child_Test" FromRole="Children" ToRole="Tests" />
+          <NavigationProperty Name="Users" Relationship="Authink.Data.Database.UserChild" FromRole="Children" ToRole="Users" />
+          <Property Type="String" Name="ProfilePictureUrl" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PictureId" Type="Int32" Nullable="false" />
+          <Property Name="IsCorrect" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Picture" Relationship="Authink.Data.Database.FK_PictureColor" FromRole="Colors" ToRole="Pictures" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <Property Name="Theme" Type="String" />
+          <Property Name="IsAnswer" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Colors" Relationship="Authink.Data.Database.FK_PictureColor" FromRole="Pictures" ToRole="Colors" />
+          <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.AS_Picture_Task" FromRole="Pictures" ToRole="Tasks" />
+          <NavigationProperty Name="Sound" Relationship="Authink.Data.Database.SoundPicture" FromRole="Picture" ToRole="Sound" />
+        </EntityType>
+        <EntityType Name="Sound">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Authink.Data.Database.SoundTask" FromRole="Sound" ToRole="Task" />
+          <NavigationProperty Name="Picture" Relationship="Authink.Data.Database.SoundPicture" FromRole="Sound" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Authink.Data.Database.FK_UserTask" FromRole="Tasks" ToRole="Users" />
+          <NavigationProperty Name="Pictures" Relationship="Authink.Data.Database.AS_Picture_Task" FromRole="Tasks" ToRole="Pictures" />
+          <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.AS_Test_Task" FromRole="Tasks" ToRole="Tests" />
+          <Property Type="Int32" Name="Difficulty" Nullable="false" />
+          <Property Type="String" Name="ProfilePictureUrl" Nullable="false" />
+          <NavigationProperty Name="Statistics_Meta" Relationship="Authink.Data.Database.Statistics_MetaTask" FromRole="Task" ToRole="Statistics_Meta" />
+          <Property Type="Int32" Name="Statistics_MetaId" Nullable="false" />
+          <NavigationProperty Name="Sound" Relationship="Authink.Data.Database.SoundTask" FromRole="Task" ToRole="Sound" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Authink.Data.Database.AS_Child_Test" FromRole="Tests" ToRole="Children" />
+          <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.AS_Test_Task" FromRole="Tests" ToRole="Tasks" />
+          <NavigationProperty Name="User" Relationship="Authink.Data.Database.UserTest" FromRole="Test" ToRole="User" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.FK_UserTask" FromRole="Users" ToRole="Tasks" />
+          <NavigationProperty Name="Children" Relationship="Authink.Data.Database.UserChild" FromRole="Users" ToRole="Children" />
+          <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.UserTest" FromRole="User" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK_PictureColor">
+          <End Role="Pictures" Type="Authink.Data.Database.Picture" Multiplicity="1" />
+          <End Role="Colors" Type="Authink.Data.Database.Color" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pictures">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Colors">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTask">
+          <End Role="Users" Type="Authink.Data.Database.User" Multiplicity="1" />
+          <End Role="Tasks" Type="Authink.Data.Database.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AS_Child_Test">
+          <End Role="Children" Type="Authink.Data.Database.Child" Multiplicity="*" />
+          <End Role="Tests" Type="Authink.Data.Database.Test" Multiplicity="*" />
+        </Association>
+        <Association Name="AS_Picture_Task">
+          <End Role="Pictures" Type="Authink.Data.Database.Picture" Multiplicity="*" />
+          <End Role="Tasks" Type="Authink.Data.Database.Task" Multiplicity="*" />
+        </Association>
+        <Association Name="AS_Test_Task">
+          <End Role="Tasks" Type="Authink.Data.Database.Task" Multiplicity="*" />
+          <End Role="Tests" Type="Authink.Data.Database.Test" Multiplicity="*" />
+        </Association>
+        <Association Name="UserChild">
+          <End Role="Children" Type="Authink.Data.Database.Child" Multiplicity="*" />
+          <End Role="Users" Type="Authink.Data.Database.User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserTest">
+          <End Type="Authink.Data.Database.User" Role="User" Multiplicity="1" />
+          <End Type="Authink.Data.Database.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Statistics_Meta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SucessfullClicks" Nullable="false" />
+          <Property Type="String" Name="ErrorClicks" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.Statistics_MetaTask" FromRole="Statistics_Meta" ToRole="Task" />
+          <Property Type="String" Name="TotalRunSummary" Nullable="false" />
+          <Property Type="String" Name="Dates" Nullable="false" />
+        </EntityType>
+        <Association Name="Statistics_MetaTask">
+          <End Type="Authink.Data.Database.Statistics_Meta" Role="Statistics_Meta" Multiplicity="1" />
+          <End Type="Authink.Data.Database.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statistics_Meta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Statistics_MetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SoundTask">
+          <End Type="Authink.Data.Database.Sound" Role="Sound" Multiplicity="0..1" />
+          <End Type="Authink.Data.Database.Task" Role="Task" Multiplicity="0..1" />
+        </Association>
+        <Association Name="SoundPicture">
+          <End Type="Authink.Data.Database.Sound" Role="Sound" Multiplicity="0..1" />
+          <End Type="Authink.Data.Database.Picture" Role="Picture" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AuthinkDataDatabaseStoreContainer" CdmEntityContainer="AuthinkDataModel">
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Child)">
+        <MappingFragment StoreEntitySet="Children">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Center" ColumnName="Center" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="DescriptionOfCondition" ColumnName="DescriptionOfCondition" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Color)">
+        <MappingFragment StoreEntitySet="Colors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Picture)">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="IsAnswer" ColumnName="IsAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sounds">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Sound)">
+        <MappingFragment StoreEntitySet="Sounds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Task)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
+          <ScalarProperty Name="Statistics_MetaId" ColumnName="Statistics_MetaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Test)">
+        <MappingFragment StoreEntitySet="Tests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics_Meta">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Statistics_Meta)">
+        <MappingFragment StoreEntitySet="Statistics_Meta">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SucessfullClicks" ColumnName="SucessfullClicks" />
+          <ScalarProperty Name="ErrorClicks" ColumnName="ErrorClicks" />
+          <ScalarProperty Name="TotalRunSummary" ColumnName="TotalRunSummary" />
+          <ScalarProperty Name="Dates" ColumnName="Dates" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AS_Child_Test" TypeName="Authink.Data.Database.AS_Child_Test" StoreEntitySet="AS_Child_Test">
+      <EndProperty Name="Children">
+        <ScalarProperty Name="Id" ColumnName="Children_Id" />
+      </EndProperty>
+      <EndProperty Name="Tests">
+        <ScalarProperty Name="Id" ColumnName="Tests_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AS_Picture_Task" TypeName="Authink.Data.Database.AS_Picture_Task" StoreEntitySet="AS_Picture_Task">
+      <EndProperty Name="Pictures">
+        <ScalarProperty Name="Id" ColumnName="Pictures_Id" />
+      </EndProperty>
+      <EndProperty Name="Tasks">
+        <ScalarProperty Name="Id" ColumnName="Tasks_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AS_Test_Task" TypeName="Authink.Data.Database.AS_Test_Task" StoreEntitySet="AS_Test_Task">
+      <EndProperty Name="Tasks">
+        <ScalarProperty Name="Id" ColumnName="Tasks_Id" />
+      </EndProperty>
+      <EndProperty Name="Tests">
+        <ScalarProperty Name="Id" ColumnName="Tests_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserChild" TypeName="Authink.Data.Database.UserChild" StoreEntitySet="UserChild">
+      <EndProperty Name="Children">
+        <ScalarProperty Name="Id" ColumnName="Children_Id" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SoundTask" TypeName="Authink.Data.Database.SoundTask" StoreEntitySet="Tasks">
+      <EndProperty Name="Sound">
+        <ScalarProperty Name="Id" ColumnName="Sound_Id" />
+      </EndProperty>
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Sound_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SoundPicture" TypeName="Authink.Data.Database.SoundPicture" StoreEntitySet="Pictures">
+      <EndProperty Name="Sound">
+        <ScalarProperty Name="Id" ColumnName="Sound_Id" />
+      </EndProperty>
+      <EndProperty Name="Picture">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Sound_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

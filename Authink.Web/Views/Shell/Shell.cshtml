@@ -1,0 +1,19 @@
+﻿@using Combres.Mvc
+@{Layout = null;}
+<!DOCTYPE html >
+<html ng-app="authink">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Url.CombresLink("globalCss")
+    @Url.CombresLink("shellCss")
+    @Url.CombresLink("angularJs")
+    @Url.CombresLink("shellJs")
+</head>
+    <body ng-controller="shellController">
+        
+        <div ng-view></div>
+
+    </body>
+</html>

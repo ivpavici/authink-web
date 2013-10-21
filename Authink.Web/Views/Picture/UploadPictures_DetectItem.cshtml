@@ -1,0 +1,50 @@
+﻿@using Combres.Mvc
+@model Authink.Web.Models.Picture.UploadPictures_DetectItemModel
+@{
+    ViewBag.Title = "AuThink task wizard | Upload pictures";
+}
+@section StyleSection
+{
+   @Url.CombresLink("taskWizzardCss") 
+}
+
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Upload pictures</h1>
+        <div class="task-wizard-progress">STEP <span>3</span>/5</div>
+    </div>
+    @if(!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="task-wizard-error">
+            <span>@Model.ErrorMessage</span>
+        </div>
+    }
+    <div class="task-wizard-content">    
+        <div class="task-wizard-upload-container" class="clearfix">
+            @using(Html.BeginForm("UploadPictures_DetectItem","Picture",FormMethod.Post,new {enctype="multipart/form-data"}))
+            {
+                <div class="task-wizard-upload-voice-item clearfix">
+                    <div class="task-wizard-upload-voice-item-info clearfix">
+                        <div class="task-wizard-upload-voice-item-info-correct"></div>
+                        <div class="task-wizard-upload-voice-item-info-text">Upload the correct picture.</div>
+                    </div>
+                    <div class="task-wizard-upload-voice-item-filepicker">
+                        <input type="file" name="correctPicture" />
+                    </div>
+                </div>
+                <div class="task-wizard-upload-voice-item clearfix">
+                    <div class="task-wizard-upload-voice-item-info clearfix">
+                        <div class="task-wizard-upload-voice-item-info-incorrect"></div>
+                        <div class="task-wizard-upload-voice-item-info-text">Upload @(Model.TaskDifficulty-1) incorrect pictures.</div>
+                    </div>
+                    <div class="task-wizard-upload-voice-item-filepicker">
+                        <input type="file" multiple="multiple" name="pictures"/>
+                    </div>
+                </div>
+                <div class="task-wizard-upload-options clearfix">
+                    <input type="submit" class="task-wizard-upload-save" name="Upload" value="Continue" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

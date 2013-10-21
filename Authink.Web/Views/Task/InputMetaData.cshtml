@@ -1,0 +1,72 @@
+﻿@using Combres.Mvc
+@model Authink.Web.Models.Task.InputMetaDataModel
+@{
+    ViewBag.Title = "AuThink task wizard | Basic informations";
+}
+@section StyleSection
+{
+    @Url.CombresLink("taskWizzardCss")
+}
+@section ViewScripts
+{
+   <script>
+        $(function () {
+            $('form').submit(function () {
+                $('input[type="submit"]', this).attr('disabled', 'disabled');
+            });
+        });
+   </script> 
+}
+
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Basic task information</h1>
+        <div class="task-wizard-progress">STEP <span>4</span>/5</div>
+    </div>
+    @if(!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="task-wizard-error">
+            <span>@Model.ErrorMessage</span>
+        </div>
+    }
+    <div class="task-wizard-content">
+        @using (Html.BeginForm("InputMetaData", "Task", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.IsVoiceCommandRequired)
+            @Html.HiddenFor(m => m.TaskKey)
+
+            <div class="task-wizard-meta-container">
+                <div class="task-wizard-meta-heading">Title</div>
+                <div class="task-wizard-meta-field">
+                    @Html.TextBoxFor(m => m.Title)
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+            </div>
+            <div class="task-wizard-meta-container">
+                <div class="task-wizard-meta-heading">Description</div>
+                <div class="task-wizard-meta-field">
+                    @Html.TextAreaFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+            <div>
+                <div class="task-wizard-meta-heading">
+                    Voice command
+                    @if (Model.IsVoiceCommandRequired)
+                    {
+                        <span>(required)</span>
+                    }
+                    else
+                    {
+                        <span>(optional)</span>
+                    }
+                </div>
+                <input type="file" name="sound"/>
+            </div>
+            <div class="task-wizard-upload-options clearfix">
+                <input type="submit" class="task-wizard-upload-save" value="Save" />
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model Authink.Web.Models.Task.ReadModel
+@{
+    ViewBag.Title = "Read";
+}
+<script>
+    $(function () {
+        $(".read-task-edit-button").click(function () {
+            authink.dialogShow('@Url.RouteUrl("EditTask")');
+        });
+    });
+</script>
+<div class="task-read-container">
+    <div>
+        <div class="task-read-header clearfix">
+            <div class="task-read-header-left">
+                <img src="/@Model.Task.ProfilePictureUrl" alt="" />
+            </div>
+            <div class="task-read-header-right">
+                <h1 class="task-read-name">@Model.Task.Name</h1>
+                <p class="task-read-description">@Model.Task.Description</p>
+            </div>
+        </div>
+        <div class="task-read-content clearfix">
+            <h2>Pictures</h2>
+            <div class="task-read-pictures-container">
+                @foreach(var picture in Model.Pictures)
+                {
+                    <div class="task-read-picture-item">
+                        <img src="/@picture.Url" alt="" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="task-read-options">
+            <a class="read-task-edit-button">Edit task</a>
+        </div>
+    </div>
+</div>

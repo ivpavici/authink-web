@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77B56B2B-C622-42CF-81FE-97C35416F9C7}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Authink.Web</RootNamespace>
+    <AssemblyName>Authink.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.84.4790.14417\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="Combres">
+      <HintPath>..\packages\combres.2.2.2.17\lib\net35\Combres.dll</HintPath>
+    </Reference>
+    <Reference Include="Combres.Mvc">
+      <HintPath>..\packages\combres.mvc.2.2.2.17\lib\net35\Combres.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\packages\fasterflect.2.1.0\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Combres.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StructureMapModelBinder.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiEndPointController.cs" />
+    <Compile Include="Controllers\ChildrenApiController.cs" />
+    <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\ShellController.cs" />
+    <Compile Include="Controllers\SoundController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TestsApiController.cs" />
+    <Compile Include="Controllers\UserApiController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Picture\EditModels.cs" />
+    <Compile Include="Models\Session\SessionModels.cs" />
+    <Compile Include="Models\Statistics\GetForTaskModel.cs" />
+    <Compile Include="Models\Task\EditModel.cs" />
+    <Compile Include="Models\Task\DeleteModel.cs" />
+    <Compile Include="Models\Picture\PicturesUploadModels.cs" />
+    <Compile Include="Models\Task\ReadModel.cs" />
+    <Compile Include="Models\Task\WizardModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Sound\CreateModel.cs" />
+    <Compile Include="Models\Sound\EditModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-tpls-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\angular-resource-v1.2.0-rc.3.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\angular-route-1.2.0-rc.2.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-0.6.0.min.js" />
+    <Content Include="App_Data\combres.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\Assets\Scripts\src\app.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Repositories\testsRepository.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\testsList.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\childMenu.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Repositories\childrenRepository.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Controllers\shell.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\omniBar.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\testPreview.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\createChild.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\createTest.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\editChild.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\editTest.js" />
+    <Content Include="Assets\Images\Home\add-icon.png" />
+    <Content Include="Assets\Images\Home\child-button-edit.png" />
+    <Content Include="Assets\Images\Home\child-menu-arrow-down.png" />
+    <Content Include="Assets\Images\Home\child-menu-arrow-up.png" />
+    <Content Include="Assets\Images\Home\child-menu-back-2.png" />
+    <Content Include="Assets\Images\Home\child-menu-back.png" />
+    <Content Include="Assets\Images\Home\header-logo.png" />
+    <Content Include="Assets\Images\Home\header-menu-arrow-down.png" />
+    <Content Include="Assets\Images\Home\header-menu-arrow-up.png" />
+    <Content Include="Assets\Images\Home\Pencil-icon.png" />
+    <Content Include="Assets\Images\Home\search-icon.png" />
+    <Content Include="Assets\Images\Home\task-icon-delete.png" />
+    <Content Include="Assets\Images\Home\task-icon-edit.png" />
+    <Content Include="Assets\Images\Home\task-icon-statistics.png" />
+    <Content Include="Assets\Images\Home\test-icon-add.png" />
+    <Content Include="Assets\Images\Home\test-icon-edit.png" />
+    <Content Include="Assets\Images\Home\user-avatar-default.png" />
+    <Content Include="Assets\Images\Login\login-logo.png" />
+    <Content Include="Assets\Images\Textures\shattered.png" />
+    <Content Include="Assets\Images\Login\video-image.jpg" />
+    <Content Include="Assets\Images\Wizard\task-wizard-arrow.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-correct.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-cupcake.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-error.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-incorrect.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-info.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-star-background.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-voice.png" />
+    <Content Include="Assets\Scripts\authink.js" />
+    <Content Include="Assets\Style\bootstrap.css" />
+    <Content Include="Assets\Style\ChildDashboard.css" />
+    <Content Include="Assets\Style\home.css" />
+    <Content Include="Assets\Style\reset.css" />
+    <Content Include="Assets\Style\style.css" />
+    <Content Include="Assets\Style\wizard.css" />
+    <Content Include="Assets\Images\x.png" />
+    <Content Include="Assets\Templates\Components\CreateChild.html" />
+    <Content Include="Assets\Templates\Components\ChildMenu.html" />
+    <Content Include="Assets\Templates\Components\CreateTest.html" />
+    <Content Include="Assets\Templates\Components\EditChild.html" />
+    <Content Include="Assets\Templates\Components\EditTest.html" />
+    <Content Include="Assets\Templates\Components\OmniBar.html" />
+    <Content Include="Assets\Templates\Components\SignUp.html" />
+    <Content Include="Assets\Templates\Components\TestPreview.html" />
+    <Content Include="Assets\Templates\Components\TestsList.html" />
+    <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
+    <Content Include="Assets\Templates\Home.html" />
+    <Content Include="Assets\Templates\Login.html" />
+    <Content Include="Content\Images\Children\default-profile-picture.png" />
+    <Content Include="Content\Images\Children\WomenChild.jpg" />
+    <Content Include="Content\Images\TaskIcons\task-affiliation-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-continue-sequence-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-detect-colors-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-detect-different-items-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-detect-same-items-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-order-by-size-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-pair-halves-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-pair-same-items-256x256.png" />
+    <Content Include="Content\Images\TaskIcons\task-voice-commands-256x256.png" />
+    <Content Include="Content\Images\Tasks\10\bowl.png" />
+    <Content Include="Content\Images\Tasks\10\casserole.png" />
+    <Content Include="Content\Images\Tasks\10\frying pan.png" />
+    <Content Include="Content\Images\Tasks\10\kitchen tool_2.png" />
+    <Content Include="Content\Images\Tasks\11\lonac.png" />
+    <Content Include="Content\Images\Tasks\11\Red_cambridge_mug.png" />
+    <Content Include="Content\Images\Tasks\12\individual-red-mug.png" />
+    <Content Include="Content\Images\Tasks\12\Red_cambridge_mug.png" />
+    <Content Include="Content\Images\Tasks\1\bowl.png" />
+    <Content Include="Content\Images\Tasks\1\casserole.png" />
+    <Content Include="Content\Images\Tasks\2\bowl.png" />
+    <Content Include="Content\Images\Tasks\2\casserole.png" />
+    <Content Include="Content\Images\Tasks\2\cup.png" />
+    <Content Include="Content\Images\Tasks\3\bowl.png" />
+    <Content Include="Content\Images\Tasks\3\casserole.png" />
+    <Content Include="Content\Images\Tasks\3\cup.png" />
+    <Content Include="Content\Images\Tasks\3\frying pan.png" />
+    <Content Include="Content\Images\Tasks\4\bowl.png" />
+    <Content Include="Content\Images\Tasks\4\greenCup.png" />
+    <Content Include="Content\Images\Tasks\4\red-casserole.png" />
+    <Content Include="Content\Images\Tasks\4\yellow kitchen tool_3.png" />
+    <Content Include="Content\Images\Tasks\5\bowl.png" />
+    <Content Include="Content\Images\Tasks\5\red-casserole.png" />
+    <Content Include="Content\Images\Tasks\6\frying pan.png" />
+    <Content Include="Content\Images\Tasks\6\kitchen tool_2.png" />
+    <Content Include="Content\Images\Tasks\6\kitchen tool_3.png" />
+    <Content Include="Content\Images\Tasks\6\kitchen tool_6.png" />
+    <Content Include="Content\Images\Tasks\7\jug-3.png" />
+    <Content Include="Content\Images\Tasks\8\casa.jpg" />
+    <Content Include="Content\Images\Tasks\8\tanjur.jpg" />
+    <Content Include="Content\Images\Tasks\8\tava.jpg" />
+    <Content Include="Content\Images\Tasks\8\ubrus.jpg" />
+    <Content Include="Content\Images\Tasks\9\bowl-left.png" />
+    <Content Include="Content\Images\Tasks\9\bowl-right.png" />
+    <Content Include="Content\Images\Tasks\9\casserole-left.png" />
+    <Content Include="Content\Images\Tasks\9\casserole-right.png" />
+    <Content Include="Content\Images\Tasks\defaultTaskProfile.png" />
+    <Content Include="Assets\Style\task.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\signUp.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\File.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\Plugins\highcharts.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\Plugins\jquery.simplemodal.1.4.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Plugins\SimpleColorpicker\spectrum.css" />
+    <Content Include="Scripts\Plugins\SimpleColorpicker\spectrum.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Task\ChooseDifficulty.cshtml" />
+    <Content Include="Views\Task\ChooseType.cshtml" />
+    <Content Include="Views\Task\Feedback.cshtml" />
+    <Content Include="Views\Task\InputMetaData.cshtml" />
+    <Content Include="Views\Picture\UploadPictures_SimpleTasksWithPictures.cshtml" />
+    <Content Include="Views\Picture\UploadPictures_DetectColors.cshtml" />
+    <Content Include="Views\Picture\UploadPictures_DetectItem.cshtml" />
+    <Content Include="Views\Picture\UploadPictures_OrderBySize.cshtml" />
+    <Content Include="Views\Task\_Edit_SimpleTasksWithPictures.cshtml" />
+    <Content Include="Views\Picture\_Edit_simple.cshtml" />
+    <Content Include="Views\Task\Read.cshtml" />
+    <Content Include="Views\Task\_Edit_DetectItem.cshtml" />
+    <Content Include="Views\Task\_Edit_DetectColors.cshtml" />
+    <Content Include="Views\Picture\_Edit_withColors.cshtml" />
+    <Content Include="Views\Statistics\_GetForTask.cshtml" />
+    <Content Include="Views\Sound\_Create.cshtml" />
+    <Content Include="Views\Sound\_Edit.cshtml" />
+    <Content Include="Views\Shell\Shell.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Authink.Api\Authink.Api.csproj">
+      <Project>{eb033bc5-a830-4753-b825-c90155326ff7}</Project>
+      <Name>Authink.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Authink.Core\Authink.Core.csproj">
+      <Project>{eec5aaab-36e4-4926-a5e2-af87dde6ab8b}</Project>
+      <Name>Authink.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Authink.Data\Authink.Data.csproj">
+      <Project>{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}</Project>
+      <Name>Authink.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8276/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

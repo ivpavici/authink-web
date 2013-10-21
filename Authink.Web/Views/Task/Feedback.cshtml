@@ -1,0 +1,25 @@
+﻿@using Combres.Mvc
+@{
+    ViewBag.Title = "AuThink | Task created";
+}
+@section StyleSection
+{
+    @Url.CombresLink("taskWizzardCss")
+}
+@section ViewScripts
+{
+    <script type="text/javascript">
+        setTimeout(function () {
+            window.location = '@Url.RouteUrl("Home", new { test = Model })';
+        }, 5000);
+    </script>
+}
+
+<div class="task-wizard-feedback">
+    <div class="task-wizard-feedback-container">
+        <img src="~/Assets/Images/Wizard/task-wizard-cupcake.png" alt="" />
+        <h1>Congratulations!</h1>
+        <h2>Your task has been successfully created.</h2>
+        <p>You will be redirected shortly.</p>
+    </div>
+</div>

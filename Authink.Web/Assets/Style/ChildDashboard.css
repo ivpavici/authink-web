@@ -1,0 +1,96 @@
+﻿/*
+
+    AuThink
+
+    =======================
+         COLOR PALETTE
+    =======================
+    Blue            #1a6d97
+    Blue Hover      #2277a4
+    Blue Accent     #0c5371
+    Orange          #fe9b26
+    Orange Hover    #feaa26
+    Orange Accent   #e18520
+    
+*/
+@import url('reset.css');
+
+body {
+    background: transparent url('../Images/Textures/shattered.png');
+    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+}
+#child-form-create {
+    width: 320px;
+    height: 250px;
+    padding: 20px;
+}
+
+.child-form-field {
+    width: 304px;
+    padding: 8px;
+    background: white;
+    border: #e0e0e0 1px solid;
+    margin: 5px 0;
+    font-size: 18px;
+}
+#authink-logo {
+background: transparent url('../Images/Login/login-logo.png') no-repeat center center;
+height: 200px;
+}
+
+#children-dashboard-title {
+    font-size: 20px;
+    color: #1a6d97;
+    font-weight: bold;
+    margin: auto;
+}
+#child-dashboard-form-wrapper {
+    width: 500px;
+    margin: auto;
+}
+#child-form-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: right;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+#child-dashboard-create-button {
+    float: right;
+    border: none;
+    border-bottom: 5px solid #0c5371;
+    background: #1a6d97;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 14px;
+    margin-top: 15px;
+}
+
+                #child-dashboard-create-button:hover {
+                    cursor: pointer;
+                    background: #2277a4;
+                }
+
+                #child-dashboard-create-button:active {
+                    position: relative;
+                    top: 1px;
+                    border-bottom: 4px solid #0c5371;
+                }
+/* CLEARFIX */
+
+/* Clearfix for modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+/* Clearfix for IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}

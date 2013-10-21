@@ -1,0 +1,26 @@
+﻿@using Combres.Mvc
+@model Authink.Web.Models.Task.ChooseTypeModel
+@{
+    ViewBag.Title = "AuThink task wizard | Choose type";
+}
+@section StyleSection
+{
+    @Url.CombresLink("taskWizzardCss")
+}
+<div class="task-wizard-container">
+    <div class="task-wizard-title clearfix">
+        <h1>Choose Type</h1>
+        <div class="task-wizard-progress">STEP <span>1</span>/5</div>
+    </div>
+    <div class="task-wizard-content">
+        <div class="task-wizard-type-container" class="clearfix">
+            @foreach(var pair in Model.TaskTypes)
+            {
+                <a class="task-wizard-type-item" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
+                    <img src="/@pair.Value.PictureUrl" alt="" />
+                    <span>@pair.Value.Name</span>
+                </a>
+            }
+        </div>
+    </div>
+</div>

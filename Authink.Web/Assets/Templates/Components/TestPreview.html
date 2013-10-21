@@ -1,0 +1,100 @@
+﻿
+<div id="main-test" ng-if="test">
+    
+    <div id="main-test-up">
+        
+        <div id="main-test-right">
+            
+            <div id="main-test-options">
+                 
+                <a  id="main-test-option-edit" ng-click="editTest()"><span>edit test</span></a>
+
+            </div>
+
+        </div>
+
+        <div id="main-test-left">
+            
+            <div id="main-test-heading">
+                
+                <h1>{{test.Name}} </h1>
+
+            </div>
+
+            <div id="main-test-description">
+                
+                <p>{{test.LongDescription}}</p>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+
+    <div id="main-test-tasks">
+        
+        <div id="main-test-tasks-right">
+            
+            <a id="test-edit-add-new-task" href="/test/{{test.Id}}/tasks/create/step-1" target="_self"><span>New task</span></a>
+
+        </div>
+
+        <div id="main-test-tasks-left">
+            
+            <div id="main-test-tasks-heading">
+                
+                Tasks (<span id="task-count">{{test.Tasks.length}}</span>)
+
+            </div>
+            <div id="main-test-task-list clearfix">
+                
+                <div class="main-test-task-wrap" ng-repeat="task in test.Tasks">
+                    
+                    <div class="main-test-task clearfix">
+                        
+                        <div class="main-test-task-left">
+                            
+                            <img ng-src="{{task.ProfilePictureUrl}}" height="50" width="50"/>
+
+                            <div class="main-test-task-difficulty">
+                                
+                                <span class="main-test-task-difficulty-text">difficulty</span>
+
+                                <span class="main-test-task-difficulty-value"><strong>{{task.Difficulty}}</strong></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="main-test-task-right">
+                            
+                            <h1>{{task.Name}}</h1>
+
+                            <span>{{task.Description}}</span>
+
+                            <div class="main-test-task-options clearfix">
+                                
+                                <ul class="clearfix">
+                                    
+                                    <li><a class class="main-test-task-option-delete">delete</a></li>
+                                    <li><a class="main-test-task-option-statistics">statistics</a></li>
+                                    <li><a class="main-test-task-option-edit">edit</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>

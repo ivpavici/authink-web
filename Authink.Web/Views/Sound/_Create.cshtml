@@ -1,0 +1,14 @@
+﻿@model Authink.Web.Models.Sound.CreateModel
+
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <span>@Model.ErrorMessage</span>
+}
+
+@using(Html.BeginForm("Create", "Sound", FormMethod.Post, new{enctype = "multipart/form-data"}))
+{
+    @Html.HiddenFor(m=>m.TaskId)
+
+    <input type="file" name="sound">
+    <input type="submit" value="Save"/>
+}

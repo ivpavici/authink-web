@@ -1,0 +1,169 @@
+﻿/*
+
+    AuThink
+
+    =======================
+         COLOR PALETTE
+    =======================
+    Blue            #1a6d97
+    Blue Hover      #2277a4
+    Blue Accent     #0c5371
+    Orange          #fe9b26
+    Orange Hover    #feaa26
+    Orange Accent   #e18520
+    
+*/
+
+@import url('reset.css');
+
+body {
+    background: transparent url('../Images/Textures/shattered.png');
+    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+input {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* LOGIN */
+
+#login-container {
+    width: 960px;
+    margin: 0 auto;   
+}
+
+    #login-logo {
+        background: transparent url('../Images/Login/login-logo.png') no-repeat center center;
+        height: 200px;
+    }
+
+    #login-content {
+        
+    }
+
+        #login-about {
+            width: 600px;
+            height: 400px;
+            float: left;
+        }
+
+            #login-about-video {
+                
+            }
+
+                #login-about-video-image {
+                    width: 488px; height: 320px;
+                    margin: 0 auto;
+                    background: transparent url('../Images/Login/video-image.jpg');
+                }
+
+                #login-about-video p {
+                    width: 440px;
+                    text-align: center;
+                    margin: 0 auto;
+                    padding: 10px 0;
+                    color: #888;
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+
+        #login-form {
+            width: 320px;
+            height: 400px; /* TODO : Delete */
+            float: right;
+            padding: 20px;
+        }
+
+            .login-form-field {
+                width: 304px;
+                padding: 8px;
+                background: white;
+                border: #e0e0e0 1px solid;
+                margin: 5px 0;
+                font-size: 18px;
+            }
+
+            .login-form-button {
+                float: right;
+                border: none;
+                border-bottom: 5px solid #0c5371;
+                background: #1a6d97;
+                color: white;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 16px;
+                padding: 6px 14px;
+                margin-top: 15px;
+            }
+
+                .login-form-button:hover {
+                    cursor: pointer;
+                    background: #2277a4;
+                }
+
+                .login-form-button:active {
+                    position: relative;
+                    top: 1px;
+                    border-bottom: 4px solid #0c5371;
+                }
+
+            #login-form-login {
+            }
+
+                #login-form-login h1 {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    text-align: right;
+                    font-size: 21px;
+                    margin-bottom: 10px;
+                }
+
+                #login-form-signup h1 {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    text-align: right;
+                    font-size: 21px;
+                    margin-bottom: 10px;
+                }
+
+            #login-form-switch {
+                text-align: center;
+                padding-top: 20px;
+            }
+
+                #login-form-switch p {
+                    font-size: 16px;
+                    color: #888;
+                }
+
+                #login-form-switch a {
+                    color: #fe9b26;
+                    font-weight: bold;
+                }
+
+                    #login-form-switch a:hover {
+                        cursor: pointer;
+                        color: #feaa26;
+                    }
+
+    #login-footer {
+        background: yellowgreen;
+    }
+
+/* CLEARFIX */
+
+/* Clearfix for modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+/* Clearfix for IE 6/7 (trigger hasLayout) */
+.clearfix {
+    zoom:1;
+}
