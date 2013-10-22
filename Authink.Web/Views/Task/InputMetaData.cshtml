@@ -3,20 +3,16 @@
 @{
     ViewBag.Title = "AuThink task wizard | Basic informations";
 }
-@section StyleSection
-{
-    @Url.CombresLink("taskWizzardCss")
-}
-@section ViewScripts
-{
-   <script>
-        $(function () {
-            $('form').submit(function () {
-                $('input[type="submit"]', this).attr('disabled', 'disabled');
-            });
-        });
-   </script> 
-}
+
+@Url.CombresLink("taskWizzardCss")
+
+<script>
+     $(function () {
+         $('form').submit(function () {
+             $('input[type="submit"]', this).attr('disabled', 'disabled');
+         });
+     });
+</script> 
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">

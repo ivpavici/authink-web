@@ -1,0 +1,40 @@
+﻿<div id="children-popup">
+
+    <div id="children-popup-header">
+        
+        <h2>Child info edit</h2>
+
+    </div>
+    
+    <div id="children-popup-image-wrap">
+        
+        <img ng-src="{{child.profilePictureUrl}}" alt="{{child.firstName}}"/>
+        
+    </div>
+    <form enctype="multipart/form-data" ng-submit="editChild()">
+        
+        <div id="children-edit-form">
+            <div>
+            
+                <input class="clearfix" type="file" name="picture"/><br /><br />
+
+                <label class="child-info-field-label">First name</label>
+
+                <input type="text" class="child-info-input-field" ng-model="child.firstName" />
+
+            </div>
+
+            <div>
+            
+                <label class="child-info-field-label">Last name</label>
+
+                <input type="text" class="child-info-input-field" ng-model="child.lastName" />
+
+            </div>
+
+            <input type="submit" value="Save" id="children-edit-form-button"/>
+        </div>
+
+    </form>
+    
+</div>

@@ -4,15 +4,12 @@
     ViewBag.Title = "AuThink task wizard | Upload pictures";
 }
 
-@section StyleSection
-{
+
     @Url.CombresLink("taskWizzardCss")
     @Url.CombresLink("spectrumCss")
  
-}
-@section ViewScripts
-{
     @Url.CombresLink("spectrumJs")
+
     <script type="text/javascript">
         $(function () {
             $(".colorPickerHolder").each(function () {
@@ -37,7 +34,6 @@
             
         });
     </script>
-}
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
