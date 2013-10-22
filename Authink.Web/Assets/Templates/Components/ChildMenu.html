@@ -9,8 +9,8 @@
             <a id="child-menu-info-menu-child-name">{{displayedChild.Firstname}} {{displayedChild.Lastname}}</a>
 
             <ul>
-                <li class="child-menu-select" ng-repeat="child in children" ng-click="selectChild(child)">
-                    
+                <li class="child-menu-select" ng-repeat="child in children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == displayedChild.Id}">
+              
                     <span>{{child.Firstname}} {{child.Lastname}}</span>
 
                 </li>

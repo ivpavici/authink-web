@@ -181,7 +181,7 @@ textarea {
                         background: #feb645;
                         cursor: pointer;
                     }
-                    .child-menu-info-menu-selected {
+                     #child-menu-info-menu ul li.child-menu-info-menu-selected {
                          background: #feb645;
                     }
 
