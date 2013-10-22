@@ -1,0 +1,32 @@
+﻿<div id="child-create-popup">
+    
+    <div id="child-popup-header">
+        
+        <h2>Add child information</h2>
+
+    </div>
+
+    <div id="child-form-create">
+        
+        <form ng-submit="createChild()">
+            
+            <h1 id="child-form-title">Add child information</h1>
+
+            <div>
+                <input type="text" ng-model="child.firstName" ng-class="child-form-label" placeholder="First name" required/>
+
+            </div><br /><br /><br />
+
+            <div>
+                
+                <input type="text" ng-model="child.lastName" ng-class="child-form-label" placeholder="Last name" required/>
+
+            </div><br /><br />
+
+            <input type="submit" value="Save" id="child-dashboard-create-button" />
+
+        </form>
+       
+    </div>
+
+</div>

@@ -2,18 +2,14 @@
 @{
     ViewBag.Title = "AuThink | Task created";
 }
-@section StyleSection
-{
-    @Url.CombresLink("taskWizzardCss")
-}
-@section ViewScripts
-{
-    <script type="text/javascript">
-        setTimeout(function () {
-            window.location = '@Url.RouteUrl("Home", new { test = Model })';
-        }, 5000);
-    </script>
-}
+
+@Url.CombresLink("taskWizzardCss")
+
+<script type="text/javascript">
+    setTimeout(function () {
+        window.location = '@Url.RouteUrl("Shell")';
+    }, 5000);
+</script>
 
 <div class="task-wizard-feedback">
     <div class="task-wizard-feedback-container">

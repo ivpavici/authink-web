@@ -1,0 +1,41 @@
+﻿
+<div id="main-container" class="clearfix">
+    
+    <div id="main-tests">
+        
+        <h1 id="main-tests-heading">Tests</h1>
+    
+        <div id="main-tests-search">
+            
+            <input type="search" id="main-tests-search-field" placeholder="search all tests" ng-model="seachTerm.Name"/>
+    
+        </div>
+    
+        <div id="main-tests-list" >
+            
+            <div class="switch_test main-tests-list-item clearfix" ng-repeat="test in tests |filter: seachTerm" ng-click="selectTest(test)" ng-class="{'main-tests-list-item-selected': test == activeTest}">
+                <div class="main-tests-list-item-info">
+                    
+                    <h1>{{test.Name}}</h1>
+    
+                    <span>{{test.ShortDescription}}</span>
+    
+                </div>
+    
+            </div>
+    
+            <div id="main-tests-options" class="clearfix">
+                
+                <a id="main-tests-option-add-new" ng-click="addNewTest()">add new test</a>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+
+
+<div id="main-content" ng-transclude>
+
+</div> 
+</div> 
