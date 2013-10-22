@@ -195,6 +195,7 @@
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />
     <Content Include="App_Data\combres.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -256,6 +257,7 @@
     <Content Include="Assets\Templates\Components\TestPreview.html" />
     <Content Include="Assets\Templates\Components\TestsList.html" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
+    <Content Include="Assets\Templates\Components\TestTasksList.html" />
     <Content Include="Assets\Templates\Home.html" />
     <Content Include="Assets\Templates\Login.html" />
     <Content Include="Content\Images\Children\default-profile-picture.png" />

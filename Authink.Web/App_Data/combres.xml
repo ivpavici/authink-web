@@ -28,6 +28,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/childrenRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Services/accountServices.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testsList.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/testTasksList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/childMenu.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/omniBar.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testPreview.js" />
