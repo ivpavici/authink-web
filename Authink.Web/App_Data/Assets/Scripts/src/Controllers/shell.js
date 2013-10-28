@@ -16,8 +16,6 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         $rootScope.isTestEditModeOn = true;
         
         application.editTestApi.testToEdit = test;
-        
-        application.testTasksListApi.loadTasks(testId);
     });
     $rootScope.$on('testEditEnded', function(event) {
 
