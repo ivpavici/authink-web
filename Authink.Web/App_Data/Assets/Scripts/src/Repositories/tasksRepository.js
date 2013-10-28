@@ -6,7 +6,8 @@ authink.factory('tasksRepository', ['$resource', function ($resource) {
 
         apiUrls: {
             
-            getSingle_whereId: "api/tasks/:taskId"
+            getSingle_whereId:            'api/tasks/:taskId',
+            getAll_shortDetails_byTestId: 'api/test/:testId/tasks'
         }
     };
 
@@ -17,6 +18,13 @@ authink.factory('tasksRepository', ['$resource', function ($resource) {
             var resource = $resource(config.apiUrls.getSingle_whereId);
 
             return resource.get({ taskId: taskId }).$promise;
+        },
+        
+        getAll_shortDetails_byTestId: function(testId) {
+            
+            var resource = $resource(config.apiUrls.getAll_shortDetails_byTestId, {}, {'query':{method:'GET', isArray: true}});
+
+            return resource.query({ testId: testId }).$promise;
         }
     };
 }]);

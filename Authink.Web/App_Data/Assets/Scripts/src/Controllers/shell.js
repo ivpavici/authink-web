@@ -8,11 +8,16 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
     $rootScope.$on('testSelected', function (event, testId) {
 
         application.testPreviewApi.setActiveTest(testId);
+
+        application.testTasksListApi.testId = testId;
     });
     $rootScope.$on('testEditStarted', function(event, test) {
 
         $rootScope.isTestEditModeOn = true;
+        
         application.editTestApi.testToEdit = test;
+        
+        application.testTasksListApi.testId = test.id;
     });
     $rootScope.$on('testEditEnded', function(event) {
 
@@ -31,6 +36,11 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.testListApi.refreshTests();
 
         application.testPreviewApi.reset();
+    });
+
+    $rootScope.$on('taskSelected', function(event, taskId) {
+
+        application.taskPreviewApi.taskId = taskId;
     });
     
     $rootScope.$on('testListChanged', function (event, childId){
@@ -68,7 +78,9 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         
         $rootScope.currentModalInstance.close();
     });
-    $rootScope.$on('modalOpened', function (event, modal) {
+    $rootScope.$on('openModal', function(event, component, backdrop) {
+
+        var modal = $rootScope.showDialog(component, backdrop);
         
         $rootScope.currentModalInstance = modal;
     });

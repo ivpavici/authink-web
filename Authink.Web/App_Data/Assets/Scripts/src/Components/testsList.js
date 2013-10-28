@@ -36,9 +36,9 @@ authink.directive('testsList', ['testsRepository', 'testListApi', function (test
 
             $scope.addNewTest = function() {
 
-                var modal = $scope.showDialog('<create-test> </create-test>');
+                var component = '<create-test> </create-test>';
 
-                $scope.$emit('modalOpened', modal);
+                $scope.$emit('openModal', component);
 
                 $scope.$emit('testCreatingStarted', $scope.testListApi.childId);
             };

@@ -12,16 +12,17 @@ var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource'
         $locationProvider.html5Mode(true);
     }]);
 
-authink.service('application', ['childMenuApi', 'testListApi', 'testPreviewApi', 'editChildApi', 'createTestApi', 'editTestApi', 'taskPreviewApi', function (childMenuApi, testListApi, testPreviewApi, editChildApi, createTestApi, editTestApi, taskPreviewApi) {
+authink.service('application', ['childMenuApi', 'testListApi', 'testPreviewApi', 'editChildApi', 'createTestApi', 'editTestApi', 'taskPreviewApi', 'testTasksListApi', function (childMenuApi, testListApi, testPreviewApi, editChildApi, createTestApi, editTestApi, taskPreviewApi, testTasksListApi) {
 
     return {
         
-        childMenuApi:   childMenuApi,
-        testListApi:    testListApi,
-        testPreviewApi: testPreviewApi,
-        editChildApi:   editChildApi,
-        createTestApi:  createTestApi,
-        editTestApi:    editTestApi,
-        taskPreviewApi: taskPreviewApi
+        childMenuApi:     childMenuApi,
+        testListApi:      testListApi,
+        testPreviewApi:   testPreviewApi,
+        editChildApi:     editChildApi,
+        createTestApi:    createTestApi,
+        editTestApi:      editTestApi,
+        taskPreviewApi:   taskPreviewApi,
+        testTasksListApi: testTasksListApi
     };
 }])
