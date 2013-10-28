@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ent      = Authink.Core.Domain.Entities;
 using database = Authink.Data;
 
@@ -94,7 +95,7 @@ namespace Authink.Core.Model.Mappers
     {
         public static class LongDetails
         {
-            public static ent::Test.LongDetails FromDatabase(database::Test testData, Func<bool, int, IReadOnlyList<ent::Task.Details>> tasksProvider)
+            public static ent::Test.LongDetails FromDatabase(database::Test testData)
             {
                 return new ent::Test.LongDetails
                 (
@@ -105,7 +106,7 @@ namespace Authink.Core.Model.Mappers
                     isDeleted:        testData.IsDeleted,
                     userId:           testData.UserId,
 
-                    tasks:            tasksProvider(false, testData.Id)
+                    tasks:            testData.Tasks.Where(task => !task.IsHidden).Select(Task.ShortDetails.FromDatabase).ToList()
 
                 );
             }
@@ -125,11 +126,11 @@ namespace Authink.Core.Model.Mappers
     }
     public static class Task   
     {
-        public static class Details
+        public static class LongDetails
         {
-            public static ent::Task.Details FromDatabase(database::Task taskData)
+            public static ent::Task.LongDetails FromDatabase(database::Task taskData)
             {
-                return new ent::Task.Details
+                return new ent::Task.LongDetails
                 (
                     id:                taskData.Id,
                     description:       taskData.Description,
@@ -139,7 +140,23 @@ namespace Authink.Core.Model.Mappers
                     isHidden:          taskData.IsHidden,
                     difficulty:        taskData.Difficulty,
                     profilePictureUrl: taskData.ProfilePictureUrl,
-                    voiceCommand:      Sound.Details.FromDatabase(taskData.Sound)
+                    voiceCommand:      Sound.Details.FromDatabase(taskData.Sound),
+                    pictures:          taskData.Pictures.Where(picture => !picture.IsHidden).Select(Picture.Details.FromDatabase).ToList()
+                );
+            }
+        }
+
+        public static class ShortDetails
+        {
+            public static ent::Task.ShortDetails FromDatabase(database::Task taskData)
+            {
+                return new ent::Task.ShortDetails
+                (
+                    id:                taskData.Id,
+                    description:       taskData.Description,
+                    name:              taskData.Name,
+                    difficulty:        taskData.Difficulty,
+                    profilePictureUrl: taskData.ProfilePictureUrl
                 );
             }
         }

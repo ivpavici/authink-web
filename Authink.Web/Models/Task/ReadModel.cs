@@ -28,18 +28,18 @@ namespace Authink.Web.Models.Task
 
         public int TaskId { get; set; }
 
-        public core::Task.Details Task
-        {
-            get
-            {
-                if (_task == null)
-                {
-                    _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
-                }
-                return _task.Value;
-            }
-        }
-        private Lazy<core::Task.Details> _task;
+        //public core::Task.Details Task
+        //{
+        //    get
+        //    {
+        //        if (_task == null)
+        //        {
+        //            _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
+        //        }
+        //        return _task.Value;
+        //    }
+        //}
+        //private Lazy<core::Task.Details> _task;
 
         public List<core::Picture.Details> Pictures
         {

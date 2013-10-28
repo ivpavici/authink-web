@@ -126,9 +126,9 @@ namespace Authink.Core.Domain.Entities
     }
     public abstract class Task      
     {
-        public class Details
+        public class LongDetails
         {
-            public Details
+            public LongDetails
             (
                 int    id,
                 string description,
@@ -139,7 +139,8 @@ namespace Authink.Core.Domain.Entities
                 int    difficulty,
                 string profilePictureUrl,
 
-                Sound.Details voiceCommand
+                Sound.Details                  voiceCommand,
+                IReadOnlyList<Picture.Details> pictures 
             )
             {
                 this.Id                = id;
@@ -152,6 +153,7 @@ namespace Authink.Core.Domain.Entities
                 this.ProfilePictureUrl = profilePictureUrl;
 
                 this.VoiceCommand = voiceCommand;
+                this.Pictures     = pictures;
             }
 
             public int    Id                { get; private set; }
@@ -163,7 +165,33 @@ namespace Authink.Core.Domain.Entities
             public int    Difficulty        { get; private set; }
             public string ProfilePictureUrl { get; private set; }
 
-            public Sound.Details VoiceCommand { get; private set; }
+            public Sound.Details                  VoiceCommand { get; private set; }
+            public IReadOnlyList<Picture.Details> Pictures     { get; private set; }
+        }
+
+        public class ShortDetails
+        {
+            public ShortDetails
+            (
+                int    id,
+                string description,
+                string name,
+                int    difficulty,
+                string profilePictureUrl
+            )
+            {
+                this.Id                = id;
+                this.Description       = description;
+                this.Name              = name;
+                this.Difficulty        = difficulty;
+                this.ProfilePictureUrl = profilePictureUrl;
+            }
+
+            public int    Id                { get; private set; }
+            public string Description       { get; private set; }
+            public string Name              { get; private set; }
+            public int    Difficulty        { get; private set; }
+            public string ProfilePictureUrl { get; private set; }
         }
        
     }
@@ -180,7 +208,7 @@ namespace Authink.Core.Domain.Entities
                 bool   isDeleted,
                 int    userId,
 
-                IReadOnlyList<Task.Details> tasks
+                IReadOnlyList<Task.ShortDetails> tasks
             )
             {
                 this.Id               = id;
@@ -199,7 +227,7 @@ namespace Authink.Core.Domain.Entities
             public bool   IsDeleted        { get; private set; }
             public int    UserId           { get; private set; }
 
-            public IReadOnlyList<Task.Details> Tasks { get; private set; }
+            public IReadOnlyList<Task.ShortDetails> Tasks { get; private set; }
         }
         public class ShortDetails
         {

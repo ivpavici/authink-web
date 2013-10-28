@@ -168,6 +168,7 @@
     <Compile Include="Controllers\SoundController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TasksApiController.cs" />
     <Compile Include="Controllers\TestsApiController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -195,6 +196,8 @@
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\combres.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -253,6 +256,7 @@
     <Content Include="Assets\Templates\Components\EditTest.html" />
     <Content Include="Assets\Templates\Components\OmniBar.html" />
     <Content Include="Assets\Templates\Components\SignUp.html" />
+    <Content Include="Assets\Templates\Components\TaskPreview.html" />
     <Content Include="Assets\Templates\Components\TestPreview.html" />
     <Content Include="Assets\Templates\Components\TestsList.html" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />

@@ -17,7 +17,8 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("TestsApi_Edit", "api/tests/edit",                                           new { controller = "TestsApi", action = "Edit"                             });
             config.Routes.MapHttpRoute("TestsApi_Delete", "api/tests/delete/{testId}",                              new { controller = "TestsApi", action = "Delete"                           });
             config.Routes.MapHttpRoute("TestsApi_GetOne_longDetails", "api/tests/{testId}",                         new { controller = "TestsApi", action = "GetOne_longDetails"               });
-         
+
+            config.Routes.MapHttpRoute("TasksApi_GetSingle_whereId", "api/tasks/{taskId}", new { controller = "TasksApi", action = "GetSingle_whereId" });
 
             config.Routes.MapHttpRoute("ChildrenApi_Create", "api/children/create",                 new { controller = "ChildrenApi", action = "Create" });
             config.Routes.MapHttpRoute("ChildrenApi_Edit", "api/children/edit",                     new { controller = "ChildrenApi", action = "Edit"   });

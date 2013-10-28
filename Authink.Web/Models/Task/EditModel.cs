@@ -23,18 +23,18 @@ namespace Authink.Web.Models.Task
 
         public string TaskId { get; set; }
 
-        public core::Task.Details Task
-        {
-            get
-            {
-                if (_task == null)
-                {
-                    _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(Convert.ToInt32(this.TaskId)));
-                }
-                return _task.Value;
-            }
-        }
-        private Lazy<core::Task.Details> _task;
+        //public core::Task.Details Task
+        //{
+        //    get
+        //    {
+        //        if (_task == null)
+        //        {
+        //            _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(Convert.ToInt32(this.TaskId)));
+        //        }
+        //        return _task.Value;
+        //    }
+        //}
+        //private Lazy<core::Task.Details> _task;
     }
     public class EditDetectItemModel
     {
@@ -60,18 +60,18 @@ namespace Authink.Web.Models.Task
         [Required(ErrorMessage = "Description cannot be empty")]
         public string Description { get; set; }
 
-        public core::Task.Details Task
-        {
-            get
-            {
-                if (_task == null)
-                {
-                    _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
-                }
-                return _task.Value;
-            }
-        }
-        private Lazy<core::Task.Details> _task;
+        //public core::Task.Details Task
+        //{
+        //    get
+        //    {
+        //        if (_task == null)
+        //        {
+        //            _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
+        //        }
+        //        return _task.Value;
+        //    }
+        //}
+        //private Lazy<core::Task.Details> _task;
 
 
         public List<core::Picture.Details> PicturesForTask
@@ -142,18 +142,18 @@ namespace Authink.Web.Models.Task
         [Required(ErrorMessage = "Description cannot be empty")]
         public string Description { get; set; }
 
-        public core::Task.Details Task
-        {
-            get
-            {
-                if (_task == null)
-                {
-                    _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
-                }
-                return _task.Value;
-            }
-        }
-        private Lazy<core::Task.Details> _task;
+        //public core::Task.Details Task
+        //{
+        //    get
+        //    {
+        //        if (_task == null)
+        //        {
+        //            _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
+        //        }
+        //        return _task.Value;
+        //    }
+        //}
+        //private Lazy<core::Task.Details> _task;
 
 
         public List<core::Picture.Details> PicturesForTask
@@ -217,19 +217,19 @@ namespace Authink.Web.Models.Task
         [Required(ErrorMessage = "Name can't be empty")]
         public string Name { get; set; }
 
-        public core::Task.Details Task
-        {
-            get
-            {
-                if (_task == null)
-                {
-                    _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.Id));
-                }
-                return _task.Value;
-            }
-        }
+        //public core::Task.Details Task
+        //{
+        //    get
+        //    {
+        //        if (_task == null)
+        //        {
+        //            _task = new Lazy<core::Task.Details>(() => taskQueries.GetSingle_whereId(this.Id));
+        //        }
+        //        return _task.Value;
+        //    }
+        //}
 
-        private Lazy<core::Task.Details> _task;
+        //private Lazy<core::Task.Details> _task;
 
         public List<core::Picture.Details> PicturesForTask
         {
