@@ -165,14 +165,25 @@ namespace Authink.Core.Model.Mappers
     {
         public static class Details
         {
-            public static ent::Picture.Details FromDatabase(database::Picture pictureData)
+            public static ent::Picture FromDatabase(database::Picture pictureData)
             {
-                return new ent::Picture.Details
+                if(pictureData.Colors.Any())
+                {
+                    return new ent::Picture.WithColors
+                    (
+                        id:  pictureData.Id,
+                        url: pictureData.Url,
+
+                        sound:        Sound.Details.FromDatabase(pictureData.Sound),
+                        wrongColors:  pictureData.Colors.Where(color => !color.IsCorrect).Select(Color.Details.FromDatabase).ToList(),
+                        correctColor: pictureData.Colors.Where(color => color.IsCorrect).Select(Color.Details.FromDatabase).Single()
+                    );
+                }
+                
+                return new ent::Picture.Simple
                 (
                     id:       pictureData.Id,
                     url:      pictureData.Url,
-                    theme:    pictureData.Theme,
-                    isHidden: pictureData.IsHidden,
                     isAnswer: pictureData.IsAnswer,
 
                     sound:    Sound.Details.FromDatabase(pictureData.Sound)

@@ -1,0 +1,71 @@
+﻿
+<div ng-if="isSimpleEdit()">
+    <h2>Pictures</h2>
+    <a class="task-edit-picture-item edit-picture-link" ng-repeat="picture in pictures">
+        
+        <img ng-src="{{picture.Url}}" alt="" />
+
+        <span>Upload new image</span>
+
+    </a>
+</div>
+
+<div ng-if="isDetectCorrectItemEdit()">
+    <h2>Correct picture</h2>
+
+    <div class="task-edit-pictures-container">
+        
+        <a class="task-edit-picture-item edit-picture-link">
+            
+            <img ng-src="{{correctPicture.Url}}" alt="" />
+
+            <span>Upload new image</span>
+
+        </a>
+
+    </div>
+
+    <h2>Wrong pictures</h2>
+
+    <div class="task-edit-pictures-container">
+        
+        <a class="task-edit-picture-item edit-picture-link" data-id="@picture.Id" ng-repeat="picture in wrongPictures">
+            
+            <img ng-src="{{picture.Url}}" alt="" />
+
+            <span>Upload new image</span>
+        </a>
+        
+    </div>
+</div>
+
+<div ng-if="isDetectColorsEdit()">
+     
+    <a class="task-edit-picture-item edit-picture-link" ng-repeat="picture in pictures">
+        
+        <img ng-src="{{picture.Url}}" alt="" />
+
+        <div class="task-edit-picture-colors">
+            
+            <div class="task-edit-picture-colors-correct clearfix">
+                
+                <h1>Correct colors</h1>
+
+                <div class="task-edit-picture-colors-single" ng-style="{'background-color':picture.CorrectColor.Value}"></div>
+
+            </div>
+
+            <div class="task-edit-picture-colors-incorrect clearfix">
+                
+                <h1>Wrong colors</h1>
+
+                <div class="task-edit-picture-colors-single" ng-repeat="wrongColor in picture.WrongColors" ng-style="{'background-color':wrongColor.Value}"></div>   
+                
+            </div>
+
+        </div>
+
+        <span>Upload new image</span>
+    </a>
+</div>
+    

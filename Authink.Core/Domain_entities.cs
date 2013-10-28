@@ -139,8 +139,8 @@ namespace Authink.Core.Domain.Entities
                 int    difficulty,
                 string profilePictureUrl,
 
-                Sound.Details                  voiceCommand,
-                IReadOnlyList<Picture.Details> pictures 
+                Sound.Details          voiceCommand,
+                IReadOnlyList<Picture> pictures 
             )
             {
                 this.Id                = id;
@@ -165,8 +165,8 @@ namespace Authink.Core.Domain.Entities
             public int    Difficulty        { get; private set; }
             public string ProfilePictureUrl { get; private set; }
 
-            public Sound.Details                  VoiceCommand { get; private set; }
-            public IReadOnlyList<Picture.Details> Pictures     { get; private set; }
+            public Sound.Details           VoiceCommand { get; private set; }
+            public IReadOnlyList<Picture>  Pictures     { get; private set; }
         }
 
         public class ShortDetails
@@ -275,14 +275,40 @@ namespace Authink.Core.Domain.Entities
     }
     public abstract class Picture   
     {
-        public class Details
+        public class WithColors: Picture
         {
-            public Details
+            public WithColors
             (
                 int     id,
                 string  url,
-                string  theme,
-                bool    isHidden,
+            
+                Sound.Details                 sound,
+                IReadOnlyList<Color.Details>  wrongColors,
+                Color.Details                 correctColor
+            )
+            {
+                this.Id           = id;
+                this.Url          = url;
+                this.Sound        = sound;
+                this.WrongColors  = wrongColors;
+                this.CorrectColor = correctColor;
+            }
+            
+            public int     Id       { get; private set; }
+            public string  Url      { get; private set; }
+            
+            public Sound.Details Sound { get; private set; }
+
+            public IReadOnlyList<Color.Details> WrongColors  { get; private set; }
+            public Color.Details                CorrectColor { get; private set; }
+        }
+
+        public class Simple: Picture
+        {
+            public Simple
+            (
+                int     id,
+                string  url,
                 bool?   isAnswer,
 
                 Sound.Details   sound
@@ -290,17 +316,12 @@ namespace Authink.Core.Domain.Entities
             {
                 this.Id       = id;
                 this.Url      = url;
-                this.Theme    = theme;
                 this.Sound    = sound;
                 this.IsAnswer = isAnswer;
-                this.IsHidden = isHidden;
             }
 
             public int     Id       { get; private set; }
             public string  Url      { get; private set; }
-            public string  Theme    { get; private set; }
-            public int?    SoundId  { get; private set; }
-            public bool    IsHidden { get; private set; }
             public bool?   IsAnswer { get; private set; }
 
             public Sound.Details Sound { get; private set; }

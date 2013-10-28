@@ -44,6 +44,10 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.editTaskApi.taskId = taskId;
     });
+    $rootScope.$on('taskForEditLoaded', function(event, task) {
+
+        application.editTaskPicturesListApi.setupPicturesList(task.Type, task.Pictures);
+    });
     $rootScope.$on('taskEditEnded', function(event) {
 
         application.testTasksListApi.refreshTasks();

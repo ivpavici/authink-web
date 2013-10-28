@@ -37,10 +37,10 @@ namespace Authink.Core.Model.Queries
     }
     public interface IPictureQueries
     {
-        IReadOnlyList<ent::Picture.Details> GetAll_forTaskGameplay  (int  taskId    );
+        IReadOnlyList<ent::Picture>         GetAll_forTaskGameplay  (int  taskId    );
         IReadOnlyList<ent::Color.Details>   GetAll_colorsForPicture (int  pictureId );
 
-        ent::Picture.Details GetSingle_whereId       (int id     );
+        ent::Picture         GetSingle_whereId       (int id     );
         ent::Color.Details   GetSingle_color_WhereId (int colorId);
     }
     public interface ISoundQueries

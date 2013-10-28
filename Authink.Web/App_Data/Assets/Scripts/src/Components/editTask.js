@@ -18,6 +18,8 @@ authink.directive('editTask', function() {
 
                     tasksRepository.getSingle_whereId(taskId)
                     .then(function (task) {
+
+                        $scope.$emit('taskForEditLoaded', task);
                         
                         $scope.task = task;
                     });

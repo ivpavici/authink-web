@@ -22,18 +22,18 @@ namespace Authink.Web.Models.Picture
 
         public int TaskId { get; set; }
 
-        //public ent::Task.Details Task
-        //{
-        //    get
-        //    {
-        //        if (_task == null)
-        //        {
-        //            _task = new Lazy<ent::Task.Details>(() => taskQueries.GetSingle_whereId(this.TaskId));
-        //        }
-        //        return _task.Value;
-        //    }
-        //}
-        //private Lazy<ent::Task.Details> _task;
+        public ent::Task.LongDetails Task
+        {
+            get
+            {
+                if (_task == null)
+                {
+                    _task = new Lazy<ent::Task.LongDetails>(() => taskQueries.GetSingle_longDetails_whereId(this.TaskId));
+                }
+                return _task.Value;
+            }
+        }
+        private Lazy<ent::Task.LongDetails> _task;
     }
     public class EditSimpleModel
     {
@@ -53,19 +53,18 @@ namespace Authink.Web.Models.Picture
         public int PictureId { get; set; }
         public int TaskId { get; set; }
 
-        public ent::Picture.Details Picture
+        public ent::Picture Picture
         {
             get
             {
                 if (_picture == null)
                 {
-                    _picture = new Lazy<ent::Picture.Details>(() => pictureQueries.GetSingle_whereId(this.PictureId));
+                    _picture = new Lazy<ent::Picture>(() => pictureQueries.GetSingle_whereId(this.PictureId));
                 }
                 return _picture.Value;
             }
         }
-        private Lazy<ent::Picture.Details> _picture;
-
+        private Lazy<ent::Picture> _picture;
         public ent::Test.ShortDetails Test
         {
             get
@@ -101,18 +100,18 @@ namespace Authink.Web.Models.Picture
         public List<Color> WrongColorsToEdit { get; set; }
         public Color CorrectColorToEdit { get; set; }
 
-        public ent::Picture.Details Picture
+        public ent::Picture Picture
         {
             get
             {
                 if (_picture == null)
                 {
-                    _picture = new Lazy<ent::Picture.Details>(() => pictureQueries.GetSingle_whereId(this.PictureId));
+                    _picture = new Lazy<ent::Picture>(() => pictureQueries.GetSingle_whereId(this.PictureId));
                 }
                 return _picture.Value;
             }
         }
-        private Lazy<ent::Picture.Details> _picture;
+        private Lazy<ent::Picture> _picture;
 
         public List<ent::Color.Details> Colors
         {

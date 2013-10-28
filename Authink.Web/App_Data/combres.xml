@@ -40,6 +40,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/Components/editTest.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/taskPreview.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/editTask.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/editTaskPicturesList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Controllers/shell.js" />
     </resourceSet>
 
@@ -69,6 +70,7 @@
     </resourceSet>
     
     <resourceSet name="spectrumJs" type="js">
+      <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
       <resource path= "~/Scripts/Plugins/SimpleColorpicker/spectrum.js"/>
     </resourceSet>
     <resourceSet name="spectrumCss" type="css">

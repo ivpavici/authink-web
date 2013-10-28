@@ -175,7 +175,7 @@ namespace Authink.Core.Model.Queries.Impl
     }
     public class PictureQueriesImpl:    IPictureQueries   
     {
-        public IReadOnlyList<ent::Picture.Details> GetAll_forTaskGameplay (int taskId     )
+        public IReadOnlyList<ent::Picture>       GetAll_forTaskGameplay (int taskId     )
         {
             using (var db= new database::AuthinkDataModel())
             {
@@ -188,7 +188,7 @@ namespace Authink.Core.Model.Queries.Impl
                       .ToList(                                     );
             }
         }
-        public IReadOnlyList<ent::Color.Details>   GetAll_colorsForPicture(int pictureId  )
+        public IReadOnlyList<ent::Color.Details> GetAll_colorsForPicture(int pictureId  )
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -202,7 +202,7 @@ namespace Authink.Core.Model.Queries.Impl
             }
         }
 
-        public ent::Picture.Details GetSingle_whereId       (int id     )
+        public ent::Picture         GetSingle_whereId       (int id     )
         {
             using(var db = new database::AuthinkDataModel())
             {

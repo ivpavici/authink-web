@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Web;
 using Authink.Web.Models.Picture;
-using Authink.Web.Models.Task;
 
 namespace Authink.Web.DependencyResolution {
     
