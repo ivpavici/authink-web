@@ -12,15 +12,19 @@ var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource'
         $locationProvider.html5Mode(true);
     }]);
 
-authink.service('application', ['childMenuApi', 'testListApi', 'testPreviewApi', 'editChildApi', 'createTestApi','editTestApi', function (childMenuApi, testListApi, testPreviewApi, editChildApi, createTestApi, editTestApi) {
+authink.service('application', ['childMenuApi', 'testListApi', 'testPreviewApi', 'editChildApi', 'createTestApi', 'editTestApi', 'taskPreviewApi', 'testTasksListApi', 'editTaskApi', 'editTaskPicturesListApi', function (childMenuApi, testListApi, testPreviewApi, editChildApi, createTestApi, editTestApi, taskPreviewApi, testTasksListApi, editTaskApi, editTaskPicturesListApi) {
 
     return {
         
-        childMenuApi:   childMenuApi,
-        testListApi:    testListApi,
-        testPreviewApi: testPreviewApi,
-        editChildApi:   editChildApi,
-        createTestApi:  createTestApi,
-        editTestApi:    editTestApi
+        childMenuApi:            childMenuApi,
+        testListApi:             testListApi,
+        testPreviewApi:          testPreviewApi,
+        editChildApi:            editChildApi,
+        createTestApi:           createTestApi,
+        editTestApi:             editTestApi,
+        taskPreviewApi:          taskPreviewApi,
+        testTasksListApi:        testTasksListApi,
+        editTaskApi:             editTaskApi,
+        editTaskPicturesListApi: editTaskPicturesListApi
     };
 }])

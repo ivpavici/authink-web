@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Services;
-using Authink.Web.Models.Task;
+using Authink.Web.Controllers.Task.Models;
 using Authink.Web.Models.Session;
 
 using ent = Authink.Core.Domain.Entities;
@@ -32,17 +33,10 @@ namespace Authink.Web.Controllers
             ISoundServices       soundServices,
             IUserAccessRights    userAccessRights,
             
-            Func<ChooseTypeModel>                        chooseTypeModelFactory,
-            Func<ChooseDifficultyModel>                  chooseDifficultyModelFactory,
-            Func<InputMetaDataModel>                     inputMetaDataModelFactory,
-            Func<DeleteModel>                            deleteModelFactory,
-            Func<ReadModel>                              readModelFactory,
-            Func<FeedbackModel>                          feedbackModelFactory,
-
-            Func<EditModel>                        editModelFactory,
-            Func<EditSimpleTasksWithPicturesModel> editSimpleTasksWithPicturesModelFactory, 
-            Func<EditDetectColorsModel>            editDetectColorsModelFactory,
-            Func<EditDetectItemModel>              editDetectItemModelFactory,
+            Func<ChooseTypeModel>       chooseTypeModelFactory,
+            Func<ChooseDifficultyModel> chooseDifficultyModelFactory,
+            Func<InputMetaDataModel>    inputMetaDataModelFactory,
+            Func<FeedbackModel>         feedbackModelFactory,
 
             HttpContextBase   httpContextBase
         )
@@ -56,17 +50,10 @@ namespace Authink.Web.Controllers
             this.soundServices       = soundServices;
             this.userAccessRights    = userAccessRights;
 
-            this.chooseTypeModelFactory                             = chooseTypeModelFactory;
-            this.chooseDifficultyModelFactory                       = chooseDifficultyModelFactory;
-            this.inputMetaDataModelFactory                          = inputMetaDataModelFactory;
-            this.deleteModelFactory                                 = deleteModelFactory;
-            this.readModelFactory                                   = readModelFactory;
-            this.feedbackModelFactory                               = feedbackModelFactory;
-
-            this.editModelFactory                        = editModelFactory;
-            this.editSimpleTasksWithPicturesModelFactory = editSimpleTasksWithPicturesModelFactory;
-            this.editDetectColorsModelFactory            = editDetectColorsModelFactory;
-            this.editDetectItemModelFactory              = editDetectItemModelFactory;
+            this.chooseTypeModelFactory       = chooseTypeModelFactory;
+            this.chooseDifficultyModelFactory = chooseDifficultyModelFactory;
+            this.inputMetaDataModelFactory    = inputMetaDataModelFactory;
+            this.feedbackModelFactory         = feedbackModelFactory;
 
             this.httpContextBase = httpContextBase;
         }
@@ -83,14 +70,7 @@ namespace Authink.Web.Controllers
         private readonly Func<ChooseTypeModel>       chooseTypeModelFactory;
         private readonly Func<ChooseDifficultyModel> chooseDifficultyModelFactory;
         private readonly Func<InputMetaDataModel>    inputMetaDataModelFactory;
-        private readonly Func<DeleteModel>           deleteModelFactory;
-        private readonly Func<ReadModel>             readModelFactory;
         private readonly Func<FeedbackModel>         feedbackModelFactory;
-
-        private readonly Func<EditModel>                        editModelFactory;
-        private readonly Func<EditSimpleTasksWithPicturesModel> editSimpleTasksWithPicturesModelFactory;
-        private readonly Func<EditDetectColorsModel>            editDetectColorsModelFactory;
-        private readonly Func<EditDetectItemModel>              editDetectItemModelFactory;
 
         private HttpContextBase httpContextBase;
 
@@ -101,12 +81,8 @@ namespace Authink.Web.Controllers
             { buru::Task.Keys.DetectDifferentItems, new KnownTaskTypes("Detect different items",    "detect-different-items", new List<int>{3,4,5,      }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.DetectDifferentItems])},
             { buru::Task.Keys.PairSameItems,        new KnownTaskTypes("Pair same items",           "pair-same-items",        new List<int>{3,5,6       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairSameItems])},
             { buru::Task.Keys.ContinueSequence,     new KnownTaskTypes("Continue sequence of items", "continue-squence",      new List<int>{2,3,4       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.ContinueSequence])},
-            { buru::Task.Keys.OrderBySize,          new KnownTaskTypes("Order items by size",        "order-by-size",         new List<int>{2,3,4,5,6   }, "UploadPictures_OrderBySize"             ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.OrderBySize])}
-        };
-        private static IDictionary<string, string> KnownTaskEditMappings = new Dictionary<string, string>()
-        {
-            { buru::Task.Keys.ContinueSequence, "Edit_SimpleTasksWithPictures" }, { buru::Task.Keys.DetectColors,  "Edit_DetectColors"            }, { buru::Task.Keys.DetectDifferentItems, "Edit_SimpleTasksWithPictures" },
-            { buru::Task.Keys.OrderBySize,      "Edit_SimpleTasksWithPictures" }, { buru::Task.Keys.PairSameItems, "Edit_SimpleTasksWithPictures" }, { buru::Task.Keys.VoiceCommands,        "Edit_DetectItem"              }
+            { buru::Task.Keys.OrderBySize,          new KnownTaskTypes("Order items by size",        "order-by-size",         new List<int>{2,3,4,5,6   }, "UploadPictures_OrderBySize"             ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.OrderBySize])},
+            { buru::Task.Keys.PairHalves,           new KnownTaskTypes("Pair halves",                "pair-halves",           new List<int>{2,3,4,5,6   }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairHalves])}
         };
     }
     public partial class TaskController
@@ -191,8 +167,8 @@ namespace Authink.Web.Controllers
 
             if 
             (
-                model.TaskKey == buru::Task.Keys.VoiceCommands    ||  model.TaskKey == buru::Task.Keys.DetectDifferentItems ||  model.TaskKey == buru::Task.Keys.PairSameItems ||
-                model.TaskKey == buru::Task.Keys.ContinueSequence
+                model.TaskKey == buru::Task.Keys.VoiceCommands    || model.TaskKey == buru::Task.Keys.DetectDifferentItems ||  model.TaskKey == buru::Task.Keys.PairSameItems ||
+                model.TaskKey == buru::Task.Keys.ContinueSequence || model.TaskKey == buru::Task.Keys.PairHalves
             ) 
             {
                 newTaskId = CreateTask_SimpleTasksWithPictures
@@ -217,7 +193,7 @@ namespace Authink.Web.Controllers
             {
                 newTaskId = CreateTask_OrderBySize
                 (
-                    taskKey:      model.TaskKey,
+                    taskKey:     model.TaskKey,
                     title:       model.Title,
                     description: model.Description,
                     userId:      loginServices.GetSignedInUser().Id,
@@ -261,151 +237,6 @@ namespace Authink.Web.Controllers
             (
                 model:model.Test.Id
             );
-        }
-    }
-    public partial class TaskController
-    {
-        [HttpGet]
-        public ActionResult Edit(string taskId)
-        {
-            if (!Request.IsAjaxRequest())
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model = editModelFactory();
-            model.TaskId = taskId;
-
-            return RedirectToRoute
-            (
-                routeName: KnownTaskEditMappings[model.Task.Type],
-                routeValues: new { taskId = Convert.ToInt32(taskId) }
-            );
-        }
-
-        [HttpGet]
-        public ActionResult Edit_SimpleTasksWithPictures(int taskId)
-        {
-            if (!userAccessRights.CanEditTask(taskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model = editSimpleTasksWithPicturesModelFactory();
-            model.Id = taskId;
-
-            model.Name = model.Task.Name;
-            model.Description = model.Task.Description;
-
-            return PartialView
-            (
-                model: model,
-                viewName: "_Edit_SimpleTasksWithPictures"
-            );
-        }
-        [HttpPost]
-        public ActionResult Edit_SimpleTasksWithPictures(EditSimpleTasksWithPicturesModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return PartialView
-                (
-                    model: model,
-                    viewName: "_Edit_SimpleTasksWithPictures"
-                );
-            }
-
-            taskCommands.Update
-            (
-                id: model.Id,
-                description: model.Description,
-                name: model.Name
-            );
-
-            return JavaScript("location.reload()");
-        }
-
-        [HttpGet]
-        public ActionResult Edit_DetectColors(int taskId)
-        {
-            if (!userAccessRights.CanEditTask(taskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model = editDetectColorsModelFactory();
-            model.TaskId = taskId;
-            model.Name = model.Task.Name;
-            model.Description = model.Task.Description;
-
-            var pas = model.PicturesWithColors.ToList();
-            return PartialView
-            (
-                viewName: "_Edit_DetectColors",
-                model: model
-            );
-        }
-        [HttpPost]
-        public ActionResult Edit_DetectColors(EditDetectColorsModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return PartialView
-                (
-                    model: model,
-                    viewName: "_Edit_DetectColors"
-                );
-            }
-
-            taskCommands.Update
-            (
-                id: model.TaskId,
-                description: model.Description,
-                name: model.Name
-            );
-
-            return JavaScript("location.reload()");
-        }
-
-        [HttpGet]
-        public ActionResult Edit_DetectItem(int taskId)
-        {
-            if (!userAccessRights.CanEditTask(taskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model = editDetectItemModelFactory();
-            model.TaskId = taskId;
-            model.Name = model.Task.Name;
-            model.Description = model.Task.Description;
-
-            return PartialView
-            (
-                model: model,
-                viewName: "_Edit_DetectItem"
-            );
-        }
-        [HttpPost]
-        public ActionResult Edit_DetectItem(EditDetectItemModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return PartialView
-                (
-                    model: model,
-                    viewName: "_Edit_DetectItem"
-                );
-            }
-
-            taskCommands.Update
-            (
-                id: model.TaskId,
-                description: model.Description,
-                name: model.Name
-            );
-
-            return JavaScript("location.reload()");
         }
     }
     public partial class TaskController
@@ -550,7 +381,7 @@ namespace Authink.Web.Controllers
             return taskId;
         }
 
-        private void          Create_And_Attach_Color_To_Picture  (int pictureId, string value, bool isCorrect      )
+        private void Create_And_Attach_Color_To_Picture  (int pictureId, string value, bool isCorrect      )
         {
             var colorId = pictureCommands.Create_color
             (
@@ -562,39 +393,67 @@ namespace Authink.Web.Controllers
             pictureCommands.AttachColorToPicture(pictureId, colorId);
         }
     }
+}
 
-    public partial class TaskController
+namespace Authink.Web.Controllers.Task.Models
+{
+    using Authink.Core.Model.Queries;
+    using Authink.Web.Controllers.Task.Helpers;
+
+    using ent = Authink.Core.Domain.Entities;
+
+    public class ChooseDifficultyModel
     {
-        [HttpGet] public ActionResult        Read  (int taskId)
+        public string TaskName { get; set; }
+        public string UploadPicturesRouteName { get; set; }
+        public List<int> AvailableTaskDifficulties { get; set; }
+    }
+
+    public class ChooseTypeModel
+    {
+        public IDictionary<string, KnownTaskTypes> TaskTypes { get; set; }
+    }
+
+    public class InputMetaDataModel
+    {
+        [Required(ErrorMessage = "You must fill out a title")]
+        public string Title { get; set; }
+
+        [Required(ErrorMessage = "You must fill out a description")]
+        public string Description { get; set; }
+
+        public string TaskKey { get; set; }
+        public bool IsVoiceCommandRequired { get; set; }
+
+        public string ErrorMessage { get; set; }
+    }
+
+    public class FeedbackModel
+    {
+        public FeedbackModel
+        (
+            ITestQueries testQueries
+        )
         {
-            if (!userAccessRights.CanReadTask(taskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model    = readModelFactory();
-            model.TaskId = taskId;
-
-            return PartialView(model);
+            this.testQueries = testQueries;
         }
-        [HttpGet] public HttpResponseMessage Delete(int taskId)
+
+        private readonly ITestQueries testQueries;
+
+        public int TaskId { get; set; }
+
+        public ent::Test.ShortDetails Test
         {
-            if (!userAccessRights.CanReadTask(taskId))
+            get
             {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                if (_test == null)
+                {
+                    _test = new Lazy<ent::Test.ShortDetails>(() => testQueries.GetTest_thatContainsTask(this.TaskId));
+                }
+                return _test.Value;
             }
-
-            var model    = deleteModelFactory();
-            model.TaskId = taskId;
-            
-            if(model.Task != null)
-            {
-                taskCommands.Delete(taskId);
-                return new HttpResponseMessage(HttpStatusCode.OK);
-            }
-
-            return new HttpResponseMessage(HttpStatusCode.NotFound);
         }
+        private Lazy<ent::Test.ShortDetails> _test;
     }
 }
 

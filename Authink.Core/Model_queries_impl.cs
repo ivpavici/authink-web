@@ -54,10 +54,6 @@ namespace Authink.Core.Model.Queries.Impl
     }
     public class ChildQueriesImpl:      IChildQueries     
     {
-        public IReadOnlyList<ent::Child.ShortDetails> GetAll        (bool showHidden            )
-        {
-            throw new System.NotImplementedException();
-        }
         public IReadOnlyList<ent::Child.ShortDetails> GetAll_paged  (bool showHidden, int page  )
         {
             throw new System.NotImplementedException();
@@ -98,56 +94,34 @@ namespace Authink.Core.Model.Queries.Impl
     }
     public class TaskQueriesImpl:       ITaskQueries      
     {
-        public IReadOnlyList<ent::Task.Details> GetAll         (bool showHidden            )
-        {
-            throw new System.NotImplementedException();
-        }
-        public IReadOnlyList<ent::Task.Details> GetAll_forTest (bool showHidden, int testId)
-        {
-            using(var db= new database::AuthinkDataModel())
-            {
-                return
-                    db.Tests
-                      .SingleOrDefault(test => test.Id == testId && (!test.IsDeleted || showHidden))
-                      .Tasks
-                      .Where(task=>(!task.IsHidden || showHidden))
-                      .Select(mappers::Task.Details.FromDatabase)
-                      .ToList(                                  );
-            }
-        }
-        public IReadOnlyList<ent::Task.Details> GetAll_forUser (bool showHidden, int userId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ent::Task.Details GetSingle_whereId(int id    )
+        public ent::Task.LongDetails GetSingle_longDetails_whereId(int id)
         {
             using(var db = new database::AuthinkDataModel())
             {
                 return
                     db.Tasks
+                      .Include("Pictures")
                       .Where(task => task.Id == id)
-                      .Select(mappers::Task.Details.FromDatabase)
+                      .Select(mappers::Task.LongDetails.FromDatabase)
                       .Single();
+            }
+        }
+
+        public IReadOnlyList<ent::Task.ShortDetails> GetAll_shortDetails_whereTestId(int testId)
+        {
+            using (var db = new database::AuthinkDataModel())
+            {
+                return
+                    db.Tests
+                      .Single(test => test.Id == testId)
+                      .Tasks
+                      .Select(mappers::Task.ShortDetails.FromDatabase)
+                      .ToList();
             }
         }
     }
     public class TestQueriesImpl:       ITestQueries      
     {
-        public TestQueriesImpl
-        (
-            ITaskQueries taskQueries 
-        )
-        {
-            this.taskQueries = taskQueries;
-        }
-
-        private readonly ITaskQueries taskQueries;
-
-        public IReadOnlyList<ent::Test.ShortDetails> GetAll         (bool showHidden             )
-        {
-            throw new System.NotImplementedException();
-        }
         public IReadOnlyList<ent::Test.ShortDetails> GetAll_forChild(bool showHidden, int childId)
         {
             
@@ -191,20 +165,17 @@ namespace Authink.Core.Model.Queries.Impl
             {
                 return
                     db.Tests
+                       .Include("Tasks")
                        .Where (test => test.Id == id)
                        .ToList()
-                       .Select(test=> mappers::Test.LongDetails.FromDatabase(test,taskQueries.GetAll_forTest))
-                       .Single(                   );
+                       .Select(mappers::Test.LongDetails.FromDatabase)
+                       .Single();
             }
         }
     }
     public class PictureQueriesImpl:    IPictureQueries   
     {
-        public IReadOnlyList<ent::Picture.Details> GetAll                 (bool showHidden)
-        {
-            throw new System.NotImplementedException();
-        }
-        public IReadOnlyList<ent::Picture.Details> GetAll_forTaskGameplay (int taskId     )
+        public IReadOnlyList<ent::Picture>       GetAll_forTaskGameplay (int taskId     )
         {
             using (var db= new database::AuthinkDataModel())
             {
@@ -217,7 +188,7 @@ namespace Authink.Core.Model.Queries.Impl
                       .ToList(                                     );
             }
         }
-        public IReadOnlyList<ent::Color.Details>   GetAll_colorsForPicture(int pictureId  )
+        public IReadOnlyList<ent::Color.Details> GetAll_colorsForPicture(int pictureId  )
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -231,7 +202,7 @@ namespace Authink.Core.Model.Queries.Impl
             }
         }
 
-        public ent::Picture.Details GetSingle_whereId       (int id     )
+        public ent::Picture         GetSingle_whereId       (int id     )
         {
             using(var db = new database::AuthinkDataModel())
             {
@@ -249,10 +220,6 @@ namespace Authink.Core.Model.Queries.Impl
     }
     public class SoundQueriesImpl:      ISoundQueries     
     {
-        public IReadOnlyList<ent::Sound.Details> GetAll        (bool showHidden)
-        {
-            throw new System.NotImplementedException();
-        }
         public ent::Sound.Details GetSingle_byTaskId(int taskId     )
         {
             using (var db = new database::AuthinkDataModel())

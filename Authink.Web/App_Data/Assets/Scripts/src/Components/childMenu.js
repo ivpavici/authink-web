@@ -6,6 +6,7 @@ authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (
 
         restrict:    'E',
         templateUrl: '/Assets/Templates/Components/ChildMenu.html',
+        scope:       {},
         
         controller: ['$scope', function ($scope) {
 
@@ -22,9 +23,9 @@ authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (
                     $scope.$emit('childSelected', children[0].Id);
                 } else {
                     
-                    var modal = $scope.showDialog('<create-child> </create-child>', 'static');
+                    var component = '<create-child> </create-child>';
 
-                    $scope.$emit('modalOpened', modal);
+                    $scope.$emit('openModal', component, 'static');
                 }
             });
 
@@ -50,18 +51,18 @@ authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (
             
             $scope.addChild = function () {
 
-                var modal = $scope.showDialog('<create-child> </create-child>');
+                var component = '<create-child> </create-child>';
                 
-                $scope.$emit('modalOpened', modal);
+                $scope.$emit('openModal', component);
             };
 
             $scope.editChild = function () {
                 
-                var modal = $scope.showDialog('<edit-child> </edit-child>');
+                var component = '<edit-child> </edit-child>';
 
                 $scope.$emit('childEditStarted', $scope.displayedChild.Id);
                 
-                $scope.$emit('modalOpened', modal);
+                $scope.$emit('openModal', component);
             };
         }]
     };

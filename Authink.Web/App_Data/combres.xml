@@ -26,6 +26,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/app.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/testsRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/childrenRepository.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Repositories/tasksRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Services/accountServices.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testsList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testTasksList.js" />
@@ -37,11 +38,15 @@
       <resource path="~/App_Data/Assets/Scripts/src/Components/editChild.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/createTest.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/editTest.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/taskPreview.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/editTask.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/editTaskPicturesList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Controllers/shell.js" />
     </resourceSet>
 
     <resourceSet name="shellCss" type="css">
       <resource path="~/Assets/Style/home.css" />
+      <resource path="~/Assets/Style/task.css" />
     </resourceSet>
     
     <resourceSet name="globalCss" type="css">
@@ -65,6 +70,7 @@
     </resourceSet>
     
     <resourceSet name="spectrumJs" type="js">
+      <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
       <resource path= "~/Scripts/Plugins/SimpleColorpicker/spectrum.js"/>
     </resourceSet>
     <resourceSet name="spectrumCss" type="css">

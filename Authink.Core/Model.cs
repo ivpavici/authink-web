@@ -14,7 +14,6 @@ namespace Authink.Core.Model.Queries
     }
     public interface IChildQueries
     {
-        IReadOnlyList<ent::Child.ShortDetails> GetAll         (bool showHidden            );
         IReadOnlyList<ent::Child.ShortDetails> GetAll_paged   (bool showHidden, int page  );
         IReadOnlyList<ent::Child.ShortDetails> GetAll_forUser (bool showHidden, int userId);
 
@@ -24,16 +23,13 @@ namespace Authink.Core.Model.Queries
     }
     public interface ITaskQueries
     {
-        IReadOnlyList<ent::Task.Details> GetAll         (bool showHidden            );
-        IReadOnlyList<ent::Task.Details> GetAll_forTest (bool showHidden, int testId);
-        IReadOnlyList<ent::Task.Details> GetAll_forUser (bool showHidden, int userId);
-
-        ent::Task.Details GetSingle_whereId (int id);
+        IReadOnlyList<ent::Task.ShortDetails> GetAll_shortDetails_whereTestId(int testId);
+       
+        ent::Task.LongDetails GetSingle_longDetails_whereId(int id);
     }
     public interface ITestQueries
     {
-        IReadOnlyList<ent::Test.ShortDetails> GetAll            (bool showHidden                  );
-        IReadOnlyList<ent::Test.ShortDetails> GetAll_forChild   (bool showHidden, int childId     );
+        IReadOnlyList<ent::Test.ShortDetails> GetAll_forChild(bool showHidden, int childId);
 
         ent::Test.ShortDetails GetTest_thatContainsTask       (int taskId);
         ent::Test.ShortDetails GetSingle_ShortDetails_WhereId (int id);
@@ -41,16 +37,14 @@ namespace Authink.Core.Model.Queries
     }
     public interface IPictureQueries
     {
-        IReadOnlyList<ent::Picture.Details> GetAll                  (bool showHidden);
-        IReadOnlyList<ent::Picture.Details> GetAll_forTaskGameplay  (int  taskId    );
+        IReadOnlyList<ent::Picture>         GetAll_forTaskGameplay  (int  taskId    );
         IReadOnlyList<ent::Color.Details>   GetAll_colorsForPicture (int  pictureId );
 
-        ent::Picture.Details GetSingle_whereId       (int id     );
+        ent::Picture         GetSingle_whereId       (int id     );
         ent::Color.Details   GetSingle_color_WhereId (int colorId);
     }
     public interface ISoundQueries
     {
-        IReadOnlyList<ent::Sound.Details> GetAll             (bool showHidden);
         ent::Sound.Details                GetSingle_byTaskId(int taskId);
 
         ent::Sound.Details GetSingle_whereId    (int id       );

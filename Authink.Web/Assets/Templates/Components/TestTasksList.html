@@ -2,7 +2,7 @@
         
     <div id="main-test-tasks-right">
         
-        <a id="test-edit-add-new-task" href="/test/{{test.Id}}/tasks/create/step-1" target="_self"><span>New task</span></a>
+        <a id="test-edit-add-new-task" href="/test/{{testTasksListApi.testId}}/tasks/create/step-1" target="_self"><span>New task</span></a>
 
     </div>
 
@@ -10,14 +10,14 @@
         
         <div id="main-test-tasks-heading">
             
-            Tasks (<span id="task-count">{{test.Tasks.length}}</span>)
+            Tasks (<span id="task-count">{{tasks.length}}</span>)
 
         </div>
         <div id="main-test-task-list clearfix">
             
-            <div class="main-test-task-wrap" ng-repeat="task in test.Tasks">
+            <div class="main-test-task-wrap" ng-repeat="task in tasks">
                 
-                <div class="main-test-task clearfix">
+                <div class="main-test-task clearfix" >
                     
                     <div class="main-test-task-left">
                         
@@ -35,7 +35,7 @@
 
                     <div class="main-test-task-right">
                         
-                        <h1>{{task.Name}}</h1>
+                        <h1 ng-click="previewTask(task)">{{task.Name}}</h1>
 
                         <span>{{task.Description}}</span>
 
@@ -45,7 +45,7 @@
                                 
                                 <li><a class class="main-test-task-option-delete">delete</a></li>
                                 <li><a class="main-test-task-option-statistics">statistics</a></li>
-                                <li><a class="main-test-task-option-edit">edit</a></li>
+                                <li><a class="main-test-task-option-edit" ng-click="editTask(task)">edit</a></li>
 
                             </ul>
                         </div>

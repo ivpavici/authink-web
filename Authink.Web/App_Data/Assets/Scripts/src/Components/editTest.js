@@ -30,8 +30,8 @@ authink.directive('editTest', function() {
             
             $scope.saveTest = function() {
 
-                var editPromise = testsRepository.edit($scope.test);
-                editPromise.then(function(response) {
+                testsRepository.edit($scope.test)
+                .then(function (response) {
 
                   $scope.$emit('testEditEnded');
                 });
@@ -39,8 +39,8 @@ authink.directive('editTest', function() {
 
             $scope.removeTest = function() {
 
-                var deletePromise = testsRepository.remove($scope.test.Id);
-                deletePromise.then(function(response) {
+                testsRepository.remove($scope.test.Id)
+                .then(function (response) {
 
                     $scope.$emit('testDeleted');
                 });
