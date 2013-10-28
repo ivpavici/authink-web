@@ -39,6 +39,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/Components/createTest.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/editTest.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/taskPreview.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Components/editTask.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Controllers/shell.js" />
     </resourceSet>
 

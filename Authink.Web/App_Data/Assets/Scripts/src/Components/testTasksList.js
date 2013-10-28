@@ -8,19 +8,15 @@ authink.directive('testTasksList', function () {
         templateUrl: '/Assets/Templates/Components/TestTasksList.html',
         scope:       {},
         
-        controller: ['$scope', 'tasksRepository', 'testTasksListApi', function ($scope, tasksRepository, testTasksListApi) {
+        controller: ['$scope', 'testTasksListApi', function ($scope, testTasksListApi) {
 
             $scope.testTasksListApi = testTasksListApi;
             
-            $scope.$watch('testTasksListApi.testId', function (testId) {
+            $scope.$watch('testTasksListApi.tasks', function (tasks) {
 
-                if (testId) {
+                if (tasks) {
 
-                    tasksRepository.getAll_shortDetails_byTestId($scope.testTasksListApi.testId)
-                    .then(function (tasks) {
-
-                        $scope.tasks = tasks;
-                    });
+                    $scope.tasks = tasks;
                 }
             });
 
@@ -32,15 +28,36 @@ authink.directive('testTasksList', function () {
                 
                 $scope.$emit('taskSelected', task.Id);
             };
-           
+
+            $scope.editTask = function(task) {
+
+                var component = '<edit-task> </edit-task>';
+
+                $scope.$emit('openModal', component);
+                
+                $scope.$emit('taskEditStarted', task.Id);
+            };
         }]
     };
 });
 
-authink.factory('testTasksListApi', function() {
+authink.factory('testTasksListApi', ['tasksRepository', function(tasksRepository) {
 
     return {
       
-        testId: null
+        tasks: null,
+        testId: null,
+
+        loadTasks: function(testId) {
+
+            this.testId = testId;
+
+            this.tasks = tasksRepository.getAll_shortDetails_byTestId(testId);
+        },
+        
+        refreshTasks: function () {
+
+            this.tasks = tasksRepository.getAll_shortDetails_byTestId(this.testId);
+        }
     };
-});
+}]);

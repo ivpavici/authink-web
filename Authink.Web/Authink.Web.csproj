@@ -214,6 +214,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\createTest.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editChild.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editTest.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\editTask.js" />
     <Content Include="Assets\Images\Home\add-icon.png" />
     <Content Include="Assets\Images\Home\child-button-edit.png" />
     <Content Include="Assets\Images\Home\child-menu-arrow-down.png" />
@@ -254,6 +255,7 @@
     <Content Include="Assets\Templates\Components\ChildMenu.html" />
     <Content Include="Assets\Templates\Components\CreateTest.html" />
     <Content Include="Assets\Templates\Components\EditChild.html" />
+    <Content Include="Assets\Templates\Components\EditTask.html" />
     <Content Include="Assets\Templates\Components\EditTest.html" />
     <Content Include="Assets\Templates\Components\OmniBar.html" />
     <Content Include="Assets\Templates\Components\SignUp.html" />

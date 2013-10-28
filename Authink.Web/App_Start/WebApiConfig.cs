@@ -20,7 +20,8 @@ namespace Authink.Web
             
             config.Routes.MapHttpRoute("TasksApi_GetSingle_whereId",               "api/tasks/{taskId}",      new { controller = "TasksApi", action = "GetSingle_whereId"               });
             config.Routes.MapHttpRoute("TasksApi_GetAll_shortDetails_whereTestId", "api/test/{testId}/tasks", new { controller = "TasksApi", action = "GetAll_shortDetails_whereTestId" });
-
+            config.Routes.MapHttpRoute("TasksApi_Update",                          "api/task/update",         new { controller = "TasksApi", action = "Update"                          });
+            
             config.Routes.MapHttpRoute("ChildrenApi_Create", "api/children/create",                 new { controller = "ChildrenApi", action = "Create" });
             config.Routes.MapHttpRoute("ChildrenApi_Edit", "api/children/edit",                     new { controller = "ChildrenApi", action = "Edit"   });
             config.Routes.MapHttpRoute("ChildrenApi_GetOne_shortDetails", "api/children/{childId}", new { controller = "ChildrenApi", action = "GetOne_shortDetails"        });
