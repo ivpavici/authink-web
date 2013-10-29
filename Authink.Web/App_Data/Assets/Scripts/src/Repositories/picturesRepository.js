@@ -7,7 +7,8 @@ authink.factory('picturesRepository', ['$http', '$resource', function ($http, $r
         apiUrls: {
 
             insertPictureForUpdate: '/api/pictures/update/',
-            getAll_forTaskGameplay: '/api/task/:taskId/pictures'
+            getAll_forTaskGameplay: '/api/task/:taskId/pictures',
+            updateColorsForPicture: '/api/colors/update'
         }
     };
 
@@ -22,11 +23,18 @@ authink.factory('picturesRepository', ['$http', '$resource', function ($http, $r
             });
         },
         
+        updateColorsForPicture: function (model) {
+            
+            var resource = $resource(config.apiUrls.updateColorsForPicture);
+
+            return resource.save(model).$promise;
+        },
+        
         getAll_forTaskGameplay: function(taskId) {
 
             var resource = $resource(config.apiUrls.getAll_forTaskGameplay, {}, { query: { method: 'GET', isArray: true } });
 
             return resource.query({ taskId: taskId }).$promise;
-        }
-    };
+        },
+     };
 }]);

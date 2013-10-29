@@ -67,6 +67,24 @@ authink.directive('taskPicturesEditor', function () {
                     });
                 });
             };
+
+            $scope.editWithColors = function() {
+
+                var model = {
+                  
+                    correctColor: $scope.picture.CorrectColor,
+                    wrongColors : $scope.picture.WrongColors
+                };
+                
+                picturesRepository.updateColorsForPicture(model)
+                    .then(function(response) {
+                
+                        if(response.StatusCode === 200) {
+
+                            $scope.$emit('closeModal');
+                        }
+                });
+            };
         }]
     };
 });
