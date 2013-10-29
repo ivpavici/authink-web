@@ -37,46 +37,8 @@ namespace Authink.Web.Models.Picture
     }
     public class EditSimpleModel
     {
-        public EditSimpleModel
-        (
-            IPictureQueries pictureQueries,
-            ITestQueries testQueries
-        )
-        {
-            this.pictureQueries = pictureQueries;
-            this.testQueries = testQueries;
-        }
-
-        private readonly IPictureQueries pictureQueries;
-        private readonly ITestQueries testQueries;
-
+        public int TaskId    { get; set; }
         public int PictureId { get; set; }
-        public int TaskId { get; set; }
-
-        public ent::Picture Picture
-        {
-            get
-            {
-                if (_picture == null)
-                {
-                    _picture = new Lazy<ent::Picture>(() => pictureQueries.GetSingle_whereId(this.PictureId));
-                }
-                return _picture.Value;
-            }
-        }
-        private Lazy<ent::Picture> _picture;
-        public ent::Test.ShortDetails Test
-        {
-            get
-            {
-                if (_test == null)
-                {
-                    _test = new Lazy<ent::Test.ShortDetails>(() => testQueries.GetTest_thatContainsTask(this.TaskId));
-                }
-                return _test.Value;
-            }
-        }
-        private Lazy<ent::Test.ShortDetails> _test;
     }
 
     public class EditWithColorsModel

@@ -6,11 +6,11 @@ authink.factory('testsRepository', ['$resource', function ($resource) {
         
         apiUrls: {
             
-            getAllTestsForChild_shortDetails: "api/children/:childId/tests",
-            getOne_longDetails:               "api/tests/:testId",
-            create:                           "api/tests/create",
-            edit:                             "api/tests/edit",
-            remove:                           "api/tests/delete/:testId"
+            getAllTestsForChild_shortDetails: "/api/children/:childId/tests",
+            getOne_longDetails:               "/api/tests/:testId",
+            create:                           "/api/tests/create",
+            edit:                             "/api/tests/edit",
+            remove:                           "/api/tests/delete/:testId"
         }
     };
     

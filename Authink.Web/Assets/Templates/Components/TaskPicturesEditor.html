@@ -1,0 +1,59 @@
+﻿
+
+<div class="task-picture-container" ng-if="isSimpleEdit()">
+    
+    <form action="/pictures/edit-simple/{{picture.Id}}" method="post" enctype="multipart/form-data" >
+        
+        <div class="task-picture-image">
+        
+            <input type="hidden" value="{{taskPicturesEditorApi.taskId}}" name="taskId"/>
+
+            <img src="{{picture.Url}}" alt="" />
+
+            <span>Upload a new picture</span>
+
+            <input type="file" name="picture" />
+
+        </div>
+
+        <div class="task-edit-options">
+        
+            <input type="submit" value="Save" class="task-edit-save" />
+
+        </div>
+
+    </form>
+    
+</div>
+
+<div ng-if="isDetectColorsEdit()">
+    
+    <img ng-src="{{picture.Url}}" alt="Task picture"/>
+    
+    <input type="file" name="picture"/>
+    
+    <div>
+        <label>Correct color</label>
+
+        @Html.HiddenFor(m => m.CorrectColorToEdit.Value, new { @class = "colorValueHolder" })
+        @Html.Hidden("holder", Model.CorrectColorToEdit.Value, new { @class = "currentColorValueHolder" })
+
+        <input type='color' name='color' class="colorPickerHolder"/> 
+    </div>
+    
+    <div>
+        <label>Wrong colors</label>
+        @for (var i = 0; i < Model.WrongColorsToEdit.Count; i++)
+        {
+        <div>
+            @Html.HiddenFor(m=> Model.WrongColorsToEdit[i].Id)
+            @Html.HiddenFor(m => m.WrongColorsToEdit[i].Value, new { @class = "colorValueHolder" })
+            @Html.Hidden("holder", Model.WrongColorsToEdit[i].Value, new { @class = "currentColorValueHolder" })
+            <input type='color' name='color' class="colorPickerHolder"/> 
+        </div>
+        }
+    </div>
+    <input type="submit" value="Save"/>
+
+</div>
+
