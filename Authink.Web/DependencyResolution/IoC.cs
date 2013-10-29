@@ -48,8 +48,6 @@ namespace Authink.Web.DependencyResolution {
                             x.For<HttpServerUtilityBase>().HttpContextScoped().Use(() => new HttpServerUtilityWrapper(HttpContext.Current.Server));
                             x.For<List<HttpPostedFileBase>>().Use(() => new List<HttpPostedFileBase>());
                             x.For<List<ColorData>>().Use(() => new List<ColorData>());
-                            x.For<Color>().Use(() => new Color());
-                            x.For<List<Color>>().Use(() => new List<Color>());
                             x.For<List<string>>().Use(() => new List<string>());
                         });
             return ObjectFactory.Container;
