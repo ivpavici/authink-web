@@ -178,7 +178,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Picture\EditModels.cs" />
     <Compile Include="Models\Session\SessionModels.cs" />
     <Compile Include="Models\Statistics\GetForTaskModel.cs" />
     <Compile Include="Models\Picture\PicturesUploadModels.cs" />
@@ -413,8 +412,6 @@
     <Content Include="Views\Picture\UploadPictures_DetectColors.cshtml" />
     <Content Include="Views\Picture\UploadPictures_DetectItem.cshtml" />
     <Content Include="Views\Picture\UploadPictures_OrderBySize.cshtml" />
-    <Content Include="Views\Picture\_Edit_simple.cshtml" />
-    <Content Include="Views\Picture\_Edit_withColors.cshtml" />
     <Content Include="Views\Statistics\_GetForTask.cshtml" />
     <Content Include="Views\Sound\_Create.cshtml" />
     <Content Include="Views\Sound\_Edit.cshtml" />
