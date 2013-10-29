@@ -58,6 +58,11 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.taskPicturesEditorApi.setupPictureEditor(taskType, taskId, picture);
     });
     
+    $rootScope.$on('taskPicturesEditor:pictureUpdated', function(event) {
+
+        application.editTaskPicturesListApi.forceRefresh();
+    });
+    
     $rootScope.$on('testListChanged', function (event, childId){
         
         application.testListApi.loadTests(childId);

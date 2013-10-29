@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ApiEndPointController.cs" />
     <Compile Include="Controllers\ChildrenApiController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\PicturesApiController.cs" />
     <Compile Include="Controllers\ShellController.cs" />
     <Compile Include="Controllers\SoundController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -187,6 +188,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-tpls-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib-patches\angular-file-upload-shim.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\angular-file-upload.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-resource-v1.2.0-rc.3.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-route-1.2.0-rc.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
@@ -212,6 +215,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTest.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editTask.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
     <Content Include="Assets\Images\Home\add-icon.png" />
     <Content Include="Assets\Images\Home\child-button-edit.png" />
     <Content Include="Assets\Images\Home\child-menu-arrow-down.png" />

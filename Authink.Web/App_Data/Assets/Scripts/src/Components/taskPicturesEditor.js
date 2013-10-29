@@ -8,7 +8,7 @@ authink.directive('taskPicturesEditor', function () {
         templateUrl: '/Assets/Templates/Components/TaskPicturesEditor.html',
         scope: {},
 
-        controller: ['$scope', 'taskPicturesEditorApi', function ($scope, taskPicturesEditorApi) {
+        controller: ['$scope', 'taskPicturesEditorApi', 'picturesRepository', function ($scope, taskPicturesEditorApi, picturesRepository) {
 
             $scope.taskPicturesEditorApi = taskPicturesEditorApi;
 
@@ -46,6 +46,26 @@ authink.directive('taskPicturesEditor', function () {
                 var taskType = $scope.taskPicturesEditorApi.taskType;
 
                 return taskType === taskTypes.DetectColors;
+            };
+
+            $scope.onFileSelect = function($files) {
+
+                angular.forEach($files, function(file) {
+
+                    picturesRepository.insertPictureForUpdate(file, { pictureId: $scope.taskPicturesEditorApi.picture.Id, taskId: $scope.taskPicturesEditorApi.taskId })
+                    .progress(function(evt) {
+
+                        $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+                        $scope.$apply();
+                    })
+                    .success(function(picture) {
+
+                        $scope.picture = picture;
+                        $scope.$apply();
+
+                        $scope.$emit('taskPicturesEditor:pictureUpdated');
+                    });
+                });
             };
         }]
     };

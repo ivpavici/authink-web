@@ -72,10 +72,10 @@ authink.directive('editTaskPicturesList', function () {
                 return taskType === taskTypes.DetectColors;
             };
 
-            $scope.editPicture = function(picture) {
-
+            $scope.editPicture = function (picture) {
+                
                 var component = '<task-pictures-editor> </task-pictures-editor>';
-
+                
                 $scope.$emit('openModal', component);
 
                 $scope.$emit('taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
@@ -84,7 +84,7 @@ authink.directive('editTaskPicturesList', function () {
     };
 });
 
-authink.service('editTaskPicturesListApi', function () {
+authink.service('editTaskPicturesListApi', ['picturesRepository', function (picturesRepository) {
 
     return {
 
@@ -97,6 +97,11 @@ authink.service('editTaskPicturesListApi', function () {
             this.taskType = taskType;
             this.taskId   = taskId;
             this.pictures = pictures;
+        },
+        
+        forceRefresh: function() {
+
+            this.pictures = picturesRepository.getAll_forTaskGameplay(this.taskId);
         }
     };
-});
+}]);
