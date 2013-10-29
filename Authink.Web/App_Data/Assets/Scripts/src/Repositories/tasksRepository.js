@@ -6,9 +6,9 @@ authink.factory('tasksRepository', ['$resource', function ($resource) {
 
         apiUrls: {
             
-            getSingle_whereId:            'api/tasks/:taskId',
-            getAll_shortDetails_byTestId: 'api/test/:testId/tasks',
-            update:                       'api/task/update'
+            getSingle_whereId:            '/api/tasks/:taskId',
+            getAll_shortDetails_byTestId: '/api/test/:testId/tasks',
+            update:                       '/api/task/update'
         }
     };
 

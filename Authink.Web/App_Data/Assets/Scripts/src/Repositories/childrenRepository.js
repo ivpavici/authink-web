@@ -6,10 +6,10 @@ authink.factory('childrenRepository', ['$resource', function ($resource) {
 
         apiUrls: {
 
-            getAllForUser_shortDetails: "api/children",
-            getOne_shortDetails:        "api/children/:childId",
-            create:                     "api/children/create",
-            edit:                       "api/children/edit"
+            getAllForUser_shortDetails: "/api/children",
+            getOne_shortDetails:        "/api/children/:childId",
+            create:                     "/api/children/create",
+            edit:                       "/api/children/edit"
         }
     };
 

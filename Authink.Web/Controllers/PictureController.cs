@@ -23,7 +23,6 @@ namespace Authink.Web.Controllers
             IFileSystemUtilities fileSystemUtilities,
             IUserAccessRights    userAccessRights,
 
-            Func<EditSimpleModel>     editSimpleModelFactory,
             Func<EditWithColorsModel> editWithColorsModelFactory,
             Func<EditModel>           editModelFactory,
 
@@ -40,7 +39,6 @@ namespace Authink.Web.Controllers
             this.fileSystemUtilities = fileSystemUtilities;
             this.userAccessRights    = userAccessRights;
 
-            this.editSimpleModelFactory     = editSimpleModelFactory;
             this.editWithColorsModelFactory = editWithColorsModelFactory;
             this.editModelFactory           = editModelFactory;
 
@@ -57,7 +55,6 @@ namespace Authink.Web.Controllers
         private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly IUserAccessRights    userAccessRights;
 
-        private readonly Func<EditSimpleModel>     editSimpleModelFactory;
         private readonly Func<EditWithColorsModel> editWithColorsModelFactory;
         private readonly Func<EditModel>           editModelFactory;
 
@@ -95,32 +92,9 @@ namespace Authink.Web.Controllers
             );
         }
 
-        [HttpGet]  public ActionResult Edit_simple(int pictureId)
-        {
-            if(!userAccessRights.CanEditPicture(pictureId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model       = editSimpleModelFactory();
-            model.PictureId = pictureId;
-
-            return PartialView
-            (
-                viewName: "_Edit_simple",
-                model:    model
-            );
-        }
         [HttpPost] public ActionResult Edit_simple(EditSimpleModel model, HttpPostedFileBase picture)
         {
-            if (httpContextBase.Session["CurrentEditTaskId"] == null)
-            {
-                return RedirectToRoute("Home");
-            }
-
-            var taskId   = (int)httpContextBase.Session["CurrentEditTaskId"];
-            model.TaskId = taskId;
-            if (!userAccessRights.CanEditTask(taskId))
+            if (!userAccessRights.CanEditTask(model.TaskId))
             {
                 return new HttpNotFoundResult();
             }
@@ -129,17 +103,16 @@ namespace Authink.Web.Controllers
             {
                 return RedirectToRoute
                 (
-                    "Home",
-                    new{test=model.Test.Id}
+                    "Shell"
                 );
             }
 
             var pictureContent = fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture);
 
-            var newSavePath = pictureServices.SaveToFileSystem(picture.FileName, pictureContent, taskId,buru.Picture.Task.DefaultSavePath, buru.Picture.Task.DefaultResizeQuerystring);
+            var newSavePath = pictureServices.SaveToFileSystem(picture.FileName, pictureContent, model.TaskId, buru.Picture.Task.DefaultSavePath, buru.Picture.Task.DefaultResizeQuerystring);
             pictureCommands.Update(model.PictureId, newSavePath);
 
-            return RedirectToRoute ( "Home", new { test = model.Test.Id } );
+            return RedirectToRoute("Shell");
         }
 
         [HttpGet]  public ActionResult Edit_withColors(int pictureId)

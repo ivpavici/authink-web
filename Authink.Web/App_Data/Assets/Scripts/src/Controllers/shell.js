@@ -3,7 +3,7 @@
 authink.controller('shellController', ['$rootScope', '$modal', 'application', function ($rootScope, $modal, application) {
 
     $rootScope.currentModalInstance = null;
-    $rootScope.isTestEditModeOn     = false;
+    $rootScope.isTestEditModeOn = false;
     
     $rootScope.$on('testSelected', function (event, testId) {
 
@@ -46,11 +46,16 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
     });
     $rootScope.$on('taskForEditLoaded', function(event, task) {
 
-        application.editTaskPicturesListApi.setupPicturesList(task.Type, task.Pictures);
+        application.editTaskPicturesListApi.setupPicturesList(task.Type, task.Id, task.Pictures);
     });
     $rootScope.$on('taskEditEnded', function(event) {
 
         application.testTasksListApi.refreshTasks();
+    });
+
+    $rootScope.$on('taskPictureEditStarted', function(event, taskType, taskId, picture) {
+
+        application.taskPicturesEditorApi.setupPictureEditor(taskType, taskId, picture);
     });
     
     $rootScope.$on('testListChanged', function (event, childId){

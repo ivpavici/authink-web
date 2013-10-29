@@ -5,7 +5,7 @@
         
         <img ng-src="{{picture.Url}}" alt="" />
 
-        <span>Upload new image</span>
+        <span ng-click="editPicture(picture)">Upload new image</span>
 
     </a>
 </div>
@@ -19,7 +19,7 @@
             
             <img ng-src="{{correctPicture.Url}}" alt="" />
 
-            <span>Upload new image</span>
+            <span ng-click="editPicture(picture)">Upload new image</span>
 
         </a>
 
@@ -33,7 +33,7 @@
             
             <img ng-src="{{picture.Url}}" alt="" />
 
-            <span>Upload new image</span>
+            <span ng-click="editPicture(picture)">Upload new image</span>
         </a>
         
     </div>
@@ -65,7 +65,7 @@
 
         </div>
 
-        <span>Upload new image</span>
+        <span ng-click="editPicture(picture)">Upload new image</span>
     </a>
 </div>
     

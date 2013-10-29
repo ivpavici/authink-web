@@ -27,15 +27,11 @@ namespace Authink.Web.App_Start
             routes.MapRoute("UploadPictures_DetectItem",              "tasks/create/step-3/same-items/difficulty-{taskDifficulty}/pictures",       new { controller = "Picture", action = "UploadPictures_DetectItem" });
             routes.MapRoute("UploadPictures_OrderBySize",             "tasks/create/step-3/order-by-size/difficulty-{taskDifficulty}/pictures",    new { controller = "Picture", action = "UploadPictures_OrderBySize" });
 
-            routes.MapRoute("EditTask",                     "ajax/tasks/edit/{taskId}",                            new { controller = "Task", action = "Edit", taskId = UrlParameter.Optional });
+            routes.MapRoute("EditTask", "tasks/{taskId}/edit", new { controller = "Shell", action = "Shell", taskId = UrlParameter.Optional });
                                                                                                                                        
-            routes.MapRoute("Edit_SimpleTasksWithPictures", "ajax/tasks/edit/simple-tasks-with-pictures/{taskId}", new { controller = "Task", action = "Edit_SimpleTasksWithPictures" });
-            routes.MapRoute("Edit_DetectColors",            "ajax/tasks/edit/detect-colors/{taskId}",              new { controller = "Task", action = "Edit_DetectColors"            });
-            routes.MapRoute("Edit_DetectItem",              "ajax/tasks/edit/detect-item/{taskId}",                new { controller = "Task", action = "Edit_DetectItem"              });
-
             routes.MapRoute("EditPicture", "ajax/picture-edit/{taskId}/{pictureId}", new { controller = "Picture", action = "Edit", pictureId = UrlParameter.Optional });
 
-            routes.MapRoute("Picture_Edit_simple",     "ajax/pictures/edit-simple/{pictureId}",     new { controller = "Picture", action = "Edit_simple",     pictureId = UrlParameter.Optional });
+            routes.MapRoute("Picture_Edit_simple",     "pictures/edit-simple/{pictureId}",     new { controller = "Picture", action = "Edit_simple",     pictureId = UrlParameter.Optional });
             routes.MapRoute("Picture_Edit_withColors", "ajax/pictures/edit-withcolors/{pictureId}", new { controller = "Picture", action = "Edit_withColors", pictureId = UrlParameter.Optional });
 
             routes.MapRoute("CreateSound", "ajax/sounds/create/{taskId}", new { controller = "Sound", action = "Create", taskId  = UrlParameter.Optional });

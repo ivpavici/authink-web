@@ -216,8 +216,6 @@
     <Content Include="Assets\Images\Home\child-button-edit.png" />
     <Content Include="Assets\Images\Home\child-menu-arrow-down.png" />
     <Content Include="Assets\Images\Home\child-menu-arrow-up.png" />
-    <Content Include="Assets\Images\Home\child-menu-back-2.png" />
-    <Content Include="Assets\Images\Home\child-menu-back.png" />
     <Content Include="Assets\Images\Home\header-logo.png" />
     <Content Include="Assets\Images\Home\header-menu-arrow-down.png" />
     <Content Include="Assets\Images\Home\header-menu-arrow-up.png" />
@@ -257,6 +255,7 @@
     <Content Include="Assets\Templates\Components\EditTest.html" />
     <Content Include="Assets\Templates\Components\OmniBar.html" />
     <Content Include="Assets\Templates\Components\SignUp.html" />
+    <Content Include="Assets\Templates\Components\TaskPicturesEditor.html" />
     <Content Include="Assets\Templates\Components\TaskPreview.html" />
     <Content Include="Assets\Templates\Components\TestPreview.html" />
     <Content Include="Assets\Templates\Components\TestsList.html" />
@@ -368,6 +367,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="App_Data\Assets\Scripts\src\Components\signUp.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Components\taskPicturesEditor.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Properties\PublishProfiles\File.pubxml" />

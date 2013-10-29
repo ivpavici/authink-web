@@ -71,6 +71,15 @@ authink.directive('editTaskPicturesList', function () {
 
                 return taskType === taskTypes.DetectColors;
             };
+
+            $scope.editPicture = function(picture) {
+
+                var component = '<task-pictures-editor> </task-pictures-editor>';
+
+                $scope.$emit('openModal', component);
+
+                $scope.$emit('taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
+            };
         }]
     };
 });
@@ -81,10 +90,12 @@ authink.service('editTaskPicturesListApi', function () {
 
         pictures: null,
         taskType: null,
+        taskId:   null,
         
-        setupPicturesList: function(taskType, pictures) {
+        setupPicturesList: function(taskType, taskId, pictures) {
 
             this.taskType = taskType;
+            this.taskId   = taskId;
             this.pictures = pictures;
         }
     };
