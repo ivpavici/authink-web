@@ -3,7 +3,7 @@
 authink.controller('shellController', ['$rootScope', '$modal', 'application', function ($rootScope, $modal, application) {
 
     $rootScope.currentModalInstance = null;
-    $rootScope.isTestEditModeOn = false;
+    $rootScope.isTestEditModeOn     = false;
     
     $rootScope.$on('testSelected', function (event, testId) {
 
