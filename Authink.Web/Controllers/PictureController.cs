@@ -18,13 +18,6 @@ namespace Authink.Web.Controllers
     {
         public PictureController
         (
-            IPictureCommands     pictureCommands,
-            IPictureServices     pictureServices,
-            IFileSystemUtilities fileSystemUtilities,
-            IUserAccessRights    userAccessRights,
-
-            Func<EditWithColorsModel> editWithColorsModelFactory,
-
             Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory,
             Func<UploadPictures_DetectColorsModel>       uploadPictures_DetectColorsModelFactory,
             Func<UploadPictures_DetectItemModel>         uploadPictures_DetectItemModelFactory,
@@ -33,12 +26,6 @@ namespace Authink.Web.Controllers
             HttpContextBase httpContextBase
         )
         {
-            this.pictureCommands     = pictureCommands;
-            this.pictureServices     = pictureServices;
-            this.fileSystemUtilities = fileSystemUtilities;
-            this.userAccessRights    = userAccessRights;
-
-            this.editWithColorsModelFactory = editWithColorsModelFactory;
 
             this.uploadPictures_SimpleTasksWithPicturesModelFactory = uploadPictures_SimpleTasksWithPicturesModelFactory;
             this.uploadPictures_DetectColorsModelFactory            = uploadPictures_DetectColorsModelFactory;
@@ -48,12 +35,7 @@ namespace Authink.Web.Controllers
             this.httpContextBase = httpContextBase;
         }
 
-        private readonly IPictureCommands     pictureCommands;
-        private readonly IPictureServices     pictureServices;
         private readonly IFileSystemUtilities fileSystemUtilities;
-        private readonly IUserAccessRights    userAccessRights;
-
-        private readonly Func<EditWithColorsModel> editWithColorsModelFactory;
 
         private readonly Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory;
         private readonly Func<UploadPictures_DetectColorsModel>       uploadPictures_DetectColorsModelFactory;
@@ -62,75 +44,6 @@ namespace Authink.Web.Controllers
 
         private readonly HttpContextBase httpContextBase;
     }
-    public partial class PictureController
-    {
-        [HttpGet]  public ActionResult Edit_withColors(int pictureId)
-        {
-            if (!userAccessRights.CanEditPicture(pictureId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model       = editWithColorsModelFactory();
-            model.PictureId = pictureId;
-
-            model.WrongColorsToEdit = model.Colors
-                                           .Where (color => !color.IsCorrect                )
-                                           .Select(color => new Color(color.Id, color.Value))
-                                           .ToList();
-
-            model.CorrectColorToEdit = model.Colors
-                                            .Where (color => color.IsCorrect                 )
-                                            .Select(color => new Color(color.Id, color.Value))
-                                            .Single();
-            return PartialView
-            (
-                viewName: "_Edit_withColors",
-                model:    model
-            );
-        }
-        [HttpPost] public ActionResult Edit_withColors(EditWithColorsModel model, HttpPostedFileBase picture)
-        {
-            if (httpContextBase.Session["CurrentEditTaskId"] == null)
-            {
-                return RedirectToRoute("Home");
-            }
-
-            if (picture != null && !picture.ContentType.Contains("image"))
-            {
-                return PartialView
-                (
-                    viewName: "_Edit_withColors",
-                    model:    model
-                );
-            }
-            var taskId   = (int)httpContextBase.Session["CurrentEditTaskId"];
-            model.TaskId = taskId;
-
-            if(picture != null)
-            {
-                var pictureContent = fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture);
-
-                if (httpContextBase.Session["CurrentEditTaskId"] == null)
-                {
-                    return RedirectToRoute("Home");
-                }
-
-                var newSavePath = pictureServices.SaveToFileSystem(picture.FileName, pictureContent, taskId, buru.Picture.Task.DefaultSavePath, buru.Picture.Task.DefaultResizeQuerystring);
-                pictureCommands.Update(model.PictureId, newSavePath);
-            }
-
-            foreach (var color in model.WrongColorsToEdit)
-            {
-               pictureCommands.Update_color(color.Id, color.Value);
-            }
-
-            pictureCommands.Update_color(model.CorrectColorToEdit.Id, model.CorrectColorToEdit.Value);
-
-            return RedirectToRoute("Home", new { test = model.Test.Id });
-        }
-    }
-
     public partial class PictureController
     {
         [HttpGet]  public ActionResult UploadPictures_SimpleTasksWithPictures(int taskDifficulty)
