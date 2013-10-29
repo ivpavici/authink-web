@@ -8,11 +8,13 @@
         
             <input type="hidden" value="{{taskPicturesEditorApi.taskId}}" name="taskId"/>
 
-            <img src="{{picture.Url}}" alt="" />
+            <img ng-src="{{picture.Url}}" alt="" />
 
             <span>Upload a new picture</span>
-
-            <input type="file" name="picture" />
+            
+            {{uploadProgress}}
+           
+            <input type="file" ng-file-select="onFileSelect($files)" >
 
         </div>
 

@@ -20,6 +20,8 @@
       <resource path="~/App_Data/Assets/Scripts/lib/angular-route-1.2.0-rc.2.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib-patches/ui-bootstrap-0.6.0.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib-patches/ui-bootstrap-tpls-0.6.0.min.js" />
+      <resource path="~/App_Data/Assets/Scripts/lib/angular-file-upload.min.js" />
+      <resource path="~/App_Data/Assets/Scripts/lib-patches/angular-file-upload-shim.js" />
     </resourceSet>
     
     <resourceSet name="shellJs" type="js">
@@ -27,6 +29,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/testsRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/childrenRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/tasksRepository.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Repositories/picturesRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Services/accountServices.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testsList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testTasksList.js" />
