@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
@@ -71,9 +73,26 @@ namespace Authink.Web.Controllers
 
         public override string GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders headers)
         {
-            var fileName = headers.ContentDisposition.FileName;
+            var uploadedFileName = headers.ContentDisposition.FileName.Replace("\"", string.Empty);
+
+            var fileName = MakeFileNameOnUrlUnique(RootPath, uploadedFileName);
 
             return fileName.Replace("\"", string.Empty);
+        }
+
+        private string MakeFileNameOnUrlUnique(string rootPath, string fileName, int index = 1)
+        {
+            var savePath = rootPath + '/' + fileName;
+
+            if (File.Exists(savePath))
+            {
+                var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(savePath);
+                var fileExtenstion           = Path.GetExtension(savePath);
+
+                return MakeFileNameOnUrlUnique(rootPath, fileNameWithoutExtension + index + fileExtenstion, index + 1);
+            }
+
+            return fileName;
         }
     }
 }

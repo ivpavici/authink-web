@@ -24,7 +24,6 @@ namespace Authink.Web.Controllers
             IUserAccessRights    userAccessRights,
 
             Func<EditWithColorsModel> editWithColorsModelFactory,
-            Func<EditModel>           editModelFactory,
 
             Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory,
             Func<UploadPictures_DetectColorsModel>       uploadPictures_DetectColorsModelFactory,
@@ -40,7 +39,6 @@ namespace Authink.Web.Controllers
             this.userAccessRights    = userAccessRights;
 
             this.editWithColorsModelFactory = editWithColorsModelFactory;
-            this.editModelFactory           = editModelFactory;
 
             this.uploadPictures_SimpleTasksWithPicturesModelFactory = uploadPictures_SimpleTasksWithPicturesModelFactory;
             this.uploadPictures_DetectColorsModelFactory            = uploadPictures_DetectColorsModelFactory;
@@ -56,7 +54,6 @@ namespace Authink.Web.Controllers
         private readonly IUserAccessRights    userAccessRights;
 
         private readonly Func<EditWithColorsModel> editWithColorsModelFactory;
-        private readonly Func<EditModel>           editModelFactory;
 
         private readonly Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory;
         private readonly Func<UploadPictures_DetectColorsModel>       uploadPictures_DetectColorsModelFactory;
@@ -64,57 +61,9 @@ namespace Authink.Web.Controllers
         private readonly Func<UploadPictures_OrderBySizeModel>        uploadPictures_OrderBySizeModelFactory;
 
         private readonly HttpContextBase httpContextBase;
-
-        private static readonly IDictionary<string, string> KnownPictureEditMappings = new Dictionary<string, string>()
-        {
-            { buru.Task.Keys.ContinueSequence, "Picture_Edit_simple" }, { buru.Task.Keys.DetectColors,  "Picture_Edit_withColors"}, { buru.Task.Keys.DetectDifferentItems, "Picture_Edit_simple" },
-            { buru.Task.Keys.OrderBySize,      "Picture_Edit_simple" }, { buru.Task.Keys.PairSameItems, "Picture_Edit_simple"    }, { buru.Task.Keys.VoiceCommands,        "Picture_Edit_simple" }
-        };
     }
     public partial class PictureController
     {
-        [HttpGet] public ActionResult Edit(int taskId, int? pictureId)
-        {
-            if(!Request.IsAjaxRequest() || !userAccessRights.CanEditPicture((int)pictureId) || !userAccessRights.CanEditTask(taskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model    = editModelFactory();
-            model.TaskId = (int)taskId;
-
-            httpContextBase.Session["CurrentEditTaskId"] = taskId;
-
-            return RedirectToRoute
-            (
-                routeName:   KnownPictureEditMappings[model.Task.Type],
-                routeValues: new {pictureId = pictureId}
-            );
-        }
-
-        [HttpPost] public ActionResult Edit_simple(EditSimpleModel model, HttpPostedFileBase picture)
-        {
-            if (!userAccessRights.CanEditTask(model.TaskId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            if(picture==null || !picture.ContentType.Contains("image"))
-            {
-                return RedirectToRoute
-                (
-                    "Shell"
-                );
-            }
-
-            var pictureContent = fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture);
-
-            var newSavePath = pictureServices.SaveToFileSystem(picture.FileName, pictureContent, model.TaskId, buru.Picture.Task.DefaultSavePath, buru.Picture.Task.DefaultResizeQuerystring);
-            pictureCommands.Update(model.PictureId, newSavePath);
-
-            return RedirectToRoute("Shell");
-        }
-
         [HttpGet]  public ActionResult Edit_withColors(int pictureId)
         {
             if (!userAccessRights.CanEditPicture(pictureId))
