@@ -23,7 +23,9 @@ namespace Authink.Web.Controllers
             Func<UploadPictures_DetectItemModel>         uploadPictures_DetectItemModelFactory,
             Func<UploadPictures_OrderBySizeModel>        uploadPictures_OrderBySizeModelFactory,
 
-            HttpContextBase httpContextBase
+            HttpContextBase httpContextBase,
+
+            IFileSystemUtilities fileSystemUtilities
         )
         {
 
@@ -32,7 +34,8 @@ namespace Authink.Web.Controllers
             this.uploadPictures_DetectItemModelFactory              = uploadPictures_DetectItemModelFactory;
             this.uploadPictures_OrderBySizeModelFactory             = uploadPictures_OrderBySizeModelFactory;
 
-            this.httpContextBase = httpContextBase;
+            this.httpContextBase      = httpContextBase;
+            this.fileSystemUtilities = fileSystemUtilities;
         }
 
         private readonly IFileSystemUtilities fileSystemUtilities;
