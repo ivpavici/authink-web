@@ -9,6 +9,8 @@ using Authink.Core.Model.Queries;
 using Authink.Web.Controllers.TasksApi.Models;
 
 using ent = Authink.Core.Domain.Entities;
+using Authink.Core.Model.Services;
+using System;
 
 namespace Authink.Web.Controllers
 {
@@ -16,30 +18,48 @@ namespace Authink.Web.Controllers
     {
         public TasksApiController
         (
-            ITaskQueries  taskQueries,
-            ITaskCommands taskCommands
+            ITaskQueries      taskQueries,
+            ITaskCommands     taskCommands,
+            IUserAccessRights userAccessRights
         )
         {
-            this.taskQueries  = taskQueries;
-            this.taskCommands = taskCommands;
+            this.taskQueries      = taskQueries;
+            this.taskCommands     = taskCommands;
+            this.userAccessRights = userAccessRights;
         }
 
-        private readonly ITaskQueries  taskQueries;
-        private readonly ITaskCommands taskCommands;
+        private readonly ITaskQueries      taskQueries;
+        private readonly ITaskCommands     taskCommands;
+        private readonly IUserAccessRights userAccessRights;
 
         public ent::Task.LongDetails GetSingle_whereId(int taskId)
         {
+            if (!userAccessRights.CanReadTask(taskId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return taskQueries.GetSingle_longDetails_whereId(taskId);
         }
 
         public IEnumerable<ent::Task.ShortDetails> GetAll_shortDetails_whereTestId(int testId)
         {
+            if (!userAccessRights.CanReadTest(testId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return taskQueries.GetAll_shortDetails_whereTestId(testId).ToList();
         }
 
         [System.Web.Http.HttpPost]
         public HttpStatusCodeResult Update(EditTaskModel model)
         {
+            if (!userAccessRights.CanEditTask(model.Id))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             taskCommands.Update
             (
                 id:          model.Id,

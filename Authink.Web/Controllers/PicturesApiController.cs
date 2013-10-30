@@ -66,7 +66,7 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var savePath           = HttpContext.Current.Server.MapPath("~/" + buru::Picture.Children.DefaultSavePath + taskId);
+            var savePath           = HttpContext.Current.Server.MapPath("~/" + buru::Picture.Task.DefaultSavePath + taskId);
             var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
 
 
@@ -76,7 +76,7 @@ namespace Authink.Web.Controllers
             {
                 var newPictureSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\","/");
 
-                pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Children.DefaultResizeQuerystring);
+                pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Task.DefaultResizeQuerystring);
 
                 pictureCommands.Update(pictureId, newPictureSavePath);
             }
