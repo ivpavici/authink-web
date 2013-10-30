@@ -6,19 +6,29 @@ authink.factory('picturesRepository', ['$http', '$resource', function ($http, $r
 
         apiUrls: {
 
-            insertPictureForUpdate: '/api/pictures/update/',
-            getAll_forTaskGameplay: '/api/task/:taskId/pictures',
-            updateColorsForPicture: '/api/colors/update'
+            task_insertPictureForUpdate:     '/api/pictures/update/',
+            children_insertPictureForUpdate: '/api/children/picture/',
+            getAll_forTaskGameplay:          '/api/task/:taskId/pictures',
+            updateColorsForPicture:          '/api/colors/update'
         }
     };
 
     return {
 
-        insertPictureForUpdate: function (file, model) {
+        task_insertPictureForUpdate: function (file, model) {
 
             return $http.uploadFile({
                 
-                url:  config.apiUrls.insertPictureForUpdate + model.pictureId +'/'+model.taskId,
+                url:  config.apiUrls.task_insertPictureForUpdate + model.pictureId + '/' + model.taskId,
+                file: file,
+            });
+        },
+
+        children_insertPictureForUpdate: function (file, model) {
+
+            return $http.uploadFile({
+                
+                url:  config.apiUrls.children_insertPictureForUpdate + model.childId,
                 file: file,
             });
         },

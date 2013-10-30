@@ -52,7 +52,7 @@ authink.directive('taskPicturesEditor', function () {
 
                 angular.forEach($files, function(file) {
 
-                    picturesRepository.insertPictureForUpdate(file, { pictureId: $scope.taskPicturesEditorApi.picture.Id, taskId: $scope.taskPicturesEditorApi.taskId })
+                    picturesRepository.task_insertPictureForUpdate(file, { pictureId: $scope.taskPicturesEditorApi.picture.Id, taskId: $scope.taskPicturesEditorApi.taskId })
                     .progress(function(evt) {
 
                         $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);

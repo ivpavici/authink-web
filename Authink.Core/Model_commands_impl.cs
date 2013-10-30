@@ -43,7 +43,7 @@ namespace Authink.Core.Model.Commands.Impl
 
         private readonly ILoginServices loginServices;
 
-        public int Create      (string firstname, string lastname                                   )
+        public int Create      (string firstname, string lastname       )
         {
             using (var db=new database::AuthinkDataModel())
             {
@@ -66,7 +66,7 @@ namespace Authink.Core.Model.Commands.Impl
                 return child.Id;
             }
         }
-        public void Update      (int id, string firstname, string lastname, string profilePictureUrl )
+        public void Update      (int id, string firstname, string lastname)
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -74,7 +74,6 @@ namespace Authink.Core.Model.Commands.Impl
 
                 dbChild.FirstName         = firstname;
                 dbChild.LastName          = lastname;
-                dbChild.ProfilePictureUrl = profilePictureUrl;
 
                 db.SaveChanges();
             }
@@ -86,6 +85,17 @@ namespace Authink.Core.Model.Commands.Impl
                 var dbChild = db.Children.Single(child => child.Id == id);
 
                 dbChild.IsHidden = true;
+                db.SaveChanges();
+            }
+        }
+        public void UpdatePicture(int id, string profilePictureUrl)
+        {
+            using (var db = new database::AuthinkDataModel())
+            {
+                var dbChild = db.Children.Single(child => child.Id == id);
+
+                dbChild.ProfilePictureUrl = profilePictureUrl;
+
                 db.SaveChanges();
             }
         }

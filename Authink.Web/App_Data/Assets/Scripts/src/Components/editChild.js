@@ -7,7 +7,7 @@ authink.directive('editChild', function () {
         restrict: 'E',
         templateUrl: '/Assets/Templates/Components/EditChild.html',
 
-        controller: ['$scope', 'childrenRepository', 'editChildApi', function ($scope, childrenRepository, editChildApi) {
+        controller: ['$scope', 'childrenRepository', 'editChildApi', 'picturesRepository', function ($scope, childrenRepository, editChildApi, picturesRepository) {
 
             $scope.editChildApi = editChildApi;
             
@@ -25,9 +25,30 @@ authink.directive('editChild', function () {
                 }
             });
 
+            $scope.onFileSelect = function ($files) {
+
+                angular.forEach($files, function (file) {
+
+                    picturesRepository.children_insertPictureForUpdate(file, { childId: $scope.child.id })
+                    .progress(function (evt) {
+
+                        $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+                        $scope.$apply();
+                    })
+                    .success(function (data) {
+
+                        $scope.child.profilePictureUrl = data.pictureUrl;
+                        $scope.$apply();
+
+                        $scope.$emit('editChild:pictureUpdated', $scope.child.id);
+                    });
+                });
+                
+            }
+
             $scope.editChild = function () {
 
-                var child = {childId: $scope.child.id, firstName: $scope.child.firstName, lastName: $scope.child.lastName, profilePictureUrl:$scope.child.profilePictureUrl };
+                var child = {childId: $scope.child.id, firstName: $scope.child.firstName, lastName: $scope.child.lastName};
 
                 var promise = childrenRepository.edit(child);
                 promise.then(function (response) {

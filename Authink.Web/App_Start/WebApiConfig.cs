@@ -17,10 +17,11 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("TestsApi_Edit", "api/tests/edit",                                           new { controller = "TestsApi", action = "Edit"                             });
             config.Routes.MapHttpRoute("TestsApi_Delete", "api/tests/delete/{testId}",                              new { controller = "TestsApi", action = "Delete"                           });
             config.Routes.MapHttpRoute("TestsApi_GetOne_longDetails", "api/tests/{testId}",                         new { controller = "TestsApi", action = "GetOne_longDetails"               });
-            
-            config.Routes.MapHttpRoute("PicturesApi_InsertPictureForUpdate", "api/pictures/update/{pictureId}/{taskId}", new { controller = "PicturesApi", action = "InsertPictureForUpdate" });
-            config.Routes.MapHttpRoute("PicturesApi_GetAll_forTaskGameplay", "api/task/{taskId}/pictures",               new { controller = "PicturesApi", action = "GetAll_forTaskGameplay" });
-            config.Routes.MapHttpRoute("PicturesApi_UpdateColorsForPicture", "api/colors/update",                        new { controller = "PicturesApi", action = "UpdateColorsForPicture" });
+
+            config.Routes.MapHttpRoute("PicturesApi_Tasks_InsertPictureForUpdate", "api/pictures/update/{pictureId}/{taskId}", new { controller = "PicturesApi", action = "Tasks_InsertPictureForUpdate"    });
+            config.Routes.MapHttpRoute("PicturesApi_Children_InsertPictureForUpdate", "api/children/picture/{childId}",        new { controller = "PicturesApi", action = "Children_InsertPictureForUpdate" });
+            config.Routes.MapHttpRoute("PicturesApi_GetAll_forTaskGameplay", "api/task/{taskId}/pictures",                     new { controller = "PicturesApi", action = "GetAll_forTaskGameplay"          });
+            config.Routes.MapHttpRoute("PicturesApi_UpdateColorsForPicture", "api/colors/update",                              new { controller = "PicturesApi", action = "UpdateColorsForPicture"          });
 
             config.Routes.MapHttpRoute("TasksApi_GetSingle_whereId", "api/tasks/{taskId}", new { controller = "TasksApi", action = "GetSingle_whereId" });
             config.Routes.MapHttpRoute("TasksApi_GetAll_shortDetails_whereTestId", "api/test/{testId}/tasks", new { controller = "TasksApi", action = "GetAll_shortDetails_whereTestId" });

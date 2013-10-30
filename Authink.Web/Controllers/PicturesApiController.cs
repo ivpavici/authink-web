@@ -6,11 +6,15 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Linq;
+
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
 using Authink.Web.Controllers.PicturesApi.Models;
-using ent = Authink.Core.Domain.Entities;
+
+using buru = Authink.Core.Domain.Rules;
+using ent  = Authink.Core.Domain.Entities;
 
 using System.Threading.Tasks;
 
@@ -20,19 +24,28 @@ namespace Authink.Web.Controllers
     {
         public PicturesApiController
         (
-            IUserAccessRights userAccessRights,
-            IPictureCommands  pictureCommands,
-            IPictureQueries   pictureQueries
+            IUserAccessRights    userAccessRights,
+            IFileSystemUtilities fileSystemUtilities,
+            IPictureCommands     pictureCommands,
+            IPictureQueries      pictureQueries,
+            IPictureServices     pictureServices,
+            IChildCommands       childrenCommands
         )
         {
-            this.userAccessRights = userAccessRights;
-            this.pictureCommands  = pictureCommands;
-            this.pictureQueries   = pictureQueries;
+            this.userAccessRights    = userAccessRights;
+            this.fileSystemUtilities = fileSystemUtilities;
+            this.pictureCommands     = pictureCommands;
+            this.pictureQueries      = pictureQueries;
+            this.pictureServices     = pictureServices;
+            this.childrenCommands    = childrenCommands;
         }
 
-        private readonly IUserAccessRights userAccessRights;
-        private readonly IPictureCommands  pictureCommands;
-        private readonly IPictureQueries   pictureQueries;
+        private readonly IUserAccessRights    userAccessRights;
+        private readonly IFileSystemUtilities fileSystemUtilities;
+        private readonly IPictureCommands     pictureCommands;
+        private readonly IPictureQueries      pictureQueries;
+        private readonly IPictureServices     pictureServices;
+        private readonly IChildCommands       childrenCommands;
 
         [System.Web.Http.HttpGet]
         public IEnumerable<ent::Picture> GetAll_forTaskGameplay(int taskId)
@@ -46,14 +59,14 @@ namespace Authink.Web.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public async Task<ent::Picture> InsertPictureForUpdate(int pictureId, int taskId)
+        public async Task<ent::Picture> Tasks_InsertPictureForUpdate(int pictureId, int taskId)
         {
             if (!userAccessRights.CanEditTask(taskId))
             {
                 throw new UnauthorizedAccessException();
             }
 
-            var savePath           = HttpContext.Current.Server.MapPath("~/Content/Images/Tasks/" + taskId);
+            var savePath           = HttpContext.Current.Server.MapPath("~/" + buru::Picture.Children.DefaultSavePath + taskId);
             var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
 
 
@@ -63,12 +76,40 @@ namespace Authink.Web.Controllers
             {
                 var newPictureSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\","/");
 
+                pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Children.DefaultResizeQuerystring);
+
                 pictureCommands.Update(pictureId, newPictureSavePath);
             }
 
             return pictureQueries.GetSingle_whereId(pictureId);
         }
 
+        [System.Web.Http.HttpPost]
+        public async Task<object> Children_InsertPictureForUpdate(int childId)
+        {
+            if (!userAccessRights.CanEditChild(childId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            var childrenPicturesRoot = HttpContext.Current.Server.MapPath("~/"+ buru::Picture.Children.DefaultSavePath);
+
+            fileSystemUtilities.CreateFolderForPictureIfNecessary(childId, buru::Picture.Children.DefaultSavePath);
+
+            var savePath             = childrenPicturesRoot + childId;
+            var dataStreamProvider   = new MyMultipartFormDataStreamProvider(savePath);
+            
+            await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
+
+            var file               = dataStreamProvider.FileData.First();
+            var newPictureSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\", "/");
+
+            pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Children.DefaultResizeQuerystring);
+            
+            childrenCommands.UpdatePicture(childId, newPictureSavePath);
+
+            return new{ pictureUrl =  newPictureSavePath};
+        }
         [System.Web.Http.HttpPost]
         public HttpStatusCodeResult UpdateColorsForPicture(UpdateColorsForPictureModel model)
         {

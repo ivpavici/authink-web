@@ -85,6 +85,11 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.testListApi.loadTests(childId);
     });
+    $rootScope.$on('editChild:pictureUpdated', function (event, childId) {
+
+        application.childMenuApi.setDisplayedChild(childId);
+    });
+
     $rootScope.$on('childSelected', function (event, childId) {
 
         application.childMenuApi.setDisplayedChild(childId);
