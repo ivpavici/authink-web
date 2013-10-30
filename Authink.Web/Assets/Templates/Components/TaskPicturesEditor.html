@@ -2,8 +2,6 @@
     
         <div class="task-picture-image">
         
-            <input type="hidden" value="{{taskPicturesEditorApi.taskId}}" name="taskId"/>
-
             <img ng-src="{{picture.Url}}" alt="" />
 
             <span>Upload a new picture</span>
@@ -16,36 +14,49 @@
 
         <div class="task-edit-options">
         
-            <input type="submit" value="Save" class="task-edit-save" />
+            <input type="submit" value="Back" class="task-edit-save" ng-click="closeModel()" />
 
         </div>
     
 </div>
 
-<div ng-if="isDetectColorsEdit()">
-    
-    <img ng-src="{{picture.Url}}" alt="Task picture"/>
-    
-    <input type="file" ng-file-select="onFileSelect($files)"/>
-    
+<div class="task-picture-container" ng-if="isDetectColorsEdit()" >
+
+    <div class="task-picture-image">
+
+        <img ng-src="{{picture.Url}}" alt="" />
+
+        <span>Upload a new picture</span>
+
+        {{uploadProgress}}
+
+        <input type="file" ng-file-select="onFileSelect($files)">
+
+    </div>
+
     <div>
         <label>Correct color</label>
 
-        <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder"/> 
+        <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single" />
 
     </div>
-    
+
     <div>
         <label>Wrong colors</label>
-        
+
         <div ng-repeat="wrongColor in picture.WrongColors">
-            
-            <input type='color' name='color' class="colorPickerHolder" ng-model="wrongColor.Value"/> 
+
+            <input type='color' name='color' class="colorPickerHolder task-edit-picture-colors-single" ng-model="wrongColor.Value" />
 
         </div>
 
     </div>
-    <input type="submit" value="Save" ng-click="editWithColors()"/>
+
+    <div class="task-edit-options">
+
+        <input type="submit" value="Save" class="task-edit-save" ng-click="editWithColors()" />
+
+    </div>
 
 </div>
 

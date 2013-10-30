@@ -16,7 +16,7 @@
         <div id="children-edit-form">
             <div>
             
-                <input class="clearfix" type="file" name="picture"/><br /><br />
+                {{uploadProgress}}<input class="clearfix" type="file" ng-file-select="onFileSelect($files)"><br /><br />
 
                 <label class="child-info-field-label">First name</label>
 

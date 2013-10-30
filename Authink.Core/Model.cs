@@ -70,8 +70,9 @@ namespace Authink.Core.Model.Commands
     public interface IChildCommands
     {
         int  Create(string firstname, string lastname                                  );
-        void Update(int id, string firstname, string lastname, string profilePictureUrl);
+        void Update(int id, string firstname, string lastname);
         void Delete(int id);
+        void UpdatePicture(int id, string profilePictureUrl);
     }
     public interface ITaskCommands
     {
@@ -122,11 +123,13 @@ namespace Authink.Core.Model.Services
     {
         byte[] Transform_HttpPostedFileBase_Into_Bytes   (HttpPostedFileBase file                               );
         string Build_SavePath_And_CreateFolderIfNecessary(int relatedId, string defaultSavePath, string fileName);
+        void CreateFolderForPictureIfNecessary(int relatedId, string defaultSavePath);
     }
     public interface IPictureServices
     {
         string SaveToFileSystem(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString);
         void   SaveToFileSystem(byte[] pictureContent, string savePath, string resizeQueryString);
+        void ResizePicture(string pictureUrl, string resizeQuerystring);
     }
     public interface ISoundServices
     {

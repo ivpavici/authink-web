@@ -17,6 +17,15 @@ authink.directive('taskPreview', function() {
 
                 $scope.task = task;
             });
+
+            $scope.editTask = function () {
+
+                var component = '<edit-task> </edit-task>';
+
+                $scope.$emit('openModal', component);
+
+                $scope.$emit('taskEditStarted', $scope.task.Id);
+            };
         }]
     };
 });

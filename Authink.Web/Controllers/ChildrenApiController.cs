@@ -59,28 +59,12 @@ namespace Authink.Web.Controllers
         [HttpPost]
         public void Edit(EditModel model)
         {
-            //if (picture != null)
-            //{
-            //    var pictureContent = fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture);
-            //    var newProfilePictureUrl = pictureServices.SaveToFileSystem(picture.FileName, pictureContent, model.Child.Id, buru::Picture.Children.DefaultSavePath, buru::Picture.Children.DefaultResizeQuerystring);
-            //    childCommands.Update
-            //    (
-            //        id: model.ChildId,
-            //        firstname: model.Firstname,
-            //        lastname: model.Lastname,
-            //        profilePictureUrl: newProfilePictureUrl
-            //    );
-            //}
-            //else
-            //{
-                childCommands.Update
-                (
-                    id:                model.ChildId,
-                    firstname:         model.Firstname,
-                    lastname:          model.Lastname,
-                    profilePictureUrl: model.ProfilePictureUrl
-                );
-            //}
+            childCommands.Update
+            (
+                id:                model.ChildId,
+                firstname:         model.Firstname,
+                lastname:          model.Lastname
+            );
         }
     }
 }
