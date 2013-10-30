@@ -85,6 +85,11 @@ authink.directive('taskPicturesEditor', function () {
                         }
                 });
             };
+
+            $scope.closeModel = function(){
+
+                $scope.$emit('closeModal');
+            }
         }]
     };
 });
