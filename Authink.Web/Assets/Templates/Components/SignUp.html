@@ -4,6 +4,7 @@
         
         <h1>Login</h1>
 
+        <span>{{loginErrorMessage}}</span>
         <div>
             <input type="text" class="login-form-field" ng-model="username" placeholder="username" required />
         </div>
@@ -33,6 +34,9 @@
         
         <h1>Signup</h1>
         <form ng-submit="signUp()">
+
+            <span>{{signUpErrorMessage}}</span>
+
             <div>
                 <input type="text" ng-model="user.firstname" placeholder = "first name" class="login-form-field" required />
             </div>

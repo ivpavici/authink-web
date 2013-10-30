@@ -5,6 +5,7 @@ using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
 using Authink.Web.Controllers.ChildrenApi.Model;
 using ent = Authink.Core.Domain.Entities;
+using System;
 
 namespace Authink.Web.Controllers
 {
@@ -16,7 +17,8 @@ namespace Authink.Web.Controllers
             IChildQueries        childQueries,
             IChildCommands       childCommands,
             IFileSystemUtilities fileSystemUtilities,
-            IPictureServices     pictureServices
+            IPictureServices     pictureServices,
+            IUserAccessRights    userAccessRights
         )
         {
             this.loginServices       = loginServices;
@@ -24,6 +26,7 @@ namespace Authink.Web.Controllers
             this.childCommands       = childCommands;
             this.fileSystemUtilities = fileSystemUtilities;
             this.pictureServices     = pictureServices;
+            this.userAccessRights    = userAccessRights;
         }
 
         private readonly ILoginServices       loginServices;
@@ -31,6 +34,7 @@ namespace Authink.Web.Controllers
         private readonly IChildCommands       childCommands;
         private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly IPictureServices     pictureServices;
+        private readonly IUserAccessRights    userAccessRights;
         
         [HttpGet]
         public IEnumerable<ent::Child.ShortDetails> GetAllForUser_shortDetails()
@@ -41,12 +45,22 @@ namespace Authink.Web.Controllers
         [HttpGet]
         public ent::Child.ShortDetails GetOne_shortDetails(int childId)
         {
+            if(!userAccessRights.CanReadChild(childId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return childQueries.GetSingle_whereId(childId);
         }
 
         [HttpPost]
         public object Create(CreateModel model)
         {
+            if (loginServices.GetSignedInUser() == null)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             var childId = childCommands.Create
             (
                 firstname: model.FirstName,
@@ -59,6 +73,11 @@ namespace Authink.Web.Controllers
         [HttpPost]
         public void Edit(EditModel model)
         {
+            if (!userAccessRights.CanEditChild(model.ChildId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             childCommands.Update
             (
                 id:                model.ChildId,

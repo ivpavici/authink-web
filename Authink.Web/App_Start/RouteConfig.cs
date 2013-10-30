@@ -9,8 +9,8 @@ namespace Authink.Web.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Shell", "", new {controller = "Shell", action = "Shell"});
-            routes.MapRoute("Login", "login", new { controller = "Shell", action = "Shell" });
+            routes.MapRoute("Shell", "",      new { controller = "Shell", action = "Shell"});
+            routes.MapRoute("Login", "login", new { controller = "Shell", action = "Login" });
 
             routes.MapRoute("GetStatisticsForTask", "ajax/statistics/task/{taskId}", new { controller = "Statistics", action = "GetForTask", taskId = UrlParameter.Optional });
             

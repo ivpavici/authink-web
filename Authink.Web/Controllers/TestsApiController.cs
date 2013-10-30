@@ -5,6 +5,7 @@ using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
 using Authink.Web.Controllers.TestsApi.Model;
 using ent = Authink.Core.Domain.Entities;
+using System;
 
 namespace Authink.Web.Controllers
 {
@@ -12,35 +13,53 @@ namespace Authink.Web.Controllers
     {
         public TestsApiController
         (
-            ITestQueries   testQueries,
-            ITestCommands  testCommands,
-            ILoginServices loginServices
+            ITestQueries      testQueries,
+            ITestCommands     testCommands,
+            ILoginServices    loginServices,
+            IUserAccessRights userAccessRights
         )
         {
-            this.testQueries   = testQueries;
-            this.testCommands  = testCommands;
-            this.loginServices = loginServices;
+            this.testQueries      = testQueries;
+            this.testCommands     = testCommands;
+            this.loginServices    = loginServices;
+            this.userAccessRights = userAccessRights;
         }
 
-        private readonly ITestQueries   testQueries;
-        private readonly ITestCommands  testCommands;
-        private readonly ILoginServices loginServices;
+        private readonly ITestQueries      testQueries;
+        private readonly ITestCommands     testCommands;
+        private readonly ILoginServices    loginServices;
+        private readonly IUserAccessRights userAccessRights;
 
         [HttpGet]
         public IEnumerable<ent::Test.ShortDetails> GetAllTestsForChild_shortDetails(int childId)
         {
+            if (!userAccessRights.CanEditChild(childId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return testQueries.GetAll_forChild(false, childId);
         }
 
         [HttpGet]
         public ent::Test.LongDetails GetOne_longDetails(int testId)
         {
+            if (!userAccessRights.CanReadTest(testId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return testQueries.GetSingle_LongDetails_WhereId(testId);
         }
 
         [HttpPost]
         public object Create(CreateModel model)
         {
+            if (!userAccessRights.CanCreateTest(model.ChildId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             var testId = testCommands.Create
             (
                 name:             model.Name,
@@ -56,6 +75,11 @@ namespace Authink.Web.Controllers
         [HttpPost]
         public void Edit(UpdateModel model)
         {
+            if (!userAccessRights.CanEditTest(model.Id))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             testCommands.Update
             (
                 id:               model.Id,
@@ -68,6 +92,11 @@ namespace Authink.Web.Controllers
         [HttpDelete]
         public void Delete(int testId)
         {
+            if (!userAccessRights.CanEditTest(testId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             testCommands.Delete(testId);
         }
     }

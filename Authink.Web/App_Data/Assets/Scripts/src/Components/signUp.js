@@ -16,17 +16,18 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
                 var response = accountServices.login(user);
                 response.then(function(responseData) {
                     
-                    if (responseData.isSuccessful) {
+                    if (responseData.StatusCode === 200) {
 
                         $location.path('/');
                     } else {
                         
-                        //dodat error message
+                        $scope.loginErrorMessage = "Invalid login or password.";
                     }
                 });
             };
             
             $scope.signUp = function () {
+
                 var user = {
                     
                     firstname: $scope.user.firstname,
@@ -39,12 +40,12 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
                 var response = accountServices.signUp(user);
                 response.then(function (responseData) {
 
-                    if (responseData.isSuccessful) {
+                    if (responseData.StatusCode === 200) {
 
                         $scope.isSignUp = false;
                     } else {
 
-                        //dodat error message
+                        $scope.signUpErrorMessage = "Username or email are already in use. Please choose another one.";
                     }
                 });
             };

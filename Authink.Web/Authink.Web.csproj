@@ -415,7 +415,7 @@
     <Content Include="Views\Statistics\_GetForTask.cshtml" />
     <Content Include="Views\Sound\_Create.cshtml" />
     <Content Include="Views\Sound\_Edit.cshtml" />
-    <Content Include="Views\Shell\Shell.cshtml" />
+    <Content Include="Views\Shared\Shell.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
