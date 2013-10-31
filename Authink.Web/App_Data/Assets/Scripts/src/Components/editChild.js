@@ -38,22 +38,22 @@ authink.directive('editChild', function () {
                     .success(function (data) {
 
                         $scope.child.profilePictureUrl = data.pictureUrl;
-                        $scope.$apply();
 
                         $scope.$emit('editChild:pictureUpdated', $scope.child.id);
+
+                        $scope.$apply();
                     });
                 });
-                
             }
 
             $scope.editChild = function () {
 
                 var child = {childId: $scope.child.id, firstName: $scope.child.firstName, lastName: $scope.child.lastName};
 
-                var promise = childrenRepository.edit(child);
-                promise.then(function (response) {
+                childrenRepository.edit(child)
+                .then(function (response) {
 
-                    $scope.$emit('childEditEnded', response.childId);
+                    $scope.$emit('editChild:childEditEnded', response.childId);
                     
                     $scope.$emit('closeModal');
                 });

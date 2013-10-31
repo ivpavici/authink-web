@@ -2,15 +2,15 @@
     
     <div id="child-menu-info" class="clearfix">
         
-        <img id="child-menu-info-image" ng-src={{displayedChild.ProfilePictureUrl}} alt="" />
+        <img id="child-menu-info-image" ng-src={{childMenuApi.displayedChild.ProfilePictureUrl}} alt="" />
 
         <div id="child-menu-info-menu">
             
-            <a id="child-menu-info-menu-child-name">{{displayedChild.Firstname}} {{displayedChild.Lastname}}</a>
+            <a id="child-menu-info-menu-child-name">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
 
             <ul>
-                <li class="child-menu-select" ng-repeat="child in children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == displayedChild.Id}">
-              
+                <li class="child-menu-select" ng-repeat="child in childMenuApi.children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == childMenuApi.displayedChild.Id}">
+
                     <span>{{child.Firstname}} {{child.Lastname}}</span>
 
                 </li>

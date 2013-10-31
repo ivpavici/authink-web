@@ -53,7 +53,7 @@ namespace Authink.Web.Controllers
         }
 
         [HttpPost]
-        public object Create(CreateModel model)
+        public ent::Test.ShortDetails Create(CreateModel model)
         {
             if (!userAccessRights.CanCreateTest(model.ChildId))
             {
@@ -69,7 +69,7 @@ namespace Authink.Web.Controllers
                 childId:          model.ChildId
             );
 
-            return new {testId};
+            return testQueries.GetSingle_ShortDetails_WhereId(testId);
         }
 
         [HttpPost]

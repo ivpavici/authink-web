@@ -78,7 +78,7 @@ authink.directive('editTaskPicturesList', function () {
                 
                 $scope.$emit('openModal', component);
 
-                $scope.$emit('taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
+                $scope.$emit('editTaskPicturesList:taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
             };
         }]
     };

@@ -16,13 +16,13 @@ authink.directive('createTest', function () {
                 var test = { name: $scope.test.name, shortDescription: $scope.test.shortDescription, longDescription: $scope.test.longDescription, childId: $scope.createTestApi.childId };
 
                 var promise = testsRepository.create(test);
-                promise.then(function (response) {
+                promise.then(function (newTest) {
 
-                    if (response.testId) {
+                    if (newTest) {
                         
-                        $scope.$emit('testListChanged', $scope.createTestApi.childId);
+                        $scope.$emit('testsList:testCreated', newTest);
                         
-                        $scope.$emit('testSelected', response.testId);
+                        $scope.$emit('testsList:testSelected', newTest.Id);
                         
                         $scope.$emit('closeModal');
                     }

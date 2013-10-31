@@ -69,7 +69,6 @@ namespace Authink.Web.Controllers
             var savePath           = HttpContext.Current.Server.MapPath("~/" + buru::Picture.Task.DefaultSavePath + taskId);
             var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
 
-
             await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
 
             foreach (var file in dataStreamProvider.FileData)

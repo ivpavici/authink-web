@@ -33,7 +33,7 @@ authink.directive('editTest', function() {
                 testsRepository.edit($scope.test)
                 .then(function (response) {
 
-                  $scope.$emit('testEditEnded');
+                  $scope.$emit('editTest:testEditEnded');
                 });
             };
 
@@ -42,7 +42,7 @@ authink.directive('editTest', function() {
                 testsRepository.remove($scope.test.Id)
                 .then(function (response) {
 
-                    $scope.$emit('testDeleted');
+                    $scope.$emit('editTest:testDeleted');
                 });
             };
         }]

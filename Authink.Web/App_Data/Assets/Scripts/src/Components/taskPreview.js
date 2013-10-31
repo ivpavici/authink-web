@@ -24,7 +24,7 @@ authink.directive('taskPreview', function() {
 
                 $scope.$emit('openModal', component);
 
-                $scope.$emit('taskEditStarted', $scope.task.Id);
+                $scope.$emit('testTasksList:taskEditStarted', $scope.task.Id);
             };
         }]
     };
