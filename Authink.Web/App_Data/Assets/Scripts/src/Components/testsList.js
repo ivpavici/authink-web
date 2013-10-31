@@ -74,6 +74,11 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
             this.tests.push(test);
 
             this.displayedTest = test;
+        },
+
+        removeDisplayedTest: function(){
+
+            this.displayedTest = null;
         }
     };
 }]);
