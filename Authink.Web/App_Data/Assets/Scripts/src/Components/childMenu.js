@@ -71,7 +71,7 @@ authink.directive('childMenu', function () {
                 
                 var component = '<edit-child> </edit-child>';
 
-                $scope.$emit('childMenu:childEditStarted', $scope.displayedChild.Id);
+                $scope.$emit('childMenu:childEditStarted', $scope.childMenuApi.displayedChild.Id);
                 
                 $scope.$emit('openModal', component);
             };
@@ -95,7 +95,7 @@ authink.factory('childMenuApi', function () {
         
         setDisplayedChild: function (childId) {
             
-            this.childId = childId;
+            this.childId = new Number(childId);
         },
 
         addNewChild: function (child) {
