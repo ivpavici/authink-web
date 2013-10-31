@@ -80,6 +80,8 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         
         application.testListApi.setChildId(childId);
 
+        application.testListApi.removeDisplayedTest();
+
         application.testPreviewApi.reset();
     });
     $rootScope.$on('childMenu:childEditStarted', function (event, childId) {
