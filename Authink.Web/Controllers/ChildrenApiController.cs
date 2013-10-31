@@ -54,7 +54,7 @@ namespace Authink.Web.Controllers
         }
 
         [HttpPost]
-        public object Create(CreateModel model)
+        public ent::Child.ShortDetails Create(CreateModel model)
         {
             if (loginServices.GetSignedInUser() == null)
             {
@@ -67,7 +67,7 @@ namespace Authink.Web.Controllers
                 lastname:  model.LastName
             );
 
-            return new {childId};
+            return childQueries.GetSingle_whereId(childId);
         }
 
         [HttpPost]

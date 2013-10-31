@@ -7,37 +7,57 @@ authink.directive('testPreview', function () {
         restrict:    'E',
         templateUrl: '/Assets/Templates/Components/TestPreview.html',
         
-        controller: ['$scope', 'testPreviewApi', function ($scope, testPreviewApi) {
+        controller: ['$scope', 'testPreviewApi', 'testsRepository', function ($scope, testPreviewApi, testsRepository) {
 
-            $scope.api = testPreviewApi;
+            $scope.testPreviewApi = testPreviewApi;
 
-            $scope.$watch('api.test', function(test) {
+            $scope.$watch('testPreviewApi.testId', function (testId) {
 
-                $scope.test = test;
+                if (testId){
+
+                    $scope.isLoading = true;
+
+                    testsRepository.getOne_longDetails(testId).then(function (test) {
+
+                        $scope.test      = test;
+                        $scope.isLoading = false;
+                    });
+                }
+            });
+
+            $scope.$watch('testPreviewApi.needReset', function (needReset) {
+               
+                if(needReset){
+
+                    $scope.test = null;
+
+                    $scope.testPreviewApi.needReset = false;
+                 }
             });
 
             $scope.editTest = function() {
 
-                $scope.$emit('testEditStarted', $scope.test);
+                $scope.$emit('testPreview:testEditStarted', $scope.test);
             };
         }]
     };
 });
 
-authink.factory('testPreviewApi', ['testsRepository', function (testsRepository) {
+authink.factory('testPreviewApi', function () {
 
     return {
 
-        test: null,
+        testId:    null,
+        needReset: false,
 
         setActiveTest: function (testId) {
 
-            this.test = testsRepository.getOne_longDetails(testId);;
+            this.testId = testId;
         },
         
         reset: function() {
 
-            this.test = null;
+            this.needReset = true;
         }
     };
-}]);
+});

@@ -19,7 +19,7 @@ authink.directive('editTask', function() {
                     tasksRepository.getSingle_whereId(taskId)
                     .then(function (task) {
 
-                        $scope.$emit('taskForEditLoaded', task);
+                        $scope.$emit('editTask:taskForEditLoaded', task);
                         
                         $scope.task = task;
                     });
@@ -33,7 +33,7 @@ authink.directive('editTask', function() {
 
                     if(response.StatusCode === 200) {
 
-                        $scope.$emit('taskEditEnded');
+                        $scope.$emit('editTask:taskEditEnded');
                         
                         $scope.$emit('closeModal');
                     } else {

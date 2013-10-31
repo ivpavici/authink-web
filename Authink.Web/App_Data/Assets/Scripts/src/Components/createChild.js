@@ -13,15 +13,14 @@ authink.directive('createChild', function() {
                 
                 var child = { firstName: $scope.child.firstName, lastName: $scope.child.lastName };
 
-                var promise = childrenRepository.create(child);
-                promise.then(function(response) {
+                childrenRepository.create(child)
+                .then(function (newChild) {
 
-                    if(response.childId) {
+                    $scope.$emit('createChild:childCreated', newChild);
 
-                        $scope.$emit('childSelected', response.childId);
+                    $scope.$emit('childMenu:childSelected', newChild.Id);
 
-                        $scope.$emit('closeModal');
-                    }
+                    $scope.$emit('closeModal');
                 });
             };
         }]

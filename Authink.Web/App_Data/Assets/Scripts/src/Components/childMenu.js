@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (childrenRepository, childMenuApi) {
+authink.directive('childMenu', function () {
 
     return {
 
@@ -8,45 +8,56 @@ authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (
         templateUrl: '/Assets/Templates/Components/ChildMenu.html',
         scope:       {},
         
-        controller: ['$scope', function ($scope) {
+        controller: ['$scope', 'childMenuApi', 'childrenRepository', function ($scope, childMenuApi, childrenRepository) {
 
             $scope.childMenuApi = childMenuApi;
-            
-            $scope.childMenuApi.loadChildren();
-            
-            $scope.childMenuApi.children.then(function (children) {
 
-                if (children.length > 0) {
-                    
-                    $scope.childMenuApi.setDisplayedChild(children[0].Id);
+            $scope.$watch('childMenuApi.needLoad', function (needLoad) {
 
-                    $scope.$emit('childSelected', children[0].Id);
-                } else {
-                    
-                    var component = '<create-child> </create-child>';
+                if(needLoad){
 
-                    $scope.$emit('openModal', component, 'static');
+                    childrenRepository.getAllForUser_shortDetails()
+                    .then(function(children){
+
+                        $scope.childMenuApi.children = children;
+
+                        if (children.length > 0) {
+
+                            $scope.childMenuApi.setDisplayedChild(children[0].Id);
+
+                            $scope.$emit('childMenu:childSelected', children[0].Id);
+                        } else {
+
+                            var component = '<create-child> </create-child>';
+
+                            $scope.$emit('openModal', component, 'static');
+                        }
+
+                        $scope.childMenuApi.needLoad = false;
+                    });
                 }
             });
-
-            $scope.$watch('childMenuApi.children', function (children) {
-
-                $scope.children = children;
-            });
             
-            $scope.$watch('childMenuApi.displayedChild', function (displayedChild) {
+            $scope.$watch('childMenuApi.childId', function (childId) {
 
-                $scope.displayedChild = displayedChild;
+                if (childId){
+
+                    childrenRepository.getOne_shortDetails(childId)
+                    .then(function (child) {
+
+                        $scope.childMenuApi.displayedChild = child;
+                     });
+                }
             });
             
             $scope.selectChild = function(child) {
 
                 if ($scope.isTestEditModeOn) {
 
-                    $scope.$emit('testEditCanceled');
+                    $scope.$emit('testsList:testEditCanceled');
                 }
                 
-                $scope.$emit('childSelected', child.Id);
+                $scope.$emit('childMenu:childSelected', child.Id);
             };
             
             $scope.addChild = function () {
@@ -60,29 +71,36 @@ authink.directive('childMenu', ['childrenRepository', 'childMenuApi', function (
                 
                 var component = '<edit-child> </edit-child>';
 
-                $scope.$emit('childEditStarted', $scope.displayedChild.Id);
+                $scope.$emit('childMenu:childEditStarted', $scope.displayedChild.Id);
                 
                 $scope.$emit('openModal', component);
             };
         }]
     };
-}]);
+});
 
-authink.factory('childMenuApi', ['childrenRepository', function (childrenRepository) {
+authink.factory('childMenuApi', function () {
 
     return {
-        
+
+        childId:        null,
+        needLoad:       true,
         children:       null,
         displayedChild: null,
         
         loadChildren: function () {
             
-            this.children = childrenRepository.getAllForUser_shortDetails();
+            this.needLoad = true;
         },
         
         setDisplayedChild: function (childId) {
             
-            this.displayedChild = childrenRepository.getOne_shortDetails(childId);
+            this.childId = childId;
+        },
+
+        addNewChild: function (child) {
+
+            this.children.push(child);
         }
     };
-}]);
+});

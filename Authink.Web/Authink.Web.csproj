@@ -230,6 +230,7 @@
     <Content Include="Assets\Images\Home\test-icon-add.png" />
     <Content Include="Assets\Images\Home\test-icon-edit.png" />
     <Content Include="Assets\Images\Home\user-avatar-default.png" />
+    <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Login\login-logo.png" />
     <Content Include="Assets\Images\Textures\shattered.png" />
     <Content Include="Assets\Images\Login\video-image.jpg" />

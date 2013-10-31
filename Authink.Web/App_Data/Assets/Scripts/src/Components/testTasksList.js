@@ -26,7 +26,7 @@ authink.directive('testTasksList', function () {
 
                 $scope.$emit('openModal', component);
                 
-                $scope.$emit('taskSelected', task.Id);
+                $scope.$emit('testTasksList:taskSelected', task.Id);
             };
 
             $scope.editTask = function(task) {
@@ -35,7 +35,7 @@ authink.directive('testTasksList', function () {
 
                 $scope.$emit('openModal', component);
                 
-                $scope.$emit('taskEditStarted', task.Id);
+                $scope.$emit('testTasksList:taskEditStarted', task.Id);
             };
         }]
     };

@@ -53,7 +53,7 @@ authink.directive('editChild', function () {
                 var promise = childrenRepository.edit(child);
                 promise.then(function (response) {
 
-                    $scope.$emit('childEditEnded', response.childId);
+                    $scope.$emit('editChild:childEditEnded', response.childId);
                     
                     $scope.$emit('closeModal');
                 });
