@@ -21,8 +21,8 @@ authink.directive('testsList', function () {
 
                     testsRepository.getAllTestsForChild_shortDetails(childId).then(function (tests) {
 
-                        $scope.testListApi.tests = tests;
                         $scope.isLoading         = false;
+                        $scope.testListApi.tests = tests;
                     });
                 }
             });

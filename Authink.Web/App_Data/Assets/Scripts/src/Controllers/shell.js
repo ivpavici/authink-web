@@ -9,7 +9,7 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.createTestApi.setChildToAddTests(childId);
     });
-    $rootScope.$on('testsList:testCreated', function (event, test) {
+    $rootScope.$on('testsList:testCreated',         function (event, test) {
 
         application.testListApi.addNewTest(test);
     });
@@ -89,7 +89,7 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.editChildApi.setChildToEdit(childId);
     });
 
-    $rootScope.$on('createChild:childCreated',     function (event, child) {
+    $rootScope.$on('createChild:childCreated', function (event, child) {
 
         application.childMenuApi.addNewChild(child);
     });

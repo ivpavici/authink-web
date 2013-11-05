@@ -19,8 +19,8 @@ authink.directive('testPreview', function () {
 
                     testsRepository.getOne_longDetails(testId).then(function (test) {
 
-                        $scope.test      = test;
                         $scope.isLoading = false;
+                        $scope.test      = test;
                     });
                 }
             });
