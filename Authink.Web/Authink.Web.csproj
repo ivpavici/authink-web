@@ -186,14 +186,13 @@
     <Compile Include="Models\Sound\EditModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-tpls-0.6.0.min.js" />
-    <Content Include="App_Data\Assets\Scripts\lib-patches\angular-file-upload-shim.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-tpls-0.6.0.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-file-upload.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-resource-v1.2.0-rc.3.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-route-1.2.0-rc.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
-    <Content Include="App_Data\Assets\Scripts\lib-patches\ui-bootstrap-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-0.6.0.min.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />
@@ -215,6 +214,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTask.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
+    <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Home\add-icon.png" />
     <Content Include="Assets\Images\Home\child-button-edit.png" />
     <Content Include="Assets\Images\Home\child-menu-arrow-down.png" />
@@ -230,7 +230,6 @@
     <Content Include="Assets\Images\Home\test-icon-add.png" />
     <Content Include="Assets\Images\Home\test-icon-edit.png" />
     <Content Include="Assets\Images\Home\user-avatar-default.png" />
-    <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Login\login-logo.png" />
     <Content Include="Assets\Images\Textures\shattered.png" />
     <Content Include="Assets\Images\Login\video-image.jpg" />
@@ -418,7 +417,9 @@
     <Content Include="Views\Sound\_Edit.cshtml" />
     <Content Include="Views\Shared\Shell.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Assets\Scripts\lib-patches\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
