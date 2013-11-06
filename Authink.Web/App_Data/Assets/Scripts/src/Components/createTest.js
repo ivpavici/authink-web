@@ -7,10 +7,22 @@ authink.directive('createTest', function () {
         restrict:    'E',
         templateUrl: '/Assets/Templates/Components/CreateTest.html',
 
-        controller: ['$scope', 'testsRepository', 'createTestApi', function ($scope, testsRepository, createTestApi) {
+        controller: ['$scope', 'testsRepository', 'childrenRepository', 'createTestApi', function ($scope, testsRepository, childrenRepository, createTestApi) {
 
             $scope.createTestApi = createTestApi;
             
+            $scope.$watch('createTestApi.childId', function (childId) {
+
+                if (childId) {
+
+                    childrenRepository.getOne_shortDetails(childId)
+                    .then(function (child) {
+
+                        $scope.child = child;
+                    });
+                }
+            });
+
             $scope.createTest= function() {
                 
                 var test = { name: $scope.test.name, shortDescription: $scope.test.shortDescription, longDescription: $scope.test.longDescription, childId: $scope.createTestApi.childId };
