@@ -1,10 +1,7 @@
-﻿@using Combres.Mvc
-@model Authink.Web.Controllers.Task.Models.InputMetaDataModel
+﻿@model Authink.Web.Controllers.Task.Models.InputMetaDataModel
 @{
-    ViewBag.Title = "AuThink task wizard | Basic informations";
+    ViewBag.Title = "AuThink Wizard | Informations";
 }
-
-@Url.CombresLink("taskWizzardCss")
 
 <script>
      $(function () {
@@ -17,6 +14,7 @@
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
         <h1>Basic task information</h1>
+        @Html.RouteLink("Cancel", "Cancel", null, new { @class = "task-wizard-cancel" })
         <div class="task-wizard-progress">STEP <span>4</span>/5</div>
     </div>
     @if(!string.IsNullOrEmpty(Model.ErrorMessage))

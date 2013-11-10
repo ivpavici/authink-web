@@ -19,6 +19,8 @@ namespace Authink.Web.App_Start
             routes.MapRoute("InputMetaData",    "test/tasks/create/step-4",            new { controller = "Task", action = "InputMetaData"    });
             routes.MapRoute("Feedback",         "test/tasks/create/finished",          new { controller = "Task", action = "Feedback"         });
 
+            routes.MapRoute("Cancel", "wizard/cancel", new { controller = "Task", action = "Cancel" });
+
             routes.MapRoute("DeleteTask", "ajax/task/delete/{taskId}", new { controller = "Task", action = "Delete", taskId = UrlParameter.Optional});
             routes.MapRoute("ReadTask",   "task/{taskId}",             new { controller = "Task", action = "Read"                                 });
 

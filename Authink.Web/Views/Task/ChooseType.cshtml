@@ -1,14 +1,12 @@
-﻿@using Combres.Mvc
-@model Authink.Web.Controllers.Task.Models.ChooseTypeModel
+﻿@model Authink.Web.Controllers.Task.Models.ChooseTypeModel
 @{
-    ViewBag.Title = "AuThink task wizard | Choose type";
+    ViewBag.Title = "AuThink Wizard | Type";
 }
-
-@Url.CombresLink("taskWizzardCss")
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
         <h1>Choose Type</h1>
+        @Html.RouteLink("Cancel", "Cancel", null, new { @class="task-wizard-cancel"})
         <div class="task-wizard-progress">STEP <span>1</span>/5</div>
     </div>
     <div class="task-wizard-content">

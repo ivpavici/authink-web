@@ -1,16 +1,13 @@
 ﻿@model Authink.Web.Controllers.Task.Models.ChooseDifficultyModel
-@using Combres.Mvc
 
 @{
-    ViewBag.Title = "AuThink task wizard | Choose difficulty";
+    ViewBag.Title = "AuThink Wizard | Difficulty";
 }
-
-@Url.CombresLink("taskWizzardCss")
-
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
         <h1>Choose Difficulty</h1>
+        @Html.RouteLink("Cancel", "Cancel", null, new { @class = "task-wizard-cancel" })
         <div class="task-wizard-progress">STEP <span>2</span>/5</div>
     </div>
     <div class="task-wizard-content">
