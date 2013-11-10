@@ -64,15 +64,4 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
-/* Overlay */
-#simplemodal-overlay {background-color:#000; opacity: 0.3}
 
-#popup-root {display:none;}
-
-/* Container */
-#simplemodal-container { color:#bbb; background-color:white; border:1px solid #fe9b26; padding-bottom: 12px;}
-#simplemodal-container .simplemodal-data {}
-#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
-#simplemodal-container a {color:#ddd;}
-#simplemodal-container a.modalCloseImg {background:url(../Assets/Images/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-23px; /*right:-16px;*/ right: -3px; cursor:pointer;}
-#simplemodal-container h3 {color:#84b8d9;}
