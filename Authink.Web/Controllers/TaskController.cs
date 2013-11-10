@@ -97,7 +97,7 @@ namespace Authink.Web.Controllers
             var model       = chooseTypeModelFactory();
             model.TaskTypes = KnownTaskTypesMappings;
 
-            HttpContext.Session["TestId"] = testId;
+            httpContextBase.Session["TestId"] = testId;
 
             return View
             (
@@ -232,27 +232,41 @@ namespace Authink.Web.Controllers
             var taskId   = Convert.ToInt32(HttpContext.Session["ImplementedTaskId"]);
             model.TaskId = taskId;
 
-            HttpContext.Session["ImplementedTaskId"] = null;
+            ResetWizardSessionState();
             return View
             (
                 model:model.Test.Id
             );
+        }
+
+        [HttpGet] public ActionResult Cancel()
+        {
+            ResetWizardSessionState();
+
+            return RedirectToRoutePermanent("Shell");
+        }
+        private void ResetWizardSessionState()
+        {
+            httpContextBase.Session["TestId"]            = null;
+            httpContextBase.Session["Colors"]            = null;
+            httpContextBase.Session["TaskKey"]           = null;
+            httpContextBase.Session["Pictures"]          = null;
+            httpContextBase.Session["TaskDifficulty"]    = null;
+            httpContextBase.Session["ImplementedTaskId"] = null;
         }
     }
     public partial class TaskController
     {
         private int  CreateTask_SimpleTasksWithPictures(string taskKey, string title, string description, int userId,int testId)
         {
-            if(HttpContext.Session["Pictures"]==null || HttpContext.Session["TaskDifficulty"]==null)
+            if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
                 return 0;
             }
 
-            var taskDifficulty = Convert.ToInt32(HttpContext.Session["TaskDifficulty"]);
-            var pictures       = HttpContext.Session["Pictures"] as List<SessionPictureData>;
+            var taskDifficulty = Convert.ToInt32(httpContextBase.Session["TaskDifficulty"]);
+            var pictures       = httpContextBase.Session["Pictures"] as List<SessionPictureData>;
 
-
-            string soundSavePath="";
             var taskId = taskCommands.Create
             (
                 description:       description,
@@ -265,7 +279,7 @@ namespace Authink.Web.Controllers
                 voiceCommand: null
             );
 
-            HttpContext.Session["ImplementedTaskId"] = taskId;
+            httpContextBase.Session["ImplementedTaskId"] = taskId;
             foreach (var pictureData in pictures)
             {
                 var savePath  = pictureServices.SaveToFileSystem(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
@@ -285,14 +299,14 @@ namespace Authink.Web.Controllers
         }
         private int  CreateTask_DetectColors           (string taskKey, string title, string description, int userId,int testId)
         {
-            if(HttpContext.Session["Pictures"] == null || HttpContext.Session["Colors"] == null || HttpContext.Session["TaskDifficulty"] == null)
+            if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["Colors"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
                 return 0;
             }
 
             var taskDifficulty = Convert.ToInt32(HttpContext.Session["TaskDifficulty"]);
-            var pictures       = HttpContext.Session["Pictures"] as List<SessionPictureData>;
-            var colors         = HttpContext.Session["Colors"] as List<SessionColorData>;
+            var pictures       = httpContextBase.Session["Pictures"] as List<SessionPictureData>;
+            var colors         = httpContextBase.Session["Colors"] as List<SessionColorData>;
 
             var taskId = taskCommands.Create
             (
@@ -304,7 +318,7 @@ namespace Authink.Web.Controllers
                 profilePictureUrl: buru::Task.AvailableTaskTypesDefaultPictures[taskKey],
                 voiceCommand:      null
             );
-            HttpContext.Session["ImplementedTaskId"] = taskId;
+            httpContextBase.Session["ImplementedTaskId"] = taskId;
 
             foreach (var pictureData in pictures)
             {
@@ -345,13 +359,13 @@ namespace Authink.Web.Controllers
         }
         private int  CreateTask_OrderBySize            (string taskKey, string title, string description, int userId,int testId)
         {
-            if (HttpContext.Session["Pictures"] == null || HttpContext.Session["TaskDifficulty"] == null)
+            if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
                 return 0;
             }
 
-            var taskDifficulty = Convert.ToInt32(HttpContext.Session["TaskDifficulty"]);
-            var picture        = HttpContext.Session["Pictures"] as SessionPictureData;
+            var taskDifficulty = Convert.ToInt32(httpContextBase.Session["TaskDifficulty"]);
+            var picture        = httpContextBase.Session["Pictures"] as SessionPictureData;
 
             var taskId = taskCommands.Create
             (
@@ -364,7 +378,7 @@ namespace Authink.Web.Controllers
 
                 voiceCommand: null
             );
-            HttpContext.Session["ImplementedTaskId"] = taskId;
+            httpContextBase.Session["ImplementedTaskId"] = taskId;
 
             var savePath  = pictureServices.SaveToFileSystem(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
             var pictureId = pictureCommands.Create

@@ -234,6 +234,7 @@
     <Content Include="Assets\Images\Logo\favicon.png" />
     <Content Include="Assets\Images\Textures\shattered.png" />
     <Content Include="Assets\Images\Login\video-image.jpg" />
+    <Content Include="Assets\Images\Wizard\cancel.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-arrow.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-correct.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-cupcake.png" />
