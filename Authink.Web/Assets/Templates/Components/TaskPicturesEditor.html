@@ -28,30 +28,42 @@
 
         <span>Upload a new picture</span>
 
-        {{uploadProgress}}
+        <span>{{uploadProgress}}</span>
 
         <input type="file" ng-file-select="onFileSelect($files)">
 
     </div>
 
-    <div>
-        <label>Correct color</label>
+    <div class="task-edit-content clearfix">
+        <div class="task-edit-picture-item ">
 
-        <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single" />
+            <div class="task-edit-picture-colors">
 
-    </div>
+                <div class="task-edit-picture-colors-correct clearfix">
 
-    <div>
-        <label>Wrong colors</label>
+                    <h1>Correct color</h1>
 
-        <div ng-repeat="wrongColor in picture.WrongColors">
+                    <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single" />
 
-            <input type='color' name='color' class="colorPickerHolder task-edit-picture-colors-single" ng-model="wrongColor.Value" />
+                </div>
 
+                <div class="task-edit-picture-colors-incorrect clearfix">
+
+                    <h1>Wrong colors</h1>
+
+                    <div ng-repeat="wrongColor in picture.WrongColors">
+
+                        <input type='color' name='color' class="colorPickerHolder task-edit-picture-colors-single" ng-model="wrongColor.Value" />
+
+                    </div>
+
+                </div>
+
+            </div>
+            
         </div>
-
     </div>
-
+    
     <div class="task-edit-options">
 
         <input type="submit" value="Save" class="task-edit-save" ng-click="editWithColors()" />
