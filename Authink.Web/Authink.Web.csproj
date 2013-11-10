@@ -231,6 +231,7 @@
     <Content Include="Assets\Images\Home\test-icon-edit.png" />
     <Content Include="Assets\Images\Home\user-avatar-default.png" />
     <Content Include="Assets\Images\Login\login-logo.png" />
+    <Content Include="Assets\Images\Logo\favicon.png" />
     <Content Include="Assets\Images\Textures\shattered.png" />
     <Content Include="Assets\Images\Login\video-image.jpg" />
     <Content Include="Assets\Images\Wizard\task-wizard-arrow.png" />
@@ -416,6 +417,8 @@
     <Content Include="Views\Sound\_Create.cshtml" />
     <Content Include="Views\Sound\_Edit.cshtml" />
     <Content Include="Views\Shared\Shell.cshtml" />
+    <Content Include="Views\Task\WizardLayout.cshtml" />
+    <Content Include="Views\Task\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Assets\Scripts\lib-patches\" />
