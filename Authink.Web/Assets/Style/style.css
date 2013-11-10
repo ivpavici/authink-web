@@ -126,22 +126,23 @@ input {
                     margin-bottom: 10px;
                 }
 
-            #login-form-switch {
+            .login-form-switch {
                 text-align: center;
                 padding-top: 20px;
             }
 
-                #login-form-switch p {
+                .login-form-switch p {
                     font-size: 16px;
                     color: #888;
                 }
 
-                #login-form-switch a {
+                .login-form-switch a {
                     color: #fe9b26;
                     font-weight: bold;
+                    font-size: 1.4em;
                 }
 
-                    #login-form-switch a:hover {
+                    .login-form-switch a:hover {
                         cursor: pointer;
                         color: #feaa26;
                     }
