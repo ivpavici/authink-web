@@ -76,13 +76,13 @@ namespace Authink.Web.Controllers
 
         private static IDictionary<string, KnownTaskTypes> KnownTaskTypesMappings = new Dictionary<string, KnownTaskTypes>()
         {
-            { buru::Task.Keys.VoiceCommands,        new KnownTaskTypes("Voice commands",            "voice-commands",         new List<int>{2,3,4,5,    }, "UploadPictures_DetectItem"              ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.VoiceCommands])},
-            { buru::Task.Keys.DetectColors,         new KnownTaskTypes("Detect colors",             "detect-colors",          new List<int>{1,2,3,4,5,6 }, "UploadPictures_DetectColors"            ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.DetectColors])},
-            { buru::Task.Keys.DetectDifferentItems, new KnownTaskTypes("Detect different items",    "detect-different-items", new List<int>{3,4,5,      }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.DetectDifferentItems])},
-            { buru::Task.Keys.PairSameItems,        new KnownTaskTypes("Pair same items",           "pair-same-items",        new List<int>{3,5,6       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairSameItems])},
-            { buru::Task.Keys.ContinueSequence,     new KnownTaskTypes("Continue sequence of items", "continue-squence",      new List<int>{2,3,4       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.ContinueSequence])},
-            { buru::Task.Keys.OrderBySize,          new KnownTaskTypes("Order items by size",        "order-by-size",         new List<int>{2,3,4,5,6   }, "UploadPictures_OrderBySize"             ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.OrderBySize])},
-            { buru::Task.Keys.PairHalves,           new KnownTaskTypes("Pair halves",                "pair-halves",           new List<int>{2,3,4,5,6   }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairHalves])}
+            { buru::Task.Keys.VoiceCommands,        new KnownTaskTypes("Voice commands",            "voice-commands",         new List<int>{2,3,4,5,    }, "UploadPictures_DetectItem"              ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.VoiceCommands]       , "'Voice commands' lets you create a task by uploading four different pictures (one correct and three false) with one voice command that states the objective of the task.")},
+            { buru::Task.Keys.DetectColors,         new KnownTaskTypes("Detect colors",             "detect-colors",          new List<int>{1,2,3,4,5,6 }, "UploadPictures_DetectColors"            ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.DetectColors]        , "'Detect colors' lets you create a task first by choosing colored pictures and then correct and incorrect colors for those pictures.")},
+            { buru::Task.Keys.DetectDifferentItems, new KnownTaskTypes("Detect different items",    "detect-different-items", new List<int>{3,4,5,      }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.DetectDifferentItems], "'Detect different items' lets you upload images that will shuffle through a few lines and create a task in which a child must choose a different image from a set of images.")},
+            { buru::Task.Keys.PairSameItems,        new KnownTaskTypes("Pair same items",           "pair-same-items",        new List<int>{3,5,6       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairSameItems]       , "'Pair same items' lets you upload images and when the task is created the images will become settled in two lists. The objective is to pair items from one list to another.")},
+            { buru::Task.Keys.ContinueSequence,     new KnownTaskTypes("Continue sequence of items", "continue-squence",      new List<int>{2,3,4       }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.ContinueSequence]    , "'Continue sequence' lets you upload images after which a task will be generated with a sequence of items that will shuffle the correct and false images.")},
+            { buru::Task.Keys.OrderBySize,          new KnownTaskTypes("Order items by size",        "order-by-size",         new List<int>{2,3,4,5,6   }, "UploadPictures_OrderBySize"             ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.OrderBySize]         , "'Order by size' lets you upload one picture. After that, that picture will be resized and the objective is to order the items by size.")},
+            { buru::Task.Keys.PairHalves,           new KnownTaskTypes("Pair halves",                "pair-halves",           new List<int>{2,3,4,5,6   }, "UploadPictures_SimpleTasksWithPictures" ,buru::Task.AvailableTaskTypesDefaultPictures[buru::Task.Keys.PairHalves]          , "'Pair halves' lets you upload images, after which they will be cut in half and the objective is to pair those halves.")}
         };
     }
     public partial class TaskController
@@ -477,11 +477,12 @@ namespace Authink.Web.Controllers.Task.Helpers
     {
         public KnownTaskTypes
         (
-            string    name,
-            string    urlFriendyName,
-            List<int> availableDifficulties,
-            string    uploadPicturesRouteName,
-            string    pictureUrl
+            string       name,
+            string       urlFriendyName,
+            List<int>    availableDifficulties,
+            string       uploadPicturesRouteName,
+            string       pictureUrl,
+            string       taskDescription
         )
         {
             this.Name                    = name;
@@ -489,12 +490,14 @@ namespace Authink.Web.Controllers.Task.Helpers
             this.AvailableDifficulties   = availableDifficulties;
             this.UploadPicturesRouteName = uploadPicturesRouteName;
             this.PictureUrl              = pictureUrl;
+            this.TaskDescription         = taskDescription;
         }
 
-        public string    Name                     { get; private set; }
-        public string    UrlFriendyname           { get; private set; }
-        public List<int> AvailableDifficulties    { get; private set; }
-        public string    UploadPicturesRouteName  { get; private set; }
-        public string    PictureUrl               { get; private set; }
+        public string       Name                     { get; private set; }
+        public string       UrlFriendyname           { get; private set; }
+        public List<int>    AvailableDifficulties    { get; private set; }
+        public string       UploadPicturesRouteName  { get; private set; }
+        public string       PictureUrl               { get; private set; }
+        public string       TaskDescription          { get; private set; }
     }
 }

@@ -3,6 +3,23 @@
     ViewBag.Title = "AuThink Wizard | Type";
 }
 
+<script>
+    $(function () {
+        
+        $('.task-wizard-type-item').qtip({ // Grab some elements to apply the tooltip to
+            content: {
+                //text: 'My common piece of text here'
+            },
+            style: {
+                classes: 'qtip-youtube'
+            }
+        });
+
+    });
+</script>
+
+@*slat pomocu titlea ili negdi u jquery funkciju*@
+
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
         <h1>Choose Type</h1>
@@ -13,7 +30,7 @@
         <div class="task-wizard-type-container" class="clearfix">
             @foreach(var pair in Model.TaskTypes)
             {
-                <a class="task-wizard-type-item" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
+                <a title="@pair.Value.TaskDescription" class="task-wizard-type-item" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
                     <img src="/@pair.Value.PictureUrl" alt="" />
                     <span>@pair.Value.Name</span>
                 </a>
@@ -21,3 +38,4 @@
         </div>
     </div>
 </div>
+
