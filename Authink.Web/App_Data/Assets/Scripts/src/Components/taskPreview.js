@@ -5,7 +5,7 @@ authink.directive('taskPreview', function() {
     return {
         
         restrict:   'E',
-        templateUrl: '/Assets/Templates/Components/TaskPreview.html',
+        templateUrl: '/Assets/Templates/Components/TaskPreview.cshtml',
         scope:       {},
         
         controller: ['$scope', 'tasksRepository', 'taskPreviewApi', function ($scope, tasksRepository, taskPreviewApi) {

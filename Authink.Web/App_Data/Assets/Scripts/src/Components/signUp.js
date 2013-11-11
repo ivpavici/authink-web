@@ -7,7 +7,7 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
         restrict:    'E',
         templateUrl: '/Assets/Templates/Components/SignUp.cshtml',
         
-        controller: ['$scope','$location', function ($scope, $location) {
+        controller: ['$scope', '$location', '$routeParams', function ($scope, $location, $routeParams) {
 
             $scope.login = function() {
 
@@ -18,7 +18,7 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
                     
                     if (responseData.StatusCode === 200) {
 
-                        $location.path('/');
+                        $location.path('/' + $routeParams.lang);
                     } else {
                         
                         $scope.loginErrorMessage = "Invalid login or password.";

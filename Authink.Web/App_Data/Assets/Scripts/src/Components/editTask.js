@@ -5,7 +5,7 @@ authink.directive('editTask', function() {
     return {
       
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/EditTask.html',
+        templateUrl: '/Assets/Templates/Components/EditTask.cshtml',
         scope:       {},
         
         controller: ['$scope', 'editTaskApi', 'tasksRepository', function ($scope, editTaskApi, tasksRepository) {

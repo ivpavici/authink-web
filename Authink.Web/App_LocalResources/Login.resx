@@ -118,51 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LoginForm_LoginButton" xml:space="preserve">
-    <value>Prijava</value>
+    <value>Login</value>
   </data>
   <data name="LoginForm_PasswordPlaceholder" xml:space="preserve">
-    <value>lozinka</value>
+    <value>password</value>
   </data>
   <data name="LoginForm_SignUpSwitch_Flavor" xml:space="preserve">
-    <value>Nemate korisnički račun?</value>
+    <value>Don't have an account?</value>
   </data>
   <data name="LoginForm_SignUpSwitch_Link" xml:space="preserve">
-    <value>Registriraj se!</value>
+    <value>Sign up now!</value>
   </data>
   <data name="LoginForm_Title" xml:space="preserve">
-    <value>Prijava</value>
+    <value>Login</value>
   </data>
   <data name="LoginForm_UsernamePlaceholder" xml:space="preserve">
-    <value>korisničko ime</value>
+    <value>username</value>
   </data>
   <data name="SignForm_LoginSwitch_Link" xml:space="preserve">
-    <value>Prijavi se!</value>
+    <value>Log in now!</value>
   </data>
   <data name="SignUpForm_ConfirmPasswordPlaceholder" xml:space="preserve">
-    <value>ponovljena lozinka</value>
+    <value>confirm password</value>
   </data>
   <data name="SignUpForm_EmailPlaceholder" xml:space="preserve">
     <value>email</value>
   </data>
   <data name="SignUpForm_FirstNamePlaceholder" xml:space="preserve">
-    <value>ime</value>
+    <value>first name</value>
   </data>
   <data name="SignUpForm_LastNamePlaceholder" xml:space="preserve">
-    <value>prezime</value>
+    <value>last name</value>
   </data>
   <data name="SignUpForm_LoginSwitch_Flavor" xml:space="preserve">
-    <value>Već imate korisnički račun?</value>
+    <value>Already have an account?</value>
   </data>
   <data name="SignUpForm_PasswordPlaceholder" xml:space="preserve">
-    <value>lozinka</value>
+    <value>password</value>
   </data>
   <data name="SignUpForm_SIgnUpButton" xml:space="preserve">
-    <value>Registriraj se</value>
+    <value>SignUp</value>
   </data>
   <data name="SignUpForm_Title" xml:space="preserve">
-    <value>Registracija</value>
+    <value>SignUp</value>
   </data>
   <data name="SignUpForm_UsernamePlaceholder" xml:space="preserve">
-    <value>korisničko ime</value>
+    <value>username</value>
   </data>
 </root>

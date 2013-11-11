@@ -7,7 +7,7 @@ authink.directive('testsList', function () {
         restrict:   ' E',
         transclude: true,
         
-        templateUrl: '/Assets/Templates/Components/TestsList.html',
+        templateUrl: '/Assets/Templates/Components/TestsList.cshtml',
         
         controller: ['$scope', 'testsRepository', 'testListApi', function ($scope, testsRepository, testListApi) {
 

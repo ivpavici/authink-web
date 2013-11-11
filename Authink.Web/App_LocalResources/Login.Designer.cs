@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources.Login {
+namespace Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Resources.Login {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Login_ {
+    public class Login {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Login_() {
+        internal Login() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources.Login {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Authink.Web.App_LocalResources.Login.", typeof(Login_).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Authink.Web.App_LocalResources.Login", typeof(Login).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -111,6 +111,96 @@ namespace Resources.Login {
         public static string LoginForm_UsernamePlaceholder {
             get {
                 return ResourceManager.GetString("LoginForm_UsernamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in now!.
+        /// </summary>
+        public static string SignForm_LoginSwitch_Link {
+            get {
+                return ResourceManager.GetString("SignForm_LoginSwitch_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to confirm password.
+        /// </summary>
+        public static string SignUpForm_ConfirmPasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_ConfirmPasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to email.
+        /// </summary>
+        public static string SignUpForm_EmailPlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to first name.
+        /// </summary>
+        public static string SignUpForm_FirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_FirstNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to last name.
+        /// </summary>
+        public static string SignUpForm_LastNamePlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_LastNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already have an account?.
+        /// </summary>
+        public static string SignUpForm_LoginSwitch_Flavor {
+            get {
+                return ResourceManager.GetString("SignUpForm_LoginSwitch_Flavor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to password.
+        /// </summary>
+        public static string SignUpForm_PasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_PasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SignUp.
+        /// </summary>
+        public static string SignUpForm_SIgnUpButton {
+            get {
+                return ResourceManager.GetString("SignUpForm_SIgnUpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SignUp.
+        /// </summary>
+        public static string SignUpForm_Title {
+            get {
+                return ResourceManager.GetString("SignUpForm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to username.
+        /// </summary>
+        public static string SignUpForm_UsernamePlaceholder {
+            get {
+                return ResourceManager.GetString("SignUpForm_UsernamePlaceholder", resourceCulture);
             }
         }
     }

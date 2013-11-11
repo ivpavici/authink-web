@@ -5,7 +5,7 @@ authink.directive('createChild', function() {
     return {
       
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/CreateChild.html',
+        templateUrl: '/Assets/Templates/Components/CreateChild.cshtml',
         
         controller: ['$scope', 'childrenRepository', function ($scope, childrenRepository) {
 

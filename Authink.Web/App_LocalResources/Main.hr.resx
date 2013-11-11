@@ -117,52 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LoginForm_LoginButton" xml:space="preserve">
-    <value>Prijava</value>
+  <data name="ChildAdd_FirstNamePlaceholder" xml:space="preserve">
+    <value>Ime</value>
   </data>
-  <data name="LoginForm_PasswordPlaceholder" xml:space="preserve">
-    <value>lozinka</value>
+  <data name="ChildAdd_LastNamePlaceholder" xml:space="preserve">
+    <value>Prezime</value>
   </data>
-  <data name="LoginForm_SignUpSwitch_Flavor" xml:space="preserve">
-    <value>Nemate korisnički račun?</value>
+  <data name="ChildAdd_Save" xml:space="preserve">
+    <value>Spremi</value>
   </data>
-  <data name="LoginForm_SignUpSwitch_Link" xml:space="preserve">
-    <value>Registriraj se!</value>
+  <data name="ChildAdd_Title" xml:space="preserve">
+    <value>Dodaj informacije o dijetetu</value>
   </data>
-  <data name="LoginForm_Title" xml:space="preserve">
-    <value>Prijava</value>
+  <data name="ChildEdit_FirstName" xml:space="preserve">
+    <value>Ime</value>
   </data>
-  <data name="LoginForm_UsernamePlaceholder" xml:space="preserve">
-    <value>korisničko ime</value>
+  <data name="ChildEdit_LastName" xml:space="preserve">
+    <value>Prezime</value>
   </data>
-  <data name="SignForm_LoginSwitch_Link" xml:space="preserve">
-    <value>Prijavi se!</value>
+  <data name="ChildEdit_Save" xml:space="preserve">
+    <value>Spremi</value>
   </data>
-  <data name="SignUpForm_ConfirmPasswordPlaceholder" xml:space="preserve">
-    <value>ponovljena lozinka</value>
+  <data name="ChildEdit_Title" xml:space="preserve">
+    <value>Uređivanje profila</value>
   </data>
-  <data name="SignUpForm_EmailPlaceholder" xml:space="preserve">
-    <value>email</value>
+  <data name="ChildMenu_CreateNew" xml:space="preserve">
+    <value>Dodaj novo dijete</value>
   </data>
-  <data name="SignUpForm_FirstNamePlaceholder" xml:space="preserve">
-    <value>ime</value>
+  <data name="ChildMenu_Edit" xml:space="preserve">
+    <value>Uredi profil</value>
   </data>
-  <data name="SignUpForm_LastNamePlaceholder" xml:space="preserve">
-    <value>prezime</value>
+  <data name="Omnibar_Logout" xml:space="preserve">
+    <value>Odjava</value>
   </data>
-  <data name="SignUpForm_LoginSwitch_Flavor" xml:space="preserve">
-    <value>Već imate korisnički račun?</value>
+  <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
+    <value>Detaljni opis</value>
   </data>
-  <data name="SignUpForm_PasswordPlaceholder" xml:space="preserve">
-    <value>lozinka</value>
+  <data name="TestAdd_Save" xml:space="preserve">
+    <value>Spremi</value>
   </data>
-  <data name="SignUpForm_SIgnUpButton" xml:space="preserve">
-    <value>Registriraj se</value>
+  <data name="TestAdd_ShortDescPlaceholder" xml:space="preserve">
+    <value>Kratki opis</value>
   </data>
-  <data name="SignUpForm_Title" xml:space="preserve">
-    <value>Registracija</value>
+  <data name="TestAdd_Title" xml:space="preserve">
+    <value>Dodaj novi test za</value>
   </data>
-  <data name="SignUpForm_UsernamePlaceholder" xml:space="preserve">
-    <value>korisničko ime</value>
+  <data name="TestAdd_TitlePlaceholder" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="TestEdit_Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="TestEdit_LongDescription" xml:space="preserve">
+    <value>Detaljni opis</value>
+  </data>
+  <data name="TestEdit_Name" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="TestEdit_Save" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="TestEdit_ShortDescription" xml:space="preserve">
+    <value>Kratki opis</value>
+  </data>
+  <data name="TestList_CreateNew" xml:space="preserve">
+    <value>Dodaj novi test</value>
+  </data>
+  <data name="TestList_SearchPlaceholder" xml:space="preserve">
+    <value>pretraži sve testove</value>
+  </data>
+  <data name="TestList_Title" xml:space="preserve">
+    <value>Testovi</value>
+  </data>
+  <data name="TestPreview_EditButton" xml:space="preserve">
+    <value>Uredi test</value>
+  </data>
+  <data name="TestTaskList_AddNew" xml:space="preserve">
+    <value>Novi zadatak</value>
+  </data>
+  <data name="TestTaskList_Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="TestTaskList_Difficulty" xml:space="preserve">
+    <value>Težina</value>
+  </data>
+  <data name="TestTaskList_Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="TestTaskList_Title" xml:space="preserve">
+    <value>Zadaci</value>
   </data>
 </root>

@@ -1,10 +1,9 @@
-﻿using Authink.Core.Fx;
-using Authink.Core.Model.Services;
+﻿using Authink.Core.Model.Services;
+using System.Threading;
 using System.Web.Mvc;
 
 namespace Authink.Web.Controllers
 {
-    [Localization (DefaultLanguage = "en")]
     public class ShellController : Controller
     {
         public ShellController

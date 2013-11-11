@@ -5,7 +5,7 @@ authink.directive('editChild', function () {
     return {
 
         restrict: 'E',
-        templateUrl: '/Assets/Templates/Components/EditChild.html',
+        templateUrl: '/Assets/Templates/Components/EditChild.cshtml',
 
         controller: ['$scope', 'childrenRepository', 'editChildApi', 'picturesRepository', function ($scope, childrenRepository, editChildApi, picturesRepository) {
 

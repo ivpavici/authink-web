@@ -117,22 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LoginForm_LoginButton" xml:space="preserve">
-    <value>Login</value>
+  <data name="ChildAdd_FirstNamePlaceholder" xml:space="preserve">
+    <value>First name</value>
   </data>
-  <data name="LoginForm_PasswordPlaceholder" xml:space="preserve">
-    <value>password</value>
+  <data name="ChildAdd_LastNamePlaceholder" xml:space="preserve">
+    <value>Last name</value>
   </data>
-  <data name="LoginForm_SignUpSwitch_Flavor" xml:space="preserve">
-    <value>Don't have an account?</value>
+  <data name="ChildAdd_Save" xml:space="preserve">
+    <value>Save</value>
   </data>
-  <data name="LoginForm_SignUpSwitch_Link" xml:space="preserve">
-    <value>Sign up now!</value>
+  <data name="ChildAdd_Title" xml:space="preserve">
+    <value>Add child information</value>
   </data>
-  <data name="LoginForm_Title" xml:space="preserve">
-    <value>Login</value>
+  <data name="ChildEdit_FirstName" xml:space="preserve">
+    <value>First name</value>
   </data>
-  <data name="LoginForm_UsernamePlaceholder" xml:space="preserve">
-    <value>username</value>
+  <data name="ChildEdit_LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="ChildEdit_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ChildEdit_Title" xml:space="preserve">
+    <value>Child info edit</value>
+  </data>
+  <data name="ChildMenu_CreateNew" xml:space="preserve">
+    <value>Add new child</value>
+  </data>
+  <data name="ChildMenu_Edit" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Omnibar_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
+    <value>Detailed description of new test</value>
+  </data>
+  <data name="TestAdd_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TestAdd_ShortDescPlaceholder" xml:space="preserve">
+    <value>Short description of new test</value>
+  </data>
+  <data name="TestAdd_Title" xml:space="preserve">
+    <value>Add new test to</value>
+  </data>
+  <data name="TestAdd_TitlePlaceholder" xml:space="preserve">
+    <value>Title of new test</value>
+  </data>
+  <data name="TestEdit_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TestEdit_LongDescription" xml:space="preserve">
+    <value>Long description</value>
+  </data>
+  <data name="TestEdit_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TestEdit_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TestEdit_ShortDescription" xml:space="preserve">
+    <value>Short description</value>
+  </data>
+  <data name="TestList_CreateNew" xml:space="preserve">
+    <value>Add new test</value>
+  </data>
+  <data name="TestList_SearchPlaceholder" xml:space="preserve">
+    <value>search all tests</value>
+  </data>
+  <data name="TestList_Title" xml:space="preserve">
+    <value>Tests</value>
+  </data>
+  <data name="TestPreview_EditButton" xml:space="preserve">
+    <value>Edit test</value>
+  </data>
+  <data name="TestTaskList_AddNew" xml:space="preserve">
+    <value>New task</value>
+  </data>
+  <data name="TestTaskList_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TestTaskList_Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="TestTaskList_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TestTaskList_Title" xml:space="preserve">
+    <value>Tasks</value>
   </data>
 </root>

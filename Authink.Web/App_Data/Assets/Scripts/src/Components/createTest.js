@@ -5,7 +5,7 @@ authink.directive('createTest', function () {
     return {
 
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/CreateTest.html',
+        templateUrl: '/Assets/Templates/Components/CreateTest.cshtml',
 
         controller: ['$scope', 'testsRepository', 'childrenRepository', 'createTestApi', function ($scope, testsRepository, childrenRepository, createTestApi) {
 

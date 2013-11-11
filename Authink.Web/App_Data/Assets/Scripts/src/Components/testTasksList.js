@@ -5,7 +5,7 @@ authink.directive('testTasksList', function () {
     return {
         
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/TestTasksList.html',
+        templateUrl: '/Assets/Templates/Components/TestTasksList.cshtml',
         scope:       {},
         
         controller: ['$scope', 'testTasksListApi', function ($scope, testTasksListApi) {

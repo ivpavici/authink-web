@@ -1,15 +1,17 @@
-﻿<div id="home-header" class="clearfix">
-    
+﻿@using resources = Resources.Main;
+
+<div id="home-header" class="clearfix">
+
     <a id="home-header-logo"></a>
 
     <div id="home-header-user" class="clearfix">
-        
+
         <div id="home-header-user-menu">
-            
+
             <a>{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
             <ul>
-                
-                <li class="home-header-user-menu-list-item" ng-click="signOut()">Logout</li>
+
+                <li class="home-header-user-menu-list-item" ng-click="signOut()">@resources.Omnibar_Logout</li>
 
             </ul>
 

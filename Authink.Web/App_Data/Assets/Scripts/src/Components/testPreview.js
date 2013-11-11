@@ -5,7 +5,7 @@ authink.directive('testPreview', function () {
     return {
         
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/TestPreview.html',
+        templateUrl: '/Assets/Templates/Components/TestPreview.cshtml',
         
         controller: ['$scope', 'testPreviewApi', 'testsRepository', function ($scope, testPreviewApi, testsRepository) {
 

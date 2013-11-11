@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Authink.Data.Factory;
 using Authink.Web.App_Start;
+using System.Threading;
+using System.Globalization;
 
 namespace Authink.Web
 {
@@ -31,7 +33,6 @@ namespace Authink.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BundleTable.EnableOptimizations = true;
         }
-
         private void SetTestData()
         {
 #if DEBUG

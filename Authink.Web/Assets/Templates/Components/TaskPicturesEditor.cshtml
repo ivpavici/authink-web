@@ -1,26 +1,26 @@
 ﻿<div class="task-picture-container" ng-if="isSimpleEdit()">
-    
-        <div class="task-picture-image">
-        
-            <img ng-src="{{picture.Url}}" alt="" />
 
-            <span>Upload a new picture</span>
-            
-            {{uploadProgress}}
-           
-            <input type="file" ng-file-select="onFileSelect($files)" >
+    <div class="task-picture-image">
 
-        </div>
+        <img ng-src="{{picture.Url}}" alt="" />
 
-        <div class="task-edit-options">
-        
-            <input type="submit" value="Back" class="task-edit-save" ng-click="closeModel()" />
+        <span>Upload a new picture</span>
 
-        </div>
-    
+        {{uploadProgress}}
+
+        <input type="file" ng-file-select="onFileSelect($files)">
+
+    </div>
+
+    <div class="task-edit-options">
+
+        <input type="submit" value="Back" class="task-edit-save" ng-click="closeModel()" />
+
+    </div>
+
 </div>
 
-<div class="task-picture-container" ng-if="isDetectColorsEdit()" >
+<div class="task-picture-container" ng-if="isDetectColorsEdit()">
 
     <div class="task-picture-image">
 
@@ -60,10 +60,10 @@
                 </div>
 
             </div>
-            
+
         </div>
     </div>
-    
+
     <div class="task-edit-options">
 
         <input type="submit" value="Save" class="task-edit-save" ng-click="editWithColors()" />
