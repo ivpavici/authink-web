@@ -154,6 +154,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_LocalResources\Login..Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login..resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Login.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.hr.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Combres.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -259,7 +269,7 @@
     <Content Include="Assets\Templates\Components\EditTaskPicturesList.html" />
     <Content Include="Assets\Templates\Components\EditTest.html" />
     <Content Include="Assets\Templates\Components\OmniBar.html" />
-    <Content Include="Assets\Templates\Components\SignUp.html" />
+    <Content Include="Assets\Templates\Components\SignUp.cshtml" />
     <Content Include="Assets\Templates\Components\TaskPicturesEditor.html" />
     <Content Include="Assets\Templates\Components\TaskPreview.html" />
     <Content Include="Assets\Templates\Components\TestPreview.html" />
@@ -375,6 +385,12 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPicturesEditor.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EmbeddedResource Include="App_LocalResources\Login.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.hr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Resource.Login</CustomToolNamespace>
+    </EmbeddedResource>
     <None Include="Properties\PublishProfiles\File.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Plugins\highcharts.js" />
@@ -442,6 +458,13 @@
       <Project>{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}</Project>
       <Name>Authink.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_LocalResources\Login..resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login..Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Login</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

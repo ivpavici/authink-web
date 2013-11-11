@@ -7,7 +7,7 @@ var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource'
 
             templateUrl: '/Assets/Templates/Home.html'
         })
-        .when('/login', {
+        .when('/:lang/login', {
 
             templateUrl: '/Assets/Templates/Login.html'
         });
