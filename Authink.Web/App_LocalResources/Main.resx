@@ -147,8 +147,56 @@
   <data name="ChildMenu_Edit" xml:space="preserve">
     <value>Edit profile</value>
   </data>
+  <data name="EditTaskPicturesList_CorrectColors" xml:space="preserve">
+    <value>Correct colors</value>
+  </data>
+  <data name="EditTaskPicturesList_CorrectPicture" xml:space="preserve">
+    <value>Correct picture</value>
+  </data>
+  <data name="EditTaskPicturesList_Pictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="EditTaskPicturesList_UploadNewPicture" xml:space="preserve">
+    <value>Upload new picture</value>
+  </data>
+  <data name="EditTaskPicturesList_WrongColors" xml:space="preserve">
+    <value>Wrong colors</value>
+  </data>
+  <data name="EditTaskPicturesList_WrongPictures" xml:space="preserve">
+    <value>Wrong pictures</value>
+  </data>
   <data name="Omnibar_Logout" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="TaskEdit_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TaskEdit_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TaskEdit_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TaskPicturesEditor_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="TaskPicturesEditor_CorrectColor" xml:space="preserve">
+    <value>Correct colors</value>
+  </data>
+  <data name="TaskPicturesEditor_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TaskPicturesEditor_Title" xml:space="preserve">
+    <value>Upload new picture</value>
+  </data>
+  <data name="TaskPicturesEditor_WrongColor" xml:space="preserve">
+    <value>Wrong colors</value>
+  </data>
+  <data name="TaskPreview_Edit" xml:space="preserve">
+    <value>Edit task</value>
+  </data>
+  <data name="TaskPreview_Pictures" xml:space="preserve">
+    <value>Pictures</value>
   </data>
   <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
     <value>Detailed description of new test</value>

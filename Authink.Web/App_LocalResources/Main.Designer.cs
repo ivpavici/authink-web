@@ -151,11 +151,155 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correct colors.
+        /// </summary>
+        public static string EditTaskPicturesList_CorrectColors {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_CorrectColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct picture.
+        /// </summary>
+        public static string EditTaskPicturesList_CorrectPicture {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_CorrectPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        public static string EditTaskPicturesList_Pictures {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_Pictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload new picture.
+        /// </summary>
+        public static string EditTaskPicturesList_UploadNewPicture {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_UploadNewPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong colors.
+        /// </summary>
+        public static string EditTaskPicturesList_WrongColors {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_WrongColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong pictures.
+        /// </summary>
+        public static string EditTaskPicturesList_WrongPictures {
+            get {
+                return ResourceManager.GetString("EditTaskPicturesList_WrongPictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Omnibar_Logout {
             get {
                 return ResourceManager.GetString("Omnibar_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string TaskEdit_Description {
+            get {
+                return ResourceManager.GetString("TaskEdit_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string TaskEdit_Name {
+            get {
+                return ResourceManager.GetString("TaskEdit_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string TaskEdit_Save {
+            get {
+                return ResourceManager.GetString("TaskEdit_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string TaskPicturesEditor_Back {
+            get {
+                return ResourceManager.GetString("TaskPicturesEditor_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct colors.
+        /// </summary>
+        public static string TaskPicturesEditor_CorrectColor {
+            get {
+                return ResourceManager.GetString("TaskPicturesEditor_CorrectColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string TaskPicturesEditor_Save {
+            get {
+                return ResourceManager.GetString("TaskPicturesEditor_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload new picture.
+        /// </summary>
+        public static string TaskPicturesEditor_Title {
+            get {
+                return ResourceManager.GetString("TaskPicturesEditor_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong colors.
+        /// </summary>
+        public static string TaskPicturesEditor_WrongColor {
+            get {
+                return ResourceManager.GetString("TaskPicturesEditor_WrongColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit task.
+        /// </summary>
+        public static string TaskPreview_Edit {
+            get {
+                return ResourceManager.GetString("TaskPreview_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        public static string TaskPreview_Pictures {
+            get {
+                return ResourceManager.GetString("TaskPreview_Pictures", resourceCulture);
             }
         }
         

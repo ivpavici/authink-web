@@ -1,4 +1,6 @@
-﻿<form ng-submit="editTask()">
+﻿@using resources =Resources.Main;
+
+<form ng-submit="editTask()">
     <div class="task-edit-container">
         <div>
             <div class="task-edit-header clearfix">
@@ -7,11 +9,11 @@
                 </div>
                 <div class="task-edit-header-right">
                     <div>
-                        <span class="task-edit-header-right-name">Name</span>
+                        <span class="task-edit-header-right-name">@resources.TaskEdit_Name</span>
                         <input type="text" class="task-edit-name-field" ng-model="task.Name" required />
                     </div>
                     <div>
-                        <span>Description</span>
+                        <span>@resources.TaskEdit_Description</span>
                         <textarea ng-model="task.Description" class="task-edit-description-field" required></textarea>
                     </div>
                 </div>
@@ -20,7 +22,7 @@
                 <edit-task-pictures-list></edit-task-pictures-list>
             </div>
             <div class="task-edit-options">
-                <input type="submit" value="Save" class="task-edit-save" />
+                <input type="submit" value="@resources.TaskEdit_Save" class="task-edit-save" />
             </div>
         </div>
     </div>

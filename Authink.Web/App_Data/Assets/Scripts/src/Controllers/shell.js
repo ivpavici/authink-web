@@ -2,8 +2,8 @@
 
 authink.controller('shellController', ['$rootScope', '$modal', 'application', function ($rootScope, $modal, application) {
 
-    $rootScope.currentModalInstance = null;
-    $rootScope.isTestEditModeOn     = false;
+    $rootScope.currentModalInstances = [];
+    $rootScope.isTestEditModeOn      = false;
 
     $rootScope.$on('testsList:testCreatingStarted', function (event, childId) {
 
@@ -109,13 +109,15 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         
     $rootScope.$on('closeModal', function (event) {
         
-        $rootScope.currentModalInstance.close();
+        var currentInstance = $rootScope.currentModalInstances.pop();
+
+        currentInstance.close();
     });
     $rootScope.$on('openModal',  function(event, component, backdrop) {
 
         var modal = $rootScope.showDialog(component, backdrop);
         
-        $rootScope.currentModalInstance = modal;
+        $rootScope.currentModalInstances.push(modal);
     });
     
     $rootScope.showDialog = function (componentToShow, backdrop) {

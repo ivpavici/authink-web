@@ -1,17 +1,18 @@
-﻿
+﻿@using resources = Resources.Main;
+
 <div ng-if="isSimpleEdit()">
-    <h2>Pictures</h2>
+    <h2>@resources.EditTaskPicturesList_Pictures</h2>
     <a class="task-edit-picture-item edit-picture-link" ng-repeat="picture in pictures">
 
         <img ng-src="{{picture.Url}}" alt="" />
 
-        <span ng-click="editPicture(picture)">Upload new image</span>
+        <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
 
     </a>
 </div>
 
 <div ng-if="isDetectCorrectItemEdit()">
-    <h2>Correct picture</h2>
+    <h2>@resources.EditTaskPicturesList_CorrectPicture</h2>
 
     <div class="task-edit-pictures-container">
 
@@ -19,21 +20,21 @@
 
             <img ng-src="{{correctPicture.Url}}" alt="" />
 
-            <span ng-click="editPicture(picture)">Upload new image</span>
+            <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
 
         </a>
 
     </div>
 
-    <h2>Wrong pictures</h2>
+    <h2>@resources.EditTaskPicturesList_WrongPictures</h2>
 
     <div class="task-edit-pictures-container">
 
-        <a class="task-edit-picture-item edit-picture-link" data-id="@picture.Id" ng-repeat="picture in wrongPictures">
+        <a class="task-edit-picture-item edit-picture-link"  ng-repeat="picture in wrongPictures">
 
             <img ng-src="{{picture.Url}}" alt="" />
 
-            <span ng-click="editPicture(picture)">Upload new image</span>
+            <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
         </a>
 
     </div>
@@ -49,7 +50,7 @@
 
             <div class="task-edit-picture-colors-correct clearfix">
 
-                <h1>Correct colors</h1>
+                <h1>@resources.EditTaskPicturesList_CorrectColors</h1>
 
                 <div class="task-edit-picture-colors-single" ng-style="{'background-color':picture.CorrectColor.Value}"></div>
 
@@ -57,7 +58,7 @@
 
             <div class="task-edit-picture-colors-incorrect clearfix">
 
-                <h1>Wrong colors</h1>
+                <h1>@resources.EditTaskPicturesList_WrongColors</h1>
 
                 <div class="task-edit-picture-colors-single" ng-repeat="wrongColor in picture.WrongColors" ng-style="{'background-color':wrongColor.Value}"></div>
 
@@ -65,6 +66,6 @@
 
         </div>
 
-        <span ng-click="editPicture(picture)">Upload new image</span>
+        <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
     </a>
 </div>

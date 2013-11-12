@@ -26,7 +26,7 @@ authink.directive('editTask', function() {
                 }
             });
             
-            $scope.editTask = function() {
+            $scope.editTask = function () {
 
                 tasksRepository.update($scope.task)
                 .then(function (response) {

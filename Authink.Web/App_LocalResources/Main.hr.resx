@@ -147,8 +147,56 @@
   <data name="ChildMenu_Edit" xml:space="preserve">
     <value>Uredi profil</value>
   </data>
+  <data name="EditTaskPicturesList_CorrectColors" xml:space="preserve">
+    <value>Točne boje</value>
+  </data>
+  <data name="EditTaskPicturesList_CorrectPicture" xml:space="preserve">
+    <value>Točna slika</value>
+  </data>
+  <data name="EditTaskPicturesList_Pictures" xml:space="preserve">
+    <value>Slike</value>
+  </data>
+  <data name="EditTaskPicturesList_UploadNewPicture" xml:space="preserve">
+    <value>Prenesi novu sliku</value>
+  </data>
+  <data name="EditTaskPicturesList_WrongColors" xml:space="preserve">
+    <value>Netočne boje</value>
+  </data>
+  <data name="EditTaskPicturesList_WrongPictures" xml:space="preserve">
+    <value>Netočne slike</value>
+  </data>
   <data name="Omnibar_Logout" xml:space="preserve">
     <value>Odjava</value>
+  </data>
+  <data name="TaskEdit_Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="TaskEdit_Name" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="TaskEdit_Save" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="TaskPicturesEditor_Back" xml:space="preserve">
+    <value>Natrag</value>
+  </data>
+  <data name="TaskPicturesEditor_CorrectColor" xml:space="preserve">
+    <value>Točne boje</value>
+  </data>
+  <data name="TaskPicturesEditor_Save" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="TaskPicturesEditor_Title" xml:space="preserve">
+    <value>Prenesi novu sliku</value>
+  </data>
+  <data name="TaskPicturesEditor_WrongColor" xml:space="preserve">
+    <value>Netočne boje</value>
+  </data>
+  <data name="TaskPreview_Edit" xml:space="preserve">
+    <value>Uredi zadatak</value>
+  </data>
+  <data name="TaskPreview_Pictures" xml:space="preserve">
+    <value>Slike</value>
   </data>
   <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
     <value>Detaljni opis</value>
