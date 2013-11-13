@@ -32,7 +32,10 @@ namespace Authink.Web
         }
         protected void Application_AcquireRequestState(object sender, EventArgs e)
         {
-            var language = Request.Cookies["authink-language"].Value ?? "en";
+            var language = Request.Cookies["authink-language"] != null
+                            ? Request.Cookies["authink-language"].Value
+                            : "en";
+
             var culture  = new CultureInfo(language);
 
             Thread.CurrentThread.CurrentUICulture = culture;
