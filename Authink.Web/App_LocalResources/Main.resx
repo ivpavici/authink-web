@@ -165,6 +165,12 @@
   <data name="EditTaskPicturesList_WrongPictures" xml:space="preserve">
     <value>Wrong pictures</value>
   </data>
+  <data name="Omnibar_Language_Croatian" xml:space="preserve">
+    <value>Croatian</value>
+  </data>
+  <data name="Omnibar_Language_English" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="Omnibar_Logout" xml:space="preserve">
     <value>Logout</value>
   </data>

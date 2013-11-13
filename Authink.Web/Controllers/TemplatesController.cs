@@ -24,7 +24,7 @@ namespace Authink.Web.Controllers
                 : (template == "taskPreview")          ? PartialView("~/Views/Templates/TaskPreview.cshtml")
                 : (template == "testPreview")          ? PartialView("~/Views/Templates/TestPreview.cshtml")
                 : (template == "testsList")            ? PartialView("~/Views/Templates/TestsList.cshtml")
-                :                                       PartialView("~/Views/Templates/TestTasksList.cshtml");
+                :                                        PartialView("~/Views/Templates/TestTasksList.cshtml");
         }
     }
 }

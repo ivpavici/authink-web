@@ -205,6 +205,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Croatian.
+        /// </summary>
+        public static string Omnibar_Language_Croatian {
+            get {
+                return ResourceManager.GetString("Omnibar_Language_Croatian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string Omnibar_Language_English {
+            get {
+                return ResourceManager.GetString("Omnibar_Language_English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Omnibar_Logout {

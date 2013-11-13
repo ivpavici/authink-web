@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiEndPointController.cs" />
     <Compile Include="Controllers\ChildrenApiController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PicturesApiController.cs" />
     <Compile Include="Controllers\ShellController.cs" />
