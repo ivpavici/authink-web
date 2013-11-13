@@ -190,6 +190,7 @@
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TasksApiController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\TestsApiController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Configuration\IoC.cs" />
@@ -271,7 +272,7 @@
     <Content Include="Assets\Style\style.css" />
     <Content Include="Assets\Style\wizard.css" />
     <Content Include="Assets\Images\x.png" />
-    <Content Include="Assets\Templates\Components\SignUp.cshtml" />
+    <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
     <Content Include="Assets\Templates\Home.html" />
     <Content Include="Assets\Templates\Login.html" />
@@ -403,19 +404,19 @@
       <LastGenOutput>Main.hr.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <Content Include="Assets\Templates\Components\ChildMenu.cshtml" />
-    <Content Include="Assets\Templates\Components\CreateChild.cshtml" />
-    <Content Include="Assets\Templates\Components\CreateTest.cshtml" />
-    <Content Include="Assets\Templates\Components\EditChild.cshtml" />
-    <Content Include="Assets\Templates\Components\EditTask.cshtml" />
-    <Content Include="Assets\Templates\Components\EditTaskPicturesList.cshtml" />
-    <Content Include="Assets\Templates\Components\EditTest.cshtml" />
-    <Content Include="Assets\Templates\Components\OmniBar.cshtml" />
-    <Content Include="Assets\Templates\Components\TaskPicturesEditor.cshtml" />
-    <Content Include="Assets\Templates\Components\TaskPreview.cshtml" />
-    <Content Include="Assets\Templates\Components\TestPreview.cshtml" />
-    <Content Include="Assets\Templates\Components\TestsList.cshtml" />
-    <Content Include="Assets\Templates\Components\TestTasksList.cshtml" />
+    <Content Include="Views\Templates\ChildMenu.cshtml" />
+    <Content Include="Views\Templates\CreateChild.cshtml" />
+    <Content Include="Views\Templates\CreateTest.cshtml" />
+    <Content Include="Views\Templates\EditChild.cshtml" />
+    <Content Include="Views\Templates\EditTask.cshtml" />
+    <Content Include="Views\Templates\EditTaskPicturesList.cshtml" />
+    <Content Include="Views\Templates\EditTest.cshtml" />
+    <Content Include="Views\Templates\OmniBar.cshtml" />
+    <Content Include="Views\Templates\TaskPicturesEditor.cshtml" />
+    <Content Include="Views\Templates\TaskPreview.cshtml" />
+    <Content Include="Views\Templates\TestPreview.cshtml" />
+    <Content Include="Views\Templates\TestsList.cshtml" />
+    <Content Include="Views\Templates\TestTasksList.cshtml" />
     <None Include="Properties\PublishProfiles\File.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Plugins\highcharts.js" />

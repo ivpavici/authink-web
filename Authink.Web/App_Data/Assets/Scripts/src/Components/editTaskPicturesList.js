@@ -5,7 +5,7 @@ authink.directive('editTaskPicturesList', function () {
     return {
 
         restrict: 'E',
-        templateUrl: '/Assets/Templates/Components/EditTaskPicturesList.cshtml',
+        templateUrl: '/application/templates/editTaskPicturesList',
         scope: {},
 
         controller: ['$scope', 'editTaskPicturesListApi', function ($scope, editTaskPicturesListApi) {

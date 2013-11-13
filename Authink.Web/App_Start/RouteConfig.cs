@@ -9,6 +9,8 @@ namespace Authink.Web.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("GetTemplate", "application/templates/{template}", new { controller = "Templates", action = "GetTemplate" });
+
             routes.MapRoute("Login", "login",  new { controller = "Shell", action = "Login"});
             routes.MapRoute("Shell", "",       new { controller = "Shell", action = "Shell"});
 

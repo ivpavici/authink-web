@@ -5,7 +5,7 @@ authink.directive('editTest', function() {
     return {
       
         restrict:   'E',
-        templateUrl: '/Assets/Templates/Components/EditTest.cshtml',
+        templateUrl: '/application/templates/editTest',
         
         controller: ['$scope', 'editTestApi', 'testsRepository', function ($scope, editTestApi, testsRepository) {
 
