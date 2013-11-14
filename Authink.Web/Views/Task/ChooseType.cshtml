@@ -1,13 +1,15 @@
 ﻿@model Authink.Web.Controllers.Task.Models.ChooseTypeModel
+@using resources = Resources.TaskWizard
+
 @{
     ViewBag.Title = "AuThink Wizard | Type";
 }
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
-        <h1>Choose Type</h1>
+        <h1>@resources.ChooseType_Title</h1>
         @Html.RouteLink("Cancel", "Cancel", null, new { @class="task-wizard-cancel"})
-        <div class="task-wizard-progress">STEP <span>1</span>/5</div>
+        <div class="task-wizard-progress">@resources.Omnibar_Step <span>1</span>/5</div>
     </div>
     <div class="task-wizard-content">
         <div class="task-wizard-type-container" class="clearfix">

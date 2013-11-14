@@ -1,5 +1,7 @@
 ﻿@using Combres.Mvc
 @model Authink.Web.Models.Picture.UploadPictures_SimpleTasksWithPictures
+@using resources = Resources.TaskWizard
+
 @{
     ViewBag.Title = "AuThink task wizard | Upload pictures";
 }
@@ -8,9 +10,9 @@
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
-        <h1>Upload pictures</h1>
-        @Html.RouteLink("Cancel", "Cancel", null, new { @class = "task-wizard-cancel" })
-        <div class="task-wizard-progress">STEP <span>3</span>/5</div>
+        <h1>@resources.UploadPictures_Title</h1>
+        @Html.RouteLink(resources.Omnibar_Cancel, "Cancel", null, new { @class = "task-wizard-cancel" })
+        <div class="task-wizard-progress">@resources.Omnibar_Step <span>3</span>/5</div>
     </div>
     @if(!string.IsNullOrEmpty(Model.ErrorMessage))
     {
@@ -26,11 +28,11 @@
                 @Html.HiddenFor(m=>m.TaskKey         )
 
                 <div class="task-wizard-upload-info">
-                    <span>You need to upload @Model.NumberOfPictures pictures.</span>
+                    <span>@resources.UploadPictures_Simple_UploadText_1 @Model.NumberOfPictures @resources.UploadPictures_Simple_UploadText_2</span>
                 </div>
                 <input type="file" multiple="multiple" name="pictures"/>
                 <div class="task-wizard-upload-options clearfix">
-                    <input type="submit" class="task-wizard-upload-save" name="Submit" value="Upload" />
+                    <input type="submit" class="task-wizard-upload-save" name="Submit" value="@resources.UploadPictures_Upload" />
                 </div>
             }
         </div>

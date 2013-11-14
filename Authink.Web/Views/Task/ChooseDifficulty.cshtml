@@ -1,4 +1,5 @@
 ﻿@model Authink.Web.Controllers.Task.Models.ChooseDifficultyModel
+@using resources = Resources.TaskWizard
 
 @{
     ViewBag.Title = "AuThink Wizard | Difficulty";
@@ -6,9 +7,9 @@
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
-        <h1>Choose Difficulty</h1>
+        <h1>@resources.ChooseDifficulty_Title</h1>
         @Html.RouteLink("Cancel", "Cancel", null, new { @class = "task-wizard-cancel" })
-        <div class="task-wizard-progress">STEP <span>2</span>/5</div>
+        <div class="task-wizard-progress">@resources.Omnibar_Step <span>2</span>/5</div>
     </div>
     <div class="task-wizard-content">
         <div class="task-wizard-difficulty-container" class="clearfix">
@@ -16,7 +17,7 @@
             {
                 <a class="task-wizard-difficulty-item" href="@Url.RouteUrl(Model.UploadPicturesRouteName,new { taskDifficulty = difficulty })">
                     <h2>@difficulty.ToString()</h2>
-                    <span>Difficulty</span>
+                    <span>@resources.ChooseDifficulty_Difficulty</span>
                 </a>
             }
         </div>
