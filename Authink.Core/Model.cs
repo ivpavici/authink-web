@@ -50,11 +50,6 @@ namespace Authink.Core.Model.Queries
         ent::Sound.Details GetSingle_whereId    (int id       );
         ent::Sound.Details GetSingle_forPicture (int pictureId);
     }
-    public interface IStatisticsQueries
-    {
-        ent::Statistics.Meta GetStatistics_Meta_ForTest(int testId);
-        ent::Statistics.Meta GetStatistics_Meta_ForTask(int taskId);
-    }
 }
 namespace Authink.Core.Model.Commands
 {
@@ -111,10 +106,6 @@ namespace Authink.Core.Model.Commands
 
         void AttachSoundToPicture(int soundId, int pictureId                );
         void AttachSoundToTask   (int soundId, int taskId                   );
-    }
-    public interface IStatisticsCommands
-    {
-        void Update_ForTask(int taskId, int sucessfullClicksCount, int errorClicksCount, string timeRun, DateTime date);
     }
 }
 namespace Authink.Core.Model.Services

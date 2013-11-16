@@ -13,7 +13,6 @@
     <EntitySet Name="Tasks" EntityType="Authink.Data.Database.Store.Tasks" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tests" EntityType="Authink.Data.Database.Store.Tests" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="Authink.Data.Database.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Statistics_Meta" EntityType="Authink.Data.Database.Store.Statistics_Meta" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Child_Test" EntityType="Authink.Data.Database.Store.AS_Child_Test" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Picture_Task" EntityType="Authink.Data.Database.Store.AS_Picture_Task" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Test_Task" EntityType="Authink.Data.Database.Store.AS_Test_Task" store:Type="Tables" Schema="dbo" />
@@ -61,10 +60,6 @@
     <AssociationSet Name="UserTest" Association="Authink.Data.Database.Store.UserTest">
       <End Role="User" EntitySet="Users" />
       <End Role="Test" EntitySet="Tests" />
-    </AssociationSet>
-    <AssociationSet Name="Statistics_MetaTask" Association="Authink.Data.Database.Store.Statistics_MetaTask">
-      <End Role="Statistics_Meta" EntitySet="Statistics_Meta" />
-      <End Role="Task" EntitySet="Tasks" />
     </AssociationSet>
     <AssociationSet Name="SoundTask" Association="Authink.Data.Database.Store.SoundTask">
       <End Role="Sound" EntitySet="Sounds" />
@@ -160,16 +155,6 @@
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsHidden" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="Statistics_Meta">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SucessfullClicks" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ErrorClicks" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalRunSummary" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Dates" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
   <EntityType Name="AS_Child_Test">
     <Key>
       <PropertyRef Name="Children_Id" />
@@ -235,18 +220,6 @@
       </Principal>
       <Dependent Role="Test">
         <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Statistics_MetaTask">
-    <End Role="Statistics_Meta" Type="Authink.Data.Database.Store.Statistics_Meta" Multiplicity="1" />
-    <End Role="Task" Type="Authink.Data.Database.Store.Tasks" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Statistics_Meta">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Task">
-        <PropertyRef Name="Statistics_MetaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -410,11 +383,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Test" EntitySet="Tests" />
           </AssociationSet>
-          <EntitySet Name="Statistics_Meta" EntityType="Authink.Data.Database.Statistics_Meta" />
-          <AssociationSet Name="Statistics_MetaTask" Association="Authink.Data.Database.Statistics_MetaTask">
-            <End Role="Statistics_Meta" EntitySet="Statistics_Meta" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
           <AssociationSet Name="SoundTask" Association="Authink.Data.Database.SoundTask">
             <End Role="Sound" EntitySet="Sounds" />
             <End Role="Task" EntitySet="Tasks" />
@@ -493,7 +461,6 @@
           <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.AS_Test_Task" FromRole="Tasks" ToRole="Tests" />
           <Property Type="Int32" Name="Difficulty" Nullable="false" />
           <Property Type="String" Name="ProfilePictureUrl" Nullable="false" />
-          <NavigationProperty Name="Statistics_Meta" Relationship="Authink.Data.Database.Statistics_MetaTask" FromRole="Task" ToRole="Statistics_Meta" />
           <Property Type="Int32" Name="Statistics_MetaId" Nullable="false" />
           <NavigationProperty Name="Sound" Relationship="Authink.Data.Database.SoundTask" FromRole="Task" ToRole="Sound" />
         </EntityType>
@@ -575,29 +542,6 @@
             </Principal>
             <Dependent Role="Test">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Statistics_Meta">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="SucessfullClicks" Nullable="false" />
-          <Property Type="String" Name="ErrorClicks" Nullable="false" />
-          <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.Statistics_MetaTask" FromRole="Statistics_Meta" ToRole="Task" />
-          <Property Type="String" Name="TotalRunSummary" Nullable="false" />
-          <Property Type="String" Name="Dates" Nullable="false" />
-        </EntityType>
-        <Association Name="Statistics_MetaTask">
-          <End Type="Authink.Data.Database.Statistics_Meta" Role="Statistics_Meta" Multiplicity="1" />
-          <End Type="Authink.Data.Database.Task" Role="Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Statistics_Meta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="Statistics_MetaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -705,17 +649,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Statistics_Meta">
-      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.Statistics_Meta)">
-        <MappingFragment StoreEntitySet="Statistics_Meta">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="SucessfullClicks" ColumnName="SucessfullClicks" />
-          <ScalarProperty Name="ErrorClicks" ColumnName="ErrorClicks" />
-          <ScalarProperty Name="TotalRunSummary" ColumnName="TotalRunSummary" />
-          <ScalarProperty Name="Dates" ColumnName="Dates" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <AssociationSetMapping Name="AS_Child_Test" TypeName="Authink.Data.Database.AS_Child_Test" StoreEntitySet="AS_Child_Test">
       <EndProperty Name="Children">
         <ScalarProperty Name="Id" ColumnName="Children_Id" />
@@ -782,6 +715,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

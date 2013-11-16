@@ -160,6 +160,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to , you have to upload.
+        /// </summary>
+        public static string UploadPicture_QuantityValidationMessage_HaveToUpload {
+            get {
+                return ResourceManager.GetString("UploadPicture_QuantityValidationMessage_HaveToUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You uploaded.
+        /// </summary>
+        public static string UploadPicture_QuantityValidationMessage_Uploaded {
+            get {
+                return ResourceManager.GetString("UploadPicture_QuantityValidationMessage_Uploaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You didn&apos;t select picture or picture has wrong format..
+        /// </summary>
+        public static string UploadPicture_ValidationMessage {
+            get {
+                return ResourceManager.GetString("UploadPicture_ValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correct color.
         /// </summary>
         public static string UploadPictures_Colors_CorrectColor {

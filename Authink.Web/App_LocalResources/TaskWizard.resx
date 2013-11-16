@@ -183,4 +183,13 @@
   <data name="UploadPictures_Upload" xml:space="preserve">
     <value>Upload</value>
   </data>
+  <data name="UploadPicture_QuantityValidationMessage_HaveToUpload" xml:space="preserve">
+    <value>, you have to upload</value>
+  </data>
+  <data name="UploadPicture_QuantityValidationMessage_Uploaded" xml:space="preserve">
+    <value>You uploaded</value>
+  </data>
+  <data name="UploadPicture_ValidationMessage" xml:space="preserve">
+    <value>You didn't select picture or picture has wrong format.</value>
+  </data>
 </root>

@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2013 19:13:28
--- Generated from EDMX file: C:\Users\mamar_000\Desktop\AnguThink\trunk\Authink.Data\AuthinkData.edmx
+-- Date Created: 11/16/2013 12:20:09
+-- Generated from EDMX file: C:\Users\mamar_000\Desktop\authink-web\authink-web\Authink.Data\AuthinkData.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -50,9 +50,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserTest]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tests] DROP CONSTRAINT [FK_UserTest];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Statistics_MetaTask]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_Statistics_MetaTask];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SoundTask]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_SoundTask];
 GO
@@ -84,9 +81,6 @@ IF OBJECT_ID(N'[dbo].[Tests]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
-GO
-IF OBJECT_ID(N'[dbo].[Statistics_Meta]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Statistics_Meta];
 GO
 IF OBJECT_ID(N'[dbo].[AS_Child_Test]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AS_Child_Test];
@@ -190,16 +184,6 @@ CREATE TABLE [dbo].[Users] (
 );
 GO
 
--- Creating table 'Statistics_Meta'
-CREATE TABLE [dbo].[Statistics_Meta] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [SucessfullClicks] nvarchar(max)  NOT NULL,
-    [ErrorClicks] nvarchar(max)  NOT NULL,
-    [TotalRunSummary] nvarchar(max)  NOT NULL,
-    [Dates] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'AS_Child_Test'
 CREATE TABLE [dbo].[AS_Child_Test] (
     [Children_Id] int  NOT NULL,
@@ -274,34 +258,28 @@ ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Statistics_Meta'
-ALTER TABLE [dbo].[Statistics_Meta]
-ADD CONSTRAINT [PK_Statistics_Meta]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Children_Id], [Tests_Id] in table 'AS_Child_Test'
 ALTER TABLE [dbo].[AS_Child_Test]
 ADD CONSTRAINT [PK_AS_Child_Test]
-    PRIMARY KEY NONCLUSTERED ([Children_Id], [Tests_Id] ASC);
+    PRIMARY KEY CLUSTERED ([Children_Id], [Tests_Id] ASC);
 GO
 
 -- Creating primary key on [Pictures_Id], [Tasks_Id] in table 'AS_Picture_Task'
 ALTER TABLE [dbo].[AS_Picture_Task]
 ADD CONSTRAINT [PK_AS_Picture_Task]
-    PRIMARY KEY NONCLUSTERED ([Pictures_Id], [Tasks_Id] ASC);
+    PRIMARY KEY CLUSTERED ([Pictures_Id], [Tasks_Id] ASC);
 GO
 
 -- Creating primary key on [Tasks_Id], [Tests_Id] in table 'AS_Test_Task'
 ALTER TABLE [dbo].[AS_Test_Task]
 ADD CONSTRAINT [PK_AS_Test_Task]
-    PRIMARY KEY NONCLUSTERED ([Tasks_Id], [Tests_Id] ASC);
+    PRIMARY KEY CLUSTERED ([Tasks_Id], [Tests_Id] ASC);
 GO
 
 -- Creating primary key on [Children_Id], [Users_Id] in table 'UserChild'
 ALTER TABLE [dbo].[UserChild]
 ADD CONSTRAINT [PK_UserChild]
-    PRIMARY KEY NONCLUSTERED ([Children_Id], [Users_Id] ASC);
+    PRIMARY KEY CLUSTERED ([Children_Id], [Users_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -440,20 +418,6 @@ ADD CONSTRAINT [FK_UserTest]
 CREATE INDEX [IX_FK_UserTest]
 ON [dbo].[Tests]
     ([UserId]);
-GO
-
--- Creating foreign key on [Statistics_MetaId] in table 'Tasks'
-ALTER TABLE [dbo].[Tasks]
-ADD CONSTRAINT [FK_Statistics_MetaTask]
-    FOREIGN KEY ([Statistics_MetaId])
-    REFERENCES [dbo].[Statistics_Meta]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Statistics_MetaTask'
-CREATE INDEX [IX_FK_Statistics_MetaTask]
-ON [dbo].[Tasks]
-    ([Statistics_MetaId]);
 GO
 
 -- Creating foreign key on [Sound_Id] in table 'Tasks'

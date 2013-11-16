@@ -183,4 +183,13 @@
   <data name="UploadPictures_Upload" xml:space="preserve">
     <value>Prenesi</value>
   </data>
+  <data name="UploadPicture_QuantityValidationMessage_HaveToUpload" xml:space="preserve">
+    <value>, treba odabrati</value>
+  </data>
+  <data name="UploadPicture_QuantityValidationMessage_Uploaded" xml:space="preserve">
+    <value>Odabarili ste </value>
+  </data>
+  <data name="UploadPicture_ValidationMessage" xml:space="preserve">
+    <value>Niste odabrali slike ili ste odabrali pogrešni format.</value>
+  </data>
 </root>

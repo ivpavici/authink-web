@@ -9,8 +9,6 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("UserLogin", "api/login/user", new { controller = "ApiEndPoint", action = "Login" });
 
             config.Routes.MapHttpRoute("GetChildren_forUser", "api/users/children/{user_userName}", new { controller = "ApiEndPoint", action = "GetChildren_forUser" });
-
-            config.Routes.MapHttpRoute("Save_Meta_Statistics_forTask", "api/statistics/task", new { controller = "ApiEndPoint", action = "Save_Meta_Statistics_forTask" });
             
             config.Routes.MapHttpRoute("TestsApi_GetAllTestsForChild_shortDetails", "api/children/{childId}/tests", new { controller = "TestsApi", action = "GetAllTestsForChild_shortDetails" });
             config.Routes.MapHttpRoute("TestsApi_Create", "api/tests/create",                                       new { controller = "TestsApi", action = "Create"                           });
