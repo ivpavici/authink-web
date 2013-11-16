@@ -59,14 +59,6 @@
       <resource path="~/Assets/Style/style.css" />
     </resourceSet>
     
-    <resourceSet name="globalJs" type="js">
-      <resource path="~/Scripts/jquery-1.8.2.min.js" />
-      <resource path="~/Scripts/jquery.unobtrusive-ajax.min.js" />
-      <resource path="~/Scripts/Plugins/jquery.simplemodal.1.4.4.min.js" />
-      <resource path="~/Scripts/Plugins/highcharts.js"/>
-      <resource path="~/Assets/Scripts/authink.js" />
-    </resourceSet>
-
     <resourceSet name="homeCss" type="css">
       <resource path="~/Assets/Style/home.css" />
       <resource path="~/Assets/Style/task.css" />

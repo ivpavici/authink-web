@@ -275,7 +275,6 @@
     <Content Include="Assets\Images\Wizard\task-wizard-info.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-star-background.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-voice.png" />
-    <Content Include="Assets\Scripts\authink.js" />
     <Content Include="Assets\Style\bootstrap.css" />
     <Content Include="Assets\Style\ChildDashboard.css" />
     <Content Include="Assets\Style\home.css" />
