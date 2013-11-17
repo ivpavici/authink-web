@@ -76,6 +76,8 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
     
     $rootScope.$on('childMenu:childSelected',    function (event, childId) {
 
+        $rootScope.isTestEditModeOn = false;
+
         application.childMenuApi.setDisplayedChild(childId);
         
         application.testListApi.setChildId(childId);

@@ -147,6 +147,9 @@
   <data name="ChildMenu_Edit" xml:space="preserve">
     <value>Edit profile</value>
   </data>
+  <data name="ConfirmationDialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="EditTaskPicturesList_CorrectColors" xml:space="preserve">
     <value>Correct colors</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="Omnibar_Logout" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="TaskConfirmationDialog_Text" xml:space="preserve">
+    <value>Are you sure you want to delete this task?</value>
   </data>
   <data name="TaskEdit_Description" xml:space="preserve">
     <value>Description</value>
@@ -218,6 +224,9 @@
   </data>
   <data name="TestAdd_TitlePlaceholder" xml:space="preserve">
     <value>Title of new test</value>
+  </data>
+  <data name="TestConfirmationDialog_Text" xml:space="preserve">
+    <value>Are you sure you want to delete this test?</value>
   </data>
   <data name="TestEdit_Delete" xml:space="preserve">
     <value>Delete</value>

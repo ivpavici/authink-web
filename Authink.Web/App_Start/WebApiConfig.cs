@@ -21,9 +21,10 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("PicturesApi_GetAll_forTaskGameplay", "api/task/{taskId}/pictures",                     new { controller = "PicturesApi", action = "GetAll_forTaskGameplay"          });
             config.Routes.MapHttpRoute("PicturesApi_UpdateColorsForPicture", "api/colors/update",                              new { controller = "PicturesApi", action = "UpdateColorsForPicture"          });
 
-            config.Routes.MapHttpRoute("TasksApi_GetSingle_whereId", "api/tasks/{taskId}", new { controller = "TasksApi", action = "GetSingle_whereId" });
+            config.Routes.MapHttpRoute("TasksApi_GetSingle_whereId", "api/tasks/{taskId}",                    new { controller = "TasksApi", action = "GetSingle_whereId"               });
             config.Routes.MapHttpRoute("TasksApi_GetAll_shortDetails_whereTestId", "api/test/{testId}/tasks", new { controller = "TasksApi", action = "GetAll_shortDetails_whereTestId" });
-            config.Routes.MapHttpRoute("TasksApi_Update", "api/task/update", new { controller = "TasksApi", action = "Update" });
+            config.Routes.MapHttpRoute("TasksApi_Update", "api/task/update",                                  new { controller = "TasksApi", action = "Update"                          });
+            config.Routes.MapHttpRoute("TasksApi_Remove","api/task/remove/{taskId}",                          new { controller = "TasksApi", action = "Remove"                          });
 
             config.Routes.MapHttpRoute("ChildrenApi_Create", "api/children/create",                 new { controller = "ChildrenApi", action = "Create" });
             config.Routes.MapHttpRoute("ChildrenApi_Edit", "api/children/edit",                     new { controller = "ChildrenApi", action = "Edit"   });

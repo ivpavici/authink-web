@@ -479,6 +479,8 @@
     <Content Include="Views\Shared\Shell.cshtml" />
     <Content Include="Views\Task\WizardLayout.cshtml" />
     <Content Include="Views\Task\_ViewStart.cshtml" />
+    <Content Include="Views\Templates\TaskDelete_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Templates\TestDelete_ConfirmationDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Assets\Scripts\lib-patches\" />

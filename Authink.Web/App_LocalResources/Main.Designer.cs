@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ConfirmationDialog_Cancel {
+            get {
+                return ResourceManager.GetString("ConfirmationDialog_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correct colors.
         /// </summary>
         public static string EditTaskPicturesList_CorrectColors {
@@ -228,6 +237,15 @@ namespace Resources {
         public static string Omnibar_Logout {
             get {
                 return ResourceManager.GetString("Omnibar_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this task?.
+        /// </summary>
+        public static string TaskConfirmationDialog_Text {
+            get {
+                return ResourceManager.GetString("TaskConfirmationDialog_Text", resourceCulture);
             }
         }
         
@@ -363,6 +381,15 @@ namespace Resources {
         public static string TestAdd_TitlePlaceholder {
             get {
                 return ResourceManager.GetString("TestAdd_TitlePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this test?.
+        /// </summary>
+        public static string TestConfirmationDialog_Text {
+            get {
+                return ResourceManager.GetString("TestConfirmationDialog_Text", resourceCulture);
             }
         }
         

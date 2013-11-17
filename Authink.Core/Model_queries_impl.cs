@@ -115,6 +115,7 @@ namespace Authink.Core.Model.Queries.Impl
                     db.Tests
                       .Single(test => test.Id == testId)
                       .Tasks
+                      .Where (task => !task.IsHidden                 )
                       .Select(mappers::Task.ShortDetails.FromDatabase)
                       .ToList();
             }

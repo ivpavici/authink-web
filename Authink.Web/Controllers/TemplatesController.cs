@@ -11,20 +11,22 @@ namespace Authink.Web.Controllers
         [HttpGet] public ActionResult GetTemplate(string template)
         {
             return
-                  (template == "childMenu")            ? PartialView("~/Views/Templates/ChildMenu.cshtml")
-                : (template == "createChild")          ? PartialView("~/Views/Templates/CreateChild.cshtml")
-                : (template == "createTest")           ? PartialView("~/Views/Templates/CreateTest.cshtml")
-                : (template == "editChild")            ? PartialView("~/Views/Templates/EditChild.cshtml")
-                : (template == "editTask")             ? PartialView("~/Views/Templates/EditTask.cshtml")
-                : (template == "editTaskPicturesList") ? PartialView("~/Views/Templates/EditTaskPicturesList.cshtml")
-                : (template == "editTest")             ? PartialView("~/Views/Templates/EditTest.cshtml")
-                : (template == "omniBar")              ? PartialView("~/Views/Templates/Omnibar.cshtml")
-                : (template == "signUp" )              ? PartialView("~/Views/Templates/SignUp.cshtml")
-                : (template == "taskPicturesEditor")   ? PartialView("~/Views/Templates/TaskPicturesEditor.cshtml")
-                : (template == "taskPreview")          ? PartialView("~/Views/Templates/TaskPreview.cshtml")
-                : (template == "testPreview")          ? PartialView("~/Views/Templates/TestPreview.cshtml")
-                : (template == "testsList")            ? PartialView("~/Views/Templates/TestsList.cshtml")
-                :                                        PartialView("~/Views/Templates/TestTasksList.cshtml");
+                  (template == "childMenu")               ? PartialView("~/Views/Templates/ChildMenu.cshtml")
+                : (template == "createChild")             ? PartialView("~/Views/Templates/CreateChild.cshtml")
+                : (template == "createTest")              ? PartialView("~/Views/Templates/CreateTest.cshtml")
+                : (template == "editChild")               ? PartialView("~/Views/Templates/EditChild.cshtml")
+                : (template == "editTask")                ? PartialView("~/Views/Templates/EditTask.cshtml")
+                : (template == "editTaskPicturesList")    ? PartialView("~/Views/Templates/EditTaskPicturesList.cshtml")
+                : (template == "editTest")                ? PartialView("~/Views/Templates/EditTest.cshtml")
+                : (template == "omniBar")                 ? PartialView("~/Views/Templates/Omnibar.cshtml")
+                : (template == "signUp" )                 ? PartialView("~/Views/Templates/SignUp.cshtml")
+                : (template == "taskPicturesEditor")      ? PartialView("~/Views/Templates/TaskPicturesEditor.cshtml")
+                : (template == "taskPreview")             ? PartialView("~/Views/Templates/TaskPreview.cshtml")
+                : (template == "testPreview")             ? PartialView("~/Views/Templates/TestPreview.cshtml")
+                : (template == "testsList")               ? PartialView("~/Views/Templates/TestsList.cshtml")
+                : (template == "taskDeleteConfirmDialog") ? PartialView("~/Views/Templates/TaskDelete_ConfirmationDialog.cshtml")
+                : (template == "testDeleteConfirmDialog") ? PartialView("~/Views/Templates/TestDelete_ConfirmationDialog.cshtml")
+                :                                           PartialView("~/Views/Templates/TestTasksList.cshtml");
         }
     }
 }
