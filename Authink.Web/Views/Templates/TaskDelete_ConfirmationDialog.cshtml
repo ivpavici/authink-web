@@ -1,10 +1,21 @@
 ﻿@using resources = Resources.Main
 
-<div>
-    <span> @resources.TaskConfirmationDialog_Text </span>
+<div class="task-delete-confirmation-dialog">
+
+    <div class="task-delete-confirmation-dialog-header">
+
+        <h2> @resources.TaskConfirmationDialog_Title </h2>
+
+    </div>
+
+    <p>@resources.TaskConfirmationDialog_Text</p>
 
     <div class="actions">
-        <button class="confirm" ng-click="confirm()"> Ok </button>
-        <button class="cancel" ng-click="cancel()"> @resources.ConfirmationDialog_Cancel </button>
+
+        <a class="bottun" href="#" ng-click="confirm()"> @resources.ConfirmationDialog_Yes </a>
+
+        <a class="bottun" href="#" ng-click="cancel()"> @resources.ConfirmationDialog_No </a>
+
     </div>
+
 </div>

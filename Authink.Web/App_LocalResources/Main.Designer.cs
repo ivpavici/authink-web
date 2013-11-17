@@ -151,11 +151,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to No.
         /// </summary>
-        public static string ConfirmationDialog_Cancel {
+        public static string ConfirmationDialog_No {
             get {
-                return ResourceManager.GetString("ConfirmationDialog_Cancel", resourceCulture);
+                return ResourceManager.GetString("ConfirmationDialog_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string ConfirmationDialog_Yes {
+            get {
+                return ResourceManager.GetString("ConfirmationDialog_Yes", resourceCulture);
             }
         }
         
@@ -241,11 +250,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this task?.
+        ///   Looks up a localized string similar to You are about do delete this task. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TaskConfirmationDialog_Text {
             get {
                 return ResourceManager.GetString("TaskConfirmationDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete confirmation.
+        /// </summary>
+        public static string TaskConfirmationDialog_Title {
+            get {
+                return ResourceManager.GetString("TaskConfirmationDialog_Title", resourceCulture);
             }
         }
         
@@ -385,11 +403,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this test?.
+        ///   Looks up a localized string similar to You are about to delete this test. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TestConfirmationDialog_Text {
             get {
                 return ResourceManager.GetString("TestConfirmationDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete confirmation.
+        /// </summary>
+        public static string TestConfirmationDialog_Title {
+            get {
+                return ResourceManager.GetString("TestConfirmationDialog_Title", resourceCulture);
             }
         }
         
