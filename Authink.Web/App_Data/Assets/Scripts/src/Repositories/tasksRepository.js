@@ -8,7 +8,8 @@ authink.factory('tasksRepository', ['$resource', function ($resource) {
             
             getSingle_whereId:            '/api/tasks/:taskId',
             getAll_shortDetails_byTestId: '/api/test/:testId/tasks',
-            update:                       '/api/task/update'
+            update:                       '/api/task/update',
+            remove:                       '/api/task/remove/:taskId'
         }
     };
 
@@ -33,6 +34,13 @@ authink.factory('tasksRepository', ['$resource', function ($resource) {
             var resource = $resource(config.apiUrls.update);
 
             return resource.save(task).$promise;
+        },
+        
+        remove: function(taskId) {
+
+            var resource = $resource(config.apiUrls.remove);
+
+            return resource.remove({ taskId: taskId }).$promise;
         }
     };
 }]);

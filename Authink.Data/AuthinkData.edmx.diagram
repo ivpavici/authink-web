@@ -19,8 +19,6 @@
         <AssociationConnector Association="Authink.Data.Database.AS_Test_Task" ManuallyRouted="false" />
         <AssociationConnector Association="Authink.Data.Database.UserChild" ManuallyRouted="false" />
         <AssociationConnector Association="Authink.Data.Database.UserTest" />
-        <EntityTypeShape EntityType="Authink.Data.Database.Statistics_Meta" Width="1.875" PointX="9.25" PointY="6.25" />
-        <AssociationConnector Association="Authink.Data.Database.Statistics_MetaTask" />
         <AssociationConnector Association="Authink.Data.Database.SoundTask" />
         <AssociationConnector Association="Authink.Data.Database.SoundPicture" />
       </Diagram>

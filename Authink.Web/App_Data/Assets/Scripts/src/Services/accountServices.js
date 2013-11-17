@@ -6,10 +6,10 @@ authink.factory('accountServices', ['$resource', function ($resource) {
 
         apiUrls: {
 
-            tryGetSignedInUser: "api/user",
-            login:              "api/user/login",
-            signUp:             "api/user/sign-up",
-            signOut:            "api/user/sign-out"
+            tryGetSignedInUser: "/api/user",
+            login:              "/api/user/login",
+            signUp:             "/api/user/sign-up",
+            signOut:            "/api/user/sign-out"
         }
     };
 

@@ -28,7 +28,6 @@ namespace Authink.Web.DependencyResolution {
                             x.For<IPictureQueries>().Use<PictureQueriesImpl>();
                             x.For<ISoundQueries>().Use<SoundQueriesImpl>();
                             x.For<IChildQueries>().Use<ChildQueriesImpl>();
-                            x.For<IStatisticsQueries>().Use<StatisticsQueriesImpl>();
 
                             x.For<IUserCommands>().Use<UserCommandsImpl>();
                             x.For<ITaskCommands>().Use<TaskCommandsImpl>();
@@ -36,7 +35,6 @@ namespace Authink.Web.DependencyResolution {
                             x.For<IPictureCommands>().Use<PictureCommandsImpl>();
                             x.For<ISoundCommands>().Use<SoundCommandsImpl>();
                             x.For<IChildCommands>().Use<ChildCommandsImpl>();
-                            x.For<IStatisticsCommands>().Use<StatisticsCommandsImpl>();
 
                             x.For<IFileSystemUtilities>().Use<FileSystemUtilities>();
                             x.For<ISoundServices>().Use<SoundServicesImpl>();

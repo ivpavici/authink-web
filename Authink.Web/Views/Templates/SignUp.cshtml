@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+@using resources = Resources.Login;
+
+<div id="login-form">
+
+    <form id="login-form-login" ng-submit="login()" ng-show="!isSignUp">
+
+        <h1>@resources.LoginForm_Title</h1>
+
+        <span>{{loginErrorMessage}}</span>
+        <div>
+            <input type="text" class="login-form-field" ng-model="username" placeholder="@resources.LoginForm_UsernamePlaceholder" required />
+        </div>
+
+        <div>
+            <input type="password" class="login-form-field" ng-model="password" placeholder="@resources.LoginForm_PasswordPlaceholder" required />
+
+        </div>
+
+        <div class="clearfix">
+
+            <input class="login-form-button" type="submit" value="@resources.LoginForm_LoginButton" />
+
+        </div>
+
+        <div class="login-form-switch">
+
+            <p>@resources.LoginForm_SignUpSwitch_Flavor</p>
+
+            <a ng-click="toggleForm()">@resources.LoginForm_SignUpSwitch_Link</a>
+
+        </div>
+    </form>
+
+
+    <div id="login-form-signup" ng-show="isSignUp">
+
+        <h1>@resources.SignUpForm_Title</h1>
+        <form ng-submit="signUp()">
+
+            <span>{{signUpErrorMessage}}</span>
+
+            <div>
+                <input type="text" ng-model="user.firstname" placeholder="@resources.SignUpForm_FirstNamePlaceholder" class="login-form-field" required />
+            </div>
+
+            <div>
+                <input type="text" ng-model="user.lastname" placeholder="@resources.SignUpForm_LastNamePlaceholder" class="login-form-field" required />
+            </div>
+
+            <div>
+                <input type="email" ng-model="user.email" placeholder="@resources.SignUpForm_EmailPlaceholder" class="login-form-field" required />
+            </div>
+
+            <div>
+                <input type="text" ng-model="user.username" placeholder="@resources.SignUpForm_UsernamePlaceholder" class="login-form-field" required />
+            </div>
+
+            <div>
+                <input type="password" ng-model="user.password" placeholder="@resources.SignUpForm_PasswordPlaceholder" class="login-form-field" required />
+            </div>
+
+            <div>
+                <input type="password" ng-model="user.confirmPassword" placeholder="@resources.SignUpForm_ConfirmPasswordPlaceholder" class="login-form-field" required />
+            </div>
+
+            <div class="clearfix">
+
+                <input class="login-form-button" type="submit" value="@resources.SignUpForm_SIgnUpButton" />
+
+            </div>
+        </form>
+
+        <div class="login-form-switch">
+
+            <p>@resources.SignUpForm_LoginSwitch_Flavor</p>
+
+            <a ng-click="toggleForm()">@resources.SignForm_LoginSwitch_Link</a>
+
+        </div>
+    </div>
+
+
+
+</div>
+

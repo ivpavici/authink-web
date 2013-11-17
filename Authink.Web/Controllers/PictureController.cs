@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Services;
 using Authink.Web.Models.Session;
 using Authink.Web.Models.Picture;
 
+using Resources;
 using buru = Authink.Core.Domain.Rules;
 using ent =  Authink.Core.Domain.Entities;
 
@@ -71,7 +71,7 @@ namespace Authink.Web.Controllers
         {
             if (pictures.Any(picture => picture == null || !picture.ContentType.Contains("image")))
             {
-                model.ErrorMessage = "Niste odabrali slike ili ste odabrali pogrešni format";
+                model.ErrorMessage = TaskWizard.UploadPicture_ValidationMessage;
                 return View(model);
             }
 
@@ -113,7 +113,7 @@ namespace Authink.Web.Controllers
         {
             if (pictures.Any(picture => picture == null || !picture.ContentType.Contains("image")))
             {
-                model.ErrorMessage = "Niste odabrali slike ili ste odabrali pogrešni format";
+                model.ErrorMessage = TaskWizard.UploadPicture_ValidationMessage;
                 return View(model);
             }
             if (!IsNumberOfUploadedPicturesCorrect(pictures.Count, model.NumberOfPicturesAndWrongColorsMapping.NumberOfPictures))
@@ -157,7 +157,7 @@ namespace Authink.Web.Controllers
         {
             if (correctPicture == null || !correctPicture.ContentType.Contains("image") || pictures.Any(picture => picture == null || !picture.ContentType.Contains("image")))
             {
-                model.ErrorMessage = "Wrong image format";
+                model.ErrorMessage = TaskWizard.UploadPicture_ValidationMessage;
                 return View(model);
             }
 
@@ -207,9 +207,9 @@ namespace Authink.Web.Controllers
         }
         [HttpPost] public ActionResult UploadPictures_OrderBySize(UploadPictures_OrderBySizeModel model, HttpPostedFileBase picture)
         {
-            if (picture == null)
+            if (picture == null || !picture.ContentType.Contains("image"))
             {
-                model.ErrorMessage = "Niste odabrali slike ili ste odabrali pogrešni format";
+                model.ErrorMessage = TaskWizard.UploadPicture_ValidationMessage;
                 return View(model);
             }
 
@@ -235,7 +235,10 @@ namespace Authink.Web.Controllers
         private static string GenerateTaskUploadErrorMessage   (int numberOfPicturesUploaded, int taskDifficulty)
         {
             return
-                String.Format("Uploadali ste {0} slike, trebate uploadat {1} slike", numberOfPicturesUploaded, taskDifficulty);
+                String.Format(TaskWizard.UploadPicture_QuantityValidationMessage_Uploaded 
+                              + " {0} "  
+                              + TaskWizard.UploadPicture_QuantityValidationMessage_HaveToUpload
+                              + " {1}.", numberOfPicturesUploaded, taskDifficulty);
         }
     }
 }

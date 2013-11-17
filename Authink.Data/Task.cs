@@ -33,7 +33,6 @@ namespace Authink.Data
         public virtual User User { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
         public virtual ICollection<Test> Tests { get; set; }
-        public virtual Statistics_Meta Statistics_Meta { get; set; }
         public virtual Sound Sound { get; set; }
     }
 }

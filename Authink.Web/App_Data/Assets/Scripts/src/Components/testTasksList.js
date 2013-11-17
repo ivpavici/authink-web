@@ -5,10 +5,10 @@ authink.directive('testTasksList', function () {
     return {
         
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/TestTasksList.html',
+        templateUrl: '/application/templates/testTasksList',
         scope:       {},
         
-        controller: ['$scope', 'testTasksListApi', function ($scope, testTasksListApi) {
+        controller: ['$scope', '$modal', 'testTasksListApi', 'tasksRepository', function ($scope, $modal, testTasksListApi, tasksRepository) {
 
             $scope.testTasksListApi = testTasksListApi;
             
@@ -37,6 +37,34 @@ authink.directive('testTasksList', function () {
                 
                 $scope.$emit('testTasksList:taskEditStarted', task.Id);
             };
+
+            $scope.removeTask = function(task){
+            
+                tasksRepository.remove(task.Id);
+                
+                var taskIndex = $scope.tasks.indexOf(task);
+                $scope.tasks.splice(taskIndex, 1);
+            }
+
+            $scope.openConfirmationDialog = function (task) {
+
+                var modal = $modal.open({
+
+                    templateUrl: '/application/templates/taskDeleteConfirmDialog',
+                    scope:       $scope
+                });
+
+                $scope.confirm = function () {
+
+                    modal.close();
+                    $scope.removeTask(task);
+                };
+
+                $scope.cancel = function () {
+
+                    modal.dismiss('cancel');
+                };
+            }
         }]
     };
 });

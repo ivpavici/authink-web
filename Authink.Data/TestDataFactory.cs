@@ -28,17 +28,6 @@ namespace Authink.Data.Factory
             
         }
 
-        private static Statistics_Meta statisticsMeta_Initialize ()
-        {
-            return new Statistics_Meta
-                       {
-                           ErrorClicks = ";",
-                           SucessfullClicks = ";",
-                           TotalRunSummary = ";",
-                           Dates = ";"
-                       };
-        }
-
         private static void InsertUserData(db.AuthinkDataModel dataModel)
         {
             new[]
@@ -79,7 +68,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -109,7 +97,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -145,7 +132,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -201,7 +187,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#003",
                                                                                   Difficulty = 4,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -264,7 +249,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#003",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -320,7 +304,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#001",
                                                                                   Difficulty = 4,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-pair-same-items-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -367,7 +350,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#008",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-order-by-size-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -390,7 +372,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#009",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-voice-commands-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -437,7 +418,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#005",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-pair-halves-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -496,7 +476,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#002",
                                                                                   Difficulty = 4,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -539,7 +518,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#002",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -569,7 +547,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#002",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -618,7 +595,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#003",
                                                                                   Difficulty = 4,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -676,7 +652,6 @@ namespace Authink.Data.Factory
                                                                                   Type = "#009",
                                                                                   Difficulty = 3,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-voice-commands-256x256.png",
-                                                                                  Statistics_Meta =statisticsMeta_Initialize(),
                                                                                   Sound = new db::Sound{IsHidden = false,Title = "prepoznaj mikser",Type = "ttl",Url = "https://skydrive.live.com/embed?cid=4E1CFB3760618E2C&resid=4E1CFB3760618E2C%21459&authkey=AGiqd2wPjuVu50Q"},
                                                                                   Pictures =
                                                                                       {

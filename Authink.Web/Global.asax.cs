@@ -8,12 +8,11 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Authink.Data.Factory;
 using Authink.Web.App_Start;
+using System.Threading;
+using System.Globalization;
 
 namespace Authink.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -31,7 +30,17 @@ namespace Authink.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BundleTable.EnableOptimizations = true;
         }
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            var language = Request.Cookies["authink-language"] != null
+                            ? Request.Cookies["authink-language"].Value
+                            : "en";
 
+            var culture  = new CultureInfo(language);
+
+            Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture   = CultureInfo.CreateSpecificCulture(culture.Name);
+        }
         private void SetTestData()
         {
 #if DEBUG

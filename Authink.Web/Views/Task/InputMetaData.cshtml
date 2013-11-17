@@ -1,4 +1,6 @@
 ﻿@model Authink.Web.Controllers.Task.Models.InputMetaDataModel
+@using resources = Resources.TaskWizard
+
 @{
     ViewBag.Title = "AuThink Wizard | Informations";
 }
@@ -13,9 +15,9 @@
 
 <div class="task-wizard-container">
     <div class="task-wizard-title clearfix">
-        <h1>Basic task information</h1>
-        @Html.RouteLink("Cancel", "Cancel", null, new { @class = "task-wizard-cancel" })
-        <div class="task-wizard-progress">STEP <span>4</span>/5</div>
+        <h1>@resources.InputMetaData_Title</h1>
+        @Html.RouteLink(resources.Omnibar_Cancel, "Cancel", null, new { @class = "task-wizard-cancel" })
+        <div class="task-wizard-progress"> @resources.Omnibar_Step <span>4</span>/5</div>
     </div>
     @if(!string.IsNullOrEmpty(Model.ErrorMessage))
     {
@@ -30,14 +32,14 @@
             @Html.HiddenFor(m => m.TaskKey)
 
             <div class="task-wizard-meta-container">
-                <div class="task-wizard-meta-heading">Title</div>
+                <div class="task-wizard-meta-heading">@resources.InputMetaData_Task_Title</div>
                 <div class="task-wizard-meta-field">
                     @Html.TextBoxFor(m => m.Title)
                     @Html.ValidationMessageFor(m => m.Title)
                 </div>
             </div>
             <div class="task-wizard-meta-container">
-                <div class="task-wizard-meta-heading">Description</div>
+                <div class="task-wizard-meta-heading">@resources.InputMetaData_Task_Description</div>
                 <div class="task-wizard-meta-field">
                     @Html.TextAreaFor(m => m.Description)
                     @Html.ValidationMessageFor(m => m.Description)
@@ -45,14 +47,14 @@
             </div>
             <div>
                 <div class="task-wizard-meta-heading">
-                    Voice command
+                    @resources.InputMetaData_VoiceCommand_Title
                     @if (Model.IsVoiceCommandRequired)
                     {
-                        <span>(required)</span>
+                        <span>(@resources.InputMetaData_VoiceCommand_Required</span>
                     }
                     else
                     {
-                        <span>(optional)</span>
+                        <span>(@resources.InputMetaData_VoiceCommand_Optional)</span>
                     }
                 </div>
                 <input type="file" name="sound"/>

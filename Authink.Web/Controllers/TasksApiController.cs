@@ -69,6 +69,19 @@ namespace Authink.Web.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        [System.Web.Http.HttpDelete]
+        public HttpStatusCodeResult Remove(int taskId)
+        {
+            if(!userAccessRights.CanEditTask(taskId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            taskCommands.Delete(taskId);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
     }
 }
 

@@ -5,9 +5,9 @@ authink.directive('editTest', function() {
     return {
       
         restrict:   'E',
-        templateUrl: '/Assets/Templates/Components/EditTest.html',
+        templateUrl: '/application/templates/editTest',
         
-        controller: ['$scope', 'editTestApi', 'testsRepository', function ($scope, editTestApi, testsRepository) {
+        controller: ['$scope', '$modal', 'editTestApi', 'testsRepository', function ($scope, $modal, editTestApi, testsRepository) {
 
             $scope.editTestApi = editTestApi;
 
@@ -45,6 +45,26 @@ authink.directive('editTest', function() {
                     $scope.$emit('editTest:testDeleted');
                 });
             };
+
+            $scope.openConfirmationDialog = function () {
+
+                var modal = $modal.open({
+
+                    templateUrl: '/application/templates/testDeleteConfirmDialog',
+                    scope: $scope
+                });
+
+                $scope.confirm = function () {
+
+                    modal.close();
+                    $scope.removeTest();
+                };
+
+                $scope.cancel = function () {
+
+                    modal.dismiss('cancel');
+                };
+            }
         }]
     };
 });

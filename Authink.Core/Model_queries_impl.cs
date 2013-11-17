@@ -115,6 +115,7 @@ namespace Authink.Core.Model.Queries.Impl
                     db.Tests
                       .Single(test => test.Id == testId)
                       .Tasks
+                      .Where (task => !task.IsHidden                 )
                       .Select(mappers::Task.ShortDetails.FromDatabase)
                       .ToList();
             }
@@ -247,26 +248,6 @@ namespace Authink.Core.Model.Queries.Impl
         public ent::Sound.Details GetSingle_forPicture(int pictureId)
         {
             throw new System.NotImplementedException();
-        }
-    }
-    public class StatisticsQueriesImpl: IStatisticsQueries
-    {
-        public ent::Statistics.Meta GetStatistics_Meta_ForTest(int testId)
-        {
-            throw new NotImplementedException();
-        }
-        public ent::Statistics.Meta GetStatistics_Meta_ForTask(int taskId)
-        {
-            using (var db = new database::AuthinkDataModel())
-            {
-                return
-                    db.Tasks
-                        .Where(task => task.Id == taskId)
-                        .Select(test => test.Statistics_Meta)
-                        .ToList()
-                        .Select(mappers::Statistics.Meta.FromDatabse)
-                        .SingleOrDefault();
-            }
         }
     }
 }

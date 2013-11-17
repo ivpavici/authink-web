@@ -1,11 +1,13 @@
-﻿<div id="child-menu" class="clearfix">
-    
+﻿@using resources = Resources.Main;
+
+<div id="child-menu" class="clearfix">
+
     <div id="child-menu-info" class="clearfix">
-        
+
         <img id="child-menu-info-image" ng-src={{childMenuApi.displayedChild.ProfilePictureUrl}} alt="" />
 
         <div id="child-menu-info-menu">
-            
+
             <a id="child-menu-info-menu-child-name">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
 
             <ul>
@@ -14,8 +16,8 @@
                     <span>{{child.Firstname}} {{child.Lastname}}</span>
 
                 </li>
-                    
-                <li action="add-child" ng-click="addChild()"><span>Add new child</span></li>
+
+                <li action="add-child" ng-click="addChild()"><span>@resources.ChildMenu_CreateNew</span></li>
 
             </ul>
 
@@ -23,6 +25,6 @@
 
     </div>
 
-    <a id="child-menu-edit-button" ng-click="editChild()"><span>edit profile</span></a>
+    <a id="child-menu-edit-button" ng-click="editChild()"><span>@resources.ChildMenu_Edit</span></a>
 
 </div>

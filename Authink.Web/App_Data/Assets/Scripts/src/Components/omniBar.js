@@ -5,7 +5,7 @@ authink.directive('omniBar', function() {
     return {
       
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/OmniBar.html',
+        templateUrl: '/application/templates/omniBar',
         controller: ['$scope','$location', 'accountServices', function ($scope, $location, accountServices) {
 
             $scope.currentUser = accountServices.tryGetSignedInUser();
@@ -14,7 +14,7 @@ authink.directive('omniBar', function() {
                 
                 accountServices.signOut();
                 
-                $location.path('/login');
+                $location.path('login');
             };
         }]        
     };

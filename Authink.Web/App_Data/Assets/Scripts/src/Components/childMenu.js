@@ -5,7 +5,7 @@ authink.directive('childMenu', function () {
     return {
 
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/ChildMenu.html',
+        templateUrl: '/application/templates/childMenu',
         scope:       {},
         
         controller: ['$scope', 'childMenuApi', 'childrenRepository', function ($scope, childMenuApi, childrenRepository) {

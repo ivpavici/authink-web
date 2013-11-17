@@ -154,6 +154,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_LocalResources\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Login.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.hr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Main.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Main.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.hr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\TaskWizard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskWizard.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\TaskWizard.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskWizard.hr.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Combres.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -163,23 +193,23 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiEndPointController.cs" />
     <Compile Include="Controllers\ChildrenApiController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PicturesApiController.cs" />
     <Compile Include="Controllers\ShellController.cs" />
     <Compile Include="Controllers\SoundController.cs" />
-    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TasksApiController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\TestsApiController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
-    <Compile Include="DependencyResolution\IoC.cs" />
-    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
-    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Configuration\IoC.cs" />
+    <Compile Include="Configuration\StructureMapDependencyResolver.cs" />
+    <Compile Include="Configuration\StructureMapDependencyScope.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Session\SessionModels.cs" />
-    <Compile Include="Models\Statistics\GetForTaskModel.cs" />
     <Compile Include="Models\Picture\PicturesUploadModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Sound\CreateModel.cs" />
@@ -243,7 +273,6 @@
     <Content Include="Assets\Images\Wizard\task-wizard-info.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-star-background.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-voice.png" />
-    <Content Include="Assets\Scripts\authink.js" />
     <Content Include="Assets\Style\bootstrap.css" />
     <Content Include="Assets\Style\ChildDashboard.css" />
     <Content Include="Assets\Style\home.css" />
@@ -251,21 +280,8 @@
     <Content Include="Assets\Style\style.css" />
     <Content Include="Assets\Style\wizard.css" />
     <Content Include="Assets\Images\x.png" />
-    <Content Include="Assets\Templates\Components\CreateChild.html" />
-    <Content Include="Assets\Templates\Components\ChildMenu.html" />
-    <Content Include="Assets\Templates\Components\CreateTest.html" />
-    <Content Include="Assets\Templates\Components\EditChild.html" />
-    <Content Include="Assets\Templates\Components\EditTask.html" />
-    <Content Include="Assets\Templates\Components\EditTaskPicturesList.html" />
-    <Content Include="Assets\Templates\Components\EditTest.html" />
-    <Content Include="Assets\Templates\Components\OmniBar.html" />
-    <Content Include="Assets\Templates\Components\SignUp.html" />
-    <Content Include="Assets\Templates\Components\TaskPicturesEditor.html" />
-    <Content Include="Assets\Templates\Components\TaskPreview.html" />
-    <Content Include="Assets\Templates\Components\TestPreview.html" />
-    <Content Include="Assets\Templates\Components\TestsList.html" />
+    <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
-    <Content Include="Assets\Templates\Components\TestTasksList.html" />
     <Content Include="Assets\Templates\Home.html" />
     <Content Include="Assets\Templates\Login.html" />
     <Content Include="Content\Images\Children\default-profile-picture.png" />
@@ -375,6 +391,50 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPicturesEditor.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EmbeddedResource Include="App_LocalResources\Login.hr.resx">
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.hr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Main.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Main.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Main.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Main.hr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Content Include="Views\Templates\ChildMenu.cshtml" />
+    <Content Include="Views\Templates\CreateChild.cshtml" />
+    <Content Include="Views\Templates\CreateTest.cshtml" />
+    <Content Include="Views\Templates\EditChild.cshtml" />
+    <Content Include="Views\Templates\EditTask.cshtml" />
+    <Content Include="Views\Templates\EditTaskPicturesList.cshtml" />
+    <Content Include="Views\Templates\EditTest.cshtml" />
+    <Content Include="Views\Templates\OmniBar.cshtml" />
+    <Content Include="Views\Templates\TaskPicturesEditor.cshtml" />
+    <Content Include="Views\Templates\TaskPreview.cshtml" />
+    <Content Include="Views\Templates\TestPreview.cshtml" />
+    <Content Include="Views\Templates\TestsList.cshtml" />
+    <Content Include="Views\Templates\TestTasksList.cshtml" />
+    <EmbeddedResource Include="App_LocalResources\TaskWizard.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskWizard.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\TaskWizard.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskWizard.hr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <None Include="Properties\PublishProfiles\File.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Plugins\highcharts.js" />
@@ -414,12 +474,13 @@
     <Content Include="Views\Picture\UploadPictures_DetectColors.cshtml" />
     <Content Include="Views\Picture\UploadPictures_DetectItem.cshtml" />
     <Content Include="Views\Picture\UploadPictures_OrderBySize.cshtml" />
-    <Content Include="Views\Statistics\_GetForTask.cshtml" />
     <Content Include="Views\Sound\_Create.cshtml" />
     <Content Include="Views\Sound\_Edit.cshtml" />
     <Content Include="Views\Shared\Shell.cshtml" />
     <Content Include="Views\Task\WizardLayout.cshtml" />
     <Content Include="Views\Task\_ViewStart.cshtml" />
+    <Content Include="Views\Templates\TaskDelete_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Templates\TestDelete_ConfirmationDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Assets\Scripts\lib-patches\" />

@@ -1,32 +1,34 @@
-﻿<div class="task-picture-container" ng-if="isSimpleEdit()">
-    
-        <div class="task-picture-image">
-        
-            <img ng-src="{{picture.Url}}" alt="" />
+﻿@using resources = Resources.Main;
 
-            <span>Upload a new picture</span>
-            
-            {{uploadProgress}}
-           
-            <input type="file" ng-file-select="onFileSelect($files)" >
-
-        </div>
-
-        <div class="task-edit-options">
-        
-            <input type="submit" value="Back" class="task-edit-save" ng-click="closeModel()" />
-
-        </div>
-    
-</div>
-
-<div class="task-picture-container" ng-if="isDetectColorsEdit()" >
+<div class="task-picture-container" ng-if="isSimpleEdit()">
 
     <div class="task-picture-image">
 
         <img ng-src="{{picture.Url}}" alt="" />
 
-        <span>Upload a new picture</span>
+        <span>@resources.TaskPicturesEditor_Title</span>
+
+        {{uploadProgress}}
+
+        <input type="file" ng-file-select="onFileSelect($files)">
+
+    </div>
+
+    <div class="task-edit-options">
+
+        <input type="submit" value="@resources.TaskPicturesEditor_Back" class="task-edit-save" ng-click="closeModel()" />
+
+    </div>
+
+</div>
+
+<div class="task-picture-container" ng-if="isDetectColorsEdit()">
+
+    <div class="task-picture-image">
+
+        <img ng-src="{{picture.Url}}" alt="" />
+
+        <span>@resources.TaskPicturesEditor_Title</span>
 
         <span>{{uploadProgress}}</span>
 
@@ -41,7 +43,7 @@
 
                 <div class="task-edit-picture-colors-correct clearfix">
 
-                    <h1>Correct color</h1>
+                    <h1>@resources.TaskPicturesEditor_CorrectColor</h1>
 
                     <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single" />
 
@@ -49,7 +51,7 @@
 
                 <div class="task-edit-picture-colors-incorrect clearfix">
 
-                    <h1>Wrong colors</h1>
+                    <h1>@resources.TaskPicturesEditor_WrongColor</h1>
 
                     <div ng-repeat="wrongColor in picture.WrongColors">
 
@@ -60,13 +62,13 @@
                 </div>
 
             </div>
-            
+
         </div>
     </div>
-    
+
     <div class="task-edit-options">
 
-        <input type="submit" value="Save" class="task-edit-save" ng-click="editWithColors()" />
+        <input type="submit" value="@resources.TaskPicturesEditor_Save" class="task-edit-save" ng-click="editWithColors()" />
 
     </div>
 

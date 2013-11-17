@@ -114,14 +114,7 @@ namespace Authink.Core.Model.Commands.Impl
                     IsHidden          = false,
                     ProfilePictureUrl = profilePictureUrl,
                     Type              = type,
-                    UserId            = userId,
-                    Statistics_Meta   = new database::Statistics_Meta
-                                        {
-                                            ErrorClicks      = "",
-                                            SucessfullClicks = "",
-                                            TotalRunSummary  = "",
-                                            Dates            = ""
-                                        },
+                    UserId            = userId
                 };
 
                 if(voiceCommand != null)
@@ -373,27 +366,6 @@ namespace Authink.Core.Model.Commands.Impl
                 var dbSound = db.Sounds.Single(sound => sound.Id == soundId);
 
                 dbTask.Sound = dbSound;
-                db.SaveChanges();
-            }
-        }
-    }
-    public class StatisticsCommandsImpl : IStatisticsCommands
-    {
-        public void Update_ForTask(int taskId, int sucessfullClicksCount, int errorClicksCount, string timeRun, DateTime date)
-        {
-            using (var db = new database::AuthinkDataModel())
-            {
-                var statistics = db.Tasks.SingleOrDefault(task => task.Id == taskId).Statistics_Meta;
-
-                statistics.ErrorClicks      = string.IsNullOrEmpty(statistics.ErrorClicks)      ? string.Format("{0};", errorClicksCount.ToString())
-                                                                                                : string.Format("{0};{1}", statistics.ErrorClicks, errorClicksCount);
-                statistics.SucessfullClicks = string.IsNullOrEmpty(statistics.SucessfullClicks) ? string.Format("{0};", sucessfullClicksCount.ToString())
-                                                                                                : string.Format("{0};{1}", statistics.SucessfullClicks, sucessfullClicksCount);
-                statistics.TotalRunSummary  = string.IsNullOrEmpty(statistics.TotalRunSummary ) ? string.Format("{0};", timeRun)
-                                                                                                : string.Format("{0};{1}",statistics.TotalRunSummary, timeRun);
-                statistics.Dates            = string.IsNullOrEmpty(statistics.Dates)            ? string.Format("{0};",date.ToString())
-                                                                                                : string.Format("{0};{1}",statistics.Dates, date);
-
                 db.SaveChanges();
             }
         }

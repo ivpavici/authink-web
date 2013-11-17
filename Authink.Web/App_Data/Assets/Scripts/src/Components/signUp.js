@@ -5,9 +5,9 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
     return {
 
         restrict:    'E',
-        templateUrl: '/Assets/Templates/Components/SignUp.html',
+        templateUrl: '/application/templates/signUp',
         
-        controller: ['$scope','$location', function ($scope, $location) {
+        controller: ['$scope', '$location', function ($scope, $location) {
 
             $scope.login = function() {
 

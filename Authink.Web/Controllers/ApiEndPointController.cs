@@ -15,18 +15,13 @@ namespace Authink.Web.Controllers
 {
     public class ApiEndPointController : ApiController
     {
-        public ApiEndPointController
-        (
-            IStatisticsCommands statisticsCommands
-        )
+        public ApiEndPointController()
         {
-            apiAdapter              = new AuthinkApiAdapter();
-            this.statisticsCommands = statisticsCommands;
+            apiAdapter = new AuthinkApiAdapter();
 
         }
 
-        private readonly AuthinkApiAdapter   apiAdapter;
-        private readonly IStatisticsCommands statisticsCommands;
+        private readonly AuthinkApiAdapter apiAdapter;
 
         [HttpPost] public HttpResponseMessage Login(apiEnt::User.Details userData)
         {
@@ -57,26 +52,6 @@ namespace Authink.Web.Controllers
                 (
                     user_userName: user_userName
                 );
-        }
-
-        [HttpPost] public HttpResponseMessage Save_Meta_Statistics_forTask(apiEnt::Task.Statistics.Meta taskRunDetails)
-        {
-            var authencationToken = Request.Headers.GetValues("AuthenticationToken").Single();
-            if (authencationToken != buru::Api.StatisticsToken)
-            {
-                throw new Exception();
-            }
-
-            statisticsCommands.Update_ForTask
-            (
-                taskId:                taskRunDetails.TaskId,
-                sucessfullClicksCount: taskRunDetails.SucessfullClicksCount,
-                errorClicksCount:      taskRunDetails.ErrorClicksCount,
-                timeRun:               taskRunDetails.TimeRun,
-                date:                  DateTime.UtcNow
-           );
-
-           return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }

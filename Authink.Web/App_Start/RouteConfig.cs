@@ -9,10 +9,11 @@ namespace Authink.Web.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Shell", "",      new { controller = "Shell", action = "Shell"});
-            routes.MapRoute("Login", "login", new { controller = "Shell", action = "Login" });
+            routes.MapRoute("GetTemplate", "application/templates/{template}", new { controller = "Templates", action = "GetTemplate"  });
+            routes.MapRoute("ChangeCulture", "language/change/{lang}",         new { controller = "Language", action = "ChangeCulture" });
 
-            routes.MapRoute("GetStatisticsForTask", "ajax/statistics/task/{taskId}", new { controller = "Statistics", action = "GetForTask", taskId = UrlParameter.Optional });
+            routes.MapRoute("Login", "login",  new { controller = "Shell", action = "Login"});
+            routes.MapRoute("Shell", "",       new { controller = "Shell", action = "Shell"});
             
             routes.MapRoute("ChooseType",       "test/{testId}/tasks/create/step-1",   new { controller = "Task", action = "ChooseType"       });
             routes.MapRoute("ChooseDifficulty", "test/tasks/create/step-2/{taskType}", new { controller = "Task", action = "ChooseDifficulty" });

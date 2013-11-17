@@ -6,23 +6,6 @@ using database = Authink.Data;
 
 namespace Authink.Core.Model.Mappers
 {
-    public static class Statistics
-    {
-        public static class Meta
-        {
-            public static ent::Statistics.Meta FromDatabse(database::Statistics_Meta statisticsMetaData)
-            {
-                return new ent.Statistics.Meta
-                (
-                    id:                    statisticsMetaData.Id,
-                    sucessfullClicksCount: statisticsMetaData.SucessfullClicks,
-                    errorClicksCount:      statisticsMetaData.ErrorClicks,
-                    totalRunSummaryCsv:    statisticsMetaData.TotalRunSummary,
-                    dates:                 statisticsMetaData.Dates
-                );
-            }
-        }
-    }
     public static class User   
     {
         public static class LongDetails
