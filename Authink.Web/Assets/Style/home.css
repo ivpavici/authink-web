@@ -938,6 +938,14 @@ main-test-edit-buttons {
     text-decoration:none;
     line-height: 1.5em;
 }
+.task-delete-confirmation-dialog .actions .bottun:hover{
+
+    background:#feaa26;
+}
+.task-delete-confirmation-dialog .actions .bottun:active{
+
+    background:#e18520;
+}
 
 .test-delete-confirmation-dialog {
     width: 500px;
@@ -980,6 +988,15 @@ main-test-edit-buttons {
     text-decoration:none;
     line-height: 1.5em;
 }
+.test-delete-confirmation-dialog .actions .bottun:hover{
+
+    background:#feaa26;
+}
+.test-delete-confirmation-dialog .actions .bottun:active{
+
+    background:#e18520;
+}
+
 /* CLEARFIX */
 
 /* Clearfix for modern browsers */
