@@ -18,13 +18,17 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="task-edit-voice-command">
                 <span>Voice command</span>
-                <div ng-show="task.VoiceCommand">
-                    <embed type="application/x-mplayer2" ng-src="{{task.VoiceCommand.Url}}" />
-                </div>
-                <div>
-                    <span>Upload new voice command</span>
+                <img class="voice-command-speaker" src="~/Assets/Images/speaker.png" ng-click="playVoiceCommand()"/>
+
+                <audio id="voiceCommandPlayer">
+                    <source ng-src="{{task.VoiceCommand.Url}}" >
+                    Your browser does not support this type of audio playing.
+                </audio>
+
+                <div class="task-edit-voice-command-add-new">
+                    <h3>Upload new voice command</h3>
                     <input type="file" ng-file-select="onSoundFileSelect($files)">
                 </div>
             </div>

@@ -68,6 +68,7 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -97,6 +98,7 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -132,6 +134,7 @@ namespace Authink.Data.Factory
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -187,6 +190,7 @@ namespace Authink.Data.Factory
                                                                                   Type = "#003",
                                                                                   Difficulty = 4,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -652,7 +656,7 @@ namespace Authink.Data.Factory
                                                                                   Type = "#009",
                                                                                   Difficulty = 3,
                                                                                   ProfilePictureUrl = "Content/Images/TaskIcons/task-voice-commands-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/Prepoznaj miker.wma"},
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                               new db::Picture

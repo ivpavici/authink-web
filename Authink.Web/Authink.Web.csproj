@@ -246,6 +246,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
+    <Content Include="Assets\Images\speaker.png" />
     <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Home\add-icon.png" />
     <Content Include="Assets\Images\Home\child-button-edit.png" />
@@ -282,7 +283,7 @@
     <Content Include="Assets\Style\style.css" />
     <Content Include="Assets\Style\wizard.css" />
     <Content Include="Assets\Images\x.png" />
-    <Content Include="Content\Sounds\Prepoznaj miker.wma" />
+    <Content Include="Content\Sounds\guns.mp3" />
     <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
     <Content Include="Assets\Templates\Home.html" />
