@@ -114,7 +114,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsHidden" Type="bit" Nullable="false" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Tasks">
@@ -441,7 +440,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IsHidden" Type="Boolean" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Type" Type="String" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Authink.Data.Database.SoundTask" FromRole="Sound" ToRole="Task" />
           <NavigationProperty Name="Picture" Relationship="Authink.Data.Database.SoundPicture" FromRole="Sound" ToRole="Picture" />
@@ -604,7 +602,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Url" ColumnName="Url" />
           <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>

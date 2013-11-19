@@ -191,13 +191,14 @@
     <Compile Include="App_Start\StructureMapModelBinder.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ApiEndPointController.cs" />
+    <Compile Include="Controllers\ConsumerApiController.cs" />
     <Compile Include="Controllers\ChildrenApiController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PicturesApiController.cs" />
     <Compile Include="Controllers\ShellController.cs" />
     <Compile Include="Controllers\SoundController.cs" />
+    <Compile Include="Controllers\SoundsApiController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TasksApiController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
@@ -244,6 +245,8 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTask.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
+    <Content Include="Assets\Images\speaker.png" />
     <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Home\add-icon.png" />
     <Content Include="Assets\Images\Home\child-button-edit.png" />
@@ -280,6 +283,7 @@
     <Content Include="Assets\Style\style.css" />
     <Content Include="Assets\Style\wizard.css" />
     <Content Include="Assets\Images\x.png" />
+    <Content Include="Content\Sounds\guns.mp3" />
     <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
     <Content Include="Assets\Templates\Home.html" />
@@ -484,6 +488,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Assets\Scripts\lib-patches\" />
+    <Folder Include="Content\Sounds\VoiceCommands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -518,7 +523,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63739</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -101,10 +101,7 @@ namespace Authink.Core.Model.Commands
     public interface ISoundCommands
     {
         int  Create (string url, string title,string type                        );
-        void Update (int id, string url, bool isHidden, string title, string type);
-        void Delete (int id );
-
-        void AttachSoundToPicture(int soundId, int pictureId                );
+        void Update (int id, string url                                          );
         void AttachSoundToTask   (int soundId, int taskId                   );
     }
 }
@@ -114,7 +111,7 @@ namespace Authink.Core.Model.Services
     {
         byte[] Transform_HttpPostedFileBase_Into_Bytes   (HttpPostedFileBase file                               );
         string Build_SavePath_And_CreateFolderIfNecessary(int relatedId, string defaultSavePath, string fileName);
-        void CreateFolderForPictureIfNecessary(int relatedId, string defaultSavePath);
+        void CreateFolderIfNecessary(int relatedId, string defaultSavePath);
     }
     public interface IPictureServices
     {

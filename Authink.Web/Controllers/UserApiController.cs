@@ -1,11 +1,11 @@
 ﻿using System.Web.Http;
-using Authink.Core.Model.Commands;
-using Authink.Core.Model.Services;
-using Authink.Web.Controllers.UserApi.Model;
-using ent = Authink.Core.Domain.Entities;
 using System.Web.Mvc;
 using System.Net;
 using Authink.Core.Model.Queries;
+using Authink.Core.Model.Services;
+using Authink.Core.Model.Commands;
+using Authink.Web.Controllers.UserApi.Model;
+using ent = Authink.Core.Domain.Entities;
 
 namespace Authink.Web.Controllers
 {

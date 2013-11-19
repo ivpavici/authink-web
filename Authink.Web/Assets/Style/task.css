@@ -271,6 +271,19 @@ body {
             background: #e18520;
         }
 
+.task-edit-voice-command > span{
+
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    color: #444;
+}
+.task-edit-voice-command-add-new h3 {
+    font-size: 1.4em;
+    padding-top: 10px;
+    color: #45B434;
+}
+
 .task-picture-container {
     display: block;
     width: 700px;

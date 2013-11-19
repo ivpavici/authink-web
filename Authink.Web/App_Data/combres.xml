@@ -29,6 +29,7 @@
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/childrenRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/tasksRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/picturesRepository.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Repositories/soundsRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Services/accountServices.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testsList.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Components/testTasksList.js" />

@@ -13,9 +13,9 @@ using buru   = Authink.Core.Domain.Rules;
 
 namespace Authink.Web.Controllers
 {
-    public class ApiEndPointController : ApiController
+    public class ConsumerApiController : ApiController
     {
-        public ApiEndPointController()
+        public ConsumerApiController()
         {
             apiAdapter = new AuthinkApiAdapter();
 

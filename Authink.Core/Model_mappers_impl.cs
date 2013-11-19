@@ -201,8 +201,6 @@ namespace Authink.Core.Model.Mappers
                     (
                         id:       soundData.Id,
                         url:      soundData.Url,
-                        isHidden: soundData.IsHidden,
-                        title:    soundData.Title,
                         type:     soundData.Type
                     );
             }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/16/2013 12:20:09
+-- Date Created: 11/19/2013 16:04:14
 -- Generated from EDMX file: C:\Users\mamar_000\Desktop\authink-web\authink-web\Authink.Data\AuthinkData.edmx
 -- --------------------------------------------------
 
@@ -141,7 +141,6 @@ CREATE TABLE [dbo].[Sounds] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Url] nvarchar(max)  NOT NULL,
     [IsHidden] bit  NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
     [Type] nvarchar(max)  NOT NULL
 );
 GO

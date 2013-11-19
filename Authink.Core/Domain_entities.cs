@@ -335,22 +335,16 @@ namespace Authink.Core.Domain.Entities
             (
                 int    id,
                 string url,
-                bool   isHidden,
-                string title,
                 string type
             )
             {
                 this.Id       = id;
                 this.Url      = url;
-                this.IsHidden = isHidden;
-                this.Title    = title;
                 this.Type     = type;
             }
 
             public int    Id       { get; private set; }
             public string Url      { get; private set; }
-            public bool   IsHidden { get; private set; }
-            public string Title    { get; private set; }
             public string Type     { get; private set; }
         }
     }

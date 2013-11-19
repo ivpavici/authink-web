@@ -29,7 +29,7 @@ namespace Authink.Core.Model.Services.Impl
         }
         public string Build_SavePath_And_CreateFolderIfNecessary(int relatedId, string defaultSavePath, string fileName)
         {
-            CreateFolderForPictureIfNecessary(relatedId, defaultSavePath);
+            CreateFolderIfNecessary(relatedId, defaultSavePath);
 
             var uniqueName = Guid.NewGuid();
             var extenstion = Path.GetExtension(fileName);
@@ -37,7 +37,7 @@ namespace Authink.Core.Model.Services.Impl
             return string.Format("{0}{1}/{2}{3}", defaultSavePath, relatedId, uniqueName, extenstion);
         }
 
-        public void CreateFolderForPictureIfNecessary(int relatedId, string defaultSavePath)
+        public void CreateFolderIfNecessary(int relatedId, string defaultSavePath)
         {
             var folderPath = string.Format("{0}{1}{2}", AppDomain.CurrentDomain.BaseDirectory, defaultSavePath, relatedId);
             if (!Directory.Exists(folderPath))

@@ -122,7 +122,6 @@ namespace Authink.Core.Model.Commands.Impl
                     task.Sound = new database::Sound
                                      {
                                          IsHidden = false,
-                                         Title    = voiceCommand.Title,
                                          Type     = voiceCommand.Type,
                                          Url      = voiceCommand.Url
                                      };
@@ -334,7 +333,6 @@ namespace Authink.Core.Model.Commands.Impl
             {
                 var sound = new database::Sound
                 {
-                    Title    = title,
                     IsHidden = false,
                     Type     = type,
                     Url      = url
@@ -346,17 +344,16 @@ namespace Authink.Core.Model.Commands.Impl
                 return sound.Id;
             }
         }
-        public void Update(int id, string url, bool isHidden, string title, string type)
+        public void Update(int id, string url)
         {
-            throw new NotImplementedException();
-        }
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public void AttachSoundToPicture(int soundId, int pictureId )
-        {
-            throw new NotImplementedException();
+            using(var db = new database::AuthinkDataModel())
+            {
+                var dbSound = db.Sounds.Single(sound => sound.Id == id);
+
+                dbSound.Url = url;
+
+                db.SaveChanges();
+            }
         }
         public void AttachSoundToTask   (int soundId, int taskId    )
         {

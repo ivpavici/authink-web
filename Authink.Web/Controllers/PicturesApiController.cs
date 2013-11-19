@@ -93,7 +93,7 @@ namespace Authink.Web.Controllers
 
             var childrenPicturesRoot = HttpContext.Current.Server.MapPath("~/"+ buru::Picture.Children.DefaultSavePath);
 
-            fileSystemUtilities.CreateFolderForPictureIfNecessary(childId, buru::Picture.Children.DefaultSavePath);
+            fileSystemUtilities.CreateFolderIfNecessary(childId, buru::Picture.Children.DefaultSavePath);
 
             var savePath             = childrenPicturesRoot + childId;
             var dataStreamProvider   = new MyMultipartFormDataStreamProvider(savePath);
@@ -139,15 +139,20 @@ namespace Authink.Web.Controllers
         {
             var savePath = rootPath + '/' + fileName;
 
-            if (File.Exists(savePath))
+            if (!File.Exists(savePath))
             {
-                var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(savePath);
-                var fileExtenstion           = Path.GetExtension(savePath);
-
-                return MakeFileNameOnUrlUnique(rootPath, fileNameWithoutExtension + index + fileExtenstion, index + 1);
+                return fileName;
             }
+            
+            var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(savePath);
+            var fileExtenstion           = Path.GetExtension(savePath);
 
-            return fileName;
+            var transformedFilename = fileNameWithoutExtension + index + fileExtenstion;
+            savePath                = rootPath + '/' + transformedFilename;
+
+            return File.Exists(savePath) 
+                    ? MakeFileNameOnUrlUnique(rootPath, fileName, index + 1)
+                    : transformedFilename;
         }
     }
 }
