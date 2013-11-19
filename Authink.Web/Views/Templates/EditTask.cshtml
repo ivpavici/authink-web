@@ -20,7 +20,7 @@
             </div>
             <div class="task-edit-voice-command">
                 <span>Voice command</span>
-                <img class="voice-command-speaker" src="~/Assets/Images/speaker.png" ng-click="playVoiceCommand()"/>
+                <img ng-show="task.VoiceCommand" class="voice-command-speaker" src="~/Assets/Images/speaker.png" ng-click="playVoiceCommand()" />
 
                 <audio id="voiceCommandPlayer">
                     <source ng-src="{{task.VoiceCommand.Url}}" >
