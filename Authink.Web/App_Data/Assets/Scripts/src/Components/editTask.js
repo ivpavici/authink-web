@@ -8,7 +8,7 @@ authink.directive('editTask', function() {
         templateUrl: '/application/templates/editTask',
         scope:       {},
         
-        controller: ['$scope', 'editTaskApi', 'tasksRepository', function ($scope, editTaskApi, tasksRepository) {
+        controller: ['$scope', 'editTaskApi', 'tasksRepository', 'soundsRepository', function ($scope, editTaskApi, tasksRepository, soundsRepository) {
 
             $scope.editTaskApi = editTaskApi;
             
@@ -42,6 +42,46 @@ authink.directive('editTask', function() {
                     }
                 });
             };
+            $scope.onSoundFileSelect = function ($files) {
+
+                angular.forEach($files, function (file) {
+                    
+                    if(!isFileAudio(file)){return;}
+
+                    if ($scope.task.VoiceCommand) {
+
+                        soundsRepository.task_insertSoundForUpdate(file, { soundId: $scope.task.VoiceCommand.Id, taskId: $scope.task.Id })
+                        .progress(function (evt) {
+
+                            $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+                            $scope.$apply();
+                        })
+                        .success(function (sound) {
+
+                            $scope.task.VoiceCommand.Url = sound.Url;
+                            $scope.$apply();
+                        });
+                    } else {
+
+                        soundsRepository.task_insertSound(file, $scope.task.Id)
+                        .progress(function (evt) {
+
+                            $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+                            $scope.$apply();
+                        })
+                        .success(function (sound) {
+
+                            $scope.task.VoiceCommand = sound;
+                            $scope.$apply();
+                        });
+                    }
+                });
+            };
+
+            var isFileAudio = function (file) {
+
+                return file.type.indexOf("audio") != -1;
+            }
         }]
     };
 });

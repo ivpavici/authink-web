@@ -18,6 +18,16 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <span>Voice command</span>
+                <div ng-show="task.VoiceCommand">
+                    <embed type="application/x-mplayer2" ng-src="{{task.VoiceCommand.Url}}" />
+                </div>
+                <div>
+                    <span>Upload new voice command</span>
+                    <input type="file" ng-file-select="onSoundFileSelect($files)">
+                </div>
+            </div>
             <div class="task-edit-content clearfix">
                 <edit-task-pictures-list></edit-task-pictures-list>
             </div>

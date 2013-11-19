@@ -6,9 +6,8 @@ namespace Authink.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Routes.MapHttpRoute("UserLogin", "api/login/user", new { controller = "ApiEndPoint", action = "Login" });
-
-            config.Routes.MapHttpRoute("GetChildren_forUser", "api/users/children/{user_userName}", new { controller = "ApiEndPoint", action = "GetChildren_forUser" });
+            config.Routes.MapHttpRoute("UserLogin", "api/login/user",                               new { controller = "ConsumerApiController", action = "Login"               });
+            config.Routes.MapHttpRoute("GetChildren_forUser", "api/users/children/{user_userName}", new { controller = "ConsumerApiController", action = "GetChildren_forUser" });
             
             config.Routes.MapHttpRoute("TestsApi_GetAllTestsForChild_shortDetails", "api/children/{childId}/tests", new { controller = "TestsApi", action = "GetAllTestsForChild_shortDetails" });
             config.Routes.MapHttpRoute("TestsApi_Create", "api/tests/create",                                       new { controller = "TestsApi", action = "Create"                           });
@@ -36,6 +35,9 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("UserApi_SignOut", "api/user/sign-out", new { controller = "UserApi", action = "SignOut" });
             
             config.Routes.MapHttpRoute("UserApi_TryGetSignedInUser", "api/user", new { controller = "UserApi", action = "TryGetSignedInUser" });
+
+            config.Routes.MapHttpRoute("SoundsApi_Task_InsertSoundForUpdate", "api/sounds/update/{soundId}/{taskId}", new { controller = "SoundsApi", action = "Task_InsertSoundForUpdate" });
+            config.Routes.MapHttpRoute("SoundsApi_Task_InsertSound",          "api/sounds/create/{taskId}",          new { controller = "SoundsApi", action = "Task_InsertSound"          });
         }
     }
 }

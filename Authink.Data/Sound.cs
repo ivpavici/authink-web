@@ -17,7 +17,6 @@ namespace Authink.Data
         public int Id { get; set; }
         public string Url { get; set; }
         public bool IsHidden { get; set; }
-        public string Title { get; set; }
         public string Type { get; set; }
     
         public virtual Task Task { get; set; }
