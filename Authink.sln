@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authink.Web", "Authink.Web\Authink.Web.csproj", "{77B56B2B-C622-42CF-81FE-97C35416F9C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authink.Data", "Authink.Data\Authink.Data.csproj", "{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}"
@@ -20,24 +22,33 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{77B56B2B-C622-42CF-81FE-97C35416F9C7}.Test|Any CPU.Build.0 = Test|Any CPU
 		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{6977E8F7-31A7-4DAA-ADEA-4DA4039E3749}.Test|Any CPU.Build.0 = Test|Any CPU
 		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{EEC5AAAB-36E4-4926-A5E2-AF87DDE6AB8B}.Test|Any CPU.Build.0 = Test|Any CPU
 		{EB033BC5-A830-4753-B825-C90155326FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB033BC5-A830-4753-B825-C90155326FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB033BC5-A830-4753-B825-C90155326FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB033BC5-A830-4753-B825-C90155326FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB033BC5-A830-4753-B825-C90155326FF7}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{EB033BC5-A830-4753-B825-C90155326FF7}.Test|Any CPU.Build.0 = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
