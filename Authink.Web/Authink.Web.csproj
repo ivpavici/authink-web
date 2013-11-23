@@ -225,7 +225,6 @@
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-0.6.0.min.js" />
-    <Content Include="App_Data\Assets\Scripts\src\app - Copy.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />
