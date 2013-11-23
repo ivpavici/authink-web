@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Configuration;
 
 using Authink.Core.Model.Queries;
 using ImageResizer;
@@ -10,93 +11,41 @@ using ImageResizer;
 using ent      = Authink.Core.Domain.Entities;
 using buru     = Authink.Core.Domain.Rules;
 using database = Authink.Data;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Authink.Core.Model.Services.Impl
 {
-    public class FileSystemUtilities : IFileSystemUtilities
+    public class BlobPictureServiceImpl : IPictureServices
     {
-        public byte[] Transform_HttpPostedFileBase_Into_Bytes(HttpPostedFileBase file)
+        public BlobPictureServiceImpl()
         {
-            var buffer = new byte[file.ContentLength];
-            file.InputStream.Read
-            (
-                buffer: buffer,
-                offset: 0,
-                count:  file.ContentLength
-            );
-
-            return buffer;
+            this.cloudStorageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AuthinkBlobStorage"].ConnectionString);
+            this.blobClient          = cloudStorageAccount.CreateCloudBlobClient();
+            this.cloudBlobContainer  = blobClient.GetContainerReference("content");
         }
-        public string Build_SavePath_And_CreateFolderIfNecessary(int relatedId, string defaultSavePath, string fileName)
+        private CloudStorageAccount cloudStorageAccount;
+        private CloudBlobClient     blobClient;
+        private CloudBlobContainer  cloudBlobContainer;
+        public string Save(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString)
         {
-            CreateFolderIfNecessary(relatedId, defaultSavePath);
+            var resizedPicture = ResizePicture(pictureContent, resizeQueryString);
+            var blobSavePath   = string.Format("{0}/{1}/{2}", baseSavePath, relatedId,pictureName);
+            var blockBlob      = cloudBlobContainer.GetBlockBlobReference(blobSavePath);
 
-            var uniqueName = Guid.NewGuid();
-            var extenstion = Path.GetExtension(fileName);
-
-            return string.Format("{0}{1}/{2}{3}", defaultSavePath, relatedId, uniqueName, extenstion);
-        }
-
-        public void CreateFolderIfNecessary(int relatedId, string defaultSavePath)
-        {
-            var folderPath = string.Format("{0}{1}{2}", AppDomain.CurrentDomain.BaseDirectory, defaultSavePath, relatedId);
-            if (!Directory.Exists(folderPath))
+            using (var stream = new MemoryStream(resizedPicture))
             {
-                Directory.CreateDirectory(folderPath);
+                blockBlob.UploadFromStream(stream);
             }
+
+            return blockBlob.Uri.ToString();
         }
-    }
-    public class PictureServicesImpl :  IPictureServices
-    {
-        public PictureServicesImpl
-        (
-            IFileSystemUtilities fileSystemUtilities
-        )
+
+        public void Save(byte[] pictureContent, string savePath, string resizeQueryString)
         {
-            this.fileSystemUtilities = fileSystemUtilities;
+            throw new NotImplementedException();
         }
 
-        private readonly IFileSystemUtilities fileSystemUtilities;
-
-        public string SaveToFileSystem(string pictureName,byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString)
-        {
-            var savePath = fileSystemUtilities.Build_SavePath_And_CreateFolderIfNecessary
-            (
-                relatedId:       relatedId,
-                defaultSavePath: baseSavePath,
-                fileName:        pictureName
-            );
-
-            var resizedPicture = ResizePicture
-            (
-                pictureData:       pictureContent,
-                resizeQuerystring: resizeQueryString
-            );
-
-            File.WriteAllBytes
-            (
-                path:  Path.Combine(HttpContext.Current.Server.MapPath("~/"), savePath),
-                bytes: resizedPicture
-            );
-
-            return savePath;
-        }
-
-        public void SaveToFileSystem(byte[] pictureContent, string savePath, string resizeQueryString)
-        {
-            var resizedPicture = ResizePicture
-            (
-                pictureData:       pictureContent,
-                resizeQuerystring: resizeQueryString
-            );
-
-            File.WriteAllBytes
-            (
-                path:  Path.Combine(HttpContext.Current.Server.MapPath("~/"), savePath),
-                bytes: resizedPicture
-            );
-        }
-        
         private byte[] ResizePicture(byte[] pictureData, string resizeQuerystring)
         {
             using(var outputStream = new MemoryStream())
@@ -115,56 +64,35 @@ namespace Authink.Core.Model.Services.Impl
                 }
             }
         }
-
-        public void ResizePicture(string pictureUrl, string resizeQuerystring)
-        {
-            var resizeSettings = new ResizeSettings(resizeQuerystring);
-
-            ImageBuilder.Current.Build
-            (
-                new ImageJob(pictureUrl, pictureUrl, resizeSettings)
-            );
-        }
-        
     }
-    public class SoundServicesImpl : FileSystemUtilities, ISoundServices
+    public class BlocSoundServicesImpl : ISoundServices
     {
-        public SoundServicesImpl
-        (
-             IFileSystemUtilities fileSystemUtilities
-        )
+        public BlocSoundServicesImpl()
         {
-            this.fileSystemUtilities = fileSystemUtilities;
+            this.cloudStorageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AuthinkBlobStorage"].ConnectionString);
+            this.blobClient          = cloudStorageAccount.CreateCloudBlobClient();
+            this.cloudBlobContainer  = blobClient.GetContainerReference("content");
         }
 
-        private readonly IFileSystemUtilities fileSystemUtilities;
-
-        public string SaveToFileSystem(string soundName, byte[] soundContent, int relatedId, string baseSavePath)
+        private CloudStorageAccount cloudStorageAccount;
+        private CloudBlobClient     blobClient;
+        private CloudBlobContainer  cloudBlobContainer;
+        public string Save(string soundName, byte[] soundContent, int relatedId, string baseSavePath)
         {
-            var savePath = fileSystemUtilities.Build_SavePath_And_CreateFolderIfNecessary
-            (
-                relatedId:       relatedId,
-                defaultSavePath: baseSavePath,
-                fileName:        soundName
-            );
+            var blobSavePath = string.Format("{0}/{1}/{2}", baseSavePath, relatedId, soundName);
+            var blockBlob    = cloudBlobContainer.GetBlockBlobReference(blobSavePath);
 
-            File.WriteAllBytes
-            (
-                path:  Path.Combine(HttpContext.Current.Server.MapPath("~/"), savePath),
-                bytes: soundContent
-            );
+            blockBlob.Properties.ContentType = MimeMapping.GetMimeMapping(soundName);
 
-            return savePath;
-        }
-        public void   SaveToFileSystem(byte[] soundContent, string savePath)
-        {
-            File.WriteAllBytes
-            (
-                path:  Path.Combine(HttpContext.Current.Server.MapPath("~/"), savePath),
-                bytes: soundContent
-            );
+            using (var stream = new MemoryStream(soundContent))
+            {
+                blockBlob.UploadFromStream(stream);
+            }
+
+            return blockBlob.Uri.ToString();
         }
     }
+
     public class LoginServicesImpl : ILoginServices
     {
         public LoginServicesImpl

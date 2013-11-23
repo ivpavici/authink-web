@@ -17,37 +17,18 @@ namespace Authink.Web.DependencyResolution {
         public static IContainer Initialize() {
             ObjectFactory.Initialize(x =>
                         {
-                            //x.Scan(scan =>
-                            //        {
-                            //            scan.TheCallingAssembly();
-                            //            scan.WithDefaultConventions();
-                            //        });
-                            x.For<IUserQueries>().Use<UserQueriesImpl>();
-                            x.For<ITaskQueries>().Use<TaskQueriesImpl>();
-                            x.For<ITestQueries>().Use<TestQueriesImpl>();
-                            x.For<IPictureQueries>().Use<PictureQueriesImpl>();
-                            x.For<ISoundQueries>().Use<SoundQueriesImpl>();
-                            x.For<IChildQueries>().Use<ChildQueriesImpl>();
-
-                            x.For<IUserCommands>().Use<UserCommandsImpl>();
-                            x.For<ITaskCommands>().Use<TaskCommandsImpl>();
-                            x.For<ITestCommands>().Use<TestCommandsImpl>();
-                            x.For<IPictureCommands>().Use<PictureCommandsImpl>();
-                            x.For<ISoundCommands>().Use<SoundCommandsImpl>();
-                            x.For<IChildCommands>().Use<ChildCommandsImpl>();
-
-                            x.For<IFileSystemUtilities>().Use<FileSystemUtilities>();
-                            x.For<ISoundServices>().Use<SoundServicesImpl>();
-                            x.For<IPictureServices>().Use<PictureServicesImpl>();
-                            x.For<ILoginServices>().Use<LoginServicesImpl>();
-                            x.For<IUserAccessRights>().Use<UserAccessRightsImpl>();
+                            x.Scan(scan =>
+                                    {
+                                        scan.Assembly("Authink.Core");
+                                        scan.SingleImplementationsOfInterface();
+                                    });
 
                             x.For<HttpContextBase>().HttpContextScoped().Use(() => new HttpContextWrapper(HttpContext.Current));
-                            x.For<HttpServerUtilityBase>().HttpContextScoped().Use(() => new HttpServerUtilityWrapper(HttpContext.Current.Server));
                             x.For<List<HttpPostedFileBase>>().Use(() => new List<HttpPostedFileBase>());
                             x.For<List<ColorData>>().Use(() => new List<ColorData>());
                             x.For<List<string>>().Use(() => new List<string>());
                         });
+
             return ObjectFactory.Container;
         }
     }

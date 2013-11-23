@@ -107,22 +107,13 @@ namespace Authink.Core.Model.Commands
 }
 namespace Authink.Core.Model.Services
 {
-    public interface IFileSystemUtilities
-    {
-        byte[] Transform_HttpPostedFileBase_Into_Bytes   (HttpPostedFileBase file                               );
-        string Build_SavePath_And_CreateFolderIfNecessary(int relatedId, string defaultSavePath, string fileName);
-        void CreateFolderIfNecessary(int relatedId, string defaultSavePath);
-    }
     public interface IPictureServices
     {
-        string SaveToFileSystem(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString);
-        void   SaveToFileSystem(byte[] pictureContent, string savePath, string resizeQueryString);
-        void ResizePicture(string pictureUrl, string resizeQuerystring);
+        string Save(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString);
     }
     public interface ISoundServices
     {
-        string SaveToFileSystem(string soundName, byte[] soundContent, int relatedId, string baseSavePath);
-        void   SaveToFileSystem(byte[] soundContent, string savePath);
+        string Save(string soundName, byte[] soundContent, int relatedId, string baseSavePath);
     }
     public interface ILoginServices
     {

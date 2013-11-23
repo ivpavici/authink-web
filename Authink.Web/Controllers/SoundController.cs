@@ -8,6 +8,7 @@ using Authink.Web.Models.Sound;
 
 using buru = Authink.Core.Domain.Rules;
 using core = Authink.Core.Domain.Entities;
+using Authink.Core.Fx;
 
 namespace Authink.Web.Controllers
 {
@@ -17,7 +18,6 @@ namespace Authink.Web.Controllers
         (
             ISoundCommands       soundCommands,
             ISoundServices       soundServices,
-            IFileSystemUtilities fileSystemUtilities,
             IUserAccessRights    userAccessRights,
 
             Func<CreateModel> createModelFactory,
@@ -26,7 +26,6 @@ namespace Authink.Web.Controllers
         {
             this.soundCommands       = soundCommands;
             this.soundServices       = soundServices;
-            this.fileSystemUtilities = fileSystemUtilities;
             this.userAccessRights    = userAccessRights;
 
             this.createModelFactory = createModelFactory;
@@ -35,7 +34,6 @@ namespace Authink.Web.Controllers
 
         private readonly ISoundCommands       soundCommands;
         private readonly ISoundServices       soundServices;
-        private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly IUserAccessRights    userAccessRights;
 
         private readonly Func<CreateModel> createModelFactory;
@@ -69,10 +67,10 @@ namespace Authink.Web.Controllers
                 );
             }
 
-            var soundUrl = soundServices.SaveToFileSystem
+            var soundUrl = soundServices.Save
             (
                 soundName:    sound.FileName,
-                soundContent: fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(sound),
+                soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
                 relatedId:    model.TaskId,
                 baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
             );
@@ -80,40 +78,6 @@ namespace Authink.Web.Controllers
             var soundId = soundCommands.Create(soundUrl, sound.FileName, "ins");
 
             soundCommands.AttachSoundToTask(soundId, model.TaskId);
-            return RedirectToRoute("Home");
-        }
-
-        [HttpGet]  public ActionResult Edit(int soundId)
-        {
-            if(!userAccessRights.CanEditSound(soundId))
-            {
-                return new HttpNotFoundResult();
-            }
-
-            var model     = editModelFactory();
-            model.SoundId = soundId;
-
-            return PartialView
-            (
-                viewName:"_Edit",
-                model:model
-            );
-        }
-        [HttpPost] public ActionResult Edit(EditModel model, HttpPostedFileBase sound)
-        {
-            if(sound == null || !sound.ContentType.Contains("audio"))
-            {
-                return PartialView
-                (
-                    viewName:"_Edit",
-                    model:model
-                );
-            }
-
-            var soundContent = fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(sound);
-
-            soundServices.SaveToFileSystem(soundContent, model.Sound.Url);
-
             return RedirectToRoute("Home");
         }
     }

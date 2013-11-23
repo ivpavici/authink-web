@@ -69,6 +69,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -224,6 +225,7 @@
     <Content Include="App_Data\Assets\Scripts\lib\angular.min-1.2.0-rc.2.js" />
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-0.6.0.min.js" />
+    <Content Include="App_Data\Assets\Scripts\src\app - Copy.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />

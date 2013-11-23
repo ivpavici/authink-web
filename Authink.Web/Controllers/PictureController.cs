@@ -11,6 +11,7 @@ using Authink.Web.Models.Picture;
 using Resources;
 using buru = Authink.Core.Domain.Rules;
 using ent =  Authink.Core.Domain.Entities;
+using Authink.Core.Fx;
 
 namespace Authink.Web.Controllers
 {
@@ -23,9 +24,7 @@ namespace Authink.Web.Controllers
             Func<UploadPictures_DetectItemModel>         uploadPictures_DetectItemModelFactory,
             Func<UploadPictures_OrderBySizeModel>        uploadPictures_OrderBySizeModelFactory,
 
-            HttpContextBase httpContextBase,
-
-            IFileSystemUtilities fileSystemUtilities
+            HttpContextBase httpContextBase
         )
         {
 
@@ -35,10 +34,7 @@ namespace Authink.Web.Controllers
             this.uploadPictures_OrderBySizeModelFactory             = uploadPictures_OrderBySizeModelFactory;
 
             this.httpContextBase      = httpContextBase;
-            this.fileSystemUtilities = fileSystemUtilities;
         }
-
-        private readonly IFileSystemUtilities fileSystemUtilities;
 
         private readonly Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory;
         private readonly Func<UploadPictures_DetectColorsModel>       uploadPictures_DetectColorsModelFactory;
@@ -84,7 +80,7 @@ namespace Authink.Web.Controllers
             var uploadedPicturesData = pictures.Select(picture => new SessionPictureData
             (
                 filename: picture.FileName,
-                content:  fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture),
+                content:  FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(picture),
                 isAnswer: false
             ))
             .ToList();
@@ -125,7 +121,7 @@ namespace Authink.Web.Controllers
             HttpContext.Session["Pictures"] = pictures.Select(picture => new SessionPictureData
             (
                 filename: picture.FileName,
-                content:  fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture),
+                content:  FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(picture),
                 isAnswer: false
             )).ToList();
 
@@ -170,7 +166,7 @@ namespace Authink.Web.Controllers
             var uploadedPicturesData = pictures.Select(picture => new SessionPictureData
             (
                 filename: picture.FileName,
-                content:  fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture),
+                content:  FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(picture),
                 isAnswer: false
             ))
             .ToList();
@@ -180,7 +176,7 @@ namespace Authink.Web.Controllers
                 new SessionPictureData
                 (
                     filename: correctPicture.FileName,
-                    content:  fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(correctPicture),
+                    content:  FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(correctPicture),
                     isAnswer: true
                 )
             );
@@ -216,7 +212,7 @@ namespace Authink.Web.Controllers
             var uploadedPicturesData = new SessionPictureData
             (
                 filename: picture.FileName,
-                content:  fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(picture),
+                content:  FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(picture),
                 isAnswer: false
             );
 

@@ -10,7 +10,7 @@ namespace Authink.Core.Domain.Rules
     }
     public static class Children
     {
-        public static string DefaultProfilePictureUrl = "Content/Images/Children/default-profile-picture.png";
+        public static string DefaultProfilePictureUrl = "Images/Children/default-profile-picture.png";
     }
     public static class Task
     {
@@ -44,12 +44,12 @@ namespace Authink.Core.Domain.Rules
     {
         public static class Task
         {
-            public const string DefaultSavePath          = @"Content/Images/Tasks/";
+            public const string DefaultSavePath          = @"Images/Tasks";
             public const string DefaultResizeQuerystring = "?W=150&Mode=Stretch&Scale=Both";
         }
         public static class Children
         {
-            public const string DefaultSavePath          = @"Content/Images/Children/";
+            public const string DefaultSavePath          = @"Images/Children";
             public const string DefaultResizeQuerystring = "?W=150&Mode=Stretch&Scale=Both";
         }
     }
@@ -62,7 +62,7 @@ namespace Authink.Core.Domain.Rules
         };
         public static class VoiceCommands
         {
-            public const string DefaultSavePath = @"Content/Sounds/VoiceCommands/";
+            public const string DefaultSavePath = @"Sounds/VoiceCommands";
         }
     }
     public static class Api

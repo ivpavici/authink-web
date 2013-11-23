@@ -17,6 +17,7 @@ using buru = Authink.Core.Domain.Rules;
 using ent  = Authink.Core.Domain.Entities;
 
 using System.Threading.Tasks;
+using Authink.Core.Fx;
 
 namespace Authink.Web.Controllers
 {
@@ -25,7 +26,6 @@ namespace Authink.Web.Controllers
         public PicturesApiController
         (
             IUserAccessRights    userAccessRights,
-            IFileSystemUtilities fileSystemUtilities,
             IPictureCommands     pictureCommands,
             IPictureQueries      pictureQueries,
             IPictureServices     pictureServices,
@@ -33,7 +33,6 @@ namespace Authink.Web.Controllers
         )
         {
             this.userAccessRights    = userAccessRights;
-            this.fileSystemUtilities = fileSystemUtilities;
             this.pictureCommands     = pictureCommands;
             this.pictureQueries      = pictureQueries;
             this.pictureServices     = pictureServices;
@@ -41,7 +40,6 @@ namespace Authink.Web.Controllers
         }
 
         private readonly IUserAccessRights    userAccessRights;
-        private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly IPictureCommands     pictureCommands;
         private readonly IPictureQueries      pictureQueries;
         private readonly IPictureServices     pictureServices;
@@ -66,19 +64,24 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var savePath           = HttpContext.Current.Server.MapPath("~/" + buru::Picture.Task.DefaultSavePath + taskId);
-            var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
+            var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
+            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
-            foreach (var file in dataStreamProvider.FileData)
-            {
-                var newPictureSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\","/");
+            var file     = memoryStreamProvider.Contents.First();
+            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+            var fileData = await file.ReadAsByteArrayAsync();
 
-                pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Task.DefaultResizeQuerystring);
+            var savePath =  pictureServices.Save
+            (
+                pictureName:       fileName, 
+                pictureContent:    fileData,
+                relatedId:         taskId,
+                baseSavePath:      buru::Picture.Task.DefaultSavePath, 
+                resizeQueryString: buru::Picture.Task.DefaultResizeQuerystring
+            );
 
-                pictureCommands.Update(pictureId, newPictureSavePath);
-            }
+            pictureCommands.Update(pictureId, savePath);
 
             return pictureQueries.GetSingle_whereId(pictureId);
         }
@@ -91,23 +94,26 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var childrenPicturesRoot = HttpContext.Current.Server.MapPath("~/"+ buru::Picture.Children.DefaultSavePath);
+            var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            fileSystemUtilities.CreateFolderIfNecessary(childId, buru::Picture.Children.DefaultSavePath);
+            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
-            var savePath             = childrenPicturesRoot + childId;
-            var dataStreamProvider   = new MyMultipartFormDataStreamProvider(savePath);
-            
-            await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
+            var file     = memoryStreamProvider.Contents.First();
+            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+            var fileData = await file.ReadAsByteArrayAsync();
 
-            var file               = dataStreamProvider.FileData.First();
-            var newPictureSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\", "/");
+            var savePath = pictureServices.Save
+            (
+                pictureName:       fileName,
+                pictureContent:    fileData,
+                relatedId:         childId,
+                baseSavePath:      buru::Picture.Children.DefaultSavePath,
+                resizeQueryString: buru::Picture.Children.DefaultResizeQuerystring
+            );
 
-            pictureServices.ResizePicture(file.LocalFileName.Replace("\\", "/"), buru::Picture.Children.DefaultResizeQuerystring);
-            
-            childrenCommands.UpdatePicture(childId, newPictureSavePath);
+            childrenCommands.UpdatePicture(childId, savePath);
 
-            return new{ pictureUrl =  newPictureSavePath};
+            return new { pictureUrl = savePath };
         }
         [System.Web.Http.HttpPost]
         public HttpStatusCodeResult UpdateColorsForPicture(UpdateColorsForPictureModel model)
@@ -120,39 +126,6 @@ namespace Authink.Web.Controllers
             pictureCommands.Update_color(model.CorrectColor.Id, model.CorrectColor.Value);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
-    }
-    public class MyMultipartFormDataStreamProvider : MultipartFormDataStreamProvider
-    {
-        public MyMultipartFormDataStreamProvider(string path) : base(path) { }
-
-        public override string GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders headers)
-        {
-            var uploadedFileName = headers.ContentDisposition.FileName.Replace("\"", string.Empty);
-
-            var fileName = MakeFileNameOnUrlUnique(RootPath, uploadedFileName);
-
-            return fileName.Replace("\"", string.Empty);
-        }
-
-        private string MakeFileNameOnUrlUnique(string rootPath, string fileName, int index = 1)
-        {
-            var savePath = rootPath + '/' + fileName;
-
-            if (!File.Exists(savePath))
-            {
-                return fileName;
-            }
-            
-            var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(savePath);
-            var fileExtenstion           = Path.GetExtension(savePath);
-
-            var transformedFilename = fileNameWithoutExtension + index + fileExtenstion;
-            savePath                = rootPath + '/' + transformedFilename;
-
-            return File.Exists(savePath) 
-                    ? MakeFileNameOnUrlUnique(rootPath, fileName, index + 1)
-                    : transformedFilename;
         }
     }
 }

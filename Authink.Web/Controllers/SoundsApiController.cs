@@ -13,6 +13,7 @@ using Authink.Core.Model.Queries;
 
 using buru = Authink.Core.Domain.Rules;
 using ent = Authink.Core.Domain.Entities;
+using Authink.Core.Fx;
 
 namespace Authink.Web.Controllers
 {
@@ -20,22 +21,22 @@ namespace Authink.Web.Controllers
     {
         public SoundsApiController
         (
-            IUserAccessRights    userAccessRights,
-            IFileSystemUtilities fileSystemUtilities,
-            ISoundCommands       soundCommands,
-            ISoundQueries        soundQueries
+            IUserAccessRights userAccessRights,
+            ISoundServices    soundServices,
+            ISoundCommands    soundCommands,
+            ISoundQueries     soundQueries
         )
         {
-            this.userAccessRights    = userAccessRights;
-            this.fileSystemUtilities = fileSystemUtilities;
-            this.soundCommands       = soundCommands;
-            this.soundQueries        = soundQueries;
+            this.userAccessRights = userAccessRights;
+            this.soundServices    = soundServices;
+            this.soundCommands    = soundCommands;
+            this.soundQueries     = soundQueries;
         }
 
-        private readonly IUserAccessRights    userAccessRights;
-        private readonly IFileSystemUtilities fileSystemUtilities;
-        private readonly ISoundCommands       soundCommands;
-        private readonly ISoundQueries        soundQueries;
+        private readonly IUserAccessRights userAccessRights;
+        private readonly ISoundServices    soundServices;
+        private readonly ISoundCommands    soundCommands;
+        private readonly ISoundQueries     soundQueries;
 
         [System.Web.Http.HttpPost]
         public async Task<object> Task_InsertSoundForUpdate(int soundId, int taskId)
@@ -45,21 +46,25 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var soundSavePathRoot = HttpContext.Current.Server.MapPath("~/" + buru::Sound.VoiceCommands.DefaultSavePath);
+            var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            fileSystemUtilities.CreateFolderIfNecessary(taskId, buru::Sound.VoiceCommands.DefaultSavePath);
+            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
-            var savePath           = soundSavePathRoot + taskId;
-            var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
+            var file     = memoryStreamProvider.Contents.First();
+            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+            var fileData = await file.ReadAsByteArrayAsync();
 
-            await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
+            var savePath = soundServices.Save
+            (
+                soundName:    fileName,
+                soundContent: fileData,
+                relatedId:    taskId,
+                baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
+            );
 
-            var file             = dataStreamProvider.FileData.First();
-            var newSoundSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\", "/");
+            soundCommands.Update(soundId, savePath);
 
-            soundCommands.Update(soundId, newSoundSavePath);
-
-            return new { Url = newSoundSavePath };
+            return new { Url = savePath };
         }
 
         [System.Web.Http.HttpPost]
@@ -70,21 +75,25 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var soundSavePathRoot = HttpContext.Current.Server.MapPath("~/" + buru::Sound.VoiceCommands.DefaultSavePath);
+            var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            fileSystemUtilities.CreateFolderIfNecessary(taskId, buru::Sound.VoiceCommands.DefaultSavePath);
+            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
-            var savePath           = soundSavePathRoot + taskId;
-            var dataStreamProvider = new MyMultipartFormDataStreamProvider(savePath);
+            var file     = memoryStreamProvider.Contents.First();
+            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+            var fileData = await file.ReadAsByteArrayAsync();
 
-            await Request.Content.ReadAsMultipartAsync(dataStreamProvider);
+            var savePath =  soundServices.Save
+            (
+                soundName:    fileName, 
+                soundContent: fileData,
+                relatedId:    taskId,
+                baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
+            );
 
-            var file = dataStreamProvider.FileData.First();
-            var newSoundSavePath = file.LocalFileName.Substring(file.LocalFileName.IndexOf("Content", StringComparison.Ordinal)).Replace("\\", "/");
-
-            var soundId = soundCommands.Create(newSoundSavePath, file.LocalFileName, "ttl");
+            var soundId = soundCommands.Create(savePath, fileName, "ttl");
             soundCommands.AttachSoundToTask(soundId, taskId);
-
+            
             return soundQueries.GetSingle_whereId(soundId);
         }
     }
