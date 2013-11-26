@@ -64,7 +64,6 @@ authink.directive('testsList', function () {
             var resetState = function() {
 
                 $scope.testListApi.reset();
-                console.log("yy");
             }
 
             resetState();
