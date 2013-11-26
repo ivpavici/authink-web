@@ -169,6 +169,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview sound.
+        /// </summary>
+        public static string EditTask_VoiceCommand_Listen {
+            get {
+                return ResourceManager.GetString("EditTask_VoiceCommand_Listen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voice Command.
+        /// </summary>
+        public static string EditTask_VoiceCommand_Title {
+            get {
+                return ResourceManager.GetString("EditTask_VoiceCommand_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload new voice command.
+        /// </summary>
+        public static string EditTask_VoiceCommand_UploadNew {
+            get {
+                return ResourceManager.GetString("EditTask_VoiceCommand_UploadNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correct colors.
         /// </summary>
         public static string EditTaskPicturesList_CorrectColors {

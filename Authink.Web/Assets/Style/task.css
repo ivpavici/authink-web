@@ -232,7 +232,6 @@ body {
                 .task-edit-picture-colors {
                     
                 }
-
                     .task-edit-picture-colors h1 {
                         font-weight: bold;
                         text-transform: uppercase;
@@ -265,9 +264,15 @@ body {
             top: 10px;
             right: 24px;
         }
-
+        .task-edit-voice-command-preview {
+            font-size: 1.5em;
+            padding: 5px 5px 5px 5px;
+            line-height: 1.5em;
+            text-decoration: none;
+        }
         .task-edit-save:hover {
             cursor: pointer;
+            color: white;
             background: #e18520;
         }
 

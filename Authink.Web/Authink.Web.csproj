@@ -218,6 +218,7 @@
     <Compile Include="Models\Sound\EditModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Assets\Scripts\lib\bootstrap.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-tpls-0.6.0.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-file-upload.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-resource-v1.2.0-rc.3.min.js" />
@@ -228,6 +229,12 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\css\bootstrap.css" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\css\bootstrap.min.css" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="App_Data\Assets\Styles\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="App_Data\combres.xml">
       <SubType>Designer</SubType>
     </Content>

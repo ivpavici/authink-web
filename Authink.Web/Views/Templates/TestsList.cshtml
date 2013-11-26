@@ -16,10 +16,6 @@
 
             <img ng-if="isLoading" src="Assets/Images/loading.gif" />
 
-            <div ng-if="testListApi.tests.length < 1">
-
-                Kliknite kako bi napravili novi test!
-            </div>
             <div class="switch_test main-tests-list-item clearfix" ng-repeat="test in testListApi.tests |filter: seachTerm" ng-click="selectTest(test)" ng-class="{'main-tests-list-item-selected': test.Id == testListApi.displayedTest.Id}">
                 <div class="main-tests-list-item-info">
 
@@ -35,7 +31,7 @@
 
         <div id="main-tests-options" class="clearfix">
 
-            <a id="main-tests-option-add-new" ng-click="addNewTest()">@resources.TestList_CreateNew</a>
+            <a id="main-tests-option-add-new" class="btn" ng-click="addNewTest()">@resources.TestList_CreateNew</a>
         </div>
 
     </div>

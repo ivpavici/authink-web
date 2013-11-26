@@ -171,6 +171,15 @@
   <data name="EditTaskPicturesList_WrongPictures" xml:space="preserve">
     <value>Wrong pictures</value>
   </data>
+  <data name="EditTask_VoiceCommand_Listen" xml:space="preserve">
+    <value>Preview sound</value>
+  </data>
+  <data name="EditTask_VoiceCommand_Title" xml:space="preserve">
+    <value>Voice Command</value>
+  </data>
+  <data name="EditTask_VoiceCommand_UploadNew" xml:space="preserve">
+    <value>Upload new voice command</value>
+  </data>
   <data name="Omnibar_Language_Croatian" xml:space="preserve">
     <value>Croatian</value>
   </data>

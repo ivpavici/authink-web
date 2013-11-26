@@ -10,9 +10,10 @@ authink.directive('editTask', function() {
         
         controller: ['$scope', '$element','$sce', 'editTaskApi', 'tasksRepository', 'soundsRepository', function ($scope, $element, $sce, editTaskApi, tasksRepository, soundsRepository) {
 
-            $scope.editTaskApi           = editTaskApi;
-            $scope.isVoiceCommandPlaying = false;
-            
+            $scope.editTaskApi             = editTaskApi;
+            $scope.isVoiceCommandPlaying   = false;
+            $scope.isVoiceCommandCollapsed = true;
+
             $scope.$watch('editTaskApi.taskId', function(taskId) {
 
                 if (taskId) {
@@ -35,7 +36,7 @@ authink.directive('editTask', function() {
                     if(response.StatusCode === 200) {
 
                         $scope.$emit('editTask:taskEditEnded');
-                        
+
                         $scope.$emit('closeModal');
                     } else {
                         
@@ -78,6 +79,7 @@ authink.directive('editTask', function() {
                     }
                 });
             };
+
             $scope.playVoiceCommand = function () {
 
                 var audioElement = $element.find("#voiceCommandPlayer")[0];
@@ -98,6 +100,11 @@ authink.directive('editTask', function() {
             var isFileAudio = function (file) {
 
                 return file.type.indexOf("audio") != -1;
+            }
+
+            $scope.toggleVoiceCommandCollapse = function () {
+
+                $scope.isVoiceCommandCollapsed = !$scope.isVoiceCommandCollapsed;
             }
         }]
     };

@@ -171,6 +171,15 @@
   <data name="EditTaskPicturesList_WrongPictures" xml:space="preserve">
     <value>Netočne slike</value>
   </data>
+  <data name="EditTask_VoiceCommand_Listen" xml:space="preserve">
+    <value>Preslušaj zvuk</value>
+  </data>
+  <data name="EditTask_VoiceCommand_Title" xml:space="preserve">
+    <value>Glasovna naredba</value>
+  </data>
+  <data name="EditTask_VoiceCommand_UploadNew" xml:space="preserve">
+    <value>Prenesi novu glasovnu naredbu</value>
+  </data>
   <data name="Omnibar_Language_Croatian" xml:space="preserve">
     <value>Hrvatski</value>
   </data>
