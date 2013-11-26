@@ -34,7 +34,7 @@ authink.directive('createTest', function () {
                         
                         $scope.$emit('testsList:testCreated', newTest);
                         
-                        $scope.$emit('testsList:testSelected', newTest.Id);
+                        $scope.$emit('testsList:testSelected', newTest);
                         
                         $scope.$emit('closeModal');
                     }

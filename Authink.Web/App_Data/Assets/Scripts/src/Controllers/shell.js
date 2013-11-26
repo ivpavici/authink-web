@@ -13,11 +13,16 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.testListApi.addNewTest(test);
     });
-    $rootScope.$on('testsList:testSelected',        function (event, testId) {
+    $rootScope.$on('testsList:testSelected',        function (event, test) {
 
-        application.testPreviewApi.setActiveTest(testId);
+        if (test.Id) {
+            application.testPreviewApi.setActiveTest(test.Id);
 
-        application.testTasksListApi.loadTasks(testId);
+            application.testTasksListApi.loadTasks(test.Id);
+        } else {
+
+            application.testPreviewApi.reset();
+        }
     });
     $rootScope.$on('testsList:testEditCanceled',    function (event) {
         
@@ -74,11 +79,9 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.editTaskPicturesListApi.forceRefresh();
     });
     
-    $rootScope.$on('childMenu:childSelected',    function (event, childId) {
+    $rootScope.$on('childMenu:childSelected', function (event, childId) {
 
         $rootScope.isTestEditModeOn = false;
-
-        application.testPreviewApi.reset();
 
         application.childMenuApi.setDisplayedChild(childId);
         

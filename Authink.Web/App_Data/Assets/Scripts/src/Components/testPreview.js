@@ -52,7 +52,7 @@ authink.factory('testPreviewApi', function () {
 
         setActiveTest: function (testId) {
 
-            this.testId = testId;
+            this.testId = new Number(testId);
         },
         
         reset: function() {

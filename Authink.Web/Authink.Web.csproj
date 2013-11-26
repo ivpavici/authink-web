@@ -440,7 +440,7 @@
       <LastGenOutput>TaskWizard.hr.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <None Include="Properties\PublishProfiles\authink - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\test-authink - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Plugins\highcharts.js" />

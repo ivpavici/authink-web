@@ -76,6 +76,9 @@
     <resourceSet name="taskWizzardCss" type="css">
       <resource path="~/Assets/Style/wizard.css"/>
     </resourceSet>
+    <resourceSet name="taskWizzardJs" type="js">
+      <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
+    </resourceSet>
     
   </resourceSets>
 </combres>

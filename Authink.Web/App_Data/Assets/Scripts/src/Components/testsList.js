@@ -38,7 +38,7 @@ authink.directive('testsList', function () {
                     $scope.$emit('testsList:testEditCanceled');
                 }
                 
-                $scope.$emit('testsList:testSelected', test.Id);
+                $scope.$emit('testsList:testSelected', test);
             };
 
             $scope.addNewTest = function() {
@@ -55,6 +55,9 @@ authink.directive('testsList', function () {
                 if(tests.length > 0){
                     
                     $scope.selectTest(tests[0]);
+                } else {
+
+                    $scope.selectTest({});
                 }
             }
         }]
