@@ -23,6 +23,8 @@ authink.directive('testsList', function () {
 
                         $scope.isLoading         = false;
                         $scope.testListApi.tests = tests;
+
+                        setActiveTestOnLoad(tests);
                     });
                 }
             });
@@ -47,6 +49,14 @@ authink.directive('testsList', function () {
 
                 $scope.$emit('testsList:testCreatingStarted', $scope.testListApi.childId);
             };
+
+            var setActiveTestOnLoad = function (tests) {
+
+                if(tests.length > 0){
+                    
+                    $scope.selectTest(tests[0]);
+                }
+            }
         }]
     };
 });
@@ -60,7 +70,7 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
         displayedTest: null,
 
         setChildId: function (childId) {
-            
+
             this.childId = childId;
         },
         

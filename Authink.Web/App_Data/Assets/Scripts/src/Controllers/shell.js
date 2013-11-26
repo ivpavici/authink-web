@@ -78,13 +78,11 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         $rootScope.isTestEditModeOn = false;
 
+        application.testPreviewApi.reset();
+
         application.childMenuApi.setDisplayedChild(childId);
         
         application.testListApi.setChildId(childId);
-
-        application.testListApi.removeDisplayedTest();
-
-        application.testPreviewApi.reset();
     });
     $rootScope.$on('childMenu:childEditStarted', function (event, childId) {
 
@@ -92,6 +90,8 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
     });
 
     $rootScope.$on('createChild:childCreated', function (event, child) {
+
+        application.testPreviewApi.reset();
 
         application.childMenuApi.addNewChild(child);
     });
@@ -101,8 +101,6 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.childMenuApi.loadChildren();
         
         application.childMenuApi.setDisplayedChild(childId);
-
-        application.testListApi.loadTests(childId);
     });
     $rootScope.$on('editChild:pictureUpdated', function (event, childId) {
 
