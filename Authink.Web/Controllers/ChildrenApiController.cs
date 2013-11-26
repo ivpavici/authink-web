@@ -16,7 +16,6 @@ namespace Authink.Web.Controllers
             ILoginServices       loginServices,
             IChildQueries        childQueries,
             IChildCommands       childCommands,
-            IFileSystemUtilities fileSystemUtilities,
             IPictureServices     pictureServices,
             IUserAccessRights    userAccessRights
         )
@@ -24,7 +23,6 @@ namespace Authink.Web.Controllers
             this.loginServices       = loginServices;
             this.childQueries        = childQueries;
             this.childCommands       = childCommands;
-            this.fileSystemUtilities = fileSystemUtilities;
             this.pictureServices     = pictureServices;
             this.userAccessRights    = userAccessRights;
         }
@@ -32,7 +30,6 @@ namespace Authink.Web.Controllers
         private readonly ILoginServices       loginServices;
         private readonly IChildQueries        childQueries;
         private readonly IChildCommands       childCommands;
-        private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly IPictureServices     pictureServices;
         private readonly IUserAccessRights    userAccessRights;
         

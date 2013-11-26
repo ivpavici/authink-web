@@ -11,7 +11,7 @@ authink.directive('editTaskPicturesList', function () {
         controller: ['$scope', 'editTaskPicturesListApi', function ($scope, editTaskPicturesListApi) {
 
             $scope.editTaskPicturesListApi = editTaskPicturesListApi;
-
+            
             var taskTypes ={
                 
                 PairSameItems        : '#001',
@@ -80,6 +80,13 @@ authink.directive('editTaskPicturesList', function () {
 
                 $scope.$emit('editTaskPicturesList:taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
             };
+
+            var resetScopeState = function () {
+
+                $scope.editTaskPicturesListApi.pictures = null;
+            }
+
+            resetScopeState();
         }]
     };
 });

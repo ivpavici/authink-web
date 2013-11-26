@@ -20,19 +20,6 @@ authink.directive('childMenu', function () {
                     .then(function(children){
 
                         $scope.childMenuApi.children = children;
-
-                        if (children.length > 0) {
-
-                            $scope.childMenuApi.setDisplayedChild(children[0].Id);
-
-                            $scope.$emit('childMenu:childSelected', children[0].Id);
-                        } else {
-
-                            var component = '<create-child> </create-child>';
-
-                            $scope.$emit('openModal', component, 'static');
-                        }
-
                         $scope.childMenuApi.needLoad = false;
                     });
                 }
@@ -46,7 +33,7 @@ authink.directive('childMenu', function () {
                     .then(function (child) {
 
                         $scope.childMenuApi.displayedChild = child;
-                     });
+                    });
                 }
             });
             
@@ -75,6 +62,31 @@ authink.directive('childMenu', function () {
                 
                 $scope.$emit('openModal', component);
             };
+
+            var resetState = function () {
+
+                $scope.childMenuApi.reset();
+
+                childrenRepository.getAllForUser_shortDetails()
+                   .then(function (children) {
+
+                       if (children.length > 0) {
+
+                           $scope.childMenuApi.setDisplayedChild(children[0].Id);
+
+                           $scope.$emit('childMenu:childSelected', children[0].Id);
+                       } else {
+
+                           var component = '<create-child> </create-child>';
+
+                           $scope.$emit('openModal', component, 'static');
+                       }
+
+                       $scope.childMenuApi.children = children;
+                   })
+            };
+
+            resetState();
         }]
     };
 });
@@ -84,7 +96,7 @@ authink.factory('childMenuApi', function () {
     return {
 
         childId:        null,
-        needLoad:       true,
+        needLoad:       false,
         children:       null,
         displayedChild: null,
         
@@ -101,6 +113,14 @@ authink.factory('childMenuApi', function () {
         addNewChild: function (child) {
 
             this.children.push(child);
+        },
+
+        reset: function () {
+
+            this.childId        = null;
+            this.children       = null;
+            this.needLoad       = false;
+            this.displayedChild = null;
         }
     };
 });

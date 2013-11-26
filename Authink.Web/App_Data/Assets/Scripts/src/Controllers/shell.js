@@ -13,11 +13,16 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.testListApi.addNewTest(test);
     });
-    $rootScope.$on('testsList:testSelected',        function (event, testId) {
+    $rootScope.$on('testsList:testSelected',        function (event, test) {
 
-        application.testPreviewApi.setActiveTest(testId);
+        if (test.Id) {
+            application.testPreviewApi.setActiveTest(test.Id);
 
-        application.testTasksListApi.loadTasks(testId);
+            application.testTasksListApi.loadTasks(test.Id);
+        } else {
+
+            application.testPreviewApi.reset();
+        }
     });
     $rootScope.$on('testsList:testEditCanceled',    function (event) {
         
@@ -74,17 +79,13 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.editTaskPicturesListApi.forceRefresh();
     });
     
-    $rootScope.$on('childMenu:childSelected',    function (event, childId) {
+    $rootScope.$on('childMenu:childSelected', function (event, childId) {
 
         $rootScope.isTestEditModeOn = false;
 
         application.childMenuApi.setDisplayedChild(childId);
         
         application.testListApi.setChildId(childId);
-
-        application.testListApi.removeDisplayedTest();
-
-        application.testPreviewApi.reset();
     });
     $rootScope.$on('childMenu:childEditStarted', function (event, childId) {
 
@@ -92,6 +93,8 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
     });
 
     $rootScope.$on('createChild:childCreated', function (event, child) {
+
+        application.testPreviewApi.reset();
 
         application.childMenuApi.addNewChild(child);
     });
@@ -101,8 +104,6 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.childMenuApi.loadChildren();
         
         application.childMenuApi.setDisplayedChild(childId);
-
-        application.testListApi.loadTests(childId);
     });
     $rootScope.$on('editChild:pictureUpdated', function (event, childId) {
 

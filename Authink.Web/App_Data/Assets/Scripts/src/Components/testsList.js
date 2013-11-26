@@ -23,6 +23,8 @@ authink.directive('testsList', function () {
 
                         $scope.isLoading         = false;
                         $scope.testListApi.tests = tests;
+
+                        setActiveTestOnLoad(tests);
                     });
                 }
             });
@@ -36,7 +38,7 @@ authink.directive('testsList', function () {
                     $scope.$emit('testsList:testEditCanceled');
                 }
                 
-                $scope.$emit('testsList:testSelected', test.Id);
+                $scope.$emit('testsList:testSelected', test);
             };
 
             $scope.addNewTest = function() {
@@ -47,6 +49,24 @@ authink.directive('testsList', function () {
 
                 $scope.$emit('testsList:testCreatingStarted', $scope.testListApi.childId);
             };
+
+            var setActiveTestOnLoad = function (tests) {
+
+                if(tests.length > 0){
+                    
+                    $scope.selectTest(tests[0]);
+                } else {
+
+                    $scope.selectTest({});
+                }
+            }
+
+            var resetState = function() {
+
+                $scope.testListApi.reset();
+            }
+
+            resetState();
         }]
     };
 });
@@ -60,7 +80,7 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
         displayedTest: null,
 
         setChildId: function (childId) {
-            
+
             this.childId = childId;
         },
         
@@ -79,6 +99,13 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
         removeDisplayedTest: function(){
 
             this.displayedTest = null;
+        },
+
+        reset: function () {
+
+            this.tests         =  null;
+            this.childId       =  null;
+            this.displayedTest =  null;
         }
     };
 }]);

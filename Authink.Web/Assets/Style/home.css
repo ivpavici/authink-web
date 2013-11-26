@@ -104,14 +104,6 @@ textarea {
 
 /* CHILD MENU */
 
-#child-menu {
-    /*background: #f0f0f0;*/
-    background: 
-        url('../Images/Home/child-menu-back.png') left top no-repeat,
-        url('../Images/Home/child-menu-back-2.png') right top no-repeat; 
-    height: 120px;
-}
-
     #child-menu-info {
         margin: 15px 0 0 10px;
         float: left;

@@ -8,7 +8,7 @@ authink.directive('editTask', function() {
         templateUrl: '/application/templates/editTask',
         scope:       {},
         
-        controller: ['$scope', '$element', 'editTaskApi', 'tasksRepository', 'soundsRepository', function ($scope, $element, editTaskApi, tasksRepository, soundsRepository) {
+        controller: ['$scope', '$element','$sce', 'editTaskApi', 'tasksRepository', 'soundsRepository', function ($scope, $element, $sce, editTaskApi, tasksRepository, soundsRepository) {
 
             $scope.editTaskApi           = editTaskApi;
             $scope.isVoiceCommandPlaying = false;
@@ -23,7 +23,6 @@ authink.directive('editTask', function() {
                         $scope.$emit('editTask:taskForEditLoaded', task);
                         
                         $scope.task = task;
-                        console.log($scope.task);
                     });
                 }
             });
@@ -60,7 +59,7 @@ authink.directive('editTask', function() {
                         })
                         .success(function (sound) {
 
-                            $scope.task.VoiceCommand.Url = sound.Url;
+                            $scope.task.VoiceCommand.Url = $sce.trustAsResourceUrl(sound.Url);
                             $scope.$apply();
                         });
                     } else {
@@ -73,7 +72,7 @@ authink.directive('editTask', function() {
                         })
                         .success(function (sound) {
 
-                            $scope.task.VoiceCommand = sound;
+                            $scope.task.VoiceCommand = {Url: $sce.trustAsResourceUrl(sound.Url)};
                             $scope.$apply();
                         });
                     }

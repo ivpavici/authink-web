@@ -39,6 +39,13 @@ authink.directive('testPreview', function () {
 
                 $scope.$emit('testPreview:testEditStarted', $scope.test);
             };
+
+            var resetState = function () {
+
+                $scope.testPreviewApi.testId = null;
+            }
+
+            resetState();
         }]
     };
 });
@@ -52,12 +59,12 @@ authink.factory('testPreviewApi', function () {
 
         setActiveTest: function (testId) {
 
-            this.testId = testId;
+            this.testId = new Number(testId);
         },
         
         reset: function() {
 
             this.needReset = true;
-        }
+        },
     };
 });

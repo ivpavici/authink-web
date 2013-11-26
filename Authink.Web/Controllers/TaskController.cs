@@ -18,6 +18,7 @@ using buru = Authink.Core.Domain.Rules;
 namespace Authink.Web.Controllers
 {
     using Authink.Web.Controllers.Task.Helpers;
+    using Authink.Core.Fx;
 
     [Authorize]
     public partial class TaskController: Controller
@@ -28,7 +29,6 @@ namespace Authink.Web.Controllers
             IPictureCommands     pictureCommands,
             ISoundCommands       soundCommands,
             IPictureServices     pictureServices,
-            IFileSystemUtilities fileSystemUtilities,
             ILoginServices       loginServices,
             ISoundServices       soundServices,
             IUserAccessRights    userAccessRights,
@@ -45,7 +45,6 @@ namespace Authink.Web.Controllers
             this.pictureCommands     = pictureCommands;
             this.soundCommands       = soundCommands;
             this.pictureServices     = pictureServices;
-            this.fileSystemUtilities = fileSystemUtilities;
             this.loginServices       = loginServices;
             this.soundServices       = soundServices;
             this.userAccessRights    = userAccessRights;
@@ -62,7 +61,6 @@ namespace Authink.Web.Controllers
         private readonly IPictureCommands     pictureCommands;
         private readonly ISoundCommands       soundCommands;
         private readonly IPictureServices     pictureServices;
-        private readonly IFileSystemUtilities fileSystemUtilities;
         private readonly ILoginServices       loginServices;
         private readonly ISoundServices       soundServices;
         private readonly IUserAccessRights    userAccessRights;
@@ -203,10 +201,10 @@ namespace Authink.Web.Controllers
 
             if(sound != null && newTaskId != 0)
             {
-                var soundUrl = soundServices.SaveToFileSystem
+                var soundUrl = soundServices.Save
                 (
                     soundName:    sound.FileName,
-                    soundContent: fileSystemUtilities.Transform_HttpPostedFileBase_Into_Bytes(sound),
+                    soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
                     relatedId:    newTaskId,
                     baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
                 );
@@ -282,7 +280,7 @@ namespace Authink.Web.Controllers
             httpContextBase.Session["ImplementedTaskId"] = taskId;
             foreach (var pictureData in pictures)
             {
-                var savePath  = pictureServices.SaveToFileSystem(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                var savePath  = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
                 var pictureId = pictureCommands.Create
                 (
                     url:      savePath,
@@ -322,7 +320,7 @@ namespace Authink.Web.Controllers
 
             foreach (var pictureData in pictures)
             {
-                var savePath             = pictureServices.SaveToFileSystem(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                var savePath             = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
                 var picturePosition      = pictures.IndexOf(pictureData);
                 var colorsForThisPicture = colors[picturePosition];
 
@@ -380,7 +378,7 @@ namespace Authink.Web.Controllers
             );
             httpContextBase.Session["ImplementedTaskId"] = taskId;
 
-            var savePath  = pictureServices.SaveToFileSystem(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+            var savePath  = pictureServices.Save(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
             var pictureId = pictureCommands.Create
             (
                 url:      savePath,
