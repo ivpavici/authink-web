@@ -6,14 +6,14 @@
 
     <div id="home-header-user" class="clearfix">
 
-        <div id="home-header-user-menu">
+        <div id="home-header-user-menu" class="dropdown">
 
-            <a>{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
-            <ul>
+            <a class="dropdown-toggle">{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
+            <ul class="dropdown-menu">
 
-                <li class="home-header-user-menu-list-item" ng-click="signOut()">@resources.Omnibar_Logout</li>
-                <li class="home-header-user-menu-list-item"> <a href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a> </li>
                 <li class="home-header-user-menu-list-item"> <a href="/language/change/en" target="_self">@resources.Omnibar_Language_English</a></li>
+                <li class="home-header-user-menu-list-item"> <a href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a> </li>
+                <li class="home-header-user-menu-list-item"> <a ng-click="signOut()">@resources.Omnibar_Logout</a></li>
             </ul>
 
         </div>

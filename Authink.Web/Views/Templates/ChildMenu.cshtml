@@ -6,18 +6,18 @@
 
         <img id="child-menu-info-image" ng-src={{childMenuApi.displayedChild.ProfilePictureUrl}} alt="" />
 
-        <div id="child-menu-info-menu">
+        <div id="child-menu-info-menu" class="dropdown">
 
-            <a id="child-menu-info-menu-child-name">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
+            <a id="child-menu-info-menu-child-name" class="dropdown-toggle">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
 
-            <ul>
+            <ul class="dropdown-menu">
                 <li class="child-menu-select" ng-repeat="child in childMenuApi.children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == childMenuApi.displayedChild.Id}">
 
                     <span>{{child.Firstname}} {{child.Lastname}}</span>
 
                 </li>
-
-                <li action="add-child" ng-click="addChild()"><span>@resources.ChildMenu_CreateNew</span></li>
+                <li class="divider"></li>
+                <li id="child-menu-info-menu-new"><a ng-click="addChild()">@resources.ChildMenu_CreateNew</a></li>
 
             </ul>
 

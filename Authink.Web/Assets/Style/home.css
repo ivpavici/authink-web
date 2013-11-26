@@ -64,25 +64,11 @@ textarea {
                 background: #2277a4 url('../Images/Home/header-menu-arrow-down.png') no-repeat right center;
             }
 
-            #home-header-user-menu:hover ul {
-                left: 0;
+            #home-header-user-menu a{
+                color:white;
+                text-decoration:none;
+                display:block;
             }
-
-            #home-header-user-menu ul {
-                list-style: none;
-                position: absolute;
-                left: -9999px;
-                width: 100%;
-                z-index: 10000;
-            }
-
-                #home-header-user-menu ul li {
-                    float: none;
-                    padding-top: 1px;
-                    white-space: nowrap;
-                    width: 100%;
-                    background: #1a6d97;
-                }
 
                     #home-header-user-menu ul li:hover {
                         background: #2277a4;
@@ -128,66 +114,56 @@ textarea {
             background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;
             position: relative;
         }
-
+        #child-menu-info-menu-child-name {
+            text-decoration:none;
+            display: block;
+        }
             #child-menu-info-menu:hover {
                 cursor: pointer;
-                background: #f8f8f8 url('../Images/Home/child-menu-arrow-up.png') no-repeat right center;
-                border-bottom: 4px solid #d8d8d8;
-            }
-
-            #child-menu-info-menu:hover ul {
-                left: -2px;
             }
 
             #child-menu-info-menu span {
                 font-weight: bold;
             }
 
-            #child-menu-info-menu ul {
-                list-style: none;
-                position: absolute;
-                left: -9999px;
-                /*width: 100%;*/
-                width: 315px;
-                z-index: 10000;
-                border-left: 2px solid #ececec;
-                border-right: 2px solid #ececec;
-            }
-
-                #child-menu-info-menu ul li {
+                #child-menu-info-menu ul .child-menu-select {
                     float: none;
                     white-space: nowrap;
                     /*width: 100%;*/
                     width: 295px;
                     padding: 6px 0 6px 20px;
-                    background: #f8f8f8;
                     color: #444;
                     text-decoration: none;
                     border-top: 1px solid #f2f2f2;
                 }
 
-                    #child-menu-info-menu ul li:hover {
+                    #child-menu-info-menu ul .child-menu-select:hover {
                         /*background: #93c6e0;*/
                         background: #feb645;
                         cursor: pointer;
                     }
-                     #child-menu-info-menu ul li.child-menu-info-menu-selected {
+                     #child-menu-info-menu ul .child-menu-select.child-menu-info-menu-selected {
                          background: #feb645;
                     }
-
-                        #child-menu-info-menu ul li:last-child {
-                            border-bottom: 4px solid #d8d8d8;
-                            background: #196d96;
-                        }
-                        #child-menu-info-menu ul li:last-child:hover {
-                            background: #2277a4;
-                        }
-                            #child-menu-info-menu ul li:last-child span {
-                                text-transform: uppercase;
-                                font-weight: bolder;
-                                color: white;
-                                margin-left: 67px;
-                            }
+                            #child-menu-info-menu-new {
+                                font-size: .7em;
+                                display: block;
+                                text-align: center;
+                                background-color: #1A6D97;
+                           }
+                             #child-menu-info-menu-new a{
+                                 line-height: 1.9em;
+                                 padding: 0;
+                                 color: white;
+                             }
+                              #child-menu-info-menu-new a:hover{
+                                background: #2277a4;
+                              }
+                               #child-menu-info-menu-new a:active{
+                                 top: 1px;
+                                 position:relative;
+                                 background:#196D96;
+                               }
 
                     #child-menu-info-menu ul li span {
                         margin-left: 10px;
@@ -420,6 +396,7 @@ textarea {
 
                 #main-test-edit-options {
                     height: 40px;
+                    margin-right: 1.4%;
                 }
 main-test-edit-buttons {
     width: 90%;
@@ -438,7 +415,7 @@ main-test-edit-buttons {
                     }
 
                     #main-test-edit-options a {
-                        display: block; padding: 10px 15px;
+                        display: block; padding: 7px 15px 8px 15px;
                         /*margin: 0 5px;*/
                         float: right;
                         text-align: center; text-transform: uppercase;
@@ -738,6 +715,7 @@ main-test-edit-buttons {
              padding: 6px 14px;
              margin-top: 15px;
              margin-right: -1px;
+             margin-bottom: 1%;
         }
          #children-edit-form-button:hover {
              cursor: pointer;
@@ -746,7 +724,6 @@ main-test-edit-buttons {
          #children-edit-form-button:active {
              position: relative;
              top: 1px;
-             border-bottom: 4px solid #e18520;
          }
 /*FUBAR*/
         #child-create-popup {
@@ -842,6 +819,7 @@ main-test-edit-buttons {
           padding: 6px 14px;
           margin-top: 15px;
           margin-right:-13px;
+          margin-bottom: 1%;
      }
         #test-create-form-button:hover {
             cursor: pointer;
@@ -850,7 +828,7 @@ main-test-edit-buttons {
         #test-create-form-button:active {
             position: relative;
             top: 1px;
-            border-bottom: 4px solid #e18520;
+            border-bottom-color: #e18520;
         }
     
      .test-create-form-textbox {
