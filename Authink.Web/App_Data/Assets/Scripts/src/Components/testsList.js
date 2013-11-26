@@ -24,7 +24,10 @@ authink.directive('testsList', function () {
                         $scope.isLoading         = false;
                         $scope.testListApi.tests = tests;
 
-                        setActiveTestOnLoad(tests);
+                        if (!$scope.testListApi.displayedTest) {
+
+                            setActiveTestOnLoad(tests);
+                        }
                     });
                 }
             });
