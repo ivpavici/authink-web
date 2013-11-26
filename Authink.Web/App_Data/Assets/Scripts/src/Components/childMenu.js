@@ -65,6 +65,8 @@ authink.directive('childMenu', function () {
 
             var resetState = function () {
 
+                $scope.childMenuApi.reset();
+
                 childrenRepository.getAllForUser_shortDetails()
                    .then(function (children) {
 
@@ -111,6 +113,14 @@ authink.factory('childMenuApi', function () {
         addNewChild: function (child) {
 
             this.children.push(child);
+        },
+
+        reset: function () {
+
+            this.childId        = null;
+            this.children       = null;
+            this.needLoad       = false;
+            this.displayedChild = null;
         }
     };
 });

@@ -60,6 +60,14 @@ authink.directive('testsList', function () {
                     $scope.selectTest({});
                 }
             }
+
+            var resetState = function() {
+
+                $scope.testListApi.reset();
+                console.log("yy");
+            }
+
+            resetState();
         }]
     };
 });
@@ -92,6 +100,13 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
         removeDisplayedTest: function(){
 
             this.displayedTest = null;
+        },
+
+        reset: function () {
+
+            this.tests         =  null;
+            this.childId       =  null;
+            this.displayedTest =  null;
         }
     };
 }]);
