@@ -132,6 +132,7 @@ namespace Authink.Core.Model.Queries.Impl
                     db.Children
                       .SingleOrDefault(child => child.Id == childId)
                       .Tests
+                      .OrderByDescending(test => test.Id             )
                       .Where (test => (!test.IsDeleted || showHidden))
                       .Select(mappers::Test.ShortDetails.FromDatabase)
                       .ToList(                                       );

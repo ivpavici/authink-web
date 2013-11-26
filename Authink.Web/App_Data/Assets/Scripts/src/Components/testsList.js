@@ -24,7 +24,10 @@ authink.directive('testsList', function () {
                         $scope.isLoading         = false;
                         $scope.testListApi.tests = tests;
 
-                        setActiveTestOnLoad(tests);
+                        if (!$scope.testListApi.displayedTest) {
+
+                            setActiveTestOnLoad(tests);
+                        }
                     });
                 }
             });
@@ -91,7 +94,7 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
 
         addNewTest: function(test){
 
-            this.tests.push(test);
+            this.tests.unshift(test);
 
             this.displayedTest = test;
         },

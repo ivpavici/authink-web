@@ -228,9 +228,12 @@ textarea {
 }
     #main-tests {
         width: 426px;
+        min-height: 300px;
+        max-height: 750px;
         float: left;
         border-right: 5px solid #ececec;
         background: #f8f8f8;
+        position:relative;
     }
 
         #main-tests-heading {
@@ -266,7 +269,10 @@ textarea {
             }
             /**/
         #main-tests-list {
-
+            max-height: 500px;
+            min-height: inherit;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
             .main-tests-list-item {
@@ -316,6 +322,9 @@ textarea {
 
         #main-tests-options {
             padding: 10px;
+            position: absolute;
+            left: 0;
+            right: 0;
         }
 
             #main-tests-option-add-new {
