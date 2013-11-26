@@ -94,7 +94,7 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
 
         addNewTest: function(test){
 
-            this.tests.push(test);
+            this.tests.unshift(test);
 
             this.displayedTest = test;
         },
