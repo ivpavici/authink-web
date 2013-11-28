@@ -151,20 +151,4 @@ input {
         background: yellowgreen;
     }
 
-/* CLEARFIX */
 
-/* Clearfix for modern browsers */
-.clearfix:before,
-.clearfix:after {
-    content:"";
-    display:table;
-}
-
-.clearfix:after {
-    clear:both;
-}
-
-/* Clearfix for IE 6/7 (trigger hasLayout) */
-.clearfix {
-    zoom:1;
-}

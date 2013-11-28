@@ -286,10 +286,14 @@
     <Content Include="Assets\Images\Wizard\task-wizard-voice.png" />
     <Content Include="Assets\Style\bootstrap.css" />
     <Content Include="Assets\Style\ChildDashboard.css" />
+    <Content Include="Assets\Style\popUpStyles\createChild.css" />
+    <Content Include="Assets\Style\popUpStyles\createTest.css" />
+    <Content Include="Assets\Style\popUpStyles\editChild.css" />
+    <Content Include="Assets\Style\popUpStyles\previewTask.css" />
     <Content Include="Assets\Style\home.css" />
     <Content Include="Assets\Style\reset.css" />
     <Content Include="Assets\Style\style.css" />
-    <Content Include="Assets\Style\wizard.css" />
+    <Content Include="Assets\Style\popUpStyles\createTask.css" />
     <Content Include="Assets\Images\x.png" />
     <Content Include="Content\Sounds\guns.mp3" />
     <Content Include="Views\Templates\SignUp.cshtml" />
@@ -344,7 +348,7 @@
     <Content Include="Content\Images\Tasks\9\casserole-left.png" />
     <Content Include="Content\Images\Tasks\9\casserole-right.png" />
     <Content Include="Content\Images\Tasks\defaultTaskProfile.png" />
-    <Content Include="Assets\Style\task.css" />
+    <Content Include="Assets\Style\popUpStyles\editTask.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -418,11 +422,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Main.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Main.hr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Main.hr.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Views\Templates\ChildMenu.cshtml" />
     <Content Include="Views\Templates\CreateChild.cshtml" />

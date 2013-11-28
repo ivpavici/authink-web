@@ -1,0 +1,31 @@
+﻿#test-crate-popup                                           {width: 850px;}
+#test-create-form                                           {padding: 20px;margin-left: 2%;width: 90%;}
+.test-create-form-label                                     {font-size: 18px;}
+#test-crate-popup-header                                    {width: 100%;background-color:  #fe9b26;margin-bottom: 2%;}
+#test-crate-popup-header h2                                 {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
+#test-create-form-button                                    {float: right;border: none;border-bottom: 5px solid #e18520;background:  #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-top: 15px;margin-right:-13px;margin-bottom: 1%;}
+#test-create-form-button:hover                              {cursor: pointer;background: #e18520;}
+#test-create-form-button:active                             {position: relative;top: 1px;border-bottom-color: #e18520;}
+.test-create-form-textbox                                   {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
+.test-create-form-textarea-long                             {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;resize: none;height: 200px;}
+.test-create-form-textarea-short                            {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;resize: none;height: 150px;}
+.hide                                                       {display: none;}
+.selected                                                   {background-color: rgb(209, 208, 202);color: white;}
+.task:hover                                                 {background-color: rgb(209, 208, 202);color: white;cursor: pointer;}
+.task:active                                                {background-color: rgb(209, 208, 202);}
+.task-delete-confirmation-dialog                            {width: 500px;min-height: 150px;}
+.task-delete-confirmation-dialog-header                     {width: 100%;background-color: #fe9b26;margin-bottom: 2%;}
+.task-delete-confirmation-dialog-header h2                  {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
+.task-delete-confirmation-dialog p                          {font-size: 1.8em;padding: 18px 25px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color: #666;}
+.task-delete-confirmation-dialog .actions                   {padding:15px 0 25px;text-align:center;}
+.task-delete-confirmation-dialog .actions .bottun           {display:inline-block;color:white;position:relative;height: 33px;background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
+.task-delete-confirmation-dialog .actions .bottun:hover     {background:#feaa26;}
+.task-delete-confirmation-dialog .actions .bottun:active    {background:#e18520;}
+.test-delete-confirmation-dialog                            {width: 500px;min-height: 150px;}
+.test-delete-confirmation-dialog-header                     {width: 100%;background-color: #fe9b26;margin-bottom: 2%;}
+.test-delete-confirmation-dialog-header h2                  {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
+.test-delete-confirmation-dialog p                          {font-size: 1.8em;padding: 18px 25px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color: #666;}
+.test-delete-confirmation-dialog .actions                   {padding:15px 0 25px;text-align:center;}
+.test-delete-confirmation-dialog .actions .bottun           {display:inline-block;color:white;position:relative;height: 33px;background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
+.test-delete-confirmation-dialog .actions .bottun:hover     {background:#feaa26;}
+.test-delete-confirmation-dialog .actions .bottun:active    {background:#e18520;

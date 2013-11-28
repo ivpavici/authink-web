@@ -6,19 +6,27 @@
 
     <div id="home-header-user" class="clearfix">
 
-        <div id="home-header-user-menu" class="dropdown">
-
+        <div class="home-header-user-menu">
             <a class="dropdown-toggle">{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
+            <img id="options-icon" src="/Assets/Images/Home/omnibar-gear.png" alt="" />
+            <div id="options">  
+                
+                <a ng-if="/language/change/hr" target="_self">@resources.Omnibar_Language_English</a>
+                <a ng-click="signOut()" id="logout"><img src="/Assets/Images/Home/options-logout.png" alt="" /></a> 
+
+            </div>
+            <!--
+
             <ul class="dropdown-menu">
 
                 <li class="home-header-user-menu-list-item"> <a href="/language/change/en" target="_self">@resources.Omnibar_Language_English</a></li>
                 <li class="home-header-user-menu-list-item"> <a href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a> </li>
                 <li class="home-header-user-menu-list-item"> <a ng-click="signOut()">@resources.Omnibar_Logout</a></li>
             </ul>
-
+                -->
         </div>
 
-        <img id="home-header-user-avatar" src="/Assets/Images/Home/user-avatar-default.png" alt="" />
+         
 
     </div>
 

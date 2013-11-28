@@ -26,17 +26,23 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
                                                 HEADER
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#home-header                            {background: #1a6d97;height: 50px;}
-#home-header-logo                       {display: block; float: left;width: 130px; height: 50px;background: transparent url('../Images/Home/header-logo.png') no-repeat center center;}
-#home-header-logo:hover                 {cursor: pointer;background: #2277a4 url('../Images/Home/header-logo.png') no-repeat center center;}
-#home-header-user                       {float: right;}
-#home-header-user-menu                  {display: block; float: left;height: 50px; line-height: 50px;padding: 0 35px 0 15px;background: transparent url('../Images/Home/header-menu-arrow-down.png') no-repeat right center;color: #9ac6e1;font-size: 1.6em;position: relative;}
-#home-header-user-menu:hover            {cursor: pointer;background: #2277a4 url('../Images/Home/header-menu-arrow-down.png') no-repeat right center;}
-#home-header-user-menu a                {color:white;text-decoration:none;display:block;}
-#home-header-user-menu ul li:hover      {background: #2277a4;cursor: pointer;}
-#home-header-user-menu ul li:hover a    {color: white;}
-#home-header-user-menu ul li a          {color: #9ac6e1;text-decoration: none;}
-#home-header-user-avatar                {display: block; float: left;}
+#home-header                                    {background: #1a6d97;height: 50px;}
+#home-header-logo                               {display: block; float: left;width: 130px; height: 50px;background: transparent url('../Images/Home/header-logo.png') no-repeat center center;}
+#home-header-logo:hover                         {cursor: pointer;background: #2277a4 url('../Images/Home/header-logo.png') no-repeat center center;}
+
+.home-header-user                               {float: right;}
+.home-header-user-menu                          {float: right;height: 50px; line-height: 50px;color: #9ac6e1;font-size: 1.6em; width:25%;}
+.home-header-user-menu #options-icon            {opacity:0.6; }
+.home-header-user-menu #options-icon:hover      {cursor: pointer; opacity:1;}
+.home-header-user-menu #options-icon:active     { }
+.home-header-user-menu #options                 {float:right; background:#207faf; height:inherit; width:auto; margin-top:0;}
+.home-header-user-menu #options #logout         {cursor:pointer; opacity:0.6;}
+.home-header-user-menu #options #logout:hover   {opacity:1;}
+
+.home-header-user-menu a                        {color:white;text-decoration:none;display:block; float:left;}
+.home-header-user-menu ul li:hover              {background: #2277a4;cursor: pointer;}
+.home-header-user-menu ul li:hover a            {color: white;}
+.home-header-user-menu ul li a                  {color: #9ac6e1;text-decoration: none;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 child menu
@@ -153,79 +159,4 @@ main-test-edit-buttons                                              {width: 90%;
 #test-edit-add-new-task                                             {display: block; float: right; position: relative;width: 120px; height: 120px;float: right;text-align: center;font-size: 1.2em;text-decoration: none;text-transform: uppercase;font-weight: normal;color: #888;/*padding: 10px 35px 10px 15px;*/background: transparent url('../Images/Home/test-icon-add.png') no-repeat center 35px;}
 #test-edit-add-new-task:hover                                       {cursor: pointer;background-color: #e8e8e8;}
 #test-edit-add-new-task span                                        {display: block;padding-top: 76px;}
-#children-popup                                                     {}
-#children-popup-header                                              {width: 100%;background-color:  #fe9b26;margin-bottom: 2%;}
-#children-popup-header h2                                           {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px 0 7px 5px;}
-#children-popup-image-wrap                                          {width: 100%;height: 150px;}
-#children-popup-image-wrap img                                      {/*float: left;*//*padding-left: 5%;*/display: block;margin: 0 auto;}
-#children-popup-image-wrap input                                    {float: left;}
-#children-edit-form                                                 {width: 320px;padding: 20px;margin: 0 auto;}
-.child-info-field-label                                             {font-size: 18px;}
-.child-info-input-field                                             {width: 304px;padding: 8px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
-#children-edit-form-button                                          {float: right;border: none;border-bottom: 5px solid #e18520;background:  #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-top: 15px;margin-right: -1px;margin-bottom: 1%;}
-#children-edit-form-button:hover                                    {cursor: pointer;background: #e18520;}
-#children-edit-form-button:active                                   {position: relative;top: 1px;}
-
-                                                                /*FUBAR dafuq*/
-#child-create-popup                             {/*width: 360px;*/}
-#child-popup-header                             {width: 100%;background-color:  #fe9b26;margin-bottom: 2%;}
-#child-popup-header h2                          {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px 0 7px 5px;}
-#child-form-title                               {display: none;}
-#child-form-create                              {width: 320px;padding: 20px;margin: 0 auto;}
-.child-form-label                               {font-size: 18px;}
-.child-form-field                               {width: 304px;padding: 8px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
-#child-dashboard-create-button                  {float: right;border: none;border-bottom: 5px solid #e18520;background:  #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-top: 15px;margin-right: -1px;}
-#child-dashboard-create-button:hover            {cursor: pointer;background: #e18520;}
-#child-dashboard-create-button:active           {position: relative;top: 1px;border-bottom: 4px solid #e18520;}
-
-     /**/
-#test-crate-popup                                           {width: 850px;}
-#test-create-form                                           {padding: 20px;margin-left: 2%;width: 90%;}
-.test-create-form-label                                     {font-size: 18px;}
-#test-crate-popup-header                                    {width: 100%;background-color:  #fe9b26;margin-bottom: 2%;}
-#test-crate-popup-header h2                                 {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
-#test-create-form-button                                    {float: right;border: none;border-bottom: 5px solid #e18520;background:  #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-top: 15px;margin-right:-13px;margin-bottom: 1%;}
-#test-create-form-button:hover                              {cursor: pointer;background: #e18520;}
-#test-create-form-button:active                             {position: relative;top: 1px;border-bottom-color: #e18520;}
-.test-create-form-textbox                                   {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
-.test-create-form-textarea-long                             {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;resize: none;height: 200px;}
-.test-create-form-textarea-short                            {width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;resize: none;height: 150px;}
-.hide                                                       {display: none;}
-.selected                                                   {background-color: rgb(209, 208, 202);color: white;}
-.task:hover                                                 {background-color: rgb(209, 208, 202);color: white;cursor: pointer;}
-.task:active                                                {background-color: rgb(209, 208, 202);}
-.task-delete-confirmation-dialog                            {width: 500px;min-height: 150px;}
-.task-delete-confirmation-dialog-header                     {width: 100%;background-color: #fe9b26;margin-bottom: 2%;}
-.task-delete-confirmation-dialog-header h2                  {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
-.task-delete-confirmation-dialog p                          {font-size: 1.8em;padding: 18px 25px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color: #666;}
-.task-delete-confirmation-dialog .actions                   {padding:15px 0 25px;text-align:center;}
-.task-delete-confirmation-dialog .actions .bottun           {display:inline-block;color:white;position:relative;height: 33px;background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
-.task-delete-confirmation-dialog .actions .bottun:hover     {background:#feaa26;}
-.task-delete-confirmation-dialog .actions .bottun:active    {background:#e18520;}
-.test-delete-confirmation-dialog                            {width: 500px;min-height: 150px;}
-.test-delete-confirmation-dialog-header                     {width: 100%;background-color: #fe9b26;margin-bottom: 2%;}
-.test-delete-confirmation-dialog-header h2                  {font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
-.test-delete-confirmation-dialog p                          {font-size: 1.8em;padding: 18px 25px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color: #666;}
-.test-delete-confirmation-dialog .actions                   {padding:15px 0 25px;text-align:center;}
-.test-delete-confirmation-dialog .actions .bottun           {display:inline-block;color:white;position:relative;height: 33px;background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
-.test-delete-confirmation-dialog .actions .bottun:hover     {background:#feaa26;}
-.test-delete-confirmation-dialog .actions .bottun:active    {background:#e18520;}
-
-/* CLEARFIX */
-
-/* Clearfix for modern browsers */
-.clearfix:before,
-.clearfix:after {
-    content:"";
-    display:table;
-}
-
-.clearfix:after {
-    clear:both;
-}
-
-/* Clearfix for IE 6/7 (trigger hasLayout) */
-.clearfix {
-    zoom:1;
-}
 
