@@ -50,7 +50,11 @@
 
     <resourceSet name="shellCss" type="css">
       <resource path="~/Assets/Style/home.css" />
-      <resource path="~/Assets/Style/task.css" />
+      <resource path="~/Assets/Style/popUpStyles/editChild.css" />
+      <resource path="~/Assets/Style/popUpStyles/editTask.css" />
+      <resource path="~/Assets/Style/popUpStyles/previewTask.css" />
+      <resource path="~/Assets/Style/popUpStyles/createTest.css" />
+      
     </resourceSet>
     
     <resourceSet name="globalCss" type="css">
@@ -58,13 +62,15 @@
       <resource path="~/Content/site.css" />
       <resource path="~/Assets/Style/reset.css" />
       <resource path="~/Assets/Style/style.css" />
+      <resource path="~/Assets/Style/popUpStyles/createChild.css" />
+      
     </resourceSet>
     
     <resourceSet name="homeCss" type="css">
-      <resource path="~/Assets/Style/home.css" />
-      <resource path="~/Assets/Style/task.css" />
+      <resource path="~/Assets/Style/home.css" />    
     </resourceSet>
-    
+
+      
     <resourceSet name="spectrumJs" type="js">
       <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
       <resource path= "~/Scripts/Plugins/SimpleColorpicker/spectrum.js"/>
@@ -74,7 +80,7 @@
     </resourceSet>
 
     <resourceSet name="taskWizzardCss" type="css">
-      <resource path="~/Assets/Style/wizard.css"/>
+      <resource path="~/Assets/Style/popUpStyles/createTask.css"/>
     </resourceSet>
     <resourceSet name="taskWizzardJs" type="js">
       <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
