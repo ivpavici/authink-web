@@ -22,6 +22,17 @@
 
         </div>
 
+        <div class="task-read-voice-command clearfix">
+
+            <h2>@resources.TaskPreview_VoiceCommand_Title</h2>
+
+            <a class="btn-success task-read-voice-command-preview" ng-href="{{task.VoiceCommand.Url}}" target="_blank" ng-show="task.VoiceCommand">@resources.TaskPreview_VoiceCommand_Listen</a>
+
+            <span ng-show="!task.VoiceCommand">@resources.TaskPreview_VoiceCommand_Empty</span>
+        </div>
+
+        </div>
+
         <div class="task-read-content clearfix">
 
             <h2>@resources.TaskPreview_Pictures</h2>
