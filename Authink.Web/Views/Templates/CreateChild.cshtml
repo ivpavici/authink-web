@@ -14,18 +14,15 @@
 
             <h1 id="child-form-title">@resources.ChildAdd_Title</h1>
 
-            <div>
+            <div class="child-test">
                 <input type="text" ng-model="child.firstName" ng-class="child-form-label" placeholder="@resources.ChildAdd_FirstNamePlaceholder" required />
+            </div>
 
-            </div><br /><br /><br />
-
-            <div>
-
+            <div class="child-test">
                 <input type="text" ng-model="child.lastName" ng-class="child-form-label" placeholder="@resources.ChildAdd_LastNamePlaceholder" required />
+            </div>
 
-            </div><br /><br />
-
-            <input type="submit" value="@resources.ChildAdd_Save" id="child-dashboard-create-button" />
+            <input type="submit" value="@resources.ChildAdd_Save" id="child-dashboard-create-button" class="btn"/>
 
         </form>
 

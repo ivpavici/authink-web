@@ -289,6 +289,7 @@
     <Content Include="Assets\Style\ChildDashboard.css" />
     <Content Include="Assets\Style\popUpStyles\createChild.css" />
     <Content Include="Assets\Style\popUpStyles\createTest.css" />
+    <Content Include="Assets\Style\popUpStyles\deleteTask.css" />
     <Content Include="Assets\Style\popUpStyles\editChild.css" />
     <Content Include="Assets\Style\popUpStyles\previewTask.css" />
     <Content Include="Assets\Style\home.css" />

@@ -11,7 +11,7 @@
 .task-read-header                 { margin-top: 2%;}
 .task-read-header-left            { float: left;width: 64px;height: 64px;margin-left: 2%;}
 .task-read-header-left img        { width: 100%;}
-.task-read-header-right           { float: left;margin: 10px 0 0 20px;width: 500px;}
+.task-read-header-right           { float: left;margin: 10px 0 0 20px;width: 700px;}
 .task-read-name                   { font-weight: bold;text-transform: uppercase;font-size: 2.7em;color: #444;}
 .task-read-description            { color: #888;font-size: 1.4em;line-height: 1.6em;}
 .task-read-content                { margin-top: 20px; margin-left: 2%;}
