@@ -6,7 +6,7 @@
         height: 50px;
     }
 
-.task-read-container              {display: block;height: 500px;overflow: scroll;overflow-x: hidden; width: 850px;}
+.task-read-container              {display: block;overflow: scroll;overflow-x: hidden; width: 850px;min-height: 450px;max-height: 600px;}
 .task-read-header                 {}
 .task-read-header-left            { float: left;width: 64px;height: 64px;margin-left: 2%;}
 .task-read-header-left img        { width: 100%;}
@@ -22,7 +22,9 @@
 .task-read-voice-command a:active { position:relative; top:1px;}
 .task-read-popup-header h2        { font-size: 20px;color: white;font-weight: bold;width: 80%;padding: 5px;}
 .task-read-popup-header           { width: 100%;background-color: #fe9b26;margin-bottom: 2%; position:relative; height: 7%;}
-
+.task-read-options                { position: absolute;width: 100%; text-align: center; }
+.task-read-edit-button.btn        {background: #FE9B26;color: white;font-size: 1.8em;}
+.task-read-edit-button.btn:hover  { background:#FEB645}
 .task-read-popup-header .task-read-edit-button        { display: block; text-align: center; width: 14%;font-size: 1.5em;text-transform: uppercase; color: white;
                                                         padding: 0px 35px 13px 15px; background: transparent url('../../Images/Home/task-icon-edit.png') no-repeat right center; position: absolute;
                                                         top: 0;bottom: 0;right: 0; text-decoration:none; line-height: 2.2em;}
