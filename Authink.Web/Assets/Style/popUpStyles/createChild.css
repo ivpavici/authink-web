@@ -10,5 +10,5 @@
 .child-form-field                               { width: 100%;padding: 8px;background: white;border: #e0e0e0 1px solid;font-size: 18px;}
 #child-dashboard-create-button                  { display: block;margin: 5px auto 10px auto;border: none;border-bottom: 5px solid #e18520;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;}
 #child-dashboard-create-button:hover            { cursor: pointer;background: #e18520;}
-#child-dashboard-create-button:active           { position: relative;top: 1px;border-bottom: 4px solid #e18520;}
+#child-dashboard-create-button:active           { position: relative;top: 1px;}
 
