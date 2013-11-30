@@ -6,8 +6,9 @@
         height: 50px;
     }
 
-.task-read-container              {display: block;overflow: scroll;overflow-x: hidden; width: 850px;min-height: 450px;max-height: 600px;}
-.task-read-header                 {}
+.task-read-container              { display: block;width: 850px;min-height: 400px;max-height: 600px;}
+.task-read-container-content      { overflow: scroll;overflow-x: hidden;min-height: 405px;}
+.task-read-header                 { margin-top: 2%;}
 .task-read-header-left            { float: left;width: 64px;height: 64px;margin-left: 2%;}
 .task-read-header-left img        { width: 100%;}
 .task-read-header-right           { float: left;margin: 10px 0 0 20px;width: 500px;}
@@ -21,8 +22,8 @@
 .task-read-voice-command a:hover  { background:#6BCE5C}
 .task-read-voice-command a:active { position:relative; top:1px;}
 .task-read-popup-header h2        { font-size: 20px;color: white;font-weight: bold;width: 80%;padding: 5px;}
-.task-read-popup-header           { width: 100%;background-color: #fe9b26;margin-bottom: 2%; position:relative; height: 7%;}
-.task-read-options                { position: absolute;width: 100%; text-align: center; }
+.task-read-popup-header           { width: 100%;background-color: #fe9b26;position:relative; height: 7%; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
+.task-read-options                { position: absolute;width: 100%; text-align: center;bottom: 10px; }
 .task-read-edit-button.btn        {background: #FE9B26;color: white;font-size: 1.8em;}
 .task-read-edit-button.btn:hover  { background:#FEB645}
 .task-read-popup-header .task-read-edit-button        { display: block; text-align: center; width: 14%;font-size: 1.5em;text-transform: uppercase; color: white;
