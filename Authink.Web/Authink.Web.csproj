@@ -254,6 +254,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
+    <Content Include="Assets\Images\Home\X-black.png" />
     <Content Include="Assets\Images\speaker.png" />
     <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Home\add-icon.png" />
