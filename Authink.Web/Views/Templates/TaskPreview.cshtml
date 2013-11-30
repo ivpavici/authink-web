@@ -2,7 +2,13 @@
 
 <div class="task-read-container">
 
-    <div>
+        <div class="task-read-popup-header">
+
+            <h2>{{task.Name}}</h2>
+
+        </div>
+
+    <div class="task-read-container-content">
 
         <div class="task-read-header clearfix">
 
@@ -14,12 +20,19 @@
 
             <div class="task-read-header-right">
 
-                <h1 class="task-read-name">{{task.Name}}</h1>
-
                 <p class="task-read-description">{{task.Description}}</p>
 
             </div>
 
+        </div>
+
+        <div class="task-read-voice-command clearfix">
+
+            <h2>@resources.TaskPreview_VoiceCommand_Title</h2>
+
+            <a class="btn-success task-read-voice-command-preview" ng-href="{{task.VoiceCommand.Url}}" target="_blank" ng-show="task.VoiceCommand">@resources.TaskPreview_VoiceCommand_Listen</a>
+
+            <span ng-show="!task.VoiceCommand">@resources.TaskPreview_VoiceCommand_Empty</span>
         </div>
 
         <div class="task-read-content clearfix">
@@ -40,10 +53,9 @@
 
         <div class="task-read-options">
 
-            <a class="read-task-edit-button" ng-click="editTask()">@resources.TaskPreview_Edit</a>
+            <a class="task-read-edit-button btn" ng-click="editTask()">@resources.TaskPreview_Edit</a>
 
         </div>
 
     </div>
-
 </div>
