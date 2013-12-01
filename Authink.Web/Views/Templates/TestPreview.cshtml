@@ -1,26 +1,40 @@
 ﻿@using resources = Resources.Main;
 
-<div id="main-test" ng-if="test">
+<div id="main-test" ng-if="test" class="oneEdgeLeftShadow">
 
     <div id="main-test-up">
 
         <img ng-if="isLoading" src="Assets/Images/loading.gif" />
-
-        <div id="main-test-right">
-
-            <div id="main-test-options">
-
-                <a id="main-test-option-edit" ng-click="editTest()"><span>@resources.TestPreview_EditButton</span></a>
-
-            </div>
-
-        </div>
 
         <div id="main-test-left">
 
             <div id="main-test-heading">
 
                 <h1>{{test.Name}} </h1>
+
+                <div id="main-test-right">
+
+            <div id="main-test-options">
+
+                <a id="main-test-option-edit" ng-click="editTest()">
+                    
+                    <img id="editIcon" src="~/Assets/Images/Home/testEditIcon.png" />
+
+                    <span class="blink">@resources.TestPreview_EditButton</span>
+
+                </a>
+
+                <a id="main-test-option-delete" ng-click="openConfirmationDialog()">
+                    
+                    <img id="deleteIcon" src="~/Assets/Images/Home/deleteTest.png" />
+
+                    <span  class="blink">@resources.TestEdit_Delete</span>
+
+                </a>
+
+            </div>
+
+        </div>
 
             </div>
 

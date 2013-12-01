@@ -16,7 +16,7 @@
 @import url('reset.css');
 
 body {
-    background: transparent url('../Images/Textures/shattered.png');
+    background:#f9f7f7;
     font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
 }
 #child-form-create {

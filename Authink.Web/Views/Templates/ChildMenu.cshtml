@@ -1,6 +1,6 @@
 ﻿@using resources = Resources.Main;
 
-<div id="child-menu" class="clearfix">
+<div id="child-menu" class="oneEdgeDownShadow">
 
     <div id="child-menu-info" class="clearfix">
 
@@ -9,7 +9,7 @@
         <div id="child-menu-info-menu" class="dropdown">
 
             <a id="child-menu-info-menu-child-name" class="dropdown-toggle">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
-
+            
             <ul class="dropdown-menu">
                 <li class="child-menu-select" ng-repeat="child in childMenuApi.children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == childMenuApi.displayedChild.Id}">
 
@@ -24,7 +24,5 @@
         </div>
 
     </div>
-
-    <a id="child-menu-edit-button" ng-click="editChild()"><span>@resources.ChildMenu_Edit</span></a>
 
 </div>

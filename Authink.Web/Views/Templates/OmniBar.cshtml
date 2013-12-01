@@ -2,21 +2,26 @@
 
 <div id="home-header" class="clearfix">
 
-    <a id="home-header-logo" href="/" target="_self"></a>
+    <a id="home-header-logo" href="/" target="_self"><img src="/Assets/Images/Home/header-logo.png" alt=""/></a>
 
     <div id="home-header-user" class="clearfix">
 
         <div class="home-header-user-menu">
+
             <a class="dropdown-toggle">{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
-            <img id="options-icon" src="/Assets/Images/Home/omnibar-gear.png" alt="" />
-            <div id="options">  
+
+            <div id="options"> 
                 
                 <a class="language" href="/language/change/en" target="_self">@resources.Omnibar_Language_English</a>
-                <a class="language" href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a>
-                <a ng-click="signOut()" id="logout"><img src="/Assets/Images/Home/options-logout.png" alt="" /></a> 
 
-            </div>          
+                <a class="language" href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a>
+
+                <a ng-click="signOut()" id="logout" title="Logout"><img src="/Assets/Images/Home/options-logout.png" alt="" /></a> 
+
+            </div>
+                      
         </div>
+
     </div>
 
 </div>
