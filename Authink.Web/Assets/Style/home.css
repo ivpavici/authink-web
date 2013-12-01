@@ -39,6 +39,11 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 .oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 5px -7px #cdcbcb;-moz-box-shadow: 0 8px 5px -7px #cdcbcb;box-shadow: 0 8px 5px -7px #cdcbcb;}
 .oneEdgeLeftShadow          {-webkit-box-shadow: -8px -6px 6px -6px #e6e6e6;-moz-box-shadow: -8px -6px 6px -6px #e6e6e6;box-shadow: -8px -6px 6px -6px #e6e6e6;}
 
+/*cancel botun na popUp*/
+.cancel                     { float:right;}
+.cancel img                 { width:20px;  margin-right:5px; margin-bottom:7px;}
+.cancel:hover               { cursor:pointer; background:url('../Images/Home/cancelIcon_bckg.png') no-repeat;}
+.cancel:active              { opacity:0.5;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 HEADER
