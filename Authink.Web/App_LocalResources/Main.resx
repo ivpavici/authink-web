@@ -255,6 +255,12 @@
   <data name="TestConfirmationDialog_Title" xml:space="preserve">
     <value>Delete confirmation</value>
   </data>
+  <data name="TestEditConfirmationDialog_Text" xml:space="preserve">
+    <value>You have some unsaved changes. Save?</value>
+  </data>
+  <data name="TestEditConfirmationDialog_Title" xml:space="preserve">
+    <value>Do you want to save changes?</value>
+  </data>
   <data name="TestEdit_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>

@@ -512,6 +512,7 @@
     <Content Include="Views\Task\_ViewStart.cshtml" />
     <Content Include="Views\Templates\TaskDelete_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\TestDelete_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Templates\TestEditCancel_ConfirmationDialog.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

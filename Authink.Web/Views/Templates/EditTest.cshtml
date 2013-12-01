@@ -6,20 +6,20 @@
 
             <h3>@resources.TestEdit_Name</h3>
             <div id="main-test-heading">
-                <input type="text" ng-model="test.Name" class="test-edit-textbox-input" required />
+                <input type="text" ng-model="editableTest.Name" class="test-edit-textbox-input" required />
             </div>
             <h3>@resources.TestEdit_ShortDescription</h3>
             <div id="main-test-description-short">
-                <textarea ng-model="test.ShortDescription" class="test-edit-textarea-input" required></textarea>
+                <textarea ng-model="editableTest.ShortDescription" class="test-edit-textarea-input" required></textarea>
             </div>
             <h3>@resources.TestEdit_LongDescription</h3>
             <div id="main-test-description">
-                <textarea ng-model="test.LongDescription" class="test-edit-textarea-input" required></textarea>
+                <textarea ng-model="editableTest.LongDescription" class="test-edit-textarea-input" required></textarea>
             </div>
             <div id="main-test-edit-buttons">
 
                 <div id="main-test-edit-options" class="clearfix">
-                    <a class="btn main-test-edit-option-delete" ng-click="cancel()">Cancel</a>
+                    <a class="btn main-test-edit-option-delete" ng-click="cancelEdit()">Cancel</a>
                     <input type="submit" class="btn main-test-edit-option-save" value="@resources.TestEdit_Save" />
                 </div>
             </div>

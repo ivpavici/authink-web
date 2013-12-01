@@ -1,0 +1,29 @@
+﻿ @using resources = Resources.Main
+
+<div class="test-delete-confirmation-dialog">
+
+    <div class="test-delete-confirmation-dialog-header">
+
+        <div id="title">
+            
+             @resources.TestEditConfirmationDialog_Title 
+
+            <div class="cancel" ng-click="close()"><img src="~/Assets/Images/Home/cancelIcon.png" /></div>
+
+        </div>
+
+
+
+    </div>
+
+    <p>@resources.TestEditConfirmationDialog_Text</p>
+
+    <div class="actions">
+
+        <a class="btn bottun" href="#" ng-click="saveAndExit()"> @resources.ConfirmationDialog_Yes </a>
+
+        <a class="btn bottun" href="#" ng-click="exit()"> @resources.ConfirmationDialog_No </a>
+
+    </div>
+
+</div>
