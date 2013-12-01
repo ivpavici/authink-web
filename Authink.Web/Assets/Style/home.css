@@ -11,6 +11,11 @@
     Orange          #fe9b26
     Orange Hover    #feaa26
     Orange Accent   #e18520
+
+    Blue inactive: #a3c5d5
+    White: #f9f7f7
+    Orange: #fe9b26
+    Blue: #1a6d97
     
 */
 
@@ -18,26 +23,43 @@
                                                 GLOBAL
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-body                    {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;font-size: 10px;min-width: 1100px;}
+body                    {background:#fbfbfb; font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;font-size: 10px;min-width: 1100px; height:100%; min-height:100%;}
 input                   {font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;}
 textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;}
+
+.underline              {overflow: hidden;display: inline-block;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
+.underline:before       {content: "";position: absolute;left: -100%;bottom: 0;display: block;width: 100%;height: 1px;background-color:#207faf;}
+.underline:hover:before {left: 0;}
+
+.blink                  { display: inline-block;overflow: hidden;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
+.blink:before           { content: "";position: absolute;top: 10px;left: 0;display: block;height: 20px;width: 10px;transition: left .5s; /* Prefixes. */}
+.blink:hover:before     { background-color: #679bb6; left: 100%;}
+
+.oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 5px -7px #cdcbcb;-moz-box-shadow: 0 8px 5px -7px #cdcbcb;box-shadow: 0 8px 5px -7px #cdcbcb;}
+.oneEdgeLeftShadow          {-webkit-box-shadow: -8px -6px 6px -6px #e6e6e6;-moz-box-shadow: -8px -6px 6px -6px #e6e6e6;box-shadow: -8px -6px 6px -6px #e6e6e6;}
+
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 HEADER
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#home-header                                    {background: #1a6d97;height: 50px;}
-#home-header-logo                               {display: block; float: left;width: 130px; height: 50px;background: transparent url('../Images/Home/header-logo.png') no-repeat center center;}
-#home-header-logo:hover                         {cursor: pointer;background: #2277a4 url('../Images/Home/header-logo.png') no-repeat center center;}
+#home-header                                    {background: #1a6d97;height: 40px;}
+#home-header-logo                               {display: block; float: left; height: 40px; width:150px;}
+#home-header-logo img                           {height:30px; padding:2px 0 0 10px;}
+#home-header-logo:hover                         {cursor: pointer;background: #2277a4}
 
 .home-header-user                               {float: right;}
-.home-header-user-menu                          {float: right;height: 50px; line-height: 50px;color: #9ac6e1;font-size: 1.6em; width:25%;}
-.home-header-user-menu #options-icon            {opacity:0.6; }
+.home-header-user img                           { margin-bottom:10px; }
+.home-header-user-menu                          {float: right;height: 40px; line-height: 40px;color: #9ac6e1;font-size: 1.6em; width:310px;}
+.home-header-user-menu #options-icon            {opacity:0.6; width:40px; margin-top:-4px;}
 .home-header-user-menu #options-icon:hover      {cursor: pointer; opacity:1;}
 .home-header-user-menu #options-icon:active     { }
 .home-header-user-menu #options                 {float:right; background:#207faf; height:inherit; width:auto; margin-top:0;}
-.home-header-user-menu #options #logout         {cursor:pointer; opacity:0.6;}
-.home-header-user-menu #options #logout:hover   {opacity:1;}
+.home-header-user-menu #options .language       {color:#a3c5d5; padding-left:5px; padding-right:3px;}
+.home-header-user-menu #options .language:hover {color:white; background:#2488bb;}
+.home-header-user-menu #options #logout         {cursor:pointer; opacity:0.6; height:inherit;}
+.home-header-user-menu #options #logout img     { margin-top:-3px;}
+.home-header-user-menu #options #logout:hover   {opacity:1; background:#2488bb;}
 
 .home-header-user-menu a                        {color:white;text-decoration:none;display:block; float:left;}
 .home-header-user-menu ul li:hover              {background: #2277a4;cursor: pointer;}
@@ -48,75 +70,101 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
                                                 child menu
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#child-menu-info                                                            {margin: 15px 0 0 10px;float: left;}
-#child-menu-info-image                                                      {display: block; float: left;width: 90px; height: 90px;border-radius: 100%;}
-#child-menu-info-menu                                                       {display: block; float: left;border-radius: 4px;color: #444; font-size: 3em;height: 50px; line-height: 50px;width: 305px;text-transform: none;/*padding: 0 45px 5px 10px;*/padding: 0 0 5px 10px;margin: 20px 0 0 10px;background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;position: relative;}
-#child-menu-info-menu-child-name                                            {text-decoration:none;display: block;}
+#child-menu                                                                 {background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px; padding: 10px 5px 10px 5px;}
+#child-menu-info                                                            {padding-left:40px; float: left;}
+#child-menu-info-image                                                      {display: block; float: left;width: 38px; border:1px solid #1a6d97;}
+#child-menu-info-menu                                                       {display: block; float: left;border-radius: 4px;color: #1a6d97; font-size: 2.5em;height: 40px; line-height: 40px;width: 300px; background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;position: relative;}
+#child-menu-info-menu-child-name                                            {text-decoration:none;padding-left: 5px; text-align:center; color:#1a6d97;}
 #child-menu-info-menu:hover                                                 {cursor: pointer;}
 #child-menu-info-menu span                                                  {font-weight: bold;}
-#child-menu-info-menu ul .child-menu-select                                 {float: none;white-space: nowrap;/*width: 100%;*/width: 295px;padding: 6px 0 6px 20px;color: #444;text-decoration: none;border-top: 1px solid #f2f2f2;}
-#child-menu-info-menu ul .child-menu-select:hover                           {/*background: #93c6e0;*/background: #feb645;cursor: pointer;}
+#child-menu-info-menu ul {padding: 0;}
+#child-menu-info-menu ul .child-menu-select                                 {float: none;white-space: nowrap;width: 295px;color: #444;text-decoration: none;border-top: 1px solid #f2f2f2;}
+#child-menu-info-menu ul .child-menu-select:hover                           {background: #feb645;cursor: pointer;}
 #child-menu-info-menu ul .child-menu-select.child-menu-info-menu-selected   {background: #feb645;}
-#child-menu-info-menu-new                                                   {font-size: .7em;display: block;text-align: center;background-color: #1A6D97;}
-#child-menu-info-menu-new a                                                 {line-height: 1.9em;padding: 0;color: white;}
-#child-menu-info-menu-new a:hover                                           {background: #2277a4;}
+#child-menu-info-menu-new                                                   {font-size: .7em;display: block;text-align: center;}
+#child-menu-info-menu-new a                                                 {line-height: 1.9em;padding: 0;}
+#child-menu-info-menu-new a:hover                                           {}
 #child-menu-info-menu-new a:active                                          {top: 1px;position:relative;background:#196D96;}
 #child-menu-info-menu ul li span                                            {margin-left: 10px;font-size: 0.6em;font-weight: normal;}
-#child-menu-edit-button                                                     {display: block; float: right; position: relative;width: 120px; height: 120px;background: transparent url('../Images/Home/child-button-edit.png') no-repeat center 35px;color: #a4a4a4;}
-#child-menu-edit-button:hover                                               {cursor: pointer;/*background: #e8e8e8 url('../Images/Home/child-button-edit-hover.png') no-repeat center 35px;*/background: #e8e8e8 url('../Images/Home/child-button-edit.png') no-repeat center 35px;/*color: #3c3c3c;*/}
-#child-menu-edit-button span                                                {display: block;position: absolute;bottom: 0px;width: 100%;text-align: center;font-size: 1.2em;text-transform: uppercase;padding-bottom: 25px;/*color: #888;*/}
+
+#child-menu-edit-buttonWrapper                                              { display: block; float: right; position: relative; height:50px;cursor:pointer; font-size:1.2em;}
+#child-menu-edit-buttonWrapper span                                         { padding-top:5px; text-decoration: none;position: relative;transition: all .3s;}
+#child-menu-edit-buttonWrapper span:hover                                   { color:#679bb6;}
+#child-menu-edit-buttonWrapper span:after, span:before                      { transition: all .3s;}
+#child-menu-edit-buttonWrapper #iconEdit                                    { width:22px; margin-right:5px; margin-top:7px; } 
+#child-menu-edit-buttonWrapper #text                                        { color:#1a6d97; padding-right:7px; margin-right:5px; line-height:30px; font-size:1.2em; text-decoration:none;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 MAIN
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#main-container                                                     {}
-#main-tests                                                         {width: 426px;min-height: 300px;max-height: 750px;float: left;border-right: 5px solid #ececec;background: #f8f8f8;position:relative;}
-#main-tests-heading                                                 {text-transform: uppercase;font-size: 2.1em; font-weight: bold;padding: 15px 10px;}
-#main-tests-search                                                  {padding: 10px 60px 10px 10px;}
-#main-tests-search-field                                            {width: 100%; padding: 8px 5px 8px 35px;border: 1px solid #ececec;/*color: #d5d5d5;*/background: white url('../Images/Home/search-icon.png') no-repeat 10px center;outline: none;}
+#main-container                                {background:#fbfbfb; margin-top:5px; min-height:100%;}
+#main-tests                                    {background:#f9f9f9; width: 400px;min-height: 100%;float: left; position:absolute;}
+
+#main-tests-search                             {margin-top: 4%;}
+#main-tests-search-field                       {width: 100%; border-radius:0px; border: 1px solid #ececec;background: white url('../Images/Home/search-icon.png') no-repeat 98% 50%;outline: none;}
+
+#main-tests-heading                            {font-size: 1.8em; font-weight: bold; padding:2px 30px 2px 20px; border-bottom:1px solid #e9e8e8; margin-top: 5%;}
+#main-tests-heading span                       {color:#fe9b26; text-transform:uppercase;padding-left: 2px;}
+
+#main-tests-options                            {float: right; margin-top:-13px;}
+#main-tests-options span                       { position:relative; transition: all .3s; text-align:center; color:#fe9b26; font-size:0.7em; font-weight:normal;}
+#main-tests-options span:hover                 { color:#ffbc6d;} 
+#main-tests-options span:after, span:before    { transition: all .3s;}
+#main-tests-options span:active                { color:white;}
+#main-tests-options a                          { text-decoration:none;background: #fe9b26;color: white; border: 0;}
+#main-tests-options a:hover                    { cursor: pointer; background: #FEB645;}
+#main-tests-options img                        { width:20px; padding-bottom:2px;}
+#main-tests-options .blink:hover:before        { background-color: #ffbc6d; left: 100%;}
 
 
-                                /*FUBAR dafuq*/
+                                /*FUBAR*/
 
 #main-tests-search input::-webkit-input-placeholder                 {color: #d5d5d5;}
 #main-tests-search input:-moz-placeholder                           { /* Firefox 18- */color: #d5d5d5;}
 #main-tests-search input::-moz-placeholder                          { /* Firefox 19+ */color: #d5d5d5;}
 #main-tests-search input:-ms-input-placeholder                      {color: #d5d5d5;}
 
-/**/
-#main-tests-list                                                    {max-height: 500px;min-height: inherit;overflow-y: scroll;overflow-x: hidden;}
-.main-tests-list-item                                               {margin: 10px;padding: 5px 10px 10px 10px;color: #888;}
-.main-tests-list-item:hover                                         {cursor: pointer;/*background: #feaa26;*/background-color: #feb645;color: #3e3e3e;}
-.main-tests-list-item-selected                                      {background-color: #fe9b26;}
-.main-tests-list-item-selected > .main-tests-list-item-info h1      {color: white !important;}
-.main-tests-list-item-selected > .main-tests-list-item-info span    {color: white !important;}
-.main-tests-list-item-image                                         {display: block; float: left;width: 50px; height: 50px;}
-.main-tests-list-item-info                                          {width: 320px;}
-.main-tests-list-item-info h1                                       {font-size: 1.8em; font-weight: bold;color: #444;margin-bottom: 4px;}
-.main-tests-list-item-info span                                     {font-size: 1.3em;/*color: #888;*/}
-
-#main-tests-options                                                 {padding: 10px;position: absolute;left: 0;right: 0;}
-#main-tests-option-add-new                                          {display: block; padding: 15px 0;text-align: center; text-transform: uppercase;background: #196d96;color: white;border-bottom: 5px solid #0f5273;font-size: 1.8em; font-weight: bold;text-decoration: none;}
-#main-tests-option-add-new:hover                                    {cursor: pointer;background: #2277a4;}
-#main-tests-option-add-new:active                                   {border-bottom: 4px solid #0f5273;position: relative; top: 1px;}
+#main-tests-list                                                    { max-height: 500px;min-height: inherit; overflow-y: auto;overflow-x: hidden;padding-left: 2px;}
+.main-tests-list-item                                               { color: #888;}
+.main-tests-list-item-image                                         { display: block; float: left;width: 50px; height: 50px;}
+.main-tests-list-item-info                                          { width: auto; border-bottom: 1px solid #dadada}
+.main-tests-list-item-info h1                                       { padding:10px 0px 0px 20px; font-size: 1.5em; font-weight:600;color: #444;margin-bottom: 4px;}
+.main-tests-list-item-info span                                     { padding:0px 20px 5px 20px; line-height:130%; display:block;font-size: 1.4em;}
+.main-tests-list-item:hover                                         { cursor: pointer; background:#ffffff;}
+.main-tests-list-item:hover > .main-tests-list-item-info            { background:#EBEBEB; color:#444;}
+.main-tests-list-item:hover > .main-tests-list-item-info h1         { background:#EBEBEB; color:#444;}
+.main-tests-list-item-selected                                      { background:#FE9B26; color:white;}
+.main-tests-list-item-selected > .main-tests-list-item-info         { border-bottom: 1px solid #dadada; background:#FE9B26; color:white;}
+.main-tests-list-item-selected > .main-tests-list-item-info h1      { background:#FE9B26; color:white;}
 
 #main-content                                                       {margin-left: 400px;}
 
-#main-test                                                          {margin: 0 0 25px 30px;/*padding: 0 30px 0 30px;*/padding: 0 0 0 30px;}
+#main-test                                                          {margin-top:-5px; border-left:1px solid #c7c7c7; padding: 20px 0 0 30px; min-height:100%; position:absolute;}
+
 #main-test-up                                                       {width: 100%;height: 100%;float: left;}
 #main-test-right                                                    {float: right;width: 120px;height: 100%;}
-#main-test-left                                                     {float: left;width: calc(100% - 130px);}
-#main-test-heading                                                  {min-height: 40px;}
-#main-test-heading h1                                               {font-weight: bold; font-size: 3.6em;float: left;}
-#main-test-options                                                  {float: right;}
-#main-test-option-edit                                              {display: block;text-align: center;font-size: 1.2em;text-transform: uppercase;color: #888;/*padding: 10px 35px 10px 15px;*/background: transparent url('../Images/Home/test-icon-edit.png') no-repeat center 35px;height: 120px;width: 120px;}
-#main-test-option-edit:hover                                        {cursor: pointer;background-color: #e8e8e8 ;/*border-radius: 2px;*/}
-#main-test-option-edit span                                         {/*/display: block;width: 100%;text-align: center;font-size: 1.2em;text-transform: uppercase;color: #888;*/display: block;text-align: center;font-size: 1.1em;text-transform: uppercase;padding-top: 76px;color: #888;}
+#main-test-left                                                     {float: left;width:100%;}
+#main-test-heading                                                  {min-height: 40px; margin-top:8px;}
+#main-test-heading h1                                               {color:#fe9b26; font-weight: bold; font-size: 2.8em;float: left; padding:10px 0px 0px;}
+
+
+#main-test-options                                                  { float: right; width:160px; padding-right:20px;}
+#main-test-options span                                             { margin-top:3px; text-align: center;font-size: 1.3em; position: relative;transition: all .3s;}
+#main-test-options span:hover                                       { color:#ffbc6d;}
+#main-test-options span:active                                      { color:white;}
+#main-test-options span:after, span:before                          { transition: all .3s;}
+#main-test-options a                                                { margin-right:10px; text-decoration:none; color: #fe9b26; float:left; line-height:40px; }
+#main-test-options a:hover                                          { cursor:pointer;}
+#main-test-options img                                              { width:20px; padding-right:3px; padding-bottom:5px;}
+#main-test-options .blink:hover:before                              { background-color: #ffbc6d; left: 100%;}
+
+
+
 #main-test-edit-options                                             {height: 40px;margin-right: 1.4%;}
 main-test-edit-buttons                                              {width: 90%;display: block;padding-right: 50px;}
 #main-test-edit-options input                                       {display: block; padding: 7px 15px 8px 15px;margin: 0 5px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
-#main-test-edit-options a                                           {display: block; padding: 7px 15px 8px 15px;/*margin: 0 5px;*/float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
+#main-test-edit-options a                                           { display: block; padding: 7px 15px 8px 15px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a:hover                                     {cursor: pointer;}
 .main-test-edit-option-delete                                       {background: #e23c3c;border-bottom: 5px solid #c80000;margin: 0 120px 0 5px;}
 .main-test-edit-option-delete:hover                                 {background: #d82222;}
@@ -124,39 +172,52 @@ main-test-edit-buttons                                              {width: 90%;
 .main-test-edit-option-save:hover                                   {background: #338f16;}
 #main-test-description                                              {}
 #main-test-description-short                                        {}
-#main-test-description p                                            {font-size: 1.5em;line-height: 1.6em;color: #666;margin: 10px 0 30px 0;}
+#main-test-description p                                            {font-size: 1.5em;line-height: 1.5em;color: #666;padding: 20px 20px 30px 20px}
 #main-test-edit-box                                                 {margin-bottom: 30px;}
 #main-test-edit-box h3                                              {font-weight: bold;text-transform: uppercase;font-size: 1.5em;padding: 15px 0 5px 0;}
-#main-test-tasks                                                    {width: 100%;float: left;}
-#main-test-tasks-right                                              {float: right;width: 120px;height: 100%;}
-#main-test-tasks-left                                               {float: left;width: calc(100% - 130px);}
-#main-test-tasks-heading                                            {font-weight: bold; font-size: 2.1em;text-transform: uppercase;margin-bottom: 20px;}
+
+#test-edit-add-new-task span                                        { color:#1a6d97; position:relative; transition: all .3s; padding-bottom:5px; padding-top:3px;}
+#test-edit-add-new-task span:hover                                  { color:#679bb6;}
+#test-edit-add-new-task span:active                                 { color:white;}
+#test-edit-add-new-task span:after, span:before                     { transition: all .3s;}
+
+#main-test-tasks-right img                                          { height:20px; padding-bottom:3px; }
+#main-test-tasks-left                                               {float: left;width: calc(100% - 30px);}
+#main-test-tasks-heading                                            { padding-bottom:10px; color:#1a6d97; font-weight: bold; font-size: 2.1em;margin-bottom: 20px; padding-left:20px; border-bottom:1px solid #e9e8e8;}
+#main-test-tasks-heading span                                       { margin-top:-5px;}
 #main-test-task-list                                                {}
+
 .main-test-task-wrap                                                {}
-.main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px;/*margin: 0 20px 10px 0;*/margin: 0 auto;position: relative;}
-.main-test-task:hover                                               {background: #f0f0f0;cursor: pointer;}
+.main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
+.main-test-task:hover                                               {cursor: pointer;}
 .main-test-task:hover .main-test-task-options                       {display: block !important;}
+
+.mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#ebeaea; font-weight:bold; font-size:1.3em;}
+.mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
+
+.main-test-task:hover > .mainTestTaskHeading                        { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#1a6d97; font-weight:bold; font-size:1.3em;}
+.main-test-task:hover > .mainTestTaskHeading a                      { color:white; text-decoration:none;}
+
 .main-test-task-left                                                {width: 100px;float: left;}
 .main-test-task-left img                                            {display: block;width: 80px; height: 80px;margin: 0 auto;}
-.main-test-task-difficulty                                          {margin: 5px 0;}
-.main-test-task-difficulty-text                                     {text-align: center; text-transform: uppercase;display: block;color: #999;font-size: 1em;}
-.main-test-task-difficulty-value                                    {display: block;text-align: center;font-size: 1.4em;color: #444;}
-.main-test-task-difficulty-value strong                             {font-size: 1.8em;font-weight: bold;}
-.main-test-task-right                                               {width: 300px;float: right;}
-.main-test-task-right h1                                            {font-weight: bold;font-size: 2.1em;color: #444;margin-bottom: 5px;}
-.main-test-task-right span                                          {font-size: 1.4em;color: #888;}
-.main-test-task-options                                             {display: none;position: absolute;bottom: 10px;right: 0px;}
+.main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding-right:4px; color: #1a6d97;}
+.main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
+.main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}
+.main-test-task:hover > .mainTestTaskHeading > .main-test-task-difficulty span             { color:#fbfbfb;} 
+#main-test-tasks                                                    {width: 100%;float: left;}
+#main-test-tasks-right                                              { display:block; float: right; position:relative; padding-right:30px;}
+#main-test-tasks-right a                                            { line-height:30px; text-decoration:none; font-size:0.6em; font-weight:normal; }
+.main-test-task-right                                               {width: 280px;float: left; padding-top:0.8em;}
+.main-test-task-right span                                          {font-size: 1.4em; color: #888; line-height:1.3em;}
+.main-test-task-options                                             { padding-right:20px; display: none;position: absolute;bottom: 10px;right: 0px;}
+.main-test-task-options span                                        { margin-top:10px; color:#888; font-size:1.2em; }
 .main-test-task-options ul                                          {}
 .main-test-task-options ul li                                       {float: right;}
-.main-test-task-options ul li a                                     {text-transform: uppercase;font-size: 1.2em;color: #444;padding: 8px 10px 8px 32px;background-position: 8px center;background-repeat: no-repeat;}
-.main-test-task-options ul li a:hover                               {cursor: pointer;background-color: #fe9b26 !important;}
-.main-test-task-option-edit                                         {background-image: url('../Images/Home/task-icon-edit.png');}
-.main-test-task-option-delete                                       {background-image: url('../Images/Home/task-icon-delete.png');}
-.main-test-task-option-statistics                                   {background-image: url('../Images/Home/task-icon-statistics.png');}
+.main-test-task-options ul li a                                     {text-decoration:none; font-size: 1em;color: #444;padding: 8px 10px 8px 10px;}
+.main-test-task-options ul li a:hover                               {cursor: pointer;background-color: #ebeaea !important;}
+.main-test-task-options img                                         {width:20px; padding-bottom:5px;}
+
 #main-test-description-short p                                      {font-size: 1.6em;line-height: 1.6em;}
 .test-edit-textbox-input                                            {display: block;width:  90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
 .test-edit-textarea-input                                           {display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
-#test-edit-add-new-task                                             {display: block; float: right; position: relative;width: 120px; height: 120px;float: right;text-align: center;font-size: 1.2em;text-decoration: none;text-transform: uppercase;font-weight: normal;color: #888;/*padding: 10px 35px 10px 15px;*/background: transparent url('../Images/Home/test-icon-add.png') no-repeat center 35px;}
-#test-edit-add-new-task:hover                                       {cursor: pointer;background-color: #e8e8e8;}
-#test-edit-add-new-task span                                        {display: block;padding-top: 76px;}
 

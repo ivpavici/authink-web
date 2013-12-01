@@ -225,6 +225,15 @@
   <data name="TaskPreview_Pictures" xml:space="preserve">
     <value>Pictures</value>
   </data>
+  <data name="TaskPreview_VoiceCommand_Empty" xml:space="preserve">
+    <value>There is no voice command associated with this task. Click Edit task to upload it!</value>
+  </data>
+  <data name="TaskPreview_VoiceCommand_Listen" xml:space="preserve">
+    <value>Preview sound</value>
+  </data>
+  <data name="TaskPreview_VoiceCommand_Title" xml:space="preserve">
+    <value>Voice command</value>
+  </data>
   <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
     <value>Detailed description of new test</value>
   </data>

@@ -2,55 +2,87 @@
 
 <div id="main-test-tasks">
 
-    <div id="main-test-tasks-right">
-
-        <a id="test-edit-add-new-task" href="/test/{{testTasksListApi.testId}}/tasks/create/step-1" target="_self"><span>@resources.TestTaskList_AddNew</span></a>
-
-    </div>
-
     <div id="main-test-tasks-left">
 
         <div id="main-test-tasks-heading">
 
-            @resources.TestTaskList_Title (<span id="task-count">{{tasks.length}}</span>)
+           <span>@resources.TestTaskList_Title </span> 
 
+                <div id="main-test-tasks-right">
+
+                    <a id="test-edit-add-new-task" href="/test/{{testTasksListApi.testId}}/tasks/create/step-1" target="_self">
+                        
+                        <img id="addTaskIcon" src="~/Assets/Images/Home/test-icon-add.png" />
+                        
+                        <span class="blink">@resources.TestTaskList_AddNew</span>
+
+                    </a>
+
+                </div>
         </div>
+
         <div id="main-test-task-list clearfix">
 
             <div class="main-test-task-wrap" ng-repeat="task in tasks">
 
                 <div class="main-test-task clearfix">
 
-                    <div class="main-test-task-left">
+                    <div class="mainTestTaskHeading"  ng-click="previewTask(task)">
 
-                        <img ng-src="{{task.ProfilePictureUrl}}" height="50" width="50" />
+                        <a>{{task.Name}}</a>
 
                         <div class="main-test-task-difficulty">
 
                             <span class="main-test-task-difficulty-text">@resources.TestTaskList_Difficulty</span>
 
-                            <span class="main-test-task-difficulty-value"><strong>{{task.Difficulty}}</strong></span>
+                            <span class="main-test-task-difficulty-value">{{task.Difficulty}}</span>
 
                         </div>
 
                     </div>
 
-                    <div class="main-test-task-right">
+                    <div class="main-test-task-left"  ng-click="previewTask(task)">
 
-                        <h1 ng-click="previewTask(task)">{{task.Name}}</h1>
+                        <img ng-src="{{task.ProfilePictureUrl}}" height="50" width="50" />
+
+                    </div>
+
+                    <div class="main-test-task-right"  ng-click="previewTask(task)">
 
                         <span>{{task.Description}}</span>
 
-                        <div class="main-test-task-options clearfix">
+                    </div>
+
+                    <div class="main-test-task-options clearfix">
 
                             <ul class="clearfix">
 
-                                <li><a class="main-test-task-option-delete" ng-click="openConfirmationDialog(task)">@resources.TestTaskList_Delete</a></li>
-                                <li><a class="main-test-task-option-edit" ng-click="editTask(task)">@resources.TestTaskList_Edit</a></li>
+                                <li>
+                                    
+                                    <a class="main-test-task-option-delete" ng-click="openConfirmationDialog(task)">
+                                        
+                                        <img src="~/Assets/Images/Home/task-icon-delete.png" />
+                                        
+                                        <span>@resources.TestTaskList_Delete</span>
+
+                                    </a>
+
+                                </li>
+                                <li>
+                                    
+                                    <a class="main-test-task-option-edit" ng-click="editTask(task)">
+                                        
+                                        <img src="~/Assets/Images/Home/task-icon-edit.png" />
+
+                                        <span>@resources.TestTaskList_Edit</span>
+
+                                    </a>
+
+                                </li>
 
                             </ul>
                         </div>
-                    </div>
+
                 </div>
             </div>
 
