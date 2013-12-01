@@ -10,7 +10,21 @@
 
         </div>
 
-        <h1 id="main-tests-heading">@resources.TestList_Title</h1>
+        <div id="main-tests-heading" class="clearfix">
+            <span>@resources.TestList_Title</span>
+
+            <div id="main-tests-options" class="clearfix">
+
+            <a id="main-tests-option-add-new" ng-click="addNewTest()">
+                
+                <img src="~/Assets/Images/Home/testAdd.png" />
+
+                <span  class="blink" >@resources.TestList_CreateNew</span>
+
+            </a>
+        </div>
+
+        </div>
 
         <div id="main-tests-list">
 
@@ -29,10 +43,6 @@
 
         </div>
 
-        <!--<div id="main-tests-options" class="clearfix">
-
-            <a id="main-tests-option-add-new" class="btn" ng-click="addNewTest()">@resources.TestList_CreateNew</a>
-        </div>-->
 
     </div>
 

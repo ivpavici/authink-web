@@ -14,6 +14,8 @@
 
     Blue inactive: #a3c5d5
     White: #f9f7f7
+    Orange: #fe9b26
+    Blue: #1a6d97
     
 */
 
@@ -24,12 +26,17 @@
 body                    {background:#fbfbfb; font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;font-size: 10px;min-width: 1100px; height:100%; min-height:100%;}
 input                   {font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;}
 textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;}
+
 .underline              {overflow: hidden;display: inline-block;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
-.underline:before       {content: "";position: absolute;left: -100%;bottom: 0;display: block;width: 100%;height: 2px;background-color: orange;}
+.underline:before       {content: "";position: absolute;left: -100%;bottom: 0;display: block;width: 100%;height: 1px;background-color:#207faf;}
 .underline:hover:before {left: 0;}
 
-.oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 6px -6px #d9d7d7;-moz-box-shadow: 0 8px 6px -6px #d9d7d7;box-shadow: 0 8px 6px -6px #d9d7d7;}
-.oneEdgeLeftShadow          {-webkit-box-shadow: 0 8px 6px -6px #d9d7d7;-moz-box-shadow: 0 8px 6px -6px #d9d7d7;box-shadow: 0 8px 6px -6px #d9d7d7;}
+.blink                  { display: inline-block;overflow: hidden;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
+.blink:before           { content: "";position: absolute;top: 10px;left: 0;display: block;height: 20px;width: 10px;transition: left .5s; /* Prefixes. */}
+.blink:hover:before     { background-color: #679bb6; left: 100%;}
+
+.oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 5px -7px #cdcbcb;-moz-box-shadow: 0 8px 5px -7px #cdcbcb;box-shadow: 0 8px 5px -7px #cdcbcb;}
+.oneEdgeLeftShadow          {-webkit-box-shadow: -8px -6px 6px -6px #e6e6e6;-moz-box-shadow: -8px -6px 6px -6px #e6e6e6;box-shadow: -8px -6px 6px -6px #e6e6e6;}
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,18 +44,21 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
 #home-header                                    {background: #1a6d97;height: 40px;}
-#home-header-logo                               {display: block; float: left;width: 130px; height: 40px;background: transparent url('../Images/Home/header-logo.png') no-repeat center center;}
-#home-header-logo:hover                         {cursor: pointer;background: #2277a4 url('../Images/Home/header-logo.png') no-repeat center center;}
+#home-header-logo                               {display: block; float: left; height: 40px; width:150px;}
+#home-header-logo img                           {height:30px; padding:2px 0 0 10px;}
+#home-header-logo:hover                         {cursor: pointer;background: #2277a4}
 
 .home-header-user                               {float: right;}
-.home-header-user-menu                          {float: right;height: 40px; line-height: 40px;color: #9ac6e1;font-size: 1.6em; width:350px;}
-.home-header-user-menu #options-icon            {opacity:0.6; }
+.home-header-user img                           { margin-bottom:10px; }
+.home-header-user-menu                          {float: right;height: 40px; line-height: 40px;color: #9ac6e1;font-size: 1.6em; width:310px;}
+.home-header-user-menu #options-icon            {opacity:0.6; width:40px; margin-top:-4px;}
 .home-header-user-menu #options-icon:hover      {cursor: pointer; opacity:1;}
 .home-header-user-menu #options-icon:active     { }
 .home-header-user-menu #options                 {float:right; background:#207faf; height:inherit; width:auto; margin-top:0;}
 .home-header-user-menu #options .language       {color:#a3c5d5; padding-left:5px; padding-right:3px;}
 .home-header-user-menu #options .language:hover {color:white; background:#2488bb;}
 .home-header-user-menu #options #logout         {cursor:pointer; opacity:0.6; height:inherit;}
+.home-header-user-menu #options #logout img     { margin-top:-3px;}
 .home-header-user-menu #options #logout:hover   {opacity:1; background:#2488bb;}
 
 .home-header-user-menu a                        {color:white;text-decoration:none;display:block; float:left;}
@@ -59,16 +69,11 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 child menu
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
-/*.childMenu                                                                {width:100%; background:#ebebeb; height:50px;}
-.childMenu .info                                                            {width: 300px; height:inherit;}
-.childMenu .info #image                                                     {float:left; width:40px; height:40px; padding:5px 5px 5px 10px; display:block; }
-.childMenu .info #menu                                                      {background:blue; width:inherit; font-size:2.5em; line-height:50px;}
-.childMenu .info #menu #childName
-*/
-#child-menu                                                                 {background:#ebebeb; height:50px;}
+
+#child-menu                                                                 {background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px;}
 #child-menu-info                                                            {padding-left:40px; float: left;}
-#child-menu-info-image                                                      {display: block; float: left;width: 40px; height: 40px; border:2px solid #1a6d97; margin-top:2px;}
-#child-menu-info-menu                                                       {display: block; float: left;border-radius: 4px;color: #1a6d97; font-size: 2.5em;height: 50px; line-height: 50px;width: 300px; background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;position: relative;}
+#child-menu-info-image                                                      {display: block; float: left;width: 38px; border:1px solid #1a6d97;}
+#child-menu-info-menu                                                       {display: block; float: left;border-radius: 4px;color: #1a6d97; font-size: 2.5em;height: 40px; line-height: 40px;width: 300px; background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;position: relative;}
 #child-menu-info-menu-child-name                                            {text-decoration:none;display: block; text-align:center; color:#1a6d97;}
 #child-menu-info-menu:hover                                                 {cursor: pointer;}
 #child-menu-info-menu span                                                  {font-weight: bold;}
@@ -82,25 +87,34 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 #child-menu-info-menu ul li span                                            {margin-left: 10px;font-size: 0.6em;font-weight: normal;}
 
 #child-menu-edit-buttonWrapper                                              { display: block; float: right; position: relative; height:50px;cursor:pointer; font-size:1.2em;}
-#child-menu-edit-buttonWrapper a                                            {text-decoration: none;position: relative;transition: all .3s;}
-#child-menu-edit-buttonWrapper a:after, a:before                            {transition: all .3s;}
-#child-menu-edit-buttonWrapper #iconEdit                                    { margin-right:5px; margin-top:3px; } 
+#child-menu-edit-buttonWrapper span                                         { padding-top:5px; text-decoration: none;position: relative;transition: all .3s;}
+#child-menu-edit-buttonWrapper span:hover                                   { color:#679bb6;}
+#child-menu-edit-buttonWrapper span:after, span:before                      { transition: all .3s;}
+#child-menu-edit-buttonWrapper #iconEdit                                    { width:22px; margin-right:5px; margin-top:7px; } 
 #child-menu-edit-buttonWrapper #text                                        { color:#1a6d97; padding-right:7px; margin-right:5px; line-height:30px; font-size:1.2em; text-decoration:none;}
 
-
-/*
-#child-menu-edit-button:hover                                               {}
-#child-menu-edit-button span                                                {color:#1a6d97; display: block;position: absolute;bottom: 0px;width: 100%;text-align: center;font-size: 1.2em;padding-bottom: 10px; border:1px solid black;}*/
-    
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 MAIN
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#main-container                                                     {background:#fbfbfb; margin-top:5px; min-height:100%;}
-#main-tests                                                         {background:#f9f9f9; width: 400px;min-height: 100%;float: left; position:absolute;}
-#main-tests-heading                                                 {text-transform: uppercase;font-size: 2.1em; font-weight: bold;padding: 15px 10px;}
-#main-tests-search                                                  {padding: 20px 45px 10px 20px;}
-#main-tests-search-field                                            {width: 100%; padding: 8px 5px 8px 10px; border-radius:0px; border: 1px solid #ececec;background: white url('../Images/Home/search-icon.png') no-repeat 98% 50%;outline: none;}
+#main-container                                {background:#fbfbfb; margin-top:5px; min-height:100%;}
+#main-tests                                    {background:#f9f9f9; width: 400px;min-height: 100%;float: left; position:absolute;}
+
+#main-tests-search                             {padding: 0px 15px 0 2px;}
+#main-tests-search-field                       {width: 100%; border-radius:0px; border: 1px solid #ececec;background: white url('../Images/Home/search-icon.png') no-repeat 98% 50%;outline: none;}
+
+#main-tests-heading                            {font-size: 1.8em; font-weight: bold; padding:2px 30px 2px 20px; border-bottom:1px solid #e9e8e8;}
+#main-tests-heading span                       {color:#fe9b26;}
+
+#main-tests-options                            {float: right; margin-top:-13px;}
+#main-tests-options span                       { position:relative; transition: all .3s; text-align:center; color:#fe9b26; font-size:0.7em; font-weight:normal;}
+#main-tests-options span:hover                 { color:#ffbc6d;} 
+#main-tests-options span:after, span:before    { transition: all .3s;}
+#main-tests-options span:active                { color:white;}
+#main-tests-options a                          { text-decoration:none; line-height:40px;}
+#main-tests-options a:hover                    {cursor: pointer;}
+#main-tests-options img                        { width:20px; padding-bottom:2px;}
+#main-tests-options .blink:hover:before        { background-color: #ffbc6d; left: 100%;}
 
 
                                 /*FUBAR*/
@@ -112,7 +126,7 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 
 #main-tests-list                                                    { max-height: 500px;min-height: inherit; overflow-y: auto;overflow-x: hidden;}
 .main-tests-list-item                                               { color: #888;}
-.main-tests-list-item:hover                                         { cursor: pointer; background:#fbfbfb;}
+.main-tests-list-item:hover                                         { cursor: pointer; background:#ffffff;}
 .main-tests-list-item:hover > .main-tests-list-item-info h1         { color:#fe9b26;} dadada
 .main-tests-list-item-selected                                      {}
 .main-tests-list-item-selected > .main-tests-list-item-info         { border-bottom: 1px solid #dadada; background-color: #f3f3f3;}
@@ -123,28 +137,33 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 .main-tests-list-item-info h1                                       { padding:4px 0px 4px 20px; font-size: 1.5em; font-weight:600;color: #444;margin-bottom: 4px;}
 .main-tests-list-item-info span                                     { padding:0px 20px 10px 25px; line-height:130%; display:block;font-size: 1.4em;}
 
-#main-tests-options                                                 {padding: 10px;position: absolute;left: 0;right: 0;}
-#main-tests-option-add-new                                          {display: block; padding: 15px 0;text-align: center; text-transform: uppercase;background: #196d96;color: white;border-bottom: 5px solid #0f5273;font-size: 1.8em; font-weight: bold;text-decoration: none;}
-#main-tests-option-add-new:hover                                    {cursor: pointer;background: #2277a4;}
-#main-tests-option-add-new:active                                   {border-bottom: 4px solid #0f5273;position: relative; top: 1px;}
-
 #main-content                                                       {margin-left: 400px;}
 
-#main-test                                                          {border-left:5px solid #c7c7c7; padding: 0 0 0 30px;}
+#main-test                                                          {margin-top:-5px; border-left:1px solid #c7c7c7; padding: 20px 0 0 30px; min-height:100%; position:absolute;}
 
 #main-test-up                                                       {width: 100%;height: 100%;float: left;}
 #main-test-right                                                    {float: right;width: 120px;height: 100%;}
-#main-test-left                                                     {float: left;width: calc(100% - 130px);}
-#main-test-heading                                                  {min-height: 40px;}
-#main-test-heading h1                                               {font-weight: bold; font-size: 3.6em;float: left;}
-#main-test-options                                                  {float: right;}
-#main-test-option-edit                                              {display: block;text-align: center;font-size: 1.2em;text-transform: uppercase;color: #888;/*padding: 10px 35px 10px 15px;*/background: transparent url('../Images/Home/test-icon-edit.png') no-repeat center 35px;height: 120px;width: 120px;}
-#main-test-option-edit:hover                                        {cursor: pointer;background-color: #e8e8e8 ;/*border-radius: 2px;*/}
-#main-test-option-edit span                                         {/*/display: block;width: 100%;text-align: center;font-size: 1.2em;text-transform: uppercase;color: #888;*/display: block;text-align: center;font-size: 1.1em;text-transform: uppercase;padding-top: 76px;color: #888;}
+#main-test-left                                                     {float: left;width:100%;}
+#main-test-heading                                                  {min-height: 40px; margin-top:8px;}
+#main-test-heading h1                                               {color:#fe9b26; font-weight: bold; font-size: 2.8em;float: left; padding:10px 0px 0px;}
+
+
+#main-test-options                                                  { float: right; width:160px; padding-right:20px;}
+#main-test-options span                                             { margin-top:3px; text-align: center;font-size: 1.3em; position: relative;transition: all .3s;}
+#main-test-options span:hover                                       { color:#ffbc6d;}
+#main-test-options span:active                                      { color:white;}
+#main-test-options span:after, span:before                          { transition: all .3s;}
+#main-test-options a                                                { margin-right:10px; text-decoration:none; color: #fe9b26; float:left; line-height:40px; }
+#main-test-options a:hover                                          { cursor:pointer;}
+#main-test-options img                                              { width:20px; padding-right:3px; padding-bottom:5px;}
+#main-test-options .blink:hover:before                              { background-color: #ffbc6d; left: 100%;}
+
+
+
 #main-test-edit-options                                             {height: 40px;margin-right: 1.4%;}
 main-test-edit-buttons                                              {width: 90%;display: block;padding-right: 50px;}
 #main-test-edit-options input                                       {display: block; padding: 7px 15px 8px 15px;margin: 0 5px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
-#main-test-edit-options a                                           {display: block; padding: 7px 15px 8px 15px;/*margin: 0 5px;*/float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
+#main-test-edit-options a                                           { display: block; padding: 7px 15px 8px 15px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a:hover                                     {cursor: pointer;}
 .main-test-edit-option-delete                                       {background: #e23c3c;border-bottom: 5px solid #c80000;margin: 0 120px 0 5px;}
 .main-test-edit-option-delete:hover                                 {background: #d82222;}
@@ -152,39 +171,52 @@ main-test-edit-buttons                                              {width: 90%;
 .main-test-edit-option-save:hover                                   {background: #338f16;}
 #main-test-description                                              {}
 #main-test-description-short                                        {}
-#main-test-description p                                            {font-size: 1.5em;line-height: 1.6em;color: #666;margin: 10px 0 30px 0;}
+#main-test-description p                                            {font-size: 1.5em;line-height: 1.5em;color: #666;padding: 20px 20px 30px 20px}
 #main-test-edit-box                                                 {margin-bottom: 30px;}
 #main-test-edit-box h3                                              {font-weight: bold;text-transform: uppercase;font-size: 1.5em;padding: 15px 0 5px 0;}
-#main-test-tasks                                                    {width: 100%;float: left;}
-#main-test-tasks-right                                              {float: right;width: 120px;height: 100%;}
-#main-test-tasks-left                                               {float: left;width: calc(100% - 130px);}
-#main-test-tasks-heading                                            {font-weight: bold; font-size: 2.1em;text-transform: uppercase;margin-bottom: 20px;}
+
+#test-edit-add-new-task span                                        { color:#1a6d97; position:relative; transition: all .3s; padding-bottom:5px; padding-top:3px;}
+#test-edit-add-new-task span:hover                                  { color:#679bb6;}
+#test-edit-add-new-task span:active                                 { color:white;}
+#test-edit-add-new-task span:after, span:before                     { transition: all .3s;}
+
+#main-test-tasks-right img                                          { height:20px; padding-bottom:3px; }
+#main-test-tasks-left                                               {float: left;width: calc(100% - 30px);}
+#main-test-tasks-heading                                            { padding-bottom:10px; color:#1a6d97; font-weight: bold; font-size: 2.1em;margin-bottom: 20px; padding-left:20px; border-bottom:1px solid #e9e8e8;}
+#main-test-tasks-heading span                                       { margin-top:-5px;}
 #main-test-task-list                                                {}
+
 .main-test-task-wrap                                                {}
-.main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px;/*margin: 0 20px 10px 0;*/margin: 0 auto;position: relative;}
-.main-test-task:hover                                               {background: #f0f0f0;cursor: pointer;}
+.main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
+.main-test-task:hover                                               {cursor: pointer;}
 .main-test-task:hover .main-test-task-options                       {display: block !important;}
+
+.mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#ebeaea; font-weight:bold; font-size:1.3em;}
+.mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
+
+.main-test-task:hover > .mainTestTaskHeading                        { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#1a6d97; font-weight:bold; font-size:1.3em;}
+.main-test-task:hover > .mainTestTaskHeading a                      { color:white; text-decoration:none;}
+
 .main-test-task-left                                                {width: 100px;float: left;}
 .main-test-task-left img                                            {display: block;width: 80px; height: 80px;margin: 0 auto;}
-.main-test-task-difficulty                                          {margin: 5px 0;}
-.main-test-task-difficulty-text                                     {text-align: center; text-transform: uppercase;display: block;color: #999;font-size: 1em;}
-.main-test-task-difficulty-value                                    {display: block;text-align: center;font-size: 1.4em;color: #444;}
-.main-test-task-difficulty-value strong                             {font-size: 1.8em;font-weight: bold;}
-.main-test-task-right                                               {width: 300px;float: right;}
-.main-test-task-right h1                                            {font-weight: bold;font-size: 2.1em;color: #444;margin-bottom: 5px;}
-.main-test-task-right span                                          {font-size: 1.4em;color: #888;}
-.main-test-task-options                                             {display: none;position: absolute;bottom: 10px;right: 0px;}
+.main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding-right:4px; color: #1a6d97;}
+.main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
+.main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}
+.main-test-task:hover > .mainTestTaskHeading > .main-test-task-difficulty span             { color:#fbfbfb;} 
+#main-test-tasks                                                    {width: 100%;float: left;}
+#main-test-tasks-right                                              { display:block; float: right; position:relative; padding-right:30px;}
+#main-test-tasks-right a                                            { line-height:30px; text-decoration:none; font-size:0.6em; font-weight:normal; }
+.main-test-task-right                                               {width: 280px;float: left; padding-top:0.8em;}
+.main-test-task-right span                                          {font-size: 1.4em; color: #888; line-height:1.3em;}
+.main-test-task-options                                             { padding-right:20px; display: none;position: absolute;bottom: 10px;right: 0px;}
+.main-test-task-options span                                        { margin-top:10px; color:#888; font-size:1.2em; }
 .main-test-task-options ul                                          {}
 .main-test-task-options ul li                                       {float: right;}
-.main-test-task-options ul li a                                     {text-transform: uppercase;font-size: 1.2em;color: #444;padding: 8px 10px 8px 32px;background-position: 8px center;background-repeat: no-repeat;}
-.main-test-task-options ul li a:hover                               {cursor: pointer;background-color: #fe9b26 !important;}
-.main-test-task-option-edit                                         {background-image: url('../Images/Home/task-icon-edit.png');}
-.main-test-task-option-delete                                       {background-image: url('../Images/Home/task-icon-delete.png');}
-.main-test-task-option-statistics                                   {background-image: url('../Images/Home/task-icon-statistics.png');}
+.main-test-task-options ul li a                                     {text-decoration:none; font-size: 1em;color: #444;padding: 8px 10px 8px 10px;}
+.main-test-task-options ul li a:hover                               {cursor: pointer;background-color: #ebeaea !important;}
+.main-test-task-options img                                         {width:20px; padding-bottom:5px;}
+
 #main-test-description-short p                                      {font-size: 1.6em;line-height: 1.6em;}
 .test-edit-textbox-input                                            {display: block;width:  90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
 .test-edit-textarea-input                                           {display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
-#test-edit-add-new-task                                             {display: block; float: right; position: relative;width: 120px; height: 120px;float: right;text-align: center;font-size: 1.2em;text-decoration: none;text-transform: uppercase;font-weight: normal;color: #888;/*padding: 10px 35px 10px 15px;*/background: transparent url('../Images/Home/test-icon-add.png') no-repeat center 35px;}
-#test-edit-add-new-task:hover                                       {cursor: pointer;background-color: #e8e8e8;}
-#test-edit-add-new-task span                                        {display: block;padding-top: 76px;}
 
