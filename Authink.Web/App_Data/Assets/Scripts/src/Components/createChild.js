@@ -23,6 +23,11 @@ authink.directive('createChild', function() {
                     $scope.$emit('closeModal');
                 });
             };
+
+            $scope.closeModal = function () {
+
+                $scope.$emit('closeModal');
+            }
         }]
     };
 });

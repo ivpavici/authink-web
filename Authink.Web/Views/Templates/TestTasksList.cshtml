@@ -27,7 +27,7 @@
 
                 <div class="main-test-task clearfix">
 
-                    <div class="mainTestTaskHeading"  ng-click="previewTask(task)">
+                    <div class="mainTestTaskHeading">
 
                         <a>{{task.Name}}</a>
 
@@ -47,7 +47,7 @@
 
                     </div>
 
-                    <div class="main-test-task-right"  ng-click="previewTask(task)">
+                    <div class="main-test-task-right">
 
                         <span>{{task.Description}}</span>
 
@@ -81,10 +81,10 @@
                                 </li>
                                 <li>
                                     
-                                    <a class="main-test-task-option-view" >
-                                        
+                                    <a class="main-test-task-option-view" ng-click="previewTask(task)">
+
                                         <img src="~/Assets/Images/Home/task-icon-view.png" />
-                                        
+
                                         <span>@resources.TestTaskList_View</span>
 
                                     </a>
