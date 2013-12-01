@@ -50,6 +50,10 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.testPreviewApi.reset();
     });
+    $rootScope.$on('editTest:editCanceled', function (event) {
+    
+        $rootScope.isTestEditModeOn = false;
+    });
 
     $rootScope.$on('editTask:taskEditEnded',     function (event) {
 

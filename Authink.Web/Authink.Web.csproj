@@ -255,10 +255,13 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
+    <Content Include="Assets\Images\Home\cancelIcon.png" />
+    <Content Include="Assets\Images\Home\cancelIcon_bckg.png" />
     <Content Include="Assets\Images\Home\deleteTest.png" />
     <Content Include="Assets\Images\Home\omnibar-gear.png" />
     <Content Include="Assets\Images\Home\options-logout.png" />
     <Content Include="Assets\Images\Home\task-icon-edit-white.png" />
+    <Content Include="Assets\Images\Home\task-icon-view.png" />
     <Content Include="Assets\Images\Home\testAdd.png" />
     <Content Include="Assets\Images\Home\testEditIcon.png" />
     <Content Include="Assets\Images\Home\X-black.png" />

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2013 16:04:14
--- Generated from EDMX file: C:\Users\mamar_000\Desktop\authink-web\authink-web\Authink.Data\AuthinkData.edmx
+-- Date Created: 12/01/2013 22:25:30
+-- Generated from EDMX file: C:\Users\mamar_000\Desktop\New folder\authink-web\Authink.Data\AuthinkData.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -155,7 +155,6 @@ CREATE TABLE [dbo].[Tasks] (
     [IsHidden] bit  NOT NULL,
     [Difficulty] int  NOT NULL,
     [ProfilePictureUrl] nvarchar(max)  NOT NULL,
-    [Statistics_MetaId] int  NOT NULL,
     [Sound_Id] int  NULL
 );
 GO

@@ -4,7 +4,15 @@
 
     <div class="task-delete-confirmation-dialog-header">
 
-        <h2> @resources.TaskConfirmationDialog_Title </h2>
+        <div id="title"> 
+            
+            @resources.TaskConfirmationDialog_Title 
+
+            <div class="cancel" ng-click="cancel()"><img src="~/Assets/Images/Home/cancelIcon.png" /></div>
+
+        </div>
+
+        
 
     </div>
 

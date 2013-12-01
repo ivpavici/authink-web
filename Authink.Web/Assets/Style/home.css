@@ -24,7 +24,8 @@
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
 body                    {background:#fbfbfb; font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;font-size: 10px;min-width: 1100px; height:100%; min-height:100%;}
-input                   {font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;}
+
+                  {font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;}
 textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;}
 
 .underline              {overflow: hidden;display: inline-block;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
@@ -38,6 +39,11 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 .oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 5px -7px #cdcbcb;-moz-box-shadow: 0 8px 5px -7px #cdcbcb;box-shadow: 0 8px 5px -7px #cdcbcb;}
 .oneEdgeLeftShadow          {-webkit-box-shadow: -8px -6px 6px -6px #e6e6e6;-moz-box-shadow: -8px -6px 6px -6px #e6e6e6;box-shadow: -8px -6px 6px -6px #e6e6e6;}
 
+/*cancel botun na popUp*/
+.cancel                     { float:right;}
+.cancel img                 { width:20px;  margin-right:5px; margin-bottom:7px;}
+.cancel:hover               { cursor:pointer; background:url('../Images/Home/cancelIcon_bckg.png') no-repeat;}
+.cancel:active              { opacity:0.5;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 HEADER
@@ -140,12 +146,12 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 
 #main-content                                                       {margin-left: 400px;}
 
-#main-test                                                          {margin-top:-5px; border-left:1px solid #c7c7c7; padding: 20px 0 0 30px; min-height:100%; position:absolute;}
+#main-test                                                          { position:absolute; margin-top:-5px; border-left:1px solid #c7c7c7; padding: 20px 0 0 30px; min-height:100%;}
 
 #main-test-up                                                       {width: 100%;height: 100%;float: left;}
 #main-test-right                                                    {float: right;width: 120px;height: 100%;}
 #main-test-left                                                     {float: left;width:100%;}
-#main-test-heading                                                  {min-height: 40px; margin-top:8px;}
+#main-test-heading                                                  {min-height: 40px; margin-top:8px; margin-right:-14px;}
 #main-test-heading h1                                               {color:#fe9b26; font-weight: bold; font-size: 2.8em;float: left; padding:10px 0px 0px;}
 
 
@@ -166,15 +172,15 @@ main-test-edit-buttons                                              {width: 90%;
 #main-test-edit-options input                                       {display: block; padding: 7px 15px 8px 15px;margin: 0 5px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a                                           { display: block; padding: 7px 15px 8px 15px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a:hover                                     {cursor: pointer;}
-.main-test-edit-option-delete                                       {background: #e23c3c;border-bottom: 5px solid #c80000;margin: 0 120px 0 5px;}
-.main-test-edit-option-delete:hover                                 {background: #d82222;}
-.main-test-edit-option-save                                         {background: #369d17;border: none;border-bottom: 5px solid #2e8015;margin: 0 5px;}
-.main-test-edit-option-save:hover                                   {background: #338f16;}
+.main-test-edit-option-delete                                       {background: #fe9b26; border: none;margin: 0 120px 0 5px;}
+.main-test-edit-option-delete:hover                                 {background: #feaa26;}
+.main-test-edit-option-save                                         {background: #fe9b26;border: none;margin: 0 5px;}
+.main-test-edit-option-save:hover                                   {background: #feaa26;}
 #main-test-description                                              {}
 #main-test-description-short                                        {}
 #main-test-description p                                            {font-size: 1.5em;line-height: 1.5em;color: #666;padding: 20px 20px 30px 20px}
-#main-test-edit-box                                                 {margin-bottom: 30px;}
-#main-test-edit-box h3                                              {font-weight: bold;text-transform: uppercase;font-size: 1.5em;padding: 15px 0 5px 0;}
+#main-test-edit-box                                                 {margin-bottom: 30px; width:800px; margin-left:50px;}
+#main-test-edit-box h3                                              {font-weight: bold;font-size: 1.8em; color:#fe9b26;padding: 15px 0 5px 0;}
 
 #test-edit-add-new-task span                                        { color:#1a6d97; position:relative; transition: all .3s; padding-bottom:5px; padding-top:3px;}
 #test-edit-add-new-task span:hover                                  { color:#679bb6;}
@@ -189,21 +195,17 @@ main-test-edit-buttons                                              {width: 90%;
 
 .main-test-task-wrap                                                {}
 .main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
-.main-test-task:hover                                               {cursor: pointer;}
-.main-test-task:hover .main-test-task-options                       {display: block !important;}
+.main-test-task-options                                             {display: block !important;}
 
 .mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#ebeaea; font-weight:bold; font-size:1.3em;}
 .mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
 
-.main-test-task:hover > .mainTestTaskHeading                        { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#1a6d97; font-weight:bold; font-size:1.3em;}
-.main-test-task:hover > .mainTestTaskHeading a                      { color:white; text-decoration:none;}
 
 .main-test-task-left                                                {width: 100px;float: left;}
 .main-test-task-left img                                            {display: block;width: 80px; height: 80px;margin: 0 auto;}
 .main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding-right:4px; color: #1a6d97;}
 .main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
 .main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}
-.main-test-task:hover > .mainTestTaskHeading > .main-test-task-difficulty span             { color:#fbfbfb;} 
 #main-test-tasks                                                    {width: 100%;float: left;}
 #main-test-tasks-right                                              { display:block; float: right; position:relative; padding-right:30px;}
 #main-test-tasks-right a                                            { line-height:30px; text-decoration:none; font-size:0.6em; font-weight:normal; }
@@ -217,7 +219,8 @@ main-test-edit-buttons                                              {width: 90%;
 .main-test-task-options ul li a:hover                               {cursor: pointer;background-color: #ebeaea !important;}
 .main-test-task-options img                                         {width:20px; padding-bottom:5px;}
 
-#main-test-description-short p                                      {font-size: 1.6em;line-height: 1.6em;}
-.test-edit-textbox-input                                            {display: block;width:  90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
-.test-edit-textarea-input                                           {display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
+#main-test-description-short p                                      { font-size: 1.6em;line-height: 1.6em;}
+#main-test-heading input                                            { border-radius:0; border: #e0e0e0 1px solid}
+.test-edit-textbox-input                                            { display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
+.test-edit-textarea-input                                           { border-radius:0; display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
 

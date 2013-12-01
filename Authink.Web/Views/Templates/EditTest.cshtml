@@ -1,6 +1,6 @@
 ﻿@using resources = Resources.Main;
 
-<div id="main-test">
+<div id="main-test" class="oneEdgeLeftShadow">
     <form ng-submit="saveTest()">
         <div id="main-test-edit-box">
 
@@ -19,7 +19,7 @@
             <div id="main-test-edit-buttons">
 
                 <div id="main-test-edit-options" class="clearfix">
-                    <a class="btn main-test-edit-option-delete" ng-click="openConfirmationDialog()">@resources.TestEdit_Delete</a>
+                    <a class="btn main-test-edit-option-delete" ng-click="cancel()">Cancel</a>
                     <input type="submit" class="btn main-test-edit-option-save" value="@resources.TestEdit_Save" />
                 </div>
             </div>

@@ -599,5 +599,14 @@ namespace Resources {
                 return ResourceManager.GetString("TestTaskList_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        public static string TestTaskList_View {
+            get {
+                return ResourceManager.GetString("TestTaskList_View", resourceCulture);
+            }
+        }
     }
 }

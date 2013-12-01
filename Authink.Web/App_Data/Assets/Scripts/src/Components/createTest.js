@@ -40,6 +40,11 @@ authink.directive('createTest', function () {
                     }
                 });
             };
+
+            $scope.closeModal = function () {
+
+                $scope.$emit('closeModal');
+            }
         }]
     };
 });

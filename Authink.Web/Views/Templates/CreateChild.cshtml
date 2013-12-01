@@ -4,16 +4,20 @@
 
     <div id="child-popup-header">
 
-        <h2>@resources.ChildAdd_Title</h2>
+        <div id="title">
 
+            @resources.ChildAdd_Title
+
+            <div class="cancel" ng-click="closeModal()"><img src="~/Assets/Images/Home/cancelIcon.png" /></div>
+
+        </div>
+                
     </div>
 
     <div id="child-form-create">
 
         <form ng-submit="createChild()">
-
-            <h1 id="child-form-title">@resources.ChildAdd_Title</h1>
-
+            
             <div class="child-test">
                 <input type="text" ng-model="child.firstName" ng-class="child-form-label" placeholder="@resources.ChildAdd_FirstNamePlaceholder" required />
             </div>
