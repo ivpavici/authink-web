@@ -36,10 +36,12 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
         application.editTestApi.testToEdit = test;
     });
 
-    $rootScope.$on('editTest:testEditEnded', function (event) {
+    $rootScope.$on('editTest:testEditEnded', function (event, test) {
 
         $rootScope.isTestEditModeOn = false;
-        
+
+        application.testPreviewApi.setActiveTest(test.Id);
+
         application.testListApi.refreshTests();
     });
     $rootScope.$on('editTest:testDeleted',   function (event) {

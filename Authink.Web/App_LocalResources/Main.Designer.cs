@@ -520,6 +520,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have some unsaved changes. Save?.
+        /// </summary>
+        public static string TestEditConfirmationDialog_Text {
+            get {
+                return ResourceManager.GetString("TestEditConfirmationDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to save changes?.
+        /// </summary>
+        public static string TestEditConfirmationDialog_Title {
+            get {
+                return ResourceManager.GetString("TestEditConfirmationDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new test.
         /// </summary>
         public static string TestList_CreateNew {

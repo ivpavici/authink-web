@@ -255,6 +255,12 @@
   <data name="TestConfirmationDialog_Title" xml:space="preserve">
     <value>Potvrda brisanja</value>
   </data>
+  <data name="TestEditConfirmationDialog_Text" xml:space="preserve">
+    <value>Imate nespremljene promjene. Želite li ih spremiti?</value>
+  </data>
+  <data name="TestEditConfirmationDialog_Title" xml:space="preserve">
+    <value>Želite li spremiti promjene?</value>
+  </data>
   <data name="TestEdit_Delete" xml:space="preserve">
     <value>Obriši</value>
   </data>

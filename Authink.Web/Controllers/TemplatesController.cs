@@ -26,6 +26,7 @@ namespace Authink.Web.Controllers
                 : (template == "testsList")               ? PartialView("~/Views/Templates/TestsList.cshtml")
                 : (template == "taskDeleteConfirmDialog") ? PartialView("~/Views/Templates/TaskDelete_ConfirmationDialog.cshtml")
                 : (template == "testDeleteConfirmDialog") ? PartialView("~/Views/Templates/TestDelete_ConfirmationDialog.cshtml")
+                : (template == "testEditConfirmDialog")   ? PartialView("~/Views/Templates/TestEditCancel_ConfirmationDialog.cshtml")
                 :                                           PartialView("~/Views/Templates/TestTasksList.cshtml");
         }
     }
