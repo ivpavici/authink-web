@@ -1,228 +1,48 @@
-﻿/*
+﻿body                                                    { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif; font-size: 10px; }
+.hidden                                                 { display: none; }
+.edit-detect-color-color-placeholder                    { width: 50px; height: 50px; }
+            
+/*edit task*/
+.edit-task-popup-header                                 { width: 100%; background-color:  #fe9b26; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
+.edit-task-popup-header h2                              { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
 
-    AuThink
+.task-edit-container                                    { display: block; width: 700px; height: 500px; padding: 20px; overflow: scroll; overflow-x: hidden; }
 
-    =======================
-         COLOR PALETTE
-    =======================
-    Blue            #1a6d97
-    Blue Hover      #2277a4
-    Blue Accent     #0c5371
-    Orange          #fe9b26
-    Orange Hover    #feaa26
-    Orange Accent   #e18520
-    
-*/
-body {
-    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 10px;
-}
+.task-edit-header                                       { }
+.task-edit-header-left                                  { float: left; width: 64px; height: 64px; }
+.task-edit-header-left img                              { width: 100%; }
+.task-edit-header-right                                 { float: left; margin: 10px 0 0 20px; width: 500px; }
+.task-edit-header-right span                            { font-weight: bold; text-transform: uppercase; display: block; color: #444; font-size: 1.4em; }
+.task-edit-name-field                                   { width: 100%; padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 1.8em; margin-bottom: 20px; }
+.task-edit-description-field                            { width: 100%;  padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 1.4em; }
+.task-edit-content                                      { margin-top: 20px; }
+.task-edit-content h2                                   { font-weight: bold; text-transform: uppercase;font-size: 1.8em;color: #444; }
 
-.hidden {
-        display: none;
- }
-    .edit-detect-color-color-placeholder {
-        width: 50px;
-        height: 50px;
-    }
-            /*edit task*/
+.task-edit-pictures-container                           { display: -webkit-flex; -webkit-flex-direction: row; -webkit-flex-wrap: wrap; margin-top: 10px; }
+.task-edit-picture-item                                 { width: 100px; padding: 10px; float: left; margin: 10px; text-decoration: none; }
+.task-edit-picture-item:hover                           { cursor: pointer; background: #f0f0f0; border-radius: 8px; }
+.task-edit-picture-item:hover span                      {  }
+.task-edit-picture-item span                            { font-weight: bold; text-transform: uppercase; display: block; color: #888 !important; text-align: center; padding-top: 10px; font-size: 1.4em; }
+.task-edit-picture-item img                             { width: 100%; }
 
-.task-edit-container        {
-    display: block;
-    width: 700px;
-    height: 500px;
-    padding: 20px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
+.task-edit-picture-colors                               { width: 100%; }
+.task-edit-picture-colors h1                            { font-weight: bold; text-transform: uppercase; display: block; color: #444 !important; text-align: center; padding-top: 10px; font-size: 1.2em; }
+.task-edit-picture-colors-single                        { display: block; float: left; width: 30px; height: 30px; margin: 5px; }
 
-    .task-edit-header {
-        
-    }
+.task-edit-picture-colors-correct                       {  }
+.task-edit-picture-colors-incorrect                     {  }
+.colorPickerHolder                                      {  }
 
-        .task-edit-header-left {
-            float: left;
-            width: 64px;
-            height: 64px;
-        }
+.task-edit-options                                      { text-align: center; display: block; margin: 10px auto 10px auto; }
+.task-edit-options .task-edit-save                      { border: none; border-bottom: 5px solid #e18520; background:  #fe9b26; color: white; font-weight: bold; text-transform: uppercase; font-size: 16px; padding: 6px 14px; }
+.task-edit-options .task-edit-voice-command-preview     { font-size: 1.5em; padding: 5px 5px 5px 5px; line-height: 1.5em; text-decoration: none; }
+.task-edit-options .task-edit-save:hover                { cursor: pointer; color: white; background: #e18520; }
 
-            .task-edit-header-left img {
-                width: 100%;
-            }
+.task-edit-voice-command > span                         { font-weight: bold; text-transform: uppercase; font-size: 1.8em; color: #444; }
+.task-edit-voice-command-add-new h3                     { font-size: 1.4em; padding-top: 10px; color: #45B434; }
 
-        .task-edit-header-right {
-            float: left;
-            margin: 10px 0 0 20px;
-            width: 500px;
-        }
-
-            .task-edit-header-right span {
-                font-weight: bold;
-                text-transform: uppercase;
-                display: block;
-                color: #444;
-                font-size: 1.4em;
-            }
-
-            .task-edit-name-field {
-                width: 100%;
-                padding: 8px;
-                background: white;
-                border: #e0e0e0 1px solid;
-                margin: 5px 0;
-                font-size: 1.8em;
-                margin-bottom: 20px;
-            }
-
-            .task-edit-description-field {
-                width: 100%;
-                padding: 8px;
-                background: white;
-                border: #e0e0e0 1px solid;
-                margin: 5px 0;
-                font-size: 1.4em;
-            }
-
-    .task-edit-content {
-        margin-top: 20px;
-    }
-
-        .task-edit-content h2 {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1.8em;
-            color: #444;
-        }
-
-        .task-edit-pictures-container {
-            display: -webkit-flex;
-            -webkit-flex-direction: row;
-            -webkit-flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-            .task-edit-picture-item {
-                width: 100px;
-                padding: 10px;
-                float: left;
-                margin: 10px;
-                text-decoration: none;
-            }
-
-                .task-edit-picture-item:hover {
-                    cursor: pointer;
-                    background: #f0f0f0;
-                    border-radius: 8px;
-                }
-
-                    .task-edit-picture-item:hover span {
-                        visibility: visible;
-                    }
-
-                .task-edit-picture-item span {
-                    visibility: hidden;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    display: block;
-                    color: #888 !important;
-                    text-align: center;
-                    padding-top: 10px;
-                    font-size: 1.4em;
-                }
-
-                .task-edit-picture-item img {
-                    width: 100%;
-                }
-
-                .task-edit-picture-colors {
-                    
-                }
-                    .task-edit-picture-colors h1 {
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        display: block;
-                        color: #444 !important;
-                        text-align: center;
-                        padding-top: 10px;
-                        font-size: 1.2em;
-                    }
-
-                    .task-edit-picture-colors-single {
-                        display: block;
-                        float: left;
-                        width: 30px;
-                        height: 30px;
-                        margin: 5px;
-                    }
-
-        .task-edit-save {
-            float: right;
-            border: none;
-            border-bottom: 5px solid #e18520;
-            background:  #fe9b26;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 16px;
-            padding: 6px 14px;
-            position: absolute;
-            top: 10px;
-            right: 24px;
-        }
-        .task-edit-voice-command-preview {
-            font-size: 1.5em;
-            padding: 5px 5px 5px 5px;
-            line-height: 1.5em;
-            text-decoration: none;
-        }
-        .task-edit-save:hover {
-            cursor: pointer;
-            color: white;
-            background: #e18520;
-        }
-
-.task-edit-voice-command > span{
-
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.8em;
-    color: #444;
-}
-.task-edit-voice-command-add-new h3 {
-    font-size: 1.4em;
-    padding-top: 10px;
-    color: #45B434;
-}
-
-.task-picture-container {
-    display: block;
-    width: 700px;
-    height: 500px;
-    padding: 20px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-    .task-picture-image {
-        text-align: center;
-    }
-
-        .task-picture-image img {
-            display: block;
-            height: 320px;
-            margin: 10px auto;
-        }
-
-        .task-picture-image span {
-            font-weight: bold;
-            text-transform: uppercase;
-            display: block;
-            color: #888 !important;
-            text-align: center;
-            padding-top: 10px;
-            font-size: 1.4em;
-        }
-
-        .task-picture-image input {
-            padding: 10px 0;
-        }
+.task-picture-container                                 { display: block; width: 700px; height: 500px; padding: 20px; overflow: scroll; overflow-x: hidden; }
+.task-picture-image                                     { text-align: center; }
+.task-picture-image img                                 { display: block; height: 320px; margin: 10px auto; }
+.task-picture-image span                                { font-weight: bold; text-transform: uppercase; display: block; color: #888 !important; text-align: center; padding-top: 10px; font-size: 1.4em; }
+.task-picture-image input                               { padding: 10px 0; }

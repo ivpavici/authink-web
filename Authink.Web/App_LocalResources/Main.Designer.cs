@@ -475,7 +475,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to Delete test.
         /// </summary>
         public static string TestEdit_Delete {
             get {

@@ -1,14 +1,14 @@
-﻿
-                                                                /* ADD CHILD INFORMATION POPUP*/
-#child-create-popup                             { width: 300px;}
-#child-popup-header                             { width: 100%;background-color:  #fe9b26;margin-bottom: 7%;-moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
-#child-popup-header h2                          { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px 0 7px 5px;}
-#child-form-title                               { display: none;}
-#child-form-create                              { width: 100%;}
-#child-form-create .child-test                  { text-align: center;display: block;margin: 15px auto 0px auto;}
-.child-form-label                               { font-size: 18px;}
-.child-form-field                               { width: 100%;padding: 8px;background: white;border: #e0e0e0 1px solid;font-size: 18px;}
-#child-dashboard-create-button                  { display: block;margin: 5px auto 10px auto;border: none;border-bottom: 5px solid #e18520;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;}
-#child-dashboard-create-button:hover            { cursor: pointer;background: #e18520;}
-#child-dashboard-create-button:active           { position: relative;top: 1px;}
+﻿/* ADD CHILD INFORMATION POPUP*/
+
+#child-create-popup                             { width: 300px; }
+#child-popup-header                             { width: 100%; background-color:  #fe9b26;margin-bottom: 7%; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
+#child-popup-header h2                          { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
+#child-form-title                               { display: none; }
+#child-form-create                              { width: 100%; }
+#child-form-create .child-test                  { text-align: center; display: block; margin: 15px auto 0px auto; }
+.child-form-label                               { font-size: 18px; }
+.child-form-field                               { width: 100%;padding: 8px; background: white; border: #e0e0e0 1px solid; font-size: 18px; }
+#child-dashboard-create-button                  { display: block; margin: 5px auto 10px auto; border: none; border-bottom: 5px solid #e18520; background: #fe9b26; color: white; font-weight: bold; text-transform: uppercase; font-size: 16px; padding: 6px 14px; }
+#child-dashboard-create-button:hover            { cursor: pointer; background: #e18520; }
+#child-dashboard-create-button:active           { position: relative; top: 1px; }
 
