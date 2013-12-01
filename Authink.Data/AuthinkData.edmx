@@ -128,7 +128,6 @@
     <Property Name="IsHidden" Type="bit" Nullable="false" />
     <Property Name="Difficulty" Type="int" Nullable="false" />
     <Property Name="ProfilePictureUrl" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Statistics_MetaId" Type="int" Nullable="false" />
     <Property Name="Sound_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Tests">
@@ -459,7 +458,6 @@
           <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.AS_Test_Task" FromRole="Tasks" ToRole="Tests" />
           <Property Type="Int32" Name="Difficulty" Nullable="false" />
           <Property Type="String" Name="ProfilePictureUrl" Nullable="false" />
-          <Property Type="Int32" Name="Statistics_MetaId" Nullable="false" />
           <NavigationProperty Name="Sound" Relationship="Authink.Data.Database.SoundTask" FromRole="Task" ToRole="Sound" />
         </EntityType>
         <EntityType Name="Test">
@@ -617,7 +615,6 @@
           <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
           <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
           <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
-          <ScalarProperty Name="Statistics_MetaId" ColumnName="Statistics_MetaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

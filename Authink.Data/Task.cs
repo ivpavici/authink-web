@@ -28,7 +28,6 @@ namespace Authink.Data
         public bool IsHidden { get; set; }
         public int Difficulty { get; set; }
         public string ProfilePictureUrl { get; set; }
-        public int Statistics_MetaId { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
