@@ -37,6 +37,11 @@ authink.directive('editTest', function() {
                 });
             };
 
+            $scope.cancel = function () {
+
+                $scope.$emit('editTest:editCanceled');
+            };
+
             $scope.removeTest = function() {
 
                 testsRepository.remove($scope.test.Id)
