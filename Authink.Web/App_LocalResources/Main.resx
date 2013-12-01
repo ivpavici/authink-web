@@ -262,7 +262,7 @@
     <value>Do you want to save changes?</value>
   </data>
   <data name="TestEdit_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Delete test</value>
   </data>
   <data name="TestEdit_LongDescription" xml:space="preserve">
     <value>Long description</value>

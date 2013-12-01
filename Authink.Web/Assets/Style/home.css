@@ -155,7 +155,7 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 #main-test-heading h1                                               {color:#fe9b26; font-weight: bold; font-size: 2.8em;float: left; padding:10px 0px 0px;}
 
 
-#main-test-options                                                  { float: right; width:160px; padding-right:20px;}
+#main-test-options                                                  { float: right; width:200px; padding-right:20px;}
 #main-test-options span                                             { margin-top:3px; text-align: center;font-size: 1.3em; position: relative;transition: all .3s;}
 #main-test-options span:hover                                       { color:#ffbc6d;}
 #main-test-options span:active                                      { color:white;}
