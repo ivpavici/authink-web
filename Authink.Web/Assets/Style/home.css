@@ -70,19 +70,20 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
                                                 child menu
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#child-menu                                                                 {background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px;}
+#child-menu                                                                 {background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px; padding: 10px 5px 10px 5px;}
 #child-menu-info                                                            {padding-left:40px; float: left;}
 #child-menu-info-image                                                      {display: block; float: left;width: 38px; border:1px solid #1a6d97;}
 #child-menu-info-menu                                                       {display: block; float: left;border-radius: 4px;color: #1a6d97; font-size: 2.5em;height: 40px; line-height: 40px;width: 300px; background: transparent url('../Images/Home/child-menu-arrow-down.png') no-repeat right center;position: relative;}
-#child-menu-info-menu-child-name                                            {text-decoration:none;display: block; text-align:center; color:#1a6d97;}
+#child-menu-info-menu-child-name                                            {text-decoration:none;padding-left: 5px; text-align:center; color:#1a6d97;}
 #child-menu-info-menu:hover                                                 {cursor: pointer;}
 #child-menu-info-menu span                                                  {font-weight: bold;}
-#child-menu-info-menu ul .child-menu-select                                 {float: none;white-space: nowrap;width: 295px;padding: 6px 0 6px 20px;color: #444;text-decoration: none;border-top: 1px solid #f2f2f2;}
+#child-menu-info-menu ul {padding: 0;}
+#child-menu-info-menu ul .child-menu-select                                 {float: none;white-space: nowrap;width: 295px;color: #444;text-decoration: none;border-top: 1px solid #f2f2f2;}
 #child-menu-info-menu ul .child-menu-select:hover                           {background: #feb645;cursor: pointer;}
 #child-menu-info-menu ul .child-menu-select.child-menu-info-menu-selected   {background: #feb645;}
-#child-menu-info-menu-new                                                   {font-size: .7em;display: block;text-align: center;background-color: #1A6D97;}
-#child-menu-info-menu-new a                                                 {line-height: 1.9em;padding: 0;color: white;}
-#child-menu-info-menu-new a:hover                                           {background: #2277a4;}
+#child-menu-info-menu-new                                                   {font-size: .7em;display: block;text-align: center;}
+#child-menu-info-menu-new a                                                 {line-height: 1.9em;padding: 0;}
+#child-menu-info-menu-new a:hover                                           {}
 #child-menu-info-menu-new a:active                                          {top: 1px;position:relative;background:#196D96;}
 #child-menu-info-menu ul li span                                            {margin-left: 10px;font-size: 0.6em;font-weight: normal;}
 
@@ -100,19 +101,19 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 #main-container                                {background:#fbfbfb; margin-top:5px; min-height:100%;}
 #main-tests                                    {background:#f9f9f9; width: 400px;min-height: 100%;float: left; position:absolute;}
 
-#main-tests-search                             {padding: 0px 15px 0 2px;}
+#main-tests-search                             {margin-top: 4%;}
 #main-tests-search-field                       {width: 100%; border-radius:0px; border: 1px solid #ececec;background: white url('../Images/Home/search-icon.png') no-repeat 98% 50%;outline: none;}
 
-#main-tests-heading                            {font-size: 1.8em; font-weight: bold; padding:2px 30px 2px 20px; border-bottom:1px solid #e9e8e8;}
-#main-tests-heading span                       {color:#fe9b26;}
+#main-tests-heading                            {font-size: 1.8em; font-weight: bold; padding:2px 30px 2px 20px; border-bottom:1px solid #e9e8e8; margin-top: 5%;}
+#main-tests-heading span                       {color:#fe9b26; text-transform:uppercase;padding-left: 2px;}
 
 #main-tests-options                            {float: right; margin-top:-13px;}
 #main-tests-options span                       { position:relative; transition: all .3s; text-align:center; color:#fe9b26; font-size:0.7em; font-weight:normal;}
 #main-tests-options span:hover                 { color:#ffbc6d;} 
 #main-tests-options span:after, span:before    { transition: all .3s;}
 #main-tests-options span:active                { color:white;}
-#main-tests-options a                          { text-decoration:none; line-height:40px;}
-#main-tests-options a:hover                    {cursor: pointer;}
+#main-tests-options a                          { text-decoration:none;background: #fe9b26;color: white; border: 0;}
+#main-tests-options a:hover                    { cursor: pointer; background: #FEB645;}
 #main-tests-options img                        { width:20px; padding-bottom:2px;}
 #main-tests-options .blink:hover:before        { background-color: #ffbc6d; left: 100%;}
 
@@ -124,18 +125,18 @@ textarea                {font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', san
 #main-tests-search input::-moz-placeholder                          { /* Firefox 19+ */color: #d5d5d5;}
 #main-tests-search input:-ms-input-placeholder                      {color: #d5d5d5;}
 
-#main-tests-list                                                    { max-height: 500px;min-height: inherit; overflow-y: auto;overflow-x: hidden;}
+#main-tests-list                                                    { max-height: 500px;min-height: inherit; overflow-y: auto;overflow-x: hidden;padding-left: 2px;}
 .main-tests-list-item                                               { color: #888;}
-.main-tests-list-item:hover                                         { cursor: pointer; background:#ffffff;}
-.main-tests-list-item:hover > .main-tests-list-item-info h1         { color:#fe9b26;} dadada
-.main-tests-list-item-selected                                      {}
-.main-tests-list-item-selected > .main-tests-list-item-info         { border-bottom: 1px solid #dadada; background-color: #f3f3f3;}
-.main-tests-list-item-selected > .main-tests-list-item-info h1      { background:#fe9b26; color:#fbfbfb; font-weight:700;}
-.main-tests-list-item-selected:hover > .main-tests-list-item-info h1{ color:#fbfbfb;}
 .main-tests-list-item-image                                         { display: block; float: left;width: 50px; height: 50px;}
 .main-tests-list-item-info                                          { width: auto; border-bottom: 1px solid #dadada}
-.main-tests-list-item-info h1                                       { padding:4px 0px 4px 20px; font-size: 1.5em; font-weight:600;color: #444;margin-bottom: 4px;}
-.main-tests-list-item-info span                                     { padding:0px 20px 10px 25px; line-height:130%; display:block;font-size: 1.4em;}
+.main-tests-list-item-info h1                                       { padding:10px 0px 0px 20px; font-size: 1.5em; font-weight:600;color: #444;margin-bottom: 4px;}
+.main-tests-list-item-info span                                     { padding:0px 20px 5px 20px; line-height:130%; display:block;font-size: 1.4em;}
+.main-tests-list-item:hover                                         { cursor: pointer; background:#ffffff;}
+.main-tests-list-item:hover > .main-tests-list-item-info            { background:#EBEBEB; color:#444;}
+.main-tests-list-item:hover > .main-tests-list-item-info h1         { background:#EBEBEB; color:#444;}
+.main-tests-list-item-selected                                      { background:#FE9B26; color:white;}
+.main-tests-list-item-selected > .main-tests-list-item-info         { border-bottom: 1px solid #dadada; background:#FE9B26; color:white;}
+.main-tests-list-item-selected > .main-tests-list-item-info h1      { background:#FE9B26; color:white;}
 
 #main-content                                                       {margin-left: 400px;}
 
