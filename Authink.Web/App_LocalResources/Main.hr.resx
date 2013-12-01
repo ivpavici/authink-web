@@ -225,6 +225,15 @@
   <data name="TaskPreview_Pictures" xml:space="preserve">
     <value>Slike</value>
   </data>
+  <data name="TaskPreview_VoiceCommand_Empty" xml:space="preserve">
+    <value>Ne postoji zvukovna naredba za ovaj zadatak. Kliknite Uredi zadatak da bi je postavili!</value>
+  </data>
+  <data name="TaskPreview_VoiceCommand_Listen" xml:space="preserve">
+    <value>Poslušaj</value>
+  </data>
+  <data name="TaskPreview_VoiceCommand_Title" xml:space="preserve">
+    <value>Zvukovna naredba</value>
+  </data>
   <data name="TestAdd_LongDescPlaceholder" xml:space="preserve">
     <value>Detaljni opis</value>
   </data>

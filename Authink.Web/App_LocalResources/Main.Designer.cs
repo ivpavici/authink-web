@@ -277,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are about do delete this task. It cannot be restored at a later time! Continue?.
+        ///   Looks up a localized string similar to You are about to delete this task. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TaskConfirmationDialog_Text {
             get {
@@ -381,6 +381,33 @@ namespace Resources {
         public static string TaskPreview_Pictures {
             get {
                 return ResourceManager.GetString("TaskPreview_Pictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no voice command associated with this task. Click Edit task to upload it!.
+        /// </summary>
+        public static string TaskPreview_VoiceCommand_Empty {
+            get {
+                return ResourceManager.GetString("TaskPreview_VoiceCommand_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview sound.
+        /// </summary>
+        public static string TaskPreview_VoiceCommand_Listen {
+            get {
+                return ResourceManager.GetString("TaskPreview_VoiceCommand_Listen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voice command.
+        /// </summary>
+        public static string TaskPreview_VoiceCommand_Title {
+            get {
+                return ResourceManager.GetString("TaskPreview_VoiceCommand_Title", resourceCulture);
             }
         }
         

@@ -53,8 +53,9 @@
       <resource path="~/Assets/Style/popUpStyles/editChild.css" />
       <resource path="~/Assets/Style/popUpStyles/editTask.css" />
       <resource path="~/Assets/Style/popUpStyles/previewTask.css" />
-      <resource path="~/Assets/Style/popUpStyles/createTest.css" />
-      
+      <resource path="~/Assets/Style/popUpStyles/createTest.css" />    
+      <resource path="~/Assets/Style/popUpStyles/createChild.css" />
+      <resource path="~/Assets/Style/popUpStyles/deleteTask.css" />
     </resourceSet>
     
     <resourceSet name="globalCss" type="css">
@@ -62,8 +63,6 @@
       <resource path="~/Content/site.css" />
       <resource path="~/Assets/Style/reset.css" />
       <resource path="~/Assets/Style/style.css" />
-      <resource path="~/Assets/Style/popUpStyles/createChild.css" />
-      
     </resourceSet>
     
     <resourceSet name="homeCss" type="css">
