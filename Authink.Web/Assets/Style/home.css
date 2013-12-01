@@ -189,21 +189,17 @@ main-test-edit-buttons                                              {width: 90%;
 
 .main-test-task-wrap                                                {}
 .main-test-task                                                     {display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
-.main-test-task:hover                                               {cursor: pointer;}
-.main-test-task:hover .main-test-task-options                       {display: block !important;}
+.main-test-task-options                                             {display: block !important;}
 
 .mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#ebeaea; font-weight:bold; font-size:1.3em;}
 .mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
 
-.main-test-task:hover > .mainTestTaskHeading                        { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#1a6d97; font-weight:bold; font-size:1.3em;}
-.main-test-task:hover > .mainTestTaskHeading a                      { color:white; text-decoration:none;}
 
 .main-test-task-left                                                {width: 100px;float: left;}
 .main-test-task-left img                                            {display: block;width: 80px; height: 80px;margin: 0 auto;}
 .main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding-right:4px; color: #1a6d97;}
 .main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
 .main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}
-.main-test-task:hover > .mainTestTaskHeading > .main-test-task-difficulty span             { color:#fbfbfb;} 
 #main-test-tasks                                                    {width: 100%;float: left;}
 #main-test-tasks-right                                              { display:block; float: right; position:relative; padding-right:30px;}
 #main-test-tasks-right a                                            { line-height:30px; text-decoration:none; font-size:0.6em; font-weight:normal; }
