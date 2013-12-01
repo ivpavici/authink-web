@@ -297,4 +297,7 @@
   <data name="TestTaskList_Title" xml:space="preserve">
     <value>Zadaci</value>
   </data>
+  <data name="TestTaskList_View" xml:space="preserve">
+    <value>Prikaži</value>
+  </data>
 </root>
