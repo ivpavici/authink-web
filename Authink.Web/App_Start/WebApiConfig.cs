@@ -6,8 +6,8 @@ namespace Authink.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Routes.MapHttpRoute("UserLogin", "api/login/user",                               new { controller = "ConsumerApiController", action = "Login"               });
-            config.Routes.MapHttpRoute("GetChildren_forUser", "api/users/children/{user_userName}", new { controller = "ConsumerApiController", action = "GetChildren_forUser" });
+            config.Routes.MapHttpRoute("UserLogin", "api/login/user",                               new { controller = "ConsumerApi", action = "Login"               });
+            config.Routes.MapHttpRoute("GetChildren_forUser", "api/users/children/{user_userName}", new { controller = "ConsumerApi", action = "GetChildren_forUser" });
             
             config.Routes.MapHttpRoute("TestsApi_GetAllTestsForChild_shortDetails", "api/children/{childId}/tests", new { controller = "TestsApi", action = "GetAllTestsForChild_shortDetails" });
             config.Routes.MapHttpRoute("TestsApi_Create", "api/tests/create",                                       new { controller = "TestsApi", action = "Create"                           });
