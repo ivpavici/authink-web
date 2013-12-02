@@ -1,11 +1,11 @@
 ﻿@using resources = Resources.Main;
 
-<div id="main-container" class="clearfix">
+<div id="main-container">
 
     <div id="main-tests">
 
         <div id="main-tests-heading" class="clearfix">
-            <span>@resources.TestList_Title</span>
+            <span class="headerTitle">@resources.TestList_Title</span>
 
             <div id="main-tests-options" class="clearfix">
 
@@ -28,7 +28,7 @@
 
             <img ng-if="isLoading" src="Assets/Images/loading.gif" />
 
-            <div class="switch_test main-tests-list-item clearfix" ng-repeat="test in testListApi.tests |filter: seachTerm" ng-click="selectTest(test)" ng-class="{'main-tests-list-item-selected': test.Id == testListApi.displayedTest.Id}">
+            <div class="switch_test main-tests-list-item clearfix" ng-repeat="test in testListApi.tests |filter: seachTerm" ng-click="selectTest(test)" ng-class="{'ui-active': test.Id == testListApi.displayedTest.Id}">
                 <div class="main-tests-list-item-info">
 
                     <h1>{{test.Name}}</h1>
