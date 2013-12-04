@@ -297,6 +297,7 @@
     <Content Include="Assets\Images\Wizard\task-wizard-voice.png" />
     <Content Include="Assets\Style\bootstrap.css" />
     <Content Include="Assets\Style\ChildDashboard.css" />
+    <Content Include="Assets\Style\bootstrapOverrides.css" />
     <Content Include="Assets\Style\popUpStyles\createChild.css" />
     <Content Include="Assets\Style\popUpStyles\createTest.css" />
     <Content Include="Assets\Style\popUpStyles\deleteTask.css" />

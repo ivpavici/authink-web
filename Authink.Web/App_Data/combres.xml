@@ -60,6 +60,7 @@
     
     <resourceSet name="globalCss" type="css">
       <resource path="~/Assets/Style/bootstrap.css" />
+      <resource path="~/Assets/Style/bootstrapOverrides.css" />
       <resource path="~/Content/site.css" />
       <resource path="~/Assets/Style/reset.css" />
       <resource path="~/Assets/Style/style.css" />

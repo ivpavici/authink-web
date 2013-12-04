@@ -8,8 +8,6 @@
 
         <div class="home-header-user-menu">
 
-            <a class="dropdown-toggle">{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
-
             <div id="options"> 
                 
                 <a class="language" href="/language/change/en" target="_self">@resources.Omnibar_Language_English</a>
@@ -19,6 +17,8 @@
                 <a ng-click="signOut()" id="logout" title="Logout"><img src="/Assets/Images/Home/options-logout.png" alt="" /></a> 
 
             </div>
+
+            <a class="dropdown-toggle">{{currentUser.Firstname}} {{currentUser.Lastname}}</a>
                       
         </div>
 
