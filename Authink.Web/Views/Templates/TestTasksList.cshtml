@@ -1,27 +1,22 @@
 @using resources = Resources.Main;
 
-<div id="main-test-tasks">
-
-    <div id="main-test-tasks-left">
+<div id="main-test-tasks-left">
 
         <div id="main-test-tasks-heading">
 
            <span>@resources.TestTaskList_Title </span> 
 
                 <div id="main-test-tasks-right">
-
-                    <a id="test-edit-add-new-task" href="/test/{{testTasksListApi.testId}}/tasks/create/step-1" target="_self">
-                        
-                        <img id="addTaskIcon" src="~/Assets/Images/Home/test-icon-add.png" />
-                        
-                        <span class="blink">@resources.TestTaskList_AddNew</span>
+                    <a id="test-edit-add-new-task" class="btn" href="/test/{{testTasksListApi.testId}}/tasks/create/step-1" target="_self">
+                
+                        <img id="addTaskIcon" src="~/Assets/Images/Home/testAdd.png" />
+                         @resources.TestTaskList_AddNew
 
                     </a>
-
                 </div>
         </div>
 
-        <div id="main-test-task-list clearfix">
+        <div id="main-test-task-list">
 
             <div class="main-test-task-wrap" ng-repeat="task in tasks">
 
@@ -99,6 +94,5 @@
 
         </div>
 
-    </div>
-
 </div>
+

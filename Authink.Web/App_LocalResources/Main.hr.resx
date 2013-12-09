@@ -262,7 +262,7 @@
     <value>Želite li spremiti promjene?</value>
   </data>
   <data name="TestEdit_Delete" xml:space="preserve">
-    <value>Obriši</value>
+    <value>Obriši test</value>
   </data>
   <data name="TestEdit_LongDescription" xml:space="preserve">
     <value>Detaljni opis</value>
@@ -277,7 +277,7 @@
     <value>Kratki opis</value>
   </data>
   <data name="TestList_CreateNew" xml:space="preserve">
-    <value>Dodaj novi test</value>
+    <value>Novi test</value>
   </data>
   <data name="TestList_SearchPlaceholder" xml:space="preserve">
     <value>pretraži sve testove</value>
