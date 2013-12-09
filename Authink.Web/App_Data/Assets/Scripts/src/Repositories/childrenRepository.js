@@ -9,7 +9,8 @@ authink.factory('childrenRepository', ['$resource', function ($resource) {
             getAllForUser_shortDetails: "/api/children",
             getOne_shortDetails:        "/api/children/:childId",
             create:                     "/api/children/create",
-            edit:                       "/api/children/edit"
+            edit:                       "/api/children/edit",
+            remove:                     "/api/children/remove"
         }
     };
 
@@ -41,6 +42,13 @@ authink.factory('childrenRepository', ['$resource', function ($resource) {
             var resource = $resource(config.apiUrls.edit);
             
             return resource.save(child).$promise;
+        },
+
+        remove: function (child) {
+
+            var resource = $resource(config.apiUrls.remove);
+
+            return resource.remove({childId: child.Id}).$promise;
         }
     };
 }]);

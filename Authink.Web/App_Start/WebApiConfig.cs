@@ -26,7 +26,8 @@ namespace Authink.Web
             config.Routes.MapHttpRoute("TasksApi_Remove","api/task/remove/{taskId}",                          new { controller = "TasksApi", action = "Remove"                          });
 
             config.Routes.MapHttpRoute("ChildrenApi_Create", "api/children/create",                 new { controller = "ChildrenApi", action = "Create" });
-            config.Routes.MapHttpRoute("ChildrenApi_Edit", "api/children/edit",                     new { controller = "ChildrenApi", action = "Edit"   });
+            config.Routes.MapHttpRoute("ChildrenApi_Edit",   "api/children/edit",                   new { controller = "ChildrenApi", action = "Edit"   });
+            config.Routes.MapHttpRoute("ChildrenApi_Remove", "api/children/remove",                 new { controller = "ChildrenApi", action = "Remove" });
             config.Routes.MapHttpRoute("ChildrenApi_GetOne_shortDetails", "api/children/{childId}", new { controller = "ChildrenApi", action = "GetOne_shortDetails"        });
             config.Routes.MapHttpRoute("ChildrenApi_GetAllForUser_shortDetails", "api/children",    new { controller = "ChildrenApi", action = "GetAllForUser_shortDetails" });
 

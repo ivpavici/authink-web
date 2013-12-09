@@ -8,7 +8,7 @@ authink.directive('childMenu', function () {
         templateUrl: '/application/templates/childMenu',
         scope:       {},
         
-        controller: ['$scope', 'childMenuApi', 'childrenRepository', function ($scope, childMenuApi, childrenRepository) {
+        controller: ['$scope', '$modal', 'childMenuApi', 'childrenRepository', function ($scope,$modal, childMenuApi, childrenRepository) {
 
             $scope.childMenuApi = childMenuApi;
 
@@ -61,6 +61,35 @@ authink.directive('childMenu', function () {
                 $scope.$emit('childMenu:childEditStarted', $scope.childMenuApi.displayedChild.Id);
                 
                 $scope.$emit('openModal', component);
+            };
+
+            $scope.removeChild = function () {
+
+                var modal = $modal.open({
+                
+                    templateUrl: '/application/templates/childDeleteConfirmDialog',
+                    scope: $scope
+                });
+                
+                $scope.removeAndExit = function () {
+                
+                    childrenRepository.remove($scope.childMenuApi.displayedChild)
+                    .then(function () {
+                
+                        $scope.$emit('childMenu:childDeleted');
+                        modal.close();
+                    });
+                };
+                
+                $scope.exit = function () {
+                
+                    modal.close();
+                }
+                
+                $scope.close = function () {
+                
+                    modal.close();
+                };
             };
 
             var resetState = function () {

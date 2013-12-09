@@ -97,6 +97,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are about to delete child. It cannot be restored at a later time! Continue?.
+        /// </summary>
+        public static string ChildDeleteConfirmationDialog_Text {
+            get {
+                return ResourceManager.GetString("ChildDeleteConfirmationDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete confirmation.
+        /// </summary>
+        public static string ChildDeleteConfirmationDialog_Title {
+            get {
+                return ResourceManager.GetString("ChildDeleteConfirmationDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string ChildEdit_FirstName {
@@ -138,6 +156,15 @@ namespace Resources {
         public static string ChildMenu_CreateNew {
             get {
                 return ResourceManager.GetString("ChildMenu_CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete child.
+        /// </summary>
+        public static string ChildMenu_Delete {
+            get {
+                return ResourceManager.GetString("ChildMenu_Delete", resourceCulture);
             }
         }
         

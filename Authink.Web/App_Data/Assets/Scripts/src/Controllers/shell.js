@@ -99,6 +99,10 @@ authink.controller('shellController', ['$rootScope', '$modal', 'application', fu
 
         application.editChildApi.setChildToEdit(childId);
     });
+    $rootScope.$on('childMenu:childDeleted', function (event) {
+
+        window.location='/';
+    });
 
     $rootScope.$on('createChild:childCreated', function (event, child) {
 

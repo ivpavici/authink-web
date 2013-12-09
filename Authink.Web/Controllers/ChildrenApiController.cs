@@ -82,6 +82,19 @@ namespace Authink.Web.Controllers
                 lastname:          model.Lastname
             );
         }
+
+        [HttpDelete]
+        public System.Web.Mvc.HttpStatusCodeResult Remove(int childId)
+        {
+            if (!userAccessRights.CanEditChild(childId))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            childCommands.Delete(id: childId);
+
+            return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
     }
 }
 
