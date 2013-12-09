@@ -277,7 +277,7 @@
     <value>Short description</value>
   </data>
   <data name="TestList_CreateNew" xml:space="preserve">
-    <value>Add new test</value>
+    <value>New test</value>
   </data>
   <data name="TestList_SearchPlaceholder" xml:space="preserve">
     <value>search all tests</value>

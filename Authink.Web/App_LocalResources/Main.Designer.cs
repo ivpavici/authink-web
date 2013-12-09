@@ -538,7 +538,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new test.
+        ///   Looks up a localized string similar to New test.
         /// </summary>
         public static string TestList_CreateNew {
             get {
