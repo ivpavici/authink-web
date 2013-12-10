@@ -174,7 +174,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 
 #main-test-edit-options                                             { height: 40px;margin-right: 1.4%;}
-#main-test-edit-buttons                                              { width: 90%;display: block;padding-right: 50px;}
+#main-test-edit-buttons                                             { width: 90%;display: block;padding-right: 50px;}
 #main-test-edit-options input                                       { display: block; padding: 7px 15px 8px 15px;margin: 0 5px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a                                           { display: block; padding: 7px 15px 8px 15px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a:hover                                     { cursor: pointer;}

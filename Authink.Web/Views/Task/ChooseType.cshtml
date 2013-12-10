@@ -5,19 +5,20 @@
     ViewBag.Title = "AuThink Wizard | Type";
 }
 
-<div class="task-wizard-container">
+<div class="
+    ">
     <div class="task-wizard-title clearfix">
         <h1>@resources.ChooseType_Title</h1>
         @Html.RouteLink(resources.Omnibar_Cancel, "Cancel", null, new { @class = "task-wizard-cancel" })
         <div class="task-wizard-progress">@resources.Omnibar_Step <span>1</span>/5</div>
     </div>
     <div class="task-wizard-content">
-        <div class="task-wizard-type-container" class="clearfix">
+        <div class="task-wizard-type-container clearfix">
             @foreach(var pair in Model.TaskTypes)
             {
-                <a class="task-wizard-type-item" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
-                    <img src="/@pair.Value.PictureUrl" alt="" />
-                    <span>@pair.Value.Name</span>
+                <a class="task-wizard-type-item newTaskItem" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
+                    <img class="newTaskImg" src="/@pair.Value.PictureUrl" alt="" />
+                    <span class="newTaskSpan">@pair.Value.Name</span>
                 </a>
             }
         </div>

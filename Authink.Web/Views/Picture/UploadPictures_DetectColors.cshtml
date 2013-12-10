@@ -53,7 +53,7 @@
     }
 
     <div class="task-wizard-content">    
-        <div class="task-wizard-upload-container" class="clearfix">
+        <div class="task-wizard-upload-container clearfix">
             @using (Html.BeginForm("UploadPictures_DetectColors", "Picture", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <div class="task-wizard-upload-info">
@@ -62,7 +62,7 @@
                 <div class="task-wizard-upload-items">
                     @for (var i = 0; i < Model.NumberOfPicturesAndWrongColorsMapping.NumberOfPictures; i++)
                     {
-                        <div class="task-wizard-upload-item">
+                        <div id="detectColours" class="task-wizard-upload-item">
                             <div class="task-wizard-upload-item-filepicker">
                                 <input type="file" name="pictures"/>
                             </div>

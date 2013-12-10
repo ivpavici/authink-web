@@ -315,4 +315,7 @@
   <data name="TestTaskList_View" xml:space="preserve">
     <value>View</value>
   </data>
+  <data name="Popup_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

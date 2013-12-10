@@ -304,6 +304,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Popup_Cancel {
+            get {
+                return ResourceManager.GetString("Popup_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are about to delete this task. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TaskConfirmationDialog_Text {

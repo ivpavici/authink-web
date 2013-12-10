@@ -14,7 +14,7 @@
                 
     </div>
 
-    <div id="child-form-create">
+    <div class="child-form-create">
 
         <form ng-submit="createChild()">
             
@@ -25,9 +25,12 @@
             <div class="child-test">
                 <input type="text" ng-model="child.lastName" ng-class="child-form-label" placeholder="@resources.ChildAdd_LastNamePlaceholder" required />
             </div>
-
-            <input type="submit" value="@resources.ChildAdd_Save" id="child-dashboard-create-button" class="btn"/>
-
+            
+            <div class="actions clearfix">
+                <a class="child-dashboard-button btn" href="#" ng-click="closeModal()">@resources.Popup_Cancel</a>
+                
+                <input type="submit" value="@resources.ChildAdd_Save" class="child-dashboard-button btn"/>
+            </div>
         </form>
 
     </div>
