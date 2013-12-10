@@ -166,7 +166,7 @@
     <value>Odaberite</value>
   </data>
   <data name="UploadPictures_DetectItem_UploadWrong_2" xml:space="preserve">
-    <value>neispravnih slika.</value>
+    <value>neispravne slike.</value>
   </data>
   <data name="UploadPictures_OrderBySize_Info" xml:space="preserve">
     <value>Morate odabrati sliku.</value>
