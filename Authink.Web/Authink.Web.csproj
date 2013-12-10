@@ -228,6 +228,7 @@
     <Content Include="App_Data\Assets\Scripts\lib\jquery-1.10.2.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-0.6.0.min.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\taskPreview.js" />
+    <Content Include="App_Data\Assets\Scripts\src\Helpers\ui-colorpicker.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\tasksRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Components\testTasksList.js" />
     <Content Include="App_Data\Assets\Styles\bootstrap\css\bootstrap-responsive.css" />
