@@ -468,8 +468,8 @@
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
-    <None Include="Properties\PublishProfiles\test-authink - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\Plugins\highcharts.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -516,6 +516,7 @@
     <Content Include="Views\Templates\TaskDelete_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\TestDelete_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\TestEditCancel_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Templates\ChildDelete_ConfirmationDialog.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
