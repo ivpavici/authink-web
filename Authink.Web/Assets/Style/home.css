@@ -28,17 +28,13 @@ body                    { min-width: 1100px; height:100%; min-height:100%; backg
 
 textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;}
 
-.underline              { overflow: hidden;display: inline-block;margin-bottom: -14px; /* Value depends on your design. Fix the awkward space from overflow:hidden. */}
-.underline:before       { content: "";position: absolute;left: -100%;bottom: 0;display: block;width: 100%;height: 1px;background-color:#207faf;}
-.underline:hover:before { left: 0;}
-
 .oneEdgeDownShadow          {-webkit-box-shadow: 0 8px 5px -7px #cdcbcb;-moz-box-shadow: 0 8px 5px -7px #cdcbcb;box-shadow: 0 8px 5px -7px #cdcbcb;}
 .oneEdgeLeftShadow          {-webkit-box-shadow: -8px -6px 6px -6px rgba(0,0,0,0.1); -moz-box-shadow: -8px -6px 6px -6px rgba(0,0,0,0.1); box-shadow: -8px -6px 6px -6px rgba(0,0,0,0.1);}
 
 /*cancel botun na popUp*/
 .cancel                     { float:right;}
 .cancel img                 { width:20px;  margin-right:5px; margin-bottom:7px;}
-.cancel:hover               { cursor:pointer; background:url('../Images/Home/cancelIcon_bckg.png') no-repeat;}
+.cancel:hover               { cursor:pointer; background:url('../Images/Home/cancelIcon_bckg.png') 0px 4px no-repeat;}
 .cancel:active              { opacity:0.5;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,15 +61,13 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 .home-header-user-menu a                        { display:block; float:right; padding-right: 10px; color:white; text-decoration:none; }
 .home-header-user-menu #options a               { float: left; }
-/*.home-header-user-menu ul li:hover              { background: #2277a4;cursor: pointer;}
-.home-header-user-menu ul li:hover a            { color: white;}
-.home-header-user-menu ul li a                  { color: #9ac6e1;text-decoration: none;}*/
+
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 child menu
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#child-menu                                                                 { position:absolute; top:40px; left:0; right:0; z-index: 1; background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px; padding: 10px 0;}
+#child-menu                                                                 { position:absolute; top:40px; left:0; right:0; z-index: 1; background:#ebebeb; border-bottom:1px solid #d9d7d7; height:40px; padding: 5px 0;}
 #child-menu .shadow                                                         { position: absolute; left: 0; bottom: -7px; right: 0; height: 6px;
                                                                               background: -moz-linear-gradient(top,  rgba(0,0,0,0.08) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
                                                                               background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.08)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -102,18 +96,17 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 #child-menu-info-menu-new a:active                                          { top: 1px;position:relative;background:#196D96;}
 #child-menu-info-menu ul li span                                            { margin-left: 10px;font-size: 0.6em;font-weight: normal;}
 
-#child-menu-edit-buttonWrapper                                              { display: block; float: right; position: relative; height:50px;cursor:pointer; font-size:1.2em;}
-#child-menu-edit-buttonWrapper span                                         { padding-top:5px; text-decoration: none;position: relative;transition: all .3s;}
-#child-menu-edit-buttonWrapper span:hover                                   { color:#679bb6;}
-#child-menu-edit-buttonWrapper span:after, span:before                      { transition: all .3s;}
-#child-menu-edit-buttonWrapper #iconEdit                                    { width:22px; margin-right:5px; margin-top:7px; } 
-#child-menu-edit-buttonWrapper #text                                        { color:#1a6d97; padding-right:7px; margin-right:5px; line-height:30px; font-size:1.2em; text-decoration:none;}
+#child-menu-edit-buttonWrapper                                              { display: block; float: right; margin:4px 28px 0 0; cursor:pointer; font-size:1.1em;}
+#child-menu-edit-buttonWrapper a                                            { padding:7px 5px; }
+#child-menu-edit-buttonWrapper a:hover                                      { background:#e4e4e4;}
+#child-menu-edit-buttonWrapper .icon                                        { width:22px; padding-bottom: 5px;} 
+#child-menu-edit-buttonWrapper #text                                        { color:#1a6d97; padding-right:10px; line-height:30px; font-size:1.2em; text-decoration:none;}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 MAIN
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#main-container                                { position: absolute; left:0; right:0; top:100px; bottom:0; background:#fbfbfb; }
+#main-container                                { position: absolute; left:0; right:0; top:90px; bottom:0; background:#fbfbfb; }
 #main-tests                                    { background:#f9f9f9; width: 400px; position:absolute; left: 0; top: 0; bottom: 0; }
 
 #main-tests-search                             { margin-top: 4%;}
