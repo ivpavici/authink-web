@@ -21,7 +21,7 @@
         </div>
     }
     <div class="task-wizard-content">    
-        <div class="task-wizard-upload-container" class="clearfix">
+        <div class="task-wizard-upload-container">
             @using (Html.BeginForm("UploadPictures_SimpleTasksWithPictures", "Picture", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.HiddenFor(m => m.TaskDifficulty)
@@ -30,7 +30,9 @@
                 <div class="task-wizard-upload-info">
                     <span>@resources.UploadPictures_Simple_UploadText_1 @Model.NumberOfPictures @resources.UploadPictures_Simple_UploadText_2</span>
                 </div>
-                <input type="file" multiple="multiple" name="pictures"/>
+                <div class="inputFile">
+                    <input type="file" multiple="multiple" name="pictures"/>
+                </div>
                 <div class="task-wizard-upload-options clearfix">
                     <input type="submit" class="task-wizard-upload-save" name="Submit" value="@resources.UploadPictures_Upload" />
                 </div>

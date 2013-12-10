@@ -460,11 +460,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskWizard.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TaskWizard.hr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskWizard.hr.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\test-authink - Web Deploy.pubxml" />

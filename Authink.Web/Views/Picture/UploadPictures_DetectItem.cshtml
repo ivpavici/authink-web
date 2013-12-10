@@ -20,11 +20,11 @@
         </div>
     }
     <div class="task-wizard-content">    
-        <div class="task-wizard-upload-container" class="clearfix">
+        <div  id="uploadPictures">
             @using(Html.BeginForm("UploadPictures_DetectItem","Picture",FormMethod.Post,new {enctype="multipart/form-data"}))
             {
-                <div class="task-wizard-upload-voice-item clearfix">
-                    <div class="task-wizard-upload-voice-item-info clearfix">
+                <div class="task-wizard-upload-voice-item ">
+                    <div class="task-wizard-upload-voice-item-info">
                         <div class="task-wizard-upload-voice-item-info-correct"></div>
                         <div class="task-wizard-upload-voice-item-info-text">@resources.UploadPictures_DetectItem_Info</div>
                     </div>
@@ -32,8 +32,8 @@
                         <input type="file" name="correctPicture" />
                     </div>
                 </div>
-                <div class="task-wizard-upload-voice-item clearfix">
-                    <div class="task-wizard-upload-voice-item-info clearfix">
+                <div class="task-wizard-upload-voice-item">
+                    <div class="task-wizard-upload-voice-item-info">
                         <div class="task-wizard-upload-voice-item-info-incorrect"></div>
                         <div class="task-wizard-upload-voice-item-info-text">
                         @resources.UploadPictures_DetectItem_UploadWrong_1 @(Model.TaskDifficulty-1) @resources.UploadPictures_DetectItem_UploadWrong_2</div>
@@ -42,7 +42,7 @@
                         <input type="file" multiple="multiple" name="pictures"/>
                     </div>
                 </div>
-                <div class="task-wizard-upload-options clearfix">
+                <div class="task-wizard-upload-options">
                     <input type="submit" class="task-wizard-upload-save" name="Upload" value="@resources.UploadPictures_Upload" />
                 </div>
             }

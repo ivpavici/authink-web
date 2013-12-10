@@ -12,10 +12,10 @@
         <div class="task-wizard-progress">@resources.Omnibar_Step <span>2</span>/5</div>
     </div>
     <div class="task-wizard-content">
-        <div class="task-wizard-difficulty-container" class="clearfix">
+        <div class="task-wizard-difficulty-container clearfix">
             @foreach(var difficulty in Model.AvailableTaskDifficulties)
             {
-                <a class="task-wizard-difficulty-item" href="@Url.RouteUrl(Model.UploadPicturesRouteName,new { taskDifficulty = difficulty })">
+                <a class="task-wizard-difficulty-item newTaskItem" href="@Url.RouteUrl(Model.UploadPicturesRouteName,new { taskDifficulty = difficulty })">
                     <h2>@difficulty.ToString()</h2>
                     <span>@resources.ChooseDifficulty_Difficulty</span>
                 </a>
