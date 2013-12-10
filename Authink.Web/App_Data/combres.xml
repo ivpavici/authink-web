@@ -15,6 +15,7 @@
     
     <resourceSet name="angularJs" type="js">
       <resource path="~/App_Data/Assets/Scripts/lib/jquery-1.10.2.min.js" />
+      <resource path= "~/Scripts/Plugins/SimpleColorpicker/spectrum.js"/>
       <resource path="~/App_Data/Assets/Scripts/lib/angular.min-1.2.0-rc.2.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/angular-resource-v1.2.0-rc.3.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/angular-route-1.2.0-rc.2.min.js" />
@@ -25,6 +26,7 @@
     
     <resourceSet name="shellJs" type="js">
       <resource path="~/App_Data/Assets/Scripts/src/app.js" />
+      <resource path="~/App_Data/Assets/Scripts/src/Helpers/ui-colorpicker.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/testsRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/childrenRepository.js" />
       <resource path="~/App_Data/Assets/Scripts/src/Repositories/tasksRepository.js" />
@@ -50,6 +52,7 @@
 
     <resourceSet name="shellCss" type="css">
       <resource path="~/Assets/Style/home.css" />
+      <resource path= "~/Scripts/Plugins/SimpleColorpicker/spectrum.css"/>
       <resource path="~/Assets/Style/popUpStyles/editChild.css" />
       <resource path="~/Assets/Style/popUpStyles/editTask.css" />
       <resource path="~/Assets/Style/popUpStyles/previewTask.css" />

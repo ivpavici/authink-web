@@ -44,8 +44,7 @@
                 <div class="task-edit-picture-colors-correct clearfix">
 
                     <h1>@resources.TaskPicturesEditor_CorrectColor</h1>
-
-                    <input type='color' name='color' ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single" />
+                    <input type="color" colorpicker ng-model="picture.CorrectColor.Value" class="colorPickerHolder task-edit-picture-colors-single"/>
 
                 </div>
 
@@ -55,8 +54,7 @@
 
                     <div ng-repeat="wrongColor in picture.WrongColors">
 
-                        <input type='color' name='color' class="colorPickerHolder task-edit-picture-colors-single" ng-model="wrongColor.Value" />
-
+                        <input type="color" colorpicker class="colorPickerHolder task-edit-picture-colors-single" ng-model="wrongColor.Value"/>
                     </div>
                 </div>
             </div>
