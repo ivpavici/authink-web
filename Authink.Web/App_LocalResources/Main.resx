@@ -130,7 +130,7 @@
     <value>Add child information</value>
   </data>
   <data name="ChildDeleteConfirmationDialog_Text" xml:space="preserve">
-    <value>You are about to delete child. It cannot be restored at a later time! Continue?</value>
+    <value>You are about to delete child's profile. It cannot be restored at a later time! Do you want to continue?</value>
   </data>
   <data name="ChildDeleteConfirmationDialog_Title" xml:space="preserve">
     <value>Delete confirmation</value>
@@ -148,10 +148,10 @@
     <value>Child info edit</value>
   </data>
   <data name="ChildMenu_CreateNew" xml:space="preserve">
-    <value>Add new child</value>
+    <value>Add new child's profile</value>
   </data>
   <data name="ChildMenu_Delete" xml:space="preserve">
-    <value>Delete child</value>
+    <value>Delete profile</value>
   </data>
   <data name="ChildMenu_Edit" xml:space="preserve">
     <value>Edit profile</value>

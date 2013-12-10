@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are about to delete child. It cannot be restored at a later time! Continue?.
+        ///   Looks up a localized string similar to You are about to delete child&apos;s profile. It cannot be restored at a later time! Do you want to continue?.
         /// </summary>
         public static string ChildDeleteConfirmationDialog_Text {
             get {
@@ -151,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add new child.
+        ///   Looks up a localized string similar to Add new child&apos;s profile.
         /// </summary>
         public static string ChildMenu_CreateNew {
             get {
@@ -160,7 +160,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete child.
+        ///   Looks up a localized string similar to Delete profile.
         /// </summary>
         public static string ChildMenu_Delete {
             get {

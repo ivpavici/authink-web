@@ -130,7 +130,7 @@
     <value>Dodaj informacije o dijetetu</value>
   </data>
   <data name="ChildDeleteConfirmationDialog_Text" xml:space="preserve">
-    <value>Namjeravate obrisati dijete. Obrisano dijete se ne može vratiti. Želite li nastaviti?</value>
+    <value>Namjeravate obrisati profil djeteta. Obrisani profil više se ne može vratiti. Želite li nastaviti?</value>
   </data>
   <data name="ChildDeleteConfirmationDialog_Title" xml:space="preserve">
     <value>Potvrda brisanja</value>
@@ -148,10 +148,10 @@
     <value>Uređivanje profila</value>
   </data>
   <data name="ChildMenu_CreateNew" xml:space="preserve">
-    <value>Dodaj novo dijete</value>
+    <value>Dodaj novi profil djeteta</value>
   </data>
   <data name="ChildMenu_Delete" xml:space="preserve">
-    <value>Obriši dijete</value>
+    <value>Obriši profil</value>
   </data>
   <data name="ChildMenu_Edit" xml:space="preserve">
     <value>Uredi profil</value>
