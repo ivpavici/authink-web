@@ -219,6 +219,7 @@
     <Compile Include="Models\Sound\EditModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Assets\Scripts\lib\angular-cookies-v1.2.4.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\bootstrap.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\ui-bootstrap-tpls-0.6.0.min.js" />
     <Content Include="App_Data\Assets\Scripts\lib\angular-file-upload.min.js" />

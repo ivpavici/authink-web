@@ -10,9 +10,9 @@
 
             <div id="options"> 
                 
-                <a class="language" href="/language/change/en" target="_self">@resources.Omnibar_Language_English</a>
+                <a class="language" href="/language/change/en" target="_self" ng-class="{selected: activeLanguage === 'en'}">@resources.Omnibar_Language_English</a>
 
-                <a class="language" href="/language/change/hr" target="_self">@resources.Omnibar_Language_Croatian</a>
+                <a class="language" href="/language/change/hr" target="_self" ng-class="{selected: activeLanguage === 'hr'}">@resources.Omnibar_Language_Croatian</a>
 
                 <a ng-click="signOut()" id="logout" title="Logout"><img src="/Assets/Images/Home/options-logout.png" alt="" /></a> 
 

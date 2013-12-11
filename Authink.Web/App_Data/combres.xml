@@ -19,6 +19,7 @@
       <resource path="~/App_Data/Assets/Scripts/lib/angular.min-1.2.0-rc.2.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/angular-resource-v1.2.0-rc.3.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/angular-route-1.2.0-rc.2.min.js" />
+      <resource path="~/App_Data/Assets/Scripts/lib/angular-cookies-v1.2.4.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/ui-bootstrap-0.6.0.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/ui-bootstrap-tpls-0.6.0.min.js" />
       <resource path="~/App_Data/Assets/Scripts/lib/angular-file-upload.min.js" />
