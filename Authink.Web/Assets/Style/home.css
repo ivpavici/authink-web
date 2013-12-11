@@ -178,7 +178,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 .main-test-edit-option-save:hover                                   { background: #feaa26;}
 #main-test-description                                              { }
 #main-test-description-short                                        { }
-#main-test-description p                                            { font-size: 1.5em; line-height: 1.5em; color: #666; padding: 5px 20px 20px 20px}
+#main-test-description .description                                 { font-size: 1.5em; line-height: 1.5em; color: #666; padding: 5px 20px 20px 20px}
 #main-test-edit-box                                                 { position: absolute; left: 80px; right:20px; padding-top:15px;}
 #main-test-edit-box h3                                              { font-weight: bold; font-size: 1.8em; color:#fe9b26; padding: 15px 0 5px 0;}
 
@@ -197,7 +197,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 .main-test-task                                                     { display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
 
 .mainTestTaskHeading                                                { height:25px; background:#F5F5F5; font-weight:bold; font-size:1.3em;}
-.mainTestTaskHeading .heading                                       { float:left; padding:4px 8px; color:#1a6d97; text-decoration:none; text-overflow: ellipsis; width: 330px; 
+.mainTestTaskHeading .heading                                       { float:left; padding:4px 8px; color:#1a6d97; text-decoration:none; text-overflow: ellipsis; width: 320px; 
                                                                       white-space: nowrap; overflow: hidden;}
 
 
