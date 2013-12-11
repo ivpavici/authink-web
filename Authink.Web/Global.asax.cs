@@ -36,7 +36,15 @@ namespace Authink.Web
                             ? Request.Cookies["AuLanguage"].Value
                             : "en";
 
-            var culture  = new CultureInfo(language);
+            if(Request.Cookies["AuLanguage"] == null)
+            {
+                var langCookie = new HttpCookie("AuLanguage", "en");
+                langCookie.Expires = DateTime.Now.AddMonths(12);
+
+                Response.AppendCookie(langCookie);
+            }
+
+            var culture = new CultureInfo(language);
 
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture   = CultureInfo.CreateSpecificCulture(culture.Name);

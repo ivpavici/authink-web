@@ -18,6 +18,7 @@ namespace Authink.Data.Api.Service
                     db.Users
                         .Single(user => user.Username == user_userName)
                         .Children
+                        .Where(child => !child.IsHidden)
                         .ToList()
                         .Select(mappers::Child.FromDatabaseData       )
                         .ToList();

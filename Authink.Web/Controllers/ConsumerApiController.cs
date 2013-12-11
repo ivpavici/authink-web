@@ -47,11 +47,8 @@ namespace Authink.Web.Controllers
             {
                 throw new Exception();
             }
-            return
-                apiAdapter.GetChildren
-                (
-                    user_userName: user_userName
-                );
+
+            return apiAdapter.GetChildren(user_userName: user_userName);
         }
     }
 }
