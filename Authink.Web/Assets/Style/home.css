@@ -41,26 +41,26 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
                                                 HEADER
 -------------------------------------------    ----------------------------------------------------------------------------------------------------------------------------------------*/
 
-#home-header                                    { position:absolute; top:0; left:0; right:0; background: #1a6d97;height: 40px;}
-#home-header-logo                               { display: block; float: left; height: 40px; }
-#home-header-logo img                           { height:26px; padding:2px 20px 0 20px;}
-#home-header-logo:hover                         { cursor: pointer;background: #2277a4}
+#home-header                                        { position:absolute; top:0; left:0; right:0; background: #1a6d97;height: 40px;}
+#home-header-logo                                   { display: block; float: left; height: 40px; }
+#home-header-logo img                               { height:26px; padding:2px 20px 0 20px;}
+#home-header-logo:hover                             { cursor: pointer;background: #2277a4}
 
-.home-header-user                               { float: right;}
-.home-header-user img                           { margin-bottom:10px; }
-.home-header-user-menu                          { float: right;height: 40px; line-height: 40px;color: #9ac6e1;font-size: 1.6em; width:310px;}
-.home-header-user-menu #options-icon            { opacity:0.6; width:40px; margin-top:-4px;}
-.home-header-user-menu #options-icon:hover      { cursor: pointer; opacity:1;}
-.home-header-user-menu #options-icon:active     { }
-.home-header-user-menu #options                 { float:right; background:#207faf; height:inherit; width:auto; margin-top:0;}
-.home-header-user-menu #options .language       { color:#a3c5d5; padding: 0 10px; }
-.home-header-user-menu #options .language:hover { color:white; background:#2488bb;}
-.home-header-user-menu #options #logout         { cursor:pointer; opacity:0.6; height:inherit;}
-.home-header-user-menu #options #logout img     { margin-top:-3px;}
-.home-header-user-menu #options #logout:hover   { opacity:1; background:#2488bb;}
+.home-header-user                                   { float: right;}
+.home-header-user img                               { margin-bottom:10px; }
+.home-header-user-menu                              { float: right;height: 40px; line-height: 40px;color: #9ac6e1;font-size: 1.6em; width:310px;}
+.home-header-user-menu #options-icon                { opacity:0.6; width:40px; margin-top:-4px;}
+.home-header-user-menu #options-icon:hover          { cursor: pointer; opacity:1;}
+.home-header-user-menu #options                     { float:right; background:#207faf; height:inherit; width:auto; margin-top:0;}
+.home-header-user-menu #options .language           { color:#a3c5d5; padding: 0 10px; }
+.home-header-user-menu #options .language:hover     { color:white; background:#2488bb;}
+.home-header-user-menu #options .language.selected  { color:white;}
+.home-header-user-menu #options #logout             { cursor:pointer; opacity:0.6; height:inherit;}
+.home-header-user-menu #options #logout img         { margin-top:-3px;}
+.home-header-user-menu #options #logout:hover       { opacity:1; background:#2488bb;}
 
-.home-header-user-menu a                        { display:block; float:right; padding-right: 10px; color:white; text-decoration:none; }
-.home-header-user-menu #options a               { float: left; }
+.home-header-user-menu a                            { display:block; float:right; padding-right: 10px; color:white; text-decoration:none; }
+.home-header-user-menu #options a                   { float: left; }
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
