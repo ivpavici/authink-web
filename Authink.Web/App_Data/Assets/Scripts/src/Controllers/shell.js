@@ -1,9 +1,11 @@
 ﻿'use strict';
 
-authink.controller('shellController', ['$rootScope', '$modal', 'application', function ($rootScope, $modal, application) {
+authink.controller('shellController', ['$rootScope', '$cookies', '$modal', 'application', function ($rootScope, $cookies, $modal, application) {
 
     $rootScope.currentModalInstances = [];
     $rootScope.isTestEditModeOn      = false;
+
+    $rootScope.activeLanguage = $cookies.AuLanguage;
 
     $rootScope.$on('testsList:testCreatingStarted', function (event, childId) {
 
