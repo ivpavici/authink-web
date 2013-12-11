@@ -4,7 +4,7 @@
 
 #test-create-form                                           { padding: 20px;margin-left: 2%;width: 90%;}
 .test-create-form-label                                     { font-size: 18px;}
-input.test-create-form-textbox                              { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.8em; font-weight: bold; color: #444;}
+input.test-create-form-textbox                              { width: 100%;padding:10px 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.8em; font-weight: bold; color: #444;}
 .test-create-form-textarea-long                             { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 200px;}
 .test-create-form-textarea-short                            { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 150px;}
 
@@ -18,6 +18,6 @@ input.test-create-form-textbox                              { width: 100%;paddin
 .test-delete-confirmation-dialog-header #title              { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
 .test-delete-confirmation-dialog p                          { font-size: 1.8em;padding: 18px 25px;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);color: #666;}
 .test-delete-confirmation-dialog .actions                   { padding:15px 0 25px;text-align:center;}
-.test-delete-confirmation-dialog .actions .bottun           { display:inline-block;color:white;position:relative;height: 33px;background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
+.test-delete-confirmation-dialog .actions .bottun           { display:inline-block;color:white;position:relative;height: 33px; border:0; background: #fe9b26;font-weight: bold;text-transform: uppercase;font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
 .test-delete-confirmation-dialog .actions .bottun:hover     { background:#feaa26;}
 .test-delete-confirmation-dialog .actions .bottun:active    { background:#e18520;}

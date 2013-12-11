@@ -6,7 +6,7 @@
 .edit-task-popup-header                                 { width: 100%; background-color:  #fe9b26; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
 .edit-task-popup-header h2                              { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
 
-.task-edit-container                                    { display: block; width: 700px; height: 500px; padding: 20px; overflow: scroll; overflow-x: hidden; }
+.task-edit-container                                    { display: block; width: 700px; height: 500px; padding: 20px; overflow: auto; overflow-x: hidden; }
 
 .task-edit-header                                       { }
 .task-edit-header-left                                  { float: left; width: 64px; height: 64px; }
@@ -34,7 +34,7 @@
 .colorPickerHolder                                      {  }
 
 .task-edit-options                                      { text-align: center; display: block; margin: 10px auto 10px auto; }
-.task-edit-options .task-edit-save                      { border: none; border-bottom: 5px solid #e18520; background:  #fe9b26; color: white; font-weight: bold; text-transform: uppercase; font-size: 16px; padding: 6px 14px; }
+.task-edit-options .task-edit-save                      { border: none; background:  #fe9b26; color: white; font-weight: bold; text-transform: uppercase; padding: 6px 14px; }
 .task-edit-options .task-edit-voice-command-preview     { font-size: 1.5em; padding: 5px 5px 5px 5px; line-height: 1.5em; text-decoration: none; }
 .task-edit-options .task-edit-save:hover                { cursor: pointer; color: white; background: #e18520; }
 

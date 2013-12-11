@@ -32,4 +32,4 @@ input[type="url"],
 input[type="search"], 
 input[type="tel"], 
 input[type="color"], 
-.uneditable-input                               { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+.uneditable-input                               { border-radius:0; -moz-border-radius:0; -webkit-border-radius:0; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
