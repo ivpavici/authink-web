@@ -15,7 +15,7 @@ namespace Authink.Web.Controllers
                 return new HttpNotFoundResult();
             }
 
-            var langCookie     = new HttpCookie("authink-language", lang);
+            var langCookie     = new HttpCookie("AuLanguage", lang);
             langCookie.Expires = DateTime.Now.AddMonths(12);  
             
             Response.AppendCookie(langCookie);

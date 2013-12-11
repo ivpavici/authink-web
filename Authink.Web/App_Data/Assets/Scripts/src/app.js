@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource', 'angularFileUpload'])
+var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource', 'ngCookies', 'angularFileUpload'])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         
         $routeProvider.when('/', {
