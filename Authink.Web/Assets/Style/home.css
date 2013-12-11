@@ -137,14 +137,15 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 .main-tests-list-item                                               { color: #888;}
 .main-tests-list-item-image                                         { display: block; float: left; width: 50px; height: 50px;}
 .main-tests-list-item-info                                          { width: auto; padding: 6px 0 8px; border-bottom: 1px solid #dadada}
-.main-tests-list-item-info h1                                       { padding: 0 0px 0px 20px; font-size: 1.5em; font-weight:600; color: #444; margin-bottom: 2px;}
-.main-tests-list-item-info span                                     { padding: 0px 20px 0 20px; line-height:1.1; display:block;font-size: 1.4em;}
-.main-tests-list-item:hover                                         { cursor: pointer; background:#ffffff;}
-.main-tests-list-item:hover > .main-tests-list-item-info            { background:#f5f5f5; color:#444;}
-.main-tests-list-item:hover > .main-tests-list-item-info h1         { background:#f5f5f5; color:#444;}
-.main-tests-list-item.ui-active                                     { background:#FE9B26; color:white; cursor: default; }
-.main-tests-list-item.ui-active > .main-tests-list-item-info        { border-bottom: 1px solid #dadada; background:#FE9B26; color:white;}
-.main-tests-list-item.ui-active > .main-tests-list-item-info h1     { background:#FE9B26; color:white;}
+.main-tests-list-item-info .heading                                 { padding: 0 0px 0px 20px; font-size: 1.5em; font-weight:600; color: #444; margin-bottom: 2px;
+                                                                      text-overflow: ellipsis; width: 350px; white-space: nowrap; overflow: hidden;}
+.main-tests-list-item-info span                                             { padding: 0px 20px 1px 20px; line-height:1.1em; display:block;font-size: 1.4em; max-height:4.3em; overflow:hidden;}
+.main-tests-list-item:hover                                                 { cursor: pointer; background:#ffffff;}
+.main-tests-list-item:hover > .main-tests-list-item-info                    { background:#f5f5f5; color:#444;}
+.main-tests-list-item:hover > .main-tests-list-item-info .heading           { background:#f5f5f5; color:#444;}
+.main-tests-list-item.ui-active                                             { background:#FE9B26; color:white; cursor: default; }
+.main-tests-list-item.ui-active > .main-tests-list-item-info                { border-bottom: 1px solid #dadada; background:#FE9B26; color:white;}
+.main-tests-list-item.ui-active > .main-tests-list-item-info .heading       { background:#FE9B26; color:white;}
 
 #main-content                                                       { position:absolute; top:0; left:400px; right:0; bottom:0; overflow:hidden;}
 
@@ -194,15 +195,15 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 .main-test-task-wrap                                                { }
 .main-test-task                                                     { display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
-/*.main-test-task-options                                             { display: block !important;}*/
 
-.mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#F5F5F5; font-weight:bold; font-size:1.3em;}
-.mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
+.mainTestTaskHeading                                                { height:25px; background:#F5F5F5; font-weight:bold; font-size:1.3em;}
+.mainTestTaskHeading .heading                                       { float:left; padding:4px 8px; color:#1a6d97; text-decoration:none; text-overflow: ellipsis; width: 330px; 
+                                                                      white-space: nowrap; overflow: hidden;}
 
 
 .main-test-task-left                                                { width: 100px;float: left;}
 .main-test-task-left img                                            { display: block;width: 80px; height: 80px;margin: 0 auto;}
-.main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding-right:4px; color: #1a6d97;}
+.main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding:5px 4px 0 0; color: #1a6d97;}
 .main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
 .main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}
 #main-test-tasks                                                    { }
@@ -211,7 +212,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 .main-test-task-right                                               { width: 280px; height: 75px; float: left; padding-top: 0.8em; overflow: hidden;}
 .main-test-task-right span                                          { font-size: 1.4em; color: #888; line-height:1.3em;}
-.main-test-task-options                                             { padding-right:20px; display: none; position: absolute; bottom: 5px; right: 0px;}
+.main-test-task-options                                             { padding-right:20px; position: absolute; bottom: 5px; right: 0px;}
 .main-test-task-options span                                        { margin-top:10px; color:#888; font-size:1.2em; }
 .main-test-task-options ul                                          { }
 .main-test-task-options ul li                                       { float: right;}
