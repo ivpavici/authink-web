@@ -30,9 +30,9 @@
             <div class="switch_test main-tests-list-item clearfix" ng-repeat="test in testListApi.tests |filter: seachTerm" ng-click="selectTest(test)" ng-class="{'ui-active': test.Id == testListApi.displayedTest.Id}">
                 <div class="main-tests-list-item-info">
 
-                    <h1>{{test.Name}}</h1>
+                    <div class="heading">{{test.Name}}</div>
 
-                    <span>{{test.ShortDescription}}</span>
+                    <span>{{test.ShortDescription}}{{test.ShortDescription}}{{test.ShortDescription}}</span>
 
                 </div>
 
