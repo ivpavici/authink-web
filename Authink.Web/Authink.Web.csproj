@@ -258,6 +258,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
     <Content Include="Assets\Images\Home\cancelIcon.png" />
     <Content Include="Assets\Images\Home\cancelIcon_bckg.png" />
+    <Content Include="Assets\Images\Home\child-button-delete.png" />
     <Content Include="Assets\Images\Home\deleteTest.png" />
     <Content Include="Assets\Images\Home\omnibar-gear.png" />
     <Content Include="Assets\Images\Home\options-logout.png" />

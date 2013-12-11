@@ -84,7 +84,7 @@ authink.factory('testListApi', ['testsRepository', function (testsRepository) {
 
         setChildId: function (childId) {
 
-            this.childId = childId;
+            this.childId = new Number(childId);
         },
         
         refreshTests: function () {
