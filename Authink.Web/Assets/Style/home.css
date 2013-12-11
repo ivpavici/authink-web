@@ -153,7 +153,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 #main-test .loading                                                 { position:absolute; top: 15px; left: 0; right: 0; text-align: center; }
 
 #main-test-info                                                     { }
-#main-test-heading                                                  { min-height: 40px; padding: 10px 0 0 20px; }
+#main-test-heading                                                  { min-height: 40px; }
 #main-test-heading h1                                               { display: inline; color:#fe9b26; font-weight: bold; font-size: 2.8em; }
 
 
@@ -166,19 +166,19 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 
 
-#main-test-edit-options                                             { height: 40px;margin-right: 1.4%;}
-#main-test-edit-buttons                                             { width: 90%;display: block;padding-right: 50px;}
+#main-test-edit-options                                             { height: 40px; margin:20px 21px 0 0;}
+#main-test-edit-buttons                                             { display: block; padding-right: 50px;}
 #main-test-edit-options input                                       { display: block; padding: 7px 15px 8px 15px;margin: 0 5px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a                                           { display: block; padding: 7px 15px 8px 15px;float: right;text-align: center; text-transform: uppercase;color: white;font-size: 1.4em; font-weight: bold;text-decoration: none;}
 #main-test-edit-options a:hover                                     { cursor: pointer;}
-.main-test-edit-option-delete                                       { background: #fe9b26; border: none;margin: 0 120px 0 5px;}
+.main-test-edit-option-delete                                       { background: #fe9b26; border: none;margin: 0 0 5px;}
 .main-test-edit-option-delete:hover                                 { background: #feaa26;}
 .main-test-edit-option-save                                         { background: #fe9b26;border: none;margin: 0 5px;}
 .main-test-edit-option-save:hover                                   { background: #feaa26;}
 #main-test-description                                              { }
 #main-test-description-short                                        { }
 #main-test-description p                                            { font-size: 1.5em; line-height: 1.5em; color: #666; padding: 5px 20px 20px 20px}
-#main-test-edit-box                                                 { margin-bottom: 30px; width:800px; margin-left:50px;}
+#main-test-edit-box                                                 { position: absolute; left: 80px; right:20px; padding-top:15px;}
 #main-test-edit-box h3                                              { font-weight: bold; font-size: 1.8em; color:#fe9b26; padding: 15px 0 5px 0;}
 
 #test-edit-add-new-task                                             { background:#1A6D97; color:white; border:0;}
@@ -194,7 +194,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 .main-test-task-wrap                                                { }
 .main-test-task                                                     { display: block;width: 400px;float: left;padding: 10px 20px 35px;margin: 0 auto;position: relative;}
-.main-test-task-options                                             { display: block !important;}
+/*.main-test-task-options                                             { display: block !important;}*/
 
 .mainTestTaskHeading                                                { margin-bottom:5px; padding: 6px 2px 6px 5px; background:#F5F5F5; font-weight:bold; font-size:1.3em;}
 .mainTestTaskHeading a                                              { color:#1a6d97; text-decoration:none;}
@@ -222,5 +222,5 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 #main-test-description-short p                                      { font-size: 1.6em;line-height: 1.6em;}
 #main-test-heading input                                            { border-radius:0; border: #e0e0e0 1px solid}
 .test-edit-textbox-input                                            { display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
-.test-edit-textarea-input                                           { border-radius:0; display: block;width: 90%;padding: 12px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
+.test-edit-textarea-input                                           { border-radius:0; display: block;width: 90%;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.4em;height: 100px;resize: none;outline: none;}
 
