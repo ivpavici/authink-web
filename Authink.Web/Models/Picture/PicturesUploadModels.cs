@@ -16,7 +16,7 @@ namespace Authink.Web.Models.Picture
         private static IDictionary<int, NumberOfPicturesAndColorsMapping> KnownNumberOfPicturesAndWrongColorsMappings = new Dictionary<int, NumberOfPicturesAndColorsMapping>
         {
             {1,new NumberOfPicturesAndColorsMapping(1, 1)}, {2, new NumberOfPicturesAndColorsMapping(2, 2)}, {3, new NumberOfPicturesAndColorsMapping(3, 2)},
-            {4,new NumberOfPicturesAndColorsMapping(2, 3)}, {5, new NumberOfPicturesAndColorsMapping(2, 4)}, {6, new NumberOfPicturesAndColorsMapping(2, 6)}, 
+            {4,new NumberOfPicturesAndColorsMapping(2, 3)}, {5, new NumberOfPicturesAndColorsMapping(2, 4)}, {6, new NumberOfPicturesAndColorsMapping(2, 5)}, 
         };
 
         public NumberOfPicturesAndColorsMapping NumberOfPicturesAndWrongColorsMapping
