@@ -1,10 +1,10 @@
 ﻿@using resources = Resources.Main;
 
-<div id="test-crate-popup">
+<div id="test-create-popup">
 
     <form ng-submit="createTest()">
 
-        <div id="test-crate-popup-header">
+        <div id="test-create-popup-header">
 
             <div id="title">
                 
@@ -35,9 +35,12 @@
                 <textarea placeholder="@resources.TestAdd_LongDescPlaceholder" ng-model="test.longDescription" class="test-create-form-textarea-long" required></textarea>
 
             </div>
-
-            <input type="submit" value="@resources.TestAdd_Save" class="test-create-form-button btn" />
-
+            
+            <div class="actions clearfix">
+                <input type="submit" value="@resources.TestAdd_Save" class="create-test-button btn" />
+                
+                <a class="create-test-button btn" href="#" ng-click="closeModal()">@resources.Popup_Cancel</a>
+            </div>
         </div>
 
     </form>

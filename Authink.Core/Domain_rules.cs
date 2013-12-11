@@ -10,7 +10,7 @@ namespace Authink.Core.Domain.Rules
     }
     public static class Children
     {
-        public static string DefaultProfilePictureUrl = "Content/Images/Children/default-profile-picture.png";
+        public static string DefaultProfilePictureUrl = "http://authink.blob.core.windows.net/content/Images/Children/1/3491161c-85d8-4abf-b399-20311e566708.png";
     }
     public static class Task
     {

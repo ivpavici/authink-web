@@ -35,7 +35,11 @@
 
             </div>
 
-            <input type="submit" class="btn" value="@resources.ChildEdit_Save" id="children-edit-form-button" />
+            <div class="actions clearfix">
+                <input type="submit" class="children-edit-form-button btn" value="@resources.ChildEdit_Save" />
+                
+                <a class="children-edit-form-button btn" href="#" ng-click="closeModal()">@resources.Popup_Cancel</a>
+            </div>
         </div>
 
     </form>

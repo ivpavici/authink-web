@@ -8,7 +8,7 @@
 .child-form-field                                           { width: 100%;padding: 8px;background: white;border: #e0e0e0 1px solid;font-size: 18px;}
 
 .child-form-create .actions                                 { padding:15px 0 25px 0; text-align:center;}
-.child-form-create .actions .child-dashboard-button         { display: block;float: right; margin: 5px 5px 10px 5px;border: none;border-bottom: 5px solid #e18520;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;}
+.child-form-create .actions .child-dashboard-button         { display: inline-block; position:relative;  margin:0 5px 0 5px; border: none; border-bottom: 5px solid #e18520;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;}
 .child-form-create .actions .child-dashboard-button:hover   { cursor: pointer;background: #e18520;}
 .child-form-create .actions .child-dashboard-button:active  { position: relative;top: 1px;}
 

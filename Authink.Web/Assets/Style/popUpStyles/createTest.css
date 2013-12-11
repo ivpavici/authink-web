@@ -1,18 +1,17 @@
-﻿#test-crate-popup                                           { width: 850px;}
+﻿#test-create-popup                                          { width: 850px;}
+#test-create-popup-header                                   { width: 100%;background-color:  #fe9b26;margin-bottom: 2%; -webkit-border-top-left-radius: 6px;-webkit-border-top-right-radius: 6px;-moz-border-radius-topleft: 6px;-moz-border-radius-topright: 6px;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+#test-create-popup-header #title                            { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
+
 #test-create-form                                           { padding: 20px;margin-left: 2%;width: 90%;}
 .test-create-form-label                                     { font-size: 18px;}
-#test-crate-popup-header                                    { width: 100%;background-color:  #fe9b26;margin-bottom: 2%; -webkit-border-top-left-radius: 6px;-webkit-border-top-right-radius: 6px;-moz-border-radius-topleft: 6px;-moz-border-radius-topright: 6px;border-top-left-radius: 6px;border-top-right-radius: 6px;}
-#test-crate-popup-header #title                             { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
-.test-create-form-button                                    { float: right;border: none;background:  #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-top: 15px;margin-right:-13px;margin-bottom: 1%;}
-.test-create-form-button:hover                              { cursor: pointer;background: #FEB645;color: white;}
-.test-create-form-button:active                             { cursor: pointer;background: #FEB645;color: white;}
 input.test-create-form-textbox                              { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.8em; font-weight: bold; color: #444;}
 .test-create-form-textarea-long                             { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 200px;}
 .test-create-form-textarea-short                            { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 150px;}
-.hide                                                       { display: none;}
-.selected                                                   { background-color: rgb(209, 208, 202);color: white;}
-.task:hover                                                 { background-color: rgb(209, 208, 202);color: white;cursor: pointer;}
-.task:active                                                { background-color: rgb(209, 208, 202);}
+
+.actions                                                    { padding:15px 0 10px 0; text-align:center;}
+.actions .create-test-button                                { display: inline-block; position:relative; margin:0 5px 0 5px;border: none;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-bottom: 1%;}
+.actions .create-test-button:hover                          { cursor: pointer;background: #FEB645;color: white;}
+.actions .create-test-button:active                         { cursor: pointer;background: #FEB645;color: white;}
 
 .test-delete-confirmation-dialog                            { width: 500px;min-height: 150px;}
 .test-delete-confirmation-dialog-header                     { width: 100%;background-color: #fe9b26;margin-bottom: 2%;}

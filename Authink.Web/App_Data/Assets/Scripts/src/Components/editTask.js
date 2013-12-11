@@ -79,6 +79,11 @@ authink.directive('editTask', function() {
                     }
                 });
             };
+            
+            $scope.closeModal = function () {
+
+                $scope.$emit('closeModal');
+            };
 
             $scope.playVoiceCommand = function () {
 
