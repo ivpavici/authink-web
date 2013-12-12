@@ -19,6 +19,7 @@ namespace Authink.Web.Controllers
 {
     using Authink.Web.Controllers.Task.Helpers;
     using Authink.Core.Fx;
+using NLog;
 
     [Authorize]
     public partial class TaskController: Controller
@@ -38,7 +39,8 @@ namespace Authink.Web.Controllers
             Func<InputMetaDataModel>    inputMetaDataModelFactory,
             Func<FeedbackModel>         feedbackModelFactory,
 
-            HttpContextBase   httpContextBase
+            HttpContextBase   httpContextBase,
+            Logger            logger
         )
         {
             this.taskCommands        = taskCommands;
@@ -55,6 +57,7 @@ namespace Authink.Web.Controllers
             this.feedbackModelFactory         = feedbackModelFactory;
 
             this.httpContextBase = httpContextBase;
+            this.logger          = logger;
         }
 
         private readonly ITaskCommands        taskCommands;
@@ -71,6 +74,7 @@ namespace Authink.Web.Controllers
         private readonly Func<FeedbackModel>         feedbackModelFactory;
 
         private HttpContextBase httpContextBase;
+        private Logger          logger;
 
         private static IDictionary<string, KnownTaskTypes> KnownTaskTypesMappings = new Dictionary<string, KnownTaskTypes>()
         {
@@ -91,6 +95,8 @@ namespace Authink.Web.Controllers
             {
                 return new HttpNotFoundResult();
             }
+
+            logger.Info("{0} started creating task in test with Id = {1} ", httpContextBase.User.Identity.Name, testId);
 
             var model       = chooseTypeModelFactory();
             model.TaskTypes = KnownTaskTypesMappings;
@@ -124,7 +130,8 @@ namespace Authink.Web.Controllers
         {
             if (httpContextBase.Session["TaskKey"] == null)
             {
-                return new HttpNotFoundResult();
+                logger.Warn("TaskKey session variable expired for user {0} ", httpContextBase.User.Identity.Name);
+                return RedirectToRoute("Shell");
             }
 
             var model = inputMetaDataModelFactory();
@@ -146,7 +153,8 @@ namespace Authink.Web.Controllers
 
             if(httpContextBase.Session["TestId"] == null)
             {
-                return new HttpNotFoundResult();
+                logger.Warn("TestId session variable expired for user {0}", httpContextBase.User.Identity.Name);
+                return RedirectToRoute("Shell");
             }
 
             if(sound == null && model.IsVoiceCommandRequired)
@@ -163,57 +171,72 @@ namespace Authink.Web.Controllers
             var testId    = Convert.ToInt32(httpContextBase.Session["TestId"]);
             var newTaskId = 0;
 
-            if 
-            (
-                model.TaskKey == buru::Task.Keys.VoiceCommands    || model.TaskKey == buru::Task.Keys.DetectDifferentItems ||  model.TaskKey == buru::Task.Keys.PairSameItems ||
-                model.TaskKey == buru::Task.Keys.ContinueSequence || model.TaskKey == buru::Task.Keys.PairHalves
-            ) 
+            try
             {
-                newTaskId = CreateTask_SimpleTasksWithPictures
+                if 
                 (
-                    taskKey:     model.TaskKey,
-                    title:       model.Title,
-                    description: model.Description,
-                    userId:      loginServices.GetSignedInUser().Id,
-                    testId:      testId
-                );
-            }else if( model.TaskKey == buru::Task.Keys.DetectColors)
+                    model.TaskKey == buru::Task.Keys.VoiceCommands    || model.TaskKey == buru::Task.Keys.DetectDifferentItems ||  model.TaskKey == buru::Task.Keys.PairSameItems ||
+                    model.TaskKey == buru::Task.Keys.ContinueSequence || model.TaskKey == buru::Task.Keys.PairHalves
+                ) 
+                {
+                    newTaskId = CreateTask_SimpleTasksWithPictures
+                    (
+                        taskKey:     model.TaskKey,
+                        title:       model.Title,
+                        description: model.Description,
+                        userId:      loginServices.GetSignedInUser().Id,
+                        testId:      testId
+                    );
+                }else if( model.TaskKey == buru::Task.Keys.DetectColors)
+                {
+                    newTaskId = CreateTask_DetectColors
+                    (
+                        taskKey:     model.TaskKey,
+                        title:       model.Title,
+                        description: model.Description,
+                        userId:      loginServices.GetSignedInUser().Id,
+                        testId:      testId
+                    );
+                }else if ( model.TaskKey==buru::Task.Keys.OrderBySize)
+                {
+                    newTaskId = CreateTask_OrderBySize
+                    (
+                        taskKey:     model.TaskKey,
+                        title:       model.Title,
+                        description: model.Description,
+                        userId:      loginServices.GetSignedInUser().Id,
+                        testId:      testId
+                    );
+                }
+            }
+            catch (Exception ex)
             {
-                newTaskId = CreateTask_DetectColors
-                (
-                    taskKey:     model.TaskKey,
-                    title:       model.Title,
-                    description: model.Description,
-                    userId:      loginServices.GetSignedInUser().Id,
-                    testId:      testId
-                );
-            }else if ( model.TaskKey==buru::Task.Keys.OrderBySize)
-            {
-                newTaskId = CreateTask_OrderBySize
-                (
-                    taskKey:     model.TaskKey,
-                    title:       model.Title,
-                    description: model.Description,
-                    userId:      loginServices.GetSignedInUser().Id,
-                    testId:      testId
-                );
+                logger.Error("Creation of task failed for user {0}",httpContextBase.User.Identity.Name, ex);
+                return View(model);
             }
 
-            if(sound != null && newTaskId != 0)
+            try
             {
-                var soundUrl = soundServices.Save
-                (
-                    soundName:    sound.FileName,
-                    soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
-                    relatedId:    newTaskId,
-                    baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
-                );
+                if(sound != null && newTaskId != 0)
+                {
+                    var soundUrl = soundServices.Save
+                    (
+                        soundName:    sound.FileName,
+                        soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
+                        relatedId:    newTaskId,
+                        baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
+                    );
 
-                var soundId = soundCommands.Create(soundUrl, sound.FileName, "ins");
+                    var soundId = soundCommands.Create(soundUrl, sound.FileName, "ins");
 
-                soundCommands.AttachSoundToTask(soundId, newTaskId);
+                    soundCommands.AttachSoundToTask(soundId, newTaskId);
+                }
             }
-
+            catch (Exception ex)
+            {
+                logger.Error("Creation of sound failed for user {0}", httpContextBase.User.Identity.Name, ex);
+            }
+            
             return RedirectToRoute
             (
                 routeName:"Feedback"
@@ -223,7 +246,8 @@ namespace Authink.Web.Controllers
         {
             if(HttpContext.Session["ImplementedTaskId"]==null)
             {
-                return new HttpNotFoundResult();
+                logger.Warn("ImplementedTaskId session variable expired for user {0}", httpContextBase.User.Identity.Name);
+                return RedirectToRoute("Shell");
             }
 
             var model    = feedbackModelFactory();
@@ -259,6 +283,7 @@ namespace Authink.Web.Controllers
         {
             if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
+                logger.Warn("Simple task with pictures creation: Pictures or TaskDifficulty session variables expired for user {0}", httpContextBase.User.Identity.Name);
                 return 0;
             }
 
@@ -299,6 +324,7 @@ namespace Authink.Web.Controllers
         {
             if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["Colors"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
+                logger.Warn("Detect colors task creation: Pictures, Colors or TaskDifficulty session variables expired for user {0}", httpContextBase.User.Identity.Name);
                 return 0;
             }
 
@@ -359,6 +385,7 @@ namespace Authink.Web.Controllers
         {
             if (httpContextBase.Session["Pictures"] == null || httpContextBase.Session["TaskDifficulty"] == null)
             {
+                logger.Warn("Order by size task creation: Picture or TaskDifficulty session variables expired for user {0} ", httpContextBase.User.Identity.Name);
                 return 0;
             }
 

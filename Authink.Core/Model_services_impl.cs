@@ -13,6 +13,7 @@ using buru     = Authink.Core.Domain.Rules;
 using database = Authink.Data;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using NLog;
 
 namespace Authink.Core.Model.Services.Impl
 {
@@ -131,20 +132,24 @@ namespace Authink.Core.Model.Services.Impl
     public class UserAccessRightsImpl : IUserAccessRights
     {
         public UserAccessRightsImpl
-            (
-            ILoginServices loginServices
-            )
+        (
+            ILoginServices loginServices,
+            Logger         logger
+        )
         {
             this.loginServices = loginServices;
+            this.logger        = logger;
         }
 
         private readonly ILoginServices loginServices;
+        private Logger                  logger;
 
         public bool CanCreateTask(int testId)
         {
             var currentUser = loginServices.GetSignedInUser();
             if(currentUser == null)
             {
+                logger.Warn("Anonymous user tried to create task in test with Id = {0} ", testId);
                 return false;
             }
 
@@ -162,6 +167,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to access task with Id = {0} ", taskId);
                 return false;
             }
 
@@ -179,6 +185,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to edit task with Id = {0}", taskId);
                 return false;
             }
 
@@ -196,6 +203,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to add new test to child with Id = {0} ", childId);
                 return false;
             }
 
@@ -212,6 +220,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to access test with Id = {0} ", testId);
                 return false;
             }
 
@@ -228,6 +237,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to edit test with Id = {0}", testId);
                 return false;
             }
 
@@ -254,6 +264,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to access child with Id = {0}", childId);
                 return false;
             }
 
@@ -270,6 +281,7 @@ namespace Authink.Core.Model.Services.Impl
             var currentUser = loginServices.GetSignedInUser();
             if (currentUser == null)
             {
+                logger.Warn("Anonymous user tried to edit child with Id = {0} ", childId);
                 return false;
             }
 

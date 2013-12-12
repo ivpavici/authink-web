@@ -10,34 +10,49 @@ using Authink.Data.Api.Service;
 
 using apiEnt = Authink.Data.Api.App.Entities;
 using buru   = Authink.Core.Domain.Rules;
+using NLog;
 
 namespace Authink.Web.Controllers
 {
     public class ConsumerApiController : ApiController
     {
-        public ConsumerApiController()
+        public ConsumerApiController
+        (
+            AuthinkApiAdapter apiAdapter,
+            Logger            logger
+        )
         {
-            apiAdapter = new AuthinkApiAdapter();
-
+            this.apiAdapter = apiAdapter;
+            this.logger     = logger;
         }
 
         private readonly AuthinkApiAdapter apiAdapter;
+        private Logger                     logger;
 
         [HttpPost] public HttpResponseMessage Login(apiEnt::User.Details userData)
         {
             var authencationToken = Request.Headers.GetValues("AuthenticationToken").Single();
             if (authencationToken != buru::Api.LoginToken)
             {
+                logger.Error("ConsumerApi: Wrong login authentication token: {0}", authencationToken);
                 throw new Exception();
             }
-            return new HttpResponseMessage
-            (
-                statusCode: apiAdapter.Login_User(
-                                                    username: userData.Username,
-                                                    password: userData.Password
-                                                   ) ? HttpStatusCode.OK 
-                                                     : HttpStatusCode.NotFound
-            );
+
+            try 
+	        {	        
+	        	var statusCode = apiAdapter.Login_User(
+                                                        username: userData.Username,
+                                                        password: userData.Password
+                                                      ) ? HttpStatusCode.OK 
+                                                        : HttpStatusCode.NotFound;
+
+                return new HttpResponseMessage(statusCode);
+	        }
+	        catch (Exception ex)
+	        {
+	        	logger.Error("ConsumerApi: login failed", ex);
+	        	return new HttpResponseMessage(HttpStatusCode.NotFound);
+	        }
         }
 
         [HttpGet] public IEnumerable<apiEnt::Child.Details> GetChildren_forUser(string user_userName)
@@ -45,10 +60,21 @@ namespace Authink.Web.Controllers
             var authencationToken = Request.Headers.GetValues("AuthenticationToken").Single();
             if (authencationToken != buru::Api.ChildrenDataToken)
             {
+                logger.Error("ConsumerApi: Wrong login authentication token:{0}", authencationToken);
                 throw new Exception();
             }
 
-            return apiAdapter.GetChildren(user_userName: user_userName);
+            try
+            {
+                var children = apiAdapter.GetChildren(user_userName: user_userName);
+                return children;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("ConsumerApi: failed to deliver children for user with username = {0} ", user_userName, ex);
+
+                return new List<apiEnt::Child.Details>();
+            }
         }
     }
 }

@@ -43,6 +43,9 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
                     if (responseData.StatusCode === 200) {
 
                         $scope.isSignUp = false;
+                    } else if(responseData.StatusCode === 417){
+
+                        $scope.signUpErrorMessage = "You need to fill all fields!";
                     } else {
 
                         $scope.signUpErrorMessage = "Username or email are already in use. Please choose another one.";

@@ -18,6 +18,7 @@ using ent  = Authink.Core.Domain.Entities;
 
 using System.Threading.Tasks;
 using Authink.Core.Fx;
+using NLog;
 
 namespace Authink.Web.Controllers
 {
@@ -29,7 +30,8 @@ namespace Authink.Web.Controllers
             IPictureCommands     pictureCommands,
             IPictureQueries      pictureQueries,
             IPictureServices     pictureServices,
-            IChildCommands       childrenCommands
+            IChildCommands       childrenCommands,
+            Logger               logger
         )
         {
             this.userAccessRights    = userAccessRights;
@@ -37,6 +39,7 @@ namespace Authink.Web.Controllers
             this.pictureQueries      = pictureQueries;
             this.pictureServices     = pictureServices;
             this.childrenCommands    = childrenCommands;
+            this.logger              = logger;
         }
 
         private readonly IUserAccessRights    userAccessRights;
@@ -44,6 +47,8 @@ namespace Authink.Web.Controllers
         private readonly IPictureQueries      pictureQueries;
         private readonly IPictureServices     pictureServices;
         private readonly IChildCommands       childrenCommands;
+
+        private Logger logger;
 
         [System.Web.Http.HttpGet]
         public IEnumerable<ent::Picture> GetAll_forTaskGameplay(int taskId)
@@ -64,26 +69,35 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var memoryStreamProvider = new MultipartMemoryStreamProvider();
+            try
+            {
+                var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
-
-            var file     = memoryStreamProvider.Contents.First();
-            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
-            var fileData = await file.ReadAsByteArrayAsync();
-
-            var savePath =  pictureServices.Save
-            (
-                pictureName:       fileName, 
-                pictureContent:    fileData,
-                relatedId:         taskId,
-                baseSavePath:      buru::Picture.Task.DefaultSavePath, 
-                resizeQueryString: buru::Picture.Task.DefaultResizeQuerystring
-            );
-
-            pictureCommands.Update(pictureId, savePath);
-
-            return pictureQueries.GetSingle_whereId(pictureId);
+                await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
+                
+                var file     = memoryStreamProvider.Contents.First();
+                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileData = await file.ReadAsByteArrayAsync();
+                
+                var savePath =  pictureServices.Save
+                (
+                    pictureName:       fileName, 
+                    pictureContent:    fileData,
+                    relatedId:         taskId,
+                    baseSavePath:      buru::Picture.Task.DefaultSavePath, 
+                    resizeQueryString: buru::Picture.Task.DefaultResizeQuerystring
+                );
+                
+                pictureCommands.Update(pictureId, savePath);
+                
+                return pictureQueries.GetSingle_whereId(pictureId);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Update failed for picture with Id = {0}", pictureId, ex);
+                throw;
+            }
+           
         }
 
         [System.Web.Http.HttpPost]
@@ -94,26 +108,33 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var memoryStreamProvider = new MultipartMemoryStreamProvider();
+            try
+            {
+                var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
-            await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
+                await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
-            var file     = memoryStreamProvider.Contents.First();
-            var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
-            var fileData = await file.ReadAsByteArrayAsync();
+                var file     = memoryStreamProvider.Contents.First();
+                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileData = await file.ReadAsByteArrayAsync();
 
-            var savePath = pictureServices.Save
-            (
-                pictureName:       fileName,
-                pictureContent:    fileData,
-                relatedId:         childId,
-                baseSavePath:      buru::Picture.Children.DefaultSavePath,
-                resizeQueryString: buru::Picture.Children.DefaultResizeQuerystring
-            );
+                var savePath = pictureServices.Save
+                (
+                    pictureName:       fileName,
+                    pictureContent:    fileData,
+                    relatedId:         childId,
+                    baseSavePath:      buru::Picture.Children.DefaultSavePath,
+                    resizeQueryString: buru::Picture.Children.DefaultResizeQuerystring
+                );
 
-            childrenCommands.UpdatePicture(childId, savePath);
-
-            return new { pictureUrl = savePath };
+                childrenCommands.UpdatePicture(childId, savePath);
+                return new { pictureUrl = savePath };
+            }
+            catch(Exception ex)
+            {
+                logger.Error("Save profile picture for child with Id = {0} failed", childId, ex);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
         [System.Web.Http.HttpPost]
         public HttpStatusCodeResult UpdateColorsForPicture(UpdateColorsForPictureModel model)
@@ -122,10 +143,17 @@ namespace Authink.Web.Controllers
             {
                 pictureCommands.Update_color(color.Id, color.Value);
             }
+            try
+            {
+                pictureCommands.Update_color(model.CorrectColor.Id, model.CorrectColor.Value);
 
-            pictureCommands.Update_color(model.CorrectColor.Id, model.CorrectColor.Value);
-
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Update colors failed", ex);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
