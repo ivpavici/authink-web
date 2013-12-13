@@ -11,6 +11,8 @@ using Authink.Web.Controllers.TasksApi.Models;
 using ent = Authink.Core.Domain.Entities;
 using Authink.Core.Model.Services;
 using System;
+using NLog;
+using System.Web;
 
 namespace Authink.Web.Controllers
 {
@@ -20,17 +22,22 @@ namespace Authink.Web.Controllers
         (
             ITaskQueries      taskQueries,
             ITaskCommands     taskCommands,
-            IUserAccessRights userAccessRights
+            IUserAccessRights userAccessRights,
+
+            Logger logger
         )
         {
             this.taskQueries      = taskQueries;
             this.taskCommands     = taskCommands;
             this.userAccessRights = userAccessRights;
+            this.logger           = logger;
         }
 
         private readonly ITaskQueries      taskQueries;
         private readonly ITaskCommands     taskCommands;
         private readonly IUserAccessRights userAccessRights;
+
+        private Logger logger;
 
         public ent::Task.LongDetails GetSingle_whereId(int taskId)
         {

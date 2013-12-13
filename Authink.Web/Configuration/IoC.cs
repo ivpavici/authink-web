@@ -12,6 +12,7 @@ namespace Authink.Web.DependencyResolution {
     using Authink.Core.Model.Commands.Impl;
     using Authink.Core.Model.Services;
     using Authink.Core.Model.Services.Impl;
+    using NLog;
 
     public static class IoC {
         public static IContainer Initialize() {
@@ -27,6 +28,7 @@ namespace Authink.Web.DependencyResolution {
                             x.For<List<HttpPostedFileBase>>().Use(() => new List<HttpPostedFileBase>());
                             x.For<List<ColorData>>().Use(() => new List<ColorData>());
                             x.For<List<string>>().Use(() => new List<string>());
+                            x.For<Logger>().Use(context => LogManager.GetLogger("AuThink"));
                         });
 
             return ObjectFactory.Container;
