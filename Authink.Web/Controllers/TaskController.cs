@@ -254,6 +254,8 @@ using NLog;
             var taskId   = Convert.ToInt32(HttpContext.Session["ImplementedTaskId"]);
             model.TaskId = taskId;
 
+            logger.Info("{0} successfully created task with Id = {1} ", httpContextBase.User.Identity.Name, taskId);
+
             ResetWizardSessionState();
             return View
             (

@@ -14,6 +14,7 @@
         <img ng-src="{{child.profilePictureUrl}}" alt="{{child.firstName}}" />
 
     </div>
+    <div ng-if="isServerError"> @resources.ChildEdit_Error</div>
     <form enctype="multipart/form-data" ng-submit="editChild()">
 
         <div id="children-edit-form">
@@ -23,7 +24,7 @@
 
                 <label class="child-info-field-label">@resources.ChildEdit_FirstName</label>
 
-                <input type="text" class="child-info-input-field" ng-model="child.firstName" />
+                <input type="text" class="child-info-input-field" ng-model="child.firstName" required />
 
             </div>
 
@@ -31,7 +32,7 @@
 
                 <label class="child-info-field-label">@resources.ChildEdit_LastName</label>
 
-                <input type="text" class="child-info-input-field" ng-model="child.lastName" />
+                <input type="text" class="child-info-input-field" ng-model="child.lastName" required />
 
             </div>
 

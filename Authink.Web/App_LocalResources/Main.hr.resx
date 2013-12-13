@@ -318,4 +318,13 @@
   <data name="Popup_Cancel" xml:space="preserve">
     <value>Odustani</value>
   </data>
+  <data name="ChildAdd_ServerError" xml:space="preserve">
+    <value>Dogodila se pogreška, provjerite da li su sva polja unesena.</value>
+  </data>
+  <data name="ChildDeleteConfirmationDialog_Error" xml:space="preserve">
+    <value>Došlo je do pogreške kod brisanja profila djeteta.</value>
+  </data>
+  <data name="ChildEdit_Error" xml:space="preserve">
+    <value>Dogodila se pogreška, provjerite da li su sva polja unesena.</value>
+  </data>
 </root>

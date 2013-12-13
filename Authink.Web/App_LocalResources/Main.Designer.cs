@@ -88,11 +88,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error. Make sure all fields are filled..
+        /// </summary>
+        public static string ChildAdd_ServerError {
+            get {
+                return ResourceManager.GetString("ChildAdd_ServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add child information.
         /// </summary>
         public static string ChildAdd_Title {
             get {
                 return ResourceManager.GetString("ChildAdd_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error deleting child profile..
+        /// </summary>
+        public static string ChildDeleteConfirmationDialog_Error {
+            get {
+                return ResourceManager.GetString("ChildDeleteConfirmationDialog_Error", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace Resources {
         public static string ChildDeleteConfirmationDialog_Title {
             get {
                 return ResourceManager.GetString("ChildDeleteConfirmationDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error updating child profile. Make sure all fields are filled..
+        /// </summary>
+        public static string ChildEdit_Error {
+            get {
+                return ResourceManager.GetString("ChildEdit_Error", resourceCulture);
             }
         }
         

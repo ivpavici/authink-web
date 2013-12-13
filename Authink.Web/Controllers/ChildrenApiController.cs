@@ -6,6 +6,8 @@ using Authink.Core.Model.Services;
 using Authink.Web.Controllers.ChildrenApi.Model;
 using ent = Authink.Core.Domain.Entities;
 using System;
+using System.ComponentModel.DataAnnotations;
+using NLog;
 
 namespace Authink.Web.Controllers
 {
@@ -17,7 +19,9 @@ namespace Authink.Web.Controllers
             IChildQueries        childQueries,
             IChildCommands       childCommands,
             IPictureServices     pictureServices,
-            IUserAccessRights    userAccessRights
+            IUserAccessRights    userAccessRights,
+
+            Logger logger
         )
         {
             this.loginServices       = loginServices;
@@ -25,6 +29,8 @@ namespace Authink.Web.Controllers
             this.childCommands       = childCommands;
             this.pictureServices     = pictureServices;
             this.userAccessRights    = userAccessRights;
+
+            this.logger = logger;
         }
 
         private readonly ILoginServices       loginServices;
@@ -32,6 +38,8 @@ namespace Authink.Web.Controllers
         private readonly IChildCommands       childCommands;
         private readonly IPictureServices     pictureServices;
         private readonly IUserAccessRights    userAccessRights;
+
+        private Logger logger;
         
         [HttpGet]
         public IEnumerable<ent::Child.ShortDetails> GetAllForUser_shortDetails()
@@ -58,29 +66,52 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var childId = childCommands.Create
-            (
-                firstname: model.FirstName,
-                lastname:  model.LastName
-            );
+            if(!ModelState.IsValid)
+            {
+                throw new Exception();
+            }
 
-            return childQueries.GetSingle_whereId(childId);
+            try
+            {
+                var childId = childCommands.Create
+                (
+                    firstname: model.FirstName,
+                    lastname:  model.LastName
+                );
+
+                return childQueries.GetSingle_whereId(childId);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to create new child", ex);
+                throw;
+            }
         }
 
         [HttpPost]
-        public void Edit(EditModel model)
+        public System.Web.Mvc.HttpStatusCodeResult Edit(EditModel model)
         {
             if (!userAccessRights.CanEditChild(model.ChildId))
             {
-                throw new UnauthorizedAccessException();
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
-            childCommands.Update
-            (
-                id:                model.ChildId,
-                firstname:         model.Firstname,
-                lastname:          model.Lastname
-            );
+            try
+            {
+                childCommands.Update
+                (
+                    id:                model.ChildId,
+                    firstname:         model.Firstname,
+                    lastname:          model.Lastname
+                );
+
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to edit child with Id = {0}", model.ChildId, ex);
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
         }
 
         [HttpDelete]
@@ -88,12 +119,21 @@ namespace Authink.Web.Controllers
         {
             if (!userAccessRights.CanEditChild(childId))
             {
-                throw new UnauthorizedAccessException();
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
-            childCommands.Delete(id: childId);
+            try
+            {
+                childCommands.Delete(id: childId);
 
-            return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to remove child with Id = {0}", childId, ex);
+
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
         }
     }
 }
@@ -102,7 +142,9 @@ namespace Authink.Web.Controllers.ChildrenApi.Model
 {
     public class CreateModel
     {
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName  { get; set; }
     }
 
@@ -110,7 +152,9 @@ namespace Authink.Web.Controllers.ChildrenApi.Model
     {
         public int    ChildId           { get; set; }
         public string ProfilePictureUrl { get; set; }
+        [Required]
         public string Firstname         { get; set; }
+        [Required]
         public string Lastname          { get; set; }
     }
 }

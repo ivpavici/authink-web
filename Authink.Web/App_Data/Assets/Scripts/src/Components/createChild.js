@@ -9,6 +9,9 @@ authink.directive('createChild', function() {
         
         controller: ['$scope', 'childrenRepository', function ($scope, childrenRepository) {
 
+            $scope.child         = {};
+            $scope.isServerError = false;
+
             $scope.createChild = function() {
                 
                 var child = { firstName: $scope.child.firstName, lastName: $scope.child.lastName };
@@ -20,7 +23,12 @@ authink.directive('createChild', function() {
 
                     $scope.$emit('childMenu:childSelected', newChild.Id);
 
+                    reserScopeState();
+
                     $scope.$emit('closeModal');
+                }, function (response) {
+
+                    $scope.isServerError = true;
                 });
             };
 
@@ -28,6 +36,14 @@ authink.directive('createChild', function() {
 
                 $scope.$emit('closeModal');
             };
+
+            var reserScopeState = function () {
+
+                $scope.child = {};
+                $scope.isServerError = false;
+            };
+
+            reserScopeState();
         }]
     };
 });
