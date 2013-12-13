@@ -76,7 +76,7 @@ authink.directive('childMenu', function () {
                     childrenRepository.remove($scope.childMenuApi.displayedChild)
                     .then(function (response) {
                 
-                        if (response === 200) {
+                        if (response.StatusCode === 200) {
 
                             $scope.$emit('childMenu:childDeleted');
                             modal.close();
