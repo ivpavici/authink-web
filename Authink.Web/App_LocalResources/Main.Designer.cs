@@ -475,6 +475,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error creating new test. Make sure all fields are filled..
+        /// </summary>
+        public static string TestAdd_Error {
+            get {
+                return ResourceManager.GetString("TestAdd_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detailed description of new test.
         /// </summary>
         public static string TestAdd_LongDescPlaceholder {
@@ -520,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error deleting test..
+        /// </summary>
+        public static string TestConfirmationDialog_Error {
+            get {
+                return ResourceManager.GetString("TestConfirmationDialog_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are about to delete this test. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TestConfirmationDialog_Text {
@@ -543,6 +561,15 @@ namespace Resources {
         public static string TestEdit_Delete {
             get {
                 return ResourceManager.GetString("TestEdit_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error editing test. Make sure all fields are filled..
+        /// </summary>
+        public static string TestEdit_Error {
+            get {
+                return ResourceManager.GetString("TestEdit_Error", resourceCulture);
             }
         }
         

@@ -327,4 +327,13 @@
   <data name="ChildEdit_Error" xml:space="preserve">
     <value>There was an error updating child profile. Make sure all fields are filled.</value>
   </data>
+  <data name="TestAdd_Error" xml:space="preserve">
+    <value>There was an error creating new test. Make sure all fields are filled.</value>
+  </data>
+  <data name="TestEdit_Error" xml:space="preserve">
+    <value>There was an error editing test. Make sure all fields are filled.</value>
+  </data>
+  <data name="TestConfirmationDialog_Error" xml:space="preserve">
+    <value>There was an error deleting test.</value>
+  </data>
 </root>
