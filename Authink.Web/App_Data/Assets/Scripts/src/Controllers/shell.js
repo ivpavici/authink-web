@@ -53,6 +53,7 @@ authink.controller('shellController', ['$rootScope', '$cookies', '$modal', 'appl
         application.testListApi.refreshTests();
 
         application.testPreviewApi.reset();
+
     });
     $rootScope.$on('editTest:editCanceled', function (event) {
     

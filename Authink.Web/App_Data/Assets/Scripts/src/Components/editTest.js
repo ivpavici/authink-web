@@ -48,22 +48,6 @@ authink.directive('editTest', function() {
                 });
             };
 
-
-            $scope.removeTest = function() {
-
-                testsRepository.remove($scope.test.Id)
-                .then(function (response) {
-
-                    if (response.StatusCode === 200){
-
-                        $scope.$emit('editTest:testDeleted');
-                    } else {
-
-                        $scope.isServerError = true;
-                    }
-                });
-            };
-
             $scope.cancelEdit = function () {
 
                 if (areChangedMade()) {
