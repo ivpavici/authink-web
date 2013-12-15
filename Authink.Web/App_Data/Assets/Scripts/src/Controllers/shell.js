@@ -50,6 +50,8 @@ authink.controller('shellController', ['$rootScope', '$cookies', '$modal', 'appl
 
         $rootScope.isTestEditModeOn = false;
 
+        application.testListApi.removeDisplayedTest();
+
         application.testListApi.refreshTests();
 
         application.testPreviewApi.reset();
