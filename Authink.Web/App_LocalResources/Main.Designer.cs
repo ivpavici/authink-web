@@ -367,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error editing task. Make sure all fields are filled..
+        /// </summary>
+        public static string TaskEdit_Error {
+            get {
+                return ResourceManager.GetString("TaskEdit_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string TaskEdit_Name {

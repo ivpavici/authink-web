@@ -336,4 +336,7 @@
   <data name="TestConfirmationDialog_Error" xml:space="preserve">
     <value>There was an error deleting test.</value>
   </data>
+  <data name="TaskEdit_Error" xml:space="preserve">
+    <value>There was an error editing task. Make sure all fields are filled.</value>
+  </data>
 </root>

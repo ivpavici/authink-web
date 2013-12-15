@@ -336,4 +336,7 @@
   <data name="TestConfirmationDialog_Error" xml:space="preserve">
     <value>Došlo je do pogreške kod brisanja testa.</value>
   </data>
+  <data name="TaskEdit_Error" xml:space="preserve">
+    <value>Dogodila se pogreška kod izmjene zadatka, provjerite da li su sva polja unesena.</value>
+  </data>
 </root>

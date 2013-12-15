@@ -96,6 +96,11 @@ namespace Authink.Web.Controllers
                 return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
+            if(!ModelState.IsValid)
+            {
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
+            }
+
             try
             {
                 childCommands.Update

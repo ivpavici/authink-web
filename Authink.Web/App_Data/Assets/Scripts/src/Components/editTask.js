@@ -33,14 +33,16 @@ authink.directive('editTask', function() {
                 tasksRepository.update($scope.task)
                 .then(function (response) {
 
-                    if(response.StatusCode === 200) {
+                    if (response.StatusCode === 200) {
+
+                        resetScopeState();
 
                         $scope.$emit('editTask:taskEditEnded');
 
                         $scope.$emit('closeModal');
                     } else {
                         
-                        //Add validation
+                        $scope.isServerError = true;
                     }
                 });
             };
@@ -111,6 +113,13 @@ authink.directive('editTask', function() {
 
                 $scope.isVoiceCommandCollapsed = !$scope.isVoiceCommandCollapsed;
             }
+
+            var resetScopeState = function () {
+
+                $scope.isServerError = false;
+            };
+
+            resetScopeState();
         }]
     };
 });

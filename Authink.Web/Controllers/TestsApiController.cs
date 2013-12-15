@@ -101,6 +101,11 @@ namespace Authink.Web.Controllers
                 return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
+            if (!ModelState.IsValid)
+            {
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
+            }
+
             try
             {
                 testCommands.Update
@@ -157,8 +162,11 @@ namespace Authink.Web.Controllers.TestsApi.Model
     public class UpdateModel
     {
         public int    Id               { get; set; }
+        [Required]
         public string Name             { get; set; }
+        [Required]
         public string ShortDescription { get; set; }
+        [Required]
         public string LongDescription  { get; set; }
     }
 }

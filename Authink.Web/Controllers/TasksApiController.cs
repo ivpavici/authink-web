@@ -13,6 +13,7 @@ using Authink.Core.Model.Services;
 using System;
 using NLog;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Authink.Web.Controllers
 {
@@ -64,17 +65,30 @@ namespace Authink.Web.Controllers
         {
             if (!userAccessRights.CanEditTask(model.Id))
             {
-                throw new UnauthorizedAccessException();
+                return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
             }
 
-            taskCommands.Update
-            (
-                id:          model.Id,
-                description: model.Description,
-                name:        model.Name
-            );
+            if(!ModelState.IsValid)
+            {
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
+            }
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            try
+            {
+                taskCommands.Update
+                (
+                    id:          model.Id,
+                    description: model.Description,
+                    name:        model.Name
+                );
+
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to update task with Id = {0}", model.Id, ex);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
 
         [System.Web.Http.HttpDelete]
@@ -82,12 +96,20 @@ namespace Authink.Web.Controllers
         {
             if(!userAccessRights.CanEditTask(taskId))
             {
-                throw new UnauthorizedAccessException();
+                return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed);
             }
 
-            taskCommands.Delete(taskId);
+            try
+            {
+                taskCommands.Delete(taskId);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to remove task with Id = {0}", taskId, ex);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
@@ -97,7 +119,9 @@ namespace Authink.Web.Controllers.TasksApi.Models
     public class EditTaskModel
     {
         public int    Id          { get; set; }
+        [Required]
         public string Name        { get; set; }
+        [Required]
         public string Description { get; set; }
     }
 }

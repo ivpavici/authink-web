@@ -65,6 +65,8 @@ authink.controller('shellController', ['$rootScope', '$cookies', '$modal', 'appl
     $rootScope.$on('editTask:taskEditEnded',     function (event) {
 
         application.testTasksListApi.refreshTasks();
+
+        application.taskPreviewApi.refresh();
     });
     $rootScope.$on('editTask:taskForEditLoaded', function (event, task) {
 
