@@ -10,7 +10,9 @@ authink.directive('createTest', function () {
         controller: ['$scope', 'testsRepository', 'childrenRepository', 'createTestApi', function ($scope, testsRepository, childrenRepository, createTestApi) {
 
             $scope.createTestApi = createTestApi;
-            
+            $scope.test          = {};
+            $scope.isServerError = false;
+
             $scope.$watch('createTestApi.childId', function (childId) {
 
                 if (childId) {
@@ -36,8 +38,13 @@ authink.directive('createTest', function () {
                         
                         $scope.$emit('testsList:testSelected', newTest);
                         
+                        resetScopeState();
+
                         $scope.$emit('closeModal');
                     }
+                }, function(response) {
+
+                    $scope.isServerError = true;
                 });
             };
 
@@ -45,6 +52,14 @@ authink.directive('createTest', function () {
 
                 $scope.$emit('closeModal');
             }
+
+            var resetScopeState = function(){
+
+                $scope.test          = {};
+                $scope.isServerError = false;
+            };
+
+            resetScopeState();
         }]
     };
 });

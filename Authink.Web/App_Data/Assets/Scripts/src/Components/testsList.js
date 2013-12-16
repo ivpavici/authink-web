@@ -16,10 +16,10 @@ authink.directive('testsList', function () {
             $scope.$watch('testListApi.childId', function (childId) {
                 
                 if (childId) {
-
                     $scope.isLoading = true;
 
-                    testsRepository.getAllTestsForChild_shortDetails(childId).then(function (tests) {
+                    testsRepository.getAllTestsForChild_shortDetails(childId)
+                    .then(function (tests) {
 
                         $scope.isLoading         = false;
                         $scope.testListApi.tests = tests;

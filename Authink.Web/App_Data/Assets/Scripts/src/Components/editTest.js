@@ -9,7 +9,7 @@ authink.directive('editTest', function() {
         
         controller: ['$scope', '$modal', 'editTestApi', 'testsRepository', function ($scope, $modal, editTestApi, testsRepository) {
 
-            $scope.editTestApi = editTestApi;
+            $scope.editTestApi   = editTestApi;
 
             $scope.$watch('editTestApi.testToEdit', function (testToEdit) {
                 
@@ -35,17 +35,16 @@ authink.directive('editTest', function() {
                 testsRepository.edit($scope.editableTest)
                 .then(function (response) {
 
-                    $scope.$emit('editTest:testEditEnded', $scope.editableTest);
-                });
-            };
+                    if (response.StatusCode === 200) {
 
+                        $scope.$emit('editTest:testEditEnded', $scope.editableTest);
 
-            $scope.removeTest = function() {
+                        resetState();
 
-                testsRepository.remove($scope.test.Id)
-                .then(function (response) {
+                    } else {
 
-                    $scope.$emit('editTest:testDeleted');
+                        $scope.isServerError = true;
+                    }
                 });
             };
 
@@ -79,6 +78,8 @@ authink.directive('editTest', function() {
                     };
                 } else {
 
+                    resetState();
+
                     $scope.$emit('editTest:editCanceled');
                 }
             };
@@ -93,11 +94,25 @@ authink.directive('editTest', function() {
 
                 $scope.confirm = function () {
 
-                    modal.close();
-                    $scope.removeTest();
+                  testsRepository.remove($scope.test.Id)
+                  .then(function (response) {
+
+                    if (response.StatusCode === 200) {
+
+                        $scope.$emit('editTest:testDeleted');
+
+                        resetState();
+
+                        modal.close();
+                    } else {
+
+                        $scope.isServerError = true;
+                    }});
                 };
 
                 $scope.cancel = function () {
+
+                    resetState();
 
                     modal.dismiss('cancel');
                 };
@@ -116,6 +131,7 @@ authink.directive('editTest', function() {
                 $scope.editTestApi.testToEdit = null;
                 $scope.editableTest           = null;
                 $scope.originalTest           = null;
+                $scope.isServerError          = false;
             }
 
             resetState();

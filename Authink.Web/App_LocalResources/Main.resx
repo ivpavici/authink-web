@@ -318,4 +318,25 @@
   <data name="Popup_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ChildAdd_ServerError" xml:space="preserve">
+    <value>There was an error. Make sure all fields are filled.</value>
+  </data>
+  <data name="ChildDeleteConfirmationDialog_Error" xml:space="preserve">
+    <value>There was an error deleting child profile.</value>
+  </data>
+  <data name="ChildEdit_Error" xml:space="preserve">
+    <value>There was an error updating child profile. Make sure all fields are filled.</value>
+  </data>
+  <data name="TestAdd_Error" xml:space="preserve">
+    <value>There was an error creating new test. Make sure all fields are filled.</value>
+  </data>
+  <data name="TestEdit_Error" xml:space="preserve">
+    <value>There was an error editing test. Make sure all fields are filled.</value>
+  </data>
+  <data name="TestConfirmationDialog_Error" xml:space="preserve">
+    <value>There was an error deleting test.</value>
+  </data>
+  <data name="TaskEdit_Error" xml:space="preserve">
+    <value>There was an error editing task. Make sure all fields are filled.</value>
+  </data>
 </root>

@@ -74,10 +74,16 @@ authink.directive('childMenu', function () {
                 $scope.removeAndExit = function () {
                 
                     childrenRepository.remove($scope.childMenuApi.displayedChild)
-                    .then(function () {
+                    .then(function (response) {
                 
-                        $scope.$emit('childMenu:childDeleted');
-                        modal.close();
+                        if (response.StatusCode === 200) {
+
+                            $scope.$emit('childMenu:childDeleted');
+                            modal.close();
+                        } else {
+
+                            $scope.isServerError = true;
+                        }
                     });
                 };
                 
@@ -90,11 +96,15 @@ authink.directive('childMenu', function () {
                 
                     modal.close();
                 };
+
+                $scope.isServerError = false;
             };
 
             var resetState = function () {
 
                 $scope.childMenuApi.reset();
+
+                $scope.isServerError = false;
 
                 childrenRepository.getAllForUser_shortDetails()
                    .then(function (children) {

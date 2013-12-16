@@ -12,10 +12,16 @@ authink.directive('taskPreview', function() {
 
             $scope.taskPreviewApi = taskPreviewApi;
             
-            tasksRepository.getSingle_whereId($scope.taskPreviewApi.taskId)
-            .then(function (task) {
+            $scope.$watch('taskPreviewApi.taskId', function (taskId) {
 
-                $scope.task = task;
+                if (taskId) {
+
+                    tasksRepository.getSingle_whereId($scope.taskPreviewApi.taskId)
+                    .then(function (task) {
+
+                        $scope.task = task;
+                    });
+                }
             });
 
             $scope.editTask = function () {
@@ -39,6 +45,11 @@ authink.factory('taskPreviewApi', function() {
 
     return {
         
-        taskId: null
+        taskId: null,
+
+        refresh: function(){
+
+            this.taskId = new Number(this.taskId);
+        }
     };
 });

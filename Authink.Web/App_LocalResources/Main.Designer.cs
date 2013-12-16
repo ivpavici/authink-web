@@ -88,11 +88,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error. Make sure all fields are filled..
+        /// </summary>
+        public static string ChildAdd_ServerError {
+            get {
+                return ResourceManager.GetString("ChildAdd_ServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add child information.
         /// </summary>
         public static string ChildAdd_Title {
             get {
                 return ResourceManager.GetString("ChildAdd_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error deleting child profile..
+        /// </summary>
+        public static string ChildDeleteConfirmationDialog_Error {
+            get {
+                return ResourceManager.GetString("ChildDeleteConfirmationDialog_Error", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace Resources {
         public static string ChildDeleteConfirmationDialog_Title {
             get {
                 return ResourceManager.GetString("ChildDeleteConfirmationDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error updating child profile. Make sure all fields are filled..
+        /// </summary>
+        public static string ChildEdit_Error {
+            get {
+                return ResourceManager.GetString("ChildEdit_Error", resourceCulture);
             }
         }
         
@@ -340,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error editing task. Make sure all fields are filled..
+        /// </summary>
+        public static string TaskEdit_Error {
+            get {
+                return ResourceManager.GetString("TaskEdit_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string TaskEdit_Name {
@@ -448,6 +484,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error creating new test. Make sure all fields are filled..
+        /// </summary>
+        public static string TestAdd_Error {
+            get {
+                return ResourceManager.GetString("TestAdd_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detailed description of new test.
         /// </summary>
         public static string TestAdd_LongDescPlaceholder {
@@ -493,6 +538,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error deleting test..
+        /// </summary>
+        public static string TestConfirmationDialog_Error {
+            get {
+                return ResourceManager.GetString("TestConfirmationDialog_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are about to delete this test. It cannot be restored at a later time! Continue?.
         /// </summary>
         public static string TestConfirmationDialog_Text {
@@ -516,6 +570,15 @@ namespace Resources {
         public static string TestEdit_Delete {
             get {
                 return ResourceManager.GetString("TestEdit_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error editing test. Make sure all fields are filled..
+        /// </summary>
+        public static string TestEdit_Error {
+            get {
+                return ResourceManager.GetString("TestEdit_Error", resourceCulture);
             }
         }
         

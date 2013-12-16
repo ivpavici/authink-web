@@ -10,7 +10,8 @@ authink.directive('editChild', function () {
         controller: ['$scope', 'childrenRepository', 'editChildApi', 'picturesRepository', function ($scope, childrenRepository, editChildApi, picturesRepository) {
 
             $scope.editChildApi = editChildApi;
-            
+            $scope.isServerError = false;
+
             $scope.$watch('editChildApi.child', function (child) {
 
                 if (child) {
@@ -53,9 +54,20 @@ authink.directive('editChild', function () {
                 childrenRepository.edit(child)
                 .then(function (response) {
 
-                    $scope.$emit('editChild:childEditEnded', response.childId);
-                    
-                    $scope.$emit('closeModal');
+                    if (response.StatusCode === 200) {
+
+                        $scope.$emit('editChild:childEditEnded', $scope.child.id);
+
+                        resetScopeState();
+
+                        $scope.$emit('closeModal');
+                    } else {
+
+                        $scope.isServerError = true;
+                    }
+                }, function (data) {
+
+                    $scope.isServerError = true;
                 });
             };
 
@@ -63,6 +75,13 @@ authink.directive('editChild', function () {
 
                 $scope.$emit('closeModal');
             };
+
+            var resetScopeState = function () {
+
+                $scope.isServerError = false;
+            };
+
+            resetScopeState();
         }]
     };
 });

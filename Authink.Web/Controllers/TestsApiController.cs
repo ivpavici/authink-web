@@ -6,6 +6,8 @@ using Authink.Core.Model.Services;
 using Authink.Web.Controllers.TestsApi.Model;
 using ent = Authink.Core.Domain.Entities;
 using System;
+using System.ComponentModel.DataAnnotations;
+using NLog;
 
 namespace Authink.Web.Controllers
 {
@@ -16,19 +18,25 @@ namespace Authink.Web.Controllers
             ITestQueries      testQueries,
             ITestCommands     testCommands,
             ILoginServices    loginServices,
-            IUserAccessRights userAccessRights
+            IUserAccessRights userAccessRights,
+
+            Logger logger
         )
         {
             this.testQueries      = testQueries;
             this.testCommands     = testCommands;
             this.loginServices    = loginServices;
             this.userAccessRights = userAccessRights;
+
+            this.logger = logger;
         }
 
         private readonly ITestQueries      testQueries;
         private readonly ITestCommands     testCommands;
         private readonly ILoginServices    loginServices;
         private readonly IUserAccessRights userAccessRights;
+
+        private Logger logger;
 
         [HttpGet]
         public IEnumerable<ent::Test.ShortDetails> GetAllTestsForChild_shortDetails(int childId)
@@ -60,44 +68,80 @@ namespace Authink.Web.Controllers
                 throw new UnauthorizedAccessException();
             }
 
-            var testId = testCommands.Create
-            (
-                name:             model.Name,
-                shortDescription: model.ShortDescription,
-                longDescription:  model.LongDescription,
-                userId:           loginServices.GetSignedInUser().Id,
-                childId:          model.ChildId
-            );
+            if(!ModelState.IsValid)
+            {
+                throw new UnauthorizedAccessException();
+            }
 
-            return testQueries.GetSingle_ShortDetails_WhereId(testId);
+            try
+            {
+                var testId = testCommands.Create
+                (
+                    name:             model.Name,
+                    shortDescription: model.ShortDescription,
+                    longDescription:  model.LongDescription,
+                    userId:           loginServices.GetSignedInUser().Id,
+                    childId:          model.ChildId
+                );
+
+                return testQueries.GetSingle_ShortDetails_WhereId(testId);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("There was an error creating test", ex);
+                throw;
+            }
         }
 
         [HttpPost]
-        public void Edit(UpdateModel model)
+        public System.Web.Mvc.HttpStatusCodeResult Edit(UpdateModel model)
         {
             if (!userAccessRights.CanEditTest(model.Id))
             {
-                throw new UnauthorizedAccessException();
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
-            testCommands.Update
-            (
-                id:               model.Id,
-                name:             model.Name,
-                shortDescription: model.ShortDescription,
-                longDescription:  model.LongDescription
-            );
+            if (!ModelState.IsValid)
+            {
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
+            }
+
+            try
+            {
+                testCommands.Update
+                (
+                    id:               model.Id,
+                    name:             model.Name,
+                    shortDescription: model.ShortDescription,
+                    longDescription:  model.LongDescription
+                );
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("There was an error editing test with Id = {0}", model.Id, ex);
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            }
         }
 
         [HttpDelete]
-        public void Delete(int testId)
+        public System.Web.Mvc.HttpStatusCodeResult Delete(int testId)
         {
             if (!userAccessRights.CanEditTest(testId))
             {
-                throw new UnauthorizedAccessException();
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.ExpectationFailed);
             }
 
-            testCommands.Delete(testId);
+            try
+            {
+                testCommands.Delete(testId);
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("There was an error deleting  test with Id = {0}", testId, ex);
+                return new System.Web.Mvc.HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
@@ -106,8 +150,11 @@ namespace Authink.Web.Controllers.TestsApi.Model
 {
     public class CreateModel
     {
+        [Required]
         public string Name             { get; set; }
+        [Required]
         public string ShortDescription { get; set; }
+        [Required]
         public string LongDescription  { get; set; }
         public int    ChildId          { get; set; }
     }
@@ -115,8 +162,11 @@ namespace Authink.Web.Controllers.TestsApi.Model
     public class UpdateModel
     {
         public int    Id               { get; set; }
+        [Required]
         public string Name             { get; set; }
+        [Required]
         public string ShortDescription { get; set; }
+        [Required]
         public string LongDescription  { get; set; }
     }
 }
