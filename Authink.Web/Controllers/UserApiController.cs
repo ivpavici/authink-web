@@ -52,7 +52,7 @@ namespace Authink.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
 
-            logger.Error("Login failed for user with username = {0} and password = {1} ", model.Username, model.Password);
+            logger.Error("Login failed for user with username = {0} ", model.Username);
             return new HttpStatusCodeResult(HttpStatusCode.Conflict);
         }
 
