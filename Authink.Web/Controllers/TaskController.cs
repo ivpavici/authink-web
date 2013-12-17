@@ -96,8 +96,6 @@ using NLog;
                 return new HttpNotFoundResult();
             }
 
-            logger.Info("{0} started creating task in test with Id = {1} ", httpContextBase.User.Identity.Name, testId);
-
             var model       = chooseTypeModelFactory();
             model.TaskTypes = KnownTaskTypesMappings;
 
