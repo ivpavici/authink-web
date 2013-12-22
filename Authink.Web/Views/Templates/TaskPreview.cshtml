@@ -4,8 +4,9 @@
 
         <div class="task-read-popup-header">
 
-            <h2>{{task.Name}}</h2>
-
+            <div class="title">{{task.Name}}
+                <div class="cancel" ng-click="closeModal()"><img src="~/Assets/Images/Home/cancelIcon.png" /></div>
+            </div>
         </div>
 
     <div class="task-read-container-content">

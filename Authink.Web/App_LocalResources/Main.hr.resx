@@ -172,7 +172,7 @@
     <value>Slike</value>
   </data>
   <data name="EditTaskPicturesList_UploadNewPicture" xml:space="preserve">
-    <value>Prenesi novu sliku</value>
+    <value>Promijeni sliku</value>
   </data>
   <data name="EditTaskPicturesList_WrongColors" xml:space="preserve">
     <value>Netočne boje</value>
