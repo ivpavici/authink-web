@@ -6,7 +6,10 @@
 
         <img ng-src="{{picture.Url}}" alt="" />
 
-        <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
+        <div class="addContainer" ng-click="editPicture(picture)">
+            <img class="addIcon" src="~/Assets/Images/Home/add-icon.png" />
+            <div class="text">@resources.EditTaskPicturesList_UploadNewPicture </div>
+        </div>
 
     </a>
 </div>
@@ -20,7 +23,10 @@
 
             <img ng-src="{{correctPicture.Url}}" alt="" />
 
-            <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
+            <div class="addContainer" ng-click="editPicture(picture)">
+                <img class="addIcon" src="~/Assets/Images/Home/add-icon.png" />
+                <div class="text">@resources.EditTaskPicturesList_UploadNewPicture</div>
+            </div>
 
         </a>
 
@@ -34,7 +40,10 @@
 
             <img ng-src="{{picture.Url}}" alt="" />
 
-            <span ng-click="editPicture(picture)">@resources.EditTaskPicturesList_UploadNewPicture</span>
+            <div class="addContainer" ng-click="editPicture(picture)">
+                <img class="addIcon" src="~/Assets/Images/Home/add-icon.png" />
+                <div class="text">@resources.EditTaskPicturesList_UploadNewPicture</div>                
+            </div>
         </a>
 
     </div>

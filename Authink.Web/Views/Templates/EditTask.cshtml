@@ -2,8 +2,9 @@
 
     <div class="edit-task-popup-header">
 
-        <h2>@resources.TaskPreview_Edit</h2>
-
+        <div class="title">@resources.TaskPreview_Edit
+            <div class="cancel" ng-click="closeModal()"><img src="~/Assets/Images/Home/cancelIcon.png" /></div>
+        </div>
     </div>
 
 <div class="task-edit-container">
@@ -25,19 +26,20 @@
                     </div>
                 </div>
             </div>
-            <div class="task-edit-options">
-                <input type="submit" value="@resources.TaskEdit_Save" class="btn task-edit-save" />
-                <a class="task-edit-save btn" href="#" ng-click="closeModal()">@resources.Popup_Cancel</a>
+
+            <div class="task-edit-voice-command">        
+            <div class="voiceUpload" ng-click="toggleVoiceCommandCollapse()">
+                <div class="text">
+                    <img class="addIcon" src="~/Assets/Images/Home/add-icon.png" />
+                    @resources.EditTask_VoiceCommand_Title
+                </div>
+
             </div>
-        </div>
-    </form>
-        <div class="task-edit-voice-command">
-        
-            <button class="btn" ng-click="toggleVoiceCommandCollapse()">@resources.EditTask_VoiceCommand_Title</button>
             <div collapse="isVoiceCommandCollapsed">
 
-                <a class="btn-success task-edit-voice-command-preview" ng-href="{{task.VoiceCommand.Url}}" target="_blank" ng-show="task.VoiceCommand">@resources.EditTask_VoiceCommand_Listen</a>
-        
+                <a class="btn-success task-edit-voice-command-preview" ng-href="{{task.VoiceCommand.Url}}" target="_blank" ng-show="task.VoiceCommand">
+                    @resources.EditTask_VoiceCommand_Listen
+                </a>
                 <div class="task-edit-voice-command-add-new">
                     <h3>@resources.EditTask_VoiceCommand_UploadNew</h3>
                     <span>{{uploadProgress}}</span>
@@ -45,10 +47,15 @@
                 </div>
             </div>
         </div>
-        
+        </div>
         <div class="task-edit-content clearfix">
             <edit-task-pictures-list></edit-task-pictures-list>
         </div>
-    </div>
+        <div class="task-edit-options">
+                <input type="submit" value="@resources.TaskEdit_Save" class="btn task-edit-save" />
+                <a class="task-edit-save btn" href="#" ng-click="closeModal()">@resources.Popup_Cancel</a>
+            </div>
+    </form>
+</div>
 
       

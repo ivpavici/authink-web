@@ -2,7 +2,8 @@
 .edit-detect-color-color-placeholder                    { width: 50px; height: 50px; }
 
 .task-read-container                                    { display: block;width: 850px;min-height: 400px;max-height: 600px; }
-.task-read-popup-header h2                              { font-size: 20px;color: white;font-weight: bold;width: 80%;padding: 5px;}
+.task-read-popup-header .title                          { font-size: 20px;color: white;font-weight: bold;padding: 5px;}
+.task-read-popup-header .cancel                         { float:right;}
 .task-read-popup-header                                 { width: 100%;background-color: #fe9b26;position:relative; height: 7%; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
 
 .task-read-container-content                            { overflow: auto; overflow-x: hidden;min-height: 405px;}
