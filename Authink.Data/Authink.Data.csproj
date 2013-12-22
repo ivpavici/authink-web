@@ -71,6 +71,7 @@
     <Compile Include="Color.cs">
       <DependentUpon>AuthinkData.tt</DependentUpon>
     </Compile>
+    <Compile Include="DefaultData\DataFactory.cs" />
     <Compile Include="Picture.cs">
       <DependentUpon>AuthinkData.tt</DependentUpon>
     </Compile>

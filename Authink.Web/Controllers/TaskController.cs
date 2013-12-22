@@ -95,7 +95,6 @@ using NLog;
             {
                 return new HttpNotFoundResult();
             }
-
             var model       = chooseTypeModelFactory();
             model.TaskTypes = KnownTaskTypesMappings;
 
