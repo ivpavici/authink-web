@@ -4,26 +4,30 @@
             
 /*edit task*/
 .edit-task-popup-header                                 { width: 100%; background-color:  #fe9b26; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
-.edit-task-popup-header h2                              { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
+.edit-task-popup-header .title                          { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
+.edit-task-popup-header .cancel                         { float:right; }
 
-.task-edit-container                                    { display: block; width: 700px; height: 500px; padding: 20px; overflow: auto; overflow-x: hidden; }
+.task-edit-container                                    { display: block; width: 700px; padding: 20px 20px 0 20px; overflow: auto; overflow-x: hidden; }
 
 .task-edit-header                                       { }
 .task-edit-header-left                                  { float: left; width: 64px; height: 64px; }
 .task-edit-header-left img                              { width: 100%; }
 .task-edit-header-right                                 { float: left; margin: 10px 0 0 20px; width: 500px; }
-.task-edit-header-right span                            { font-weight: bold; text-transform: uppercase; display: block; color: #444; font-size: 1.4em; }
+.task-edit-header-right span                            { font-weight: bold; display: block; color: #1a6d97; font-size: 1.5em; }
 .task-edit-name-field                                   { width: 100%; padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 1.8em; margin-bottom: 20px; }
 .task-edit-description-field                            { width: 100%;  padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 1.4em; }
-.task-edit-content                                      { margin-top: 20px; }
-.task-edit-content h2                                   { font-weight: bold; text-transform: uppercase;font-size: 1.8em;color: #444; }
+.task-edit-content                                      { margin-top: 20px; border-top:1px solid #e0e0e0 ;}
+.task-edit-content h2                                   { display:none; font-weight: bold; text-transform: uppercase;font-size: 1.8em;color: #444; }
 
-.task-edit-pictures-container                           { display: -webkit-flex; -webkit-flex-direction: row; -webkit-flex-wrap: wrap; margin-top: 10px; }
-.task-edit-picture-item                                 { width: 100px; padding: 10px; float: left; margin: 10px; text-decoration: none; }
-.task-edit-picture-item:hover                           { cursor: pointer; background: #f0f0f0; border-radius: 8px; }
-.task-edit-picture-item:hover span                      {  }
-.task-edit-picture-item span                            { font-weight: bold; text-transform: uppercase; display: block; color: #888 !important; text-align: center; padding-top: 10px; font-size: 1.4em; }
+.task-edit-pictures-container                           { /*display: -webkit-flex; -webkit-flex-direction: row; -webkit-flex-wrap: wrap;*/ margin-top: 10px; }
+.task-edit-picture-item                                 { width: 110px; padding: 10px; float: left; margin: 10px; }
 .task-edit-picture-item img                             { width: 100%; }
+.task-edit-picture-item .addContainer                   { display: block; border: 0; padding: 5px 0; }
+.task-edit-picture-item .addContainer:hover             { cursor: pointer; background: #ebeaea; }
+.task-edit-picture-item .addContainer .text             { font-size: 12px; color: #888; text-align: center; padding-right:5px; }
+.task-edit-picture-item .addContainer img               { width:12px; float:left; margin:2px 2px 0 4px; opacity:0.8;}
+
+
 
 .task-edit-picture-colors                               { width: 100%; }
 .task-edit-picture-colors h1                            { font-weight: bold; text-transform: uppercase; display: block; color: #444 !important; text-align: center; padding-top: 10px; font-size: 1.2em; }
@@ -34,14 +38,17 @@
 .colorPickerHolder                                      {  }
 
 .task-edit-options                                      { text-align: center; display: block; margin: 10px auto 10px auto; }
-.task-edit-options .task-edit-save                      { border: none; background:  #fe9b26; color: white; font-weight: bold; text-transform: uppercase; padding: 6px 14px; }
+.task-edit-options .task-edit-save                      { border: none; background:  #fe9b26; color: white; font-weight: bold; text-transform: uppercase; padding: 6px 14px; margin-right:5px; }
 .task-edit-options .task-edit-voice-command-preview     { font-size: 1.5em; padding: 5px 5px 5px 5px; line-height: 1.5em; text-decoration: none; }
 .task-edit-options .task-edit-save:hover                { cursor: pointer; color: white; background: #e18520; }
 
-.task-edit-voice-command > span                         { font-weight: bold; text-transform: uppercase; font-size: 1.8em; color: #444; }
-.task-edit-voice-command-add-new h3                     { font-size: 1.4em; padding-top: 10px; color: #45B434; }
+.task-edit-voice-command                                { margin:5px 0 0 84px; width:120px;}
+.task-edit-voice-command .voiceUpload                   { display: block; padding: 5px 0;}
+.task-edit-voice-command .voiceUpload:hover             { cursor: pointer; background: #ebeaea; }
+.task-edit-voice-command .voiceUpload .text             { font-size: 12px; color: #888; text-align: center;}
+.task-edit-voice-command .voiceUpload img               { width:12px; float:left; margin:2px 2px 0 4px; opacity:0.8;}
 
-.task-picture-container                                 { display: block; width: 700px; height: 500px; padding: 20px; overflow: scroll; overflow-x: hidden; }
+.task-picture-container                                 { display: block; width: 700px; height: 500px; padding: 20px; overflow: auto; overflow-x: hidden; }
 .task-picture-image                                     { text-align: center; }
 .task-picture-image img                                 { display: block; height: 320px; margin: 10px auto; }
 .task-picture-image span                                { font-weight: bold; text-transform: uppercase; display: block; color: #888 !important; text-align: center; padding-top: 10px; font-size: 1.4em; }

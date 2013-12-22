@@ -277,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload new picture.
+        ///   Looks up a localized string similar to Change picture.
         /// </summary>
         public static string EditTaskPicturesList_UploadNewPicture {
             get {

@@ -172,7 +172,7 @@
     <value>Pictures</value>
   </data>
   <data name="EditTaskPicturesList_UploadNewPicture" xml:space="preserve">
-    <value>Upload new picture</value>
+    <value>Change picture</value>
   </data>
   <data name="EditTaskPicturesList_WrongColors" xml:space="preserve">
     <value>Wrong colors</value>
