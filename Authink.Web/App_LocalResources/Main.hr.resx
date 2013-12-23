@@ -319,24 +319,24 @@
     <value>Odustani</value>
   </data>
   <data name="ChildAdd_ServerError" xml:space="preserve">
-    <value>Dogodila se pogreška kod stvaranja novog profila dijeteta, provjerite da li su sva polja unesena.</value>
+    <value>Došlo je do pogreške prilikom kreiranja novog profila djeteta. Molimo provjerite jesu li sva polja pravila unešena.</value>
   </data>
   <data name="ChildDeleteConfirmationDialog_Error" xml:space="preserve">
-    <value>Došlo je do pogreške kod brisanja profila djeteta.</value>
+    <value>Došlo je do pogreške prilikom brisanja profila djeteta.</value>
   </data>
   <data name="ChildEdit_Error" xml:space="preserve">
-    <value>Dogodila se pogreška, provjerite da li su sva polja unesena.</value>
+    <value>Došlo je do pogreške prilikom izmjene profila djeteta. Molimo provjerite jesu li sva polja pravilno unešena.</value>
   </data>
   <data name="TestAdd_Error" xml:space="preserve">
-    <value>Dogodila se pogreška kod stvaranja novog testa, provjerite da li su sva polja unesena.</value>
+    <value>Došlo je do pogreške prilikom kreiranja novog testa. Molimo provjerite jesu li sva polja pravilno unešena.</value>
   </data>
   <data name="TestEdit_Error" xml:space="preserve">
-    <value>Dogodila se pogreška kod izmjene testa, provjerite da li su sva polja unesena.</value>
+    <value>Došlo je do pogreške prilikom izmjene testa. Molimo provjerite jesu li sva polja pravilno unešena.</value>
   </data>
   <data name="TestConfirmationDialog_Error" xml:space="preserve">
-    <value>Došlo je do pogreške kod brisanja testa.</value>
+    <value>Došlo je do pogreške prilikom brisanja testa.</value>
   </data>
   <data name="TaskEdit_Error" xml:space="preserve">
-    <value>Dogodila se pogreška kod izmjene zadatka, provjerite da li su sva polja unesena.</value>
+    <value>Došlo je do pogreške prilikom izmjene zadatka. Molimo provjerite jesu li sva polja pravilno unešena.</value>
   </data>
 </root>

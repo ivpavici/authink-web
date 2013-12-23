@@ -1,20 +1,24 @@
 ﻿#test-create-popup                                          { width: 850px;}
-#test-create-popup-header                                   { width: 100%;background-color:  #fe9b26;margin-bottom: 2%; -webkit-border-top-left-radius: 6px;-webkit-border-top-right-radius: 6px;-moz-border-radius-topleft: 6px;-moz-border-radius-topright: 6px;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+#test-create-popup .errorMessage                            { position:absolute; top:35px; left: 0; right: 0; color:#ff7f50; font-size:13px; font-weight:bold; text-align: center;
+                                                              background:#f0f0f0; padding:5px 0; }
+#test-create-popup-header                                   { width: 100%;background-color:  #fe9b26; -webkit-border-top-left-radius: 6px;-webkit-border-top-right-radius: 6px;-moz-border-radius-topleft: 6px;-moz-border-radius-topright: 6px;border-top-left-radius: 6px;border-top-right-radius: 6px;}
 #test-create-popup-header #title                            { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
 
-#test-create-form                                           { padding: 20px;margin-left: 2%;width: 90%;}
+#test-create-form                                           { padding: 20px 20px 5px 20px; margin-left:2%; width: 90%;}
 .test-create-form-label                                     { font-size: 18px;}
-input.test-create-form-textbox                              { width: 100%;padding:10px 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.8em; font-weight: bold; color: #444;}
+input.test-create-form-textbox                              { width: 100%;padding:5px; background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em; color: #444;}
 .test-create-form-textarea-long                             { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 200px;}
 .test-create-form-textarea-short                            { width: 100%;padding: 5px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 1.3em;resize: none;height: 150px;}
 
-.actions                                                    { padding:15px 0 10px 0; text-align:center;}
+.actions                                                    { padding:15px 0 0 0; text-align:center;}
 .actions .create-test-button                                { display: inline-block; position:relative; margin:0 5px 0 5px;border: none;background: #fe9b26;color: white;font-weight: bold;
                                                               text-transform: uppercase;font-size: 16px;padding: 6px 14px;margin-bottom: 1%; font-size:14px;}
 .actions .create-test-button:hover                          { cursor: pointer;background: #FEB645;color: white;}
 .actions .create-test-button:active                         { cursor: pointer;background: #FEB645;color: white;}
 
 .test-delete-confirmation-dialog                            { width: 500px;min-height: 150px;}
+.test-delete-confirmation-dialog .errorMessage              { position:absolute; top:37px; left: 0; right: 0; color:#ff7f50; font-size:14px; font-weight:bold; text-align: center;
+                                                              background:#f0f0f0; padding:5px 0; }
 .test-delete-confirmation-dialog-header                     { width: 100%;background-color: #fe9b26;margin-bottom: 2%; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; 
                                                               -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
 .test-delete-confirmation-dialog-header #title              { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px;}
@@ -24,3 +28,4 @@ input.test-create-form-textbox                              { width: 100%;paddin
                                                               font-size:2em;margin-right: 15px;padding: 0 35px 0 40px;text-decoration:none;line-height: 1.5em;}
 .test-delete-confirmation-dialog .actions .bottun:hover     { background:#feaa26;}
 .test-delete-confirmation-dialog .actions .bottun:active    { background:#e18520;}
+

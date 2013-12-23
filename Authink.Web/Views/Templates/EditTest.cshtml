@@ -1,7 +1,7 @@
 ﻿@using resources = Resources.Main;
 
 <div id="main-test" class="oneEdgeLeftShadow">
-    <div ng-if="isServerError">@resources.TestEdit_Error</div>
+    <div class="errorMessage" ng-if="isServerError">@resources.TestEdit_Error</div>
     <form ng-submit="saveTest()">
         <div id="main-test-edit-box">
 

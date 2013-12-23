@@ -104,7 +104,7 @@ textarea                                        { font-family: 'Segoe UI', 'Helv
                                                           outline: none; resize: none; }
 
 .task-wizard-feedback                                   { position: absolute; left: 0;top: 0;right: 0;bottom: 0; 
-                                                          background: #5bb443 url('../Images/Wizard/task-wizard-star-background.png'); }
+                                                          background: #1a6d97 url('../Images/Wizard/task-wizard-star-background.png'); }
 .task-wizard-feedback-container                         { margin-top: 100px; }
 .task-wizard-feedback img                               { display: block; width: 128px; margin: 20px auto; text-align: center; }
 .task-wizard-feedback h1                                { color: white; display: block; text-align: center; width: 800px; margin: 20px auto; font-size: 6em; font-weight: bold;

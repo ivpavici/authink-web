@@ -1,5 +1,7 @@
 ﻿                                        /* EDIT CHILD PROFILE POP UP */ 
 #children-popup                                                     { }
+#children-popup .errorMessage                                       { position:absolute; top:39px; left: 0; right: 0; color:#ff7f50; font-size:14px; font-weight:bold; text-align: center;
+                                                                      background:#f0f0f0; padding:5px 0;}
 #children-popup-header                                              { width: 100%;background-color:  #fe9b26;margin-bottom: 2%;-moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
 #children-popup-header .title                                       { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px 0 7px 5px;}
 #children-popup-header .cancel                                      { float:right;}
@@ -10,7 +12,7 @@
 .child-info-field-label                                             { font-size: 18px;}
 .child-info-input-field                                             { width: 304px;padding: 8px;background: white;border: #e0e0e0 1px solid;margin: 5px 0;font-size: 18px;}
 
-#children-edit-form .actions                                        { padding:15px 0 25px 0; text-align:center;}
+#children-edit-form .actions                                        { padding:15px 0 0 0; text-align:center;}
 #children-edit-form .children-edit-form-button                      { display: inline-block; position:relative; margin:0 5px 0 5px; border: none;background: #fe9b26;color: white;font-weight: bold;text-transform: uppercase;padding: 6px 14px;}
 #children-edit-form .children-edit-form-button:hover                { cursor: pointer;background: #e18520;}
 #children-edit-form .children-edit-form-button:active               { position: relative;top: 1px;}

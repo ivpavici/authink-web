@@ -9,12 +9,14 @@
         </div>
     </div>
 
+    <div class="errorMessage" ng-if="isServerError"> @resources.ChildEdit_Error</div>
+
     <div id="children-popup-image-wrap">
 
         <img ng-src="{{child.profilePictureUrl}}" alt="{{child.firstName}}" />
 
     </div>
-    <div ng-if="isServerError"> @resources.ChildEdit_Error</div>
+    
     <form enctype="multipart/form-data" ng-submit="editChild()">
 
         <div id="children-edit-form">

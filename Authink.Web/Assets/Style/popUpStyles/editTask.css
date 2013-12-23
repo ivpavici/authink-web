@@ -3,15 +3,19 @@
 .edit-detect-color-color-placeholder                    { width: 50px; height: 50px; }
             
 /*edit task*/
-.edit-task-popup-header                                 { width: 100%; background-color:  #fe9b26; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
+.edit-task-popup-header                                 { width: 100%; background-color:  #fe9b26; 
+                                                          -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px; }
 .edit-task-popup-header .title                          { font-size: 20px;color: white; font-weight: bold; margin: 0 auto; padding: 5px 0 7px 5px; }
 .edit-task-popup-header .cancel                         { float:right; }
 
-.task-edit-container                                    { display: block; width: 700px; padding: 20px 20px 0 20px; overflow: auto; overflow-x: hidden; }
+.task-edit-container                                    { display: block; width: 700px; max-height:500px; padding: 30px 20px 0 20px; overflow: auto; overflow-x: hidden; }
+.task-edit-container .errorMessage                      { position:absolute; top:39px; left: 0; right: 0; color:#ff7f50; font-size:14px; font-weight:bold; text-align: center;
+                                                          background:#f0f0f0; padding:5px 0; }
 
 .task-edit-header                                       { }
 .task-edit-header-left                                  { float: left; width: 64px; height: 64px; }
 .task-edit-header-left img                              { width: 100%; }
+.task-edit-header-left .taskType                        { font-size: 10px; color:#888; text-align:center; }
 .task-edit-header-right                                 { float: left; margin: 10px 0 0 20px; width: 500px; }
 .task-edit-header-right span                            { font-weight: bold; display: block; color: #1a6d97; font-size: 1.5em; }
 .task-edit-name-field                                   { width: 100%; padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 1.8em; margin-bottom: 20px; }

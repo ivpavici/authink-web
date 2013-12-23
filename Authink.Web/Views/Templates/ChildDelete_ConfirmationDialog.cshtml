@@ -18,7 +18,7 @@
 
     <p>@resources.ChildDeleteConfirmationDialog_Text</p>
 
-    <div ng-if="isServerError">@resources.ChildDeleteConfirmationDialog_Error </div>
+    <div class="errorMessage" ng-if="isServerError">@resources.ChildDeleteConfirmationDialog_Error </div>
     <div class="actions">
 
         <a class="btn bottun" href="#" ng-click="removeAndExit()"> @resources.ConfirmationDialog_Yes </a>

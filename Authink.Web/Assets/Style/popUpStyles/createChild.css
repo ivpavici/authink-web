@@ -1,6 +1,8 @@
 ﻿                                                            /* ADD CHILD INFORMATION POPUP*/
 #child-create-popup                                         { width: 400px;}
-#child-popup-header                                         { width: 100%;background-color:  #fe9b26;margin-bottom: 30px; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
+#child-create-popup .errorMessage                           { position:absolute; top:35px; left: 0; right: 0; color:#ff7f50; font-size:12px; font-weight:bold; text-align: center;
+                                                              background:#f0f0f0; padding:5px 0; }
+#child-popup-header                                         { width: 100%;background-color:  #fe9b26;margin-bottom: 40px; -moz-border-radius-topleft: 6px;border-top-left-radius: 6px; -moz-border-radius-topright:6px; border-top-right-radius: 6px;}
 #child-popup-header #title                                  { font-size: 20px;color: white;font-weight: bold;margin: 0 auto;padding: 5px 0 7px 5px;}
 #child-popup-heade .cancel                                  { float:right;}
 .child-form-create                                          { width: 100%;}
