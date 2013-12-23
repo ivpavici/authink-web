@@ -33,7 +33,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 /*cancel botun na popUp*/
 .cancel                     { float:right;}
-.cancel img                 { width:20px;  margin-right:5px; margin-bottom:7px;}
+.cancel img                 { width:20px;  margin-right:5px; margin-bottom:6px;}
 .cancel:hover               { cursor:pointer; background:url('../Images/Home/cancelIcon_bckg.png') 0px 4px no-repeat;}
 .cancel:active              { opacity:0.5;}
 
