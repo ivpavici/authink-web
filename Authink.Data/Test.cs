@@ -26,6 +26,7 @@ namespace Authink.Data
         public string LongDescription { get; set; }
         public bool IsDeleted { get; set; }
         public int UserId { get; set; }
+        public int Type { get; set; }
     
         public virtual ICollection<Child> Children { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }

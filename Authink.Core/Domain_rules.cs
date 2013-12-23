@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ent = Authink.Core.Domain.Entities;
 
 namespace Authink.Core.Domain.Rules
 {
@@ -11,6 +12,20 @@ namespace Authink.Core.Domain.Rules
     public static class Children
     {
         public static string DefaultProfilePictureUrl = "http://authink.blob.core.windows.net/content/Images/Children/1/3491161c-85d8-4abf-b399-20311e566708.png";
+
+        public static ent::Child.ShortDetails DefaultChild(string culture)
+        {
+            var firstName = culture == "en" ? "John" : "Ivan";
+            var lastName  = culture == "en" ? "Smith" : "Horvat";
+
+            return new ent::Child.ShortDetails
+            (
+                id:                0,
+                firstname:         firstName,
+                lastname:          lastName,
+                profilePictureUrl: DefaultProfilePictureUrl
+            );
+        }
     }
     public static class Task
     {

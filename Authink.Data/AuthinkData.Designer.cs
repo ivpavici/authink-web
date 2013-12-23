@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\mamar_000\Desktop\New folder\authink-web\Authink.Data\AuthinkData.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mamar_000\Desktop\authink\authink-web\Authink.Data\AuthinkData.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

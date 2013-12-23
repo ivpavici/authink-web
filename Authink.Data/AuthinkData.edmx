@@ -140,6 +140,7 @@
     <Property Name="LongDescription" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -473,6 +474,7 @@
           <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.AS_Test_Task" FromRole="Tests" ToRole="Tasks" />
           <NavigationProperty Name="User" Relationship="Authink.Data.Database.UserTest" FromRole="Test" ToRole="User" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -627,6 +629,7 @@
           <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

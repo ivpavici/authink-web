@@ -1,11 +1,14 @@
-﻿using System.Web.Http;
+﻿using System.Threading;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Net;
+using Authink.Api.Mappers;
 using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
 using Authink.Core.Model.Commands;
 using Authink.Web.Controllers.UserApi.Model;
 using ent = Authink.Core.Domain.Entities;
+using buru = Authink.Core.Domain.Rules;
 using NLog;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,18 +21,24 @@ namespace Authink.Web.Controllers
             ILoginServices loginServices,
             IUserCommands  userCommands,
             IUserQueries   userQueries,
+            IChildCommands childCommands,
+            ITestCommands  testCommands,
             Logger         logger
         )
         {
             this.loginServices = loginServices;
             this.userCommands  = userCommands;
             this.userQueries   = userQueries;
+            this.childCommands = childCommands;
+            this.testCommands  = testCommands;
             this.logger        = logger;
         }
 
         private readonly ILoginServices loginServices;
         private readonly IUserCommands  userCommands;
         private readonly IUserQueries   userQueries;
+        private readonly IChildCommands childCommands;
+        private readonly ITestCommands  testCommands;
         private Logger                  logger;
 
         [System.Web.Http.HttpGet]
@@ -72,7 +81,7 @@ namespace Authink.Web.Controllers
 
             try
             {
-                userCommands.Create
+                var userId = userCommands.Create
                 (
                     firstname: model.Firstname,
                     lastname:  model.Lastname,
@@ -80,6 +89,18 @@ namespace Authink.Web.Controllers
                     username:  model.Username,
                     password:  model.Password
                 );
+
+                var defaultCulture   = Thread.CurrentThread.CurrentCulture;
+                var defaultChildData = buru::Children.DefaultChild(defaultCulture.TwoLetterISOLanguageName);
+
+                var defaultChildId   = childCommands.Create
+                (
+                    firstname: defaultChildData.Firstname, 
+                    lastname:  defaultChildData.Lastname,
+                    parentId:  userId
+                );
+
+                testCommands.AttachAllDefaultTestsToChild(defaultChildId);
 
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }

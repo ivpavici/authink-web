@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/01/2013 22:25:30
--- Generated from EDMX file: C:\Users\mamar_000\Desktop\New folder\authink-web\Authink.Data\AuthinkData.edmx
+-- Date Created: 12/23/2013 00:12:50
+-- Generated from EDMX file: C:\Users\mamar_000\Desktop\authink\authink-web\Authink.Data\AuthinkData.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -166,7 +166,8 @@ CREATE TABLE [dbo].[Tests] (
     [ShortDescription] nvarchar(max)  NOT NULL,
     [LongDescription] nvarchar(max)  NOT NULL,
     [IsDeleted] bit  NOT NULL,
-    [UserId] int  NOT NULL
+    [UserId] int  NOT NULL,
+    [Type] int  NOT NULL
 );
 GO
 

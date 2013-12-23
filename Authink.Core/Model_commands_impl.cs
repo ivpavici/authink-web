@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Security;
-
+using Authink.Core.Enums;
 using Authink.Core.Model.Services;
 
 using ent      = Authink.Core.Domain.Entities;
@@ -12,7 +12,7 @@ namespace Authink.Core.Model.Commands.Impl
 {
     public class UserCommandsImpl:    IUserCommands 
     {
-        public void Create(string username, string password, string firstname, string lastname, string email)
+        public int Create(string username, string password, string firstname, string lastname, string email)
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -28,6 +28,8 @@ namespace Authink.Core.Model.Commands.Impl
 
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                return user.Id;
             }
         }
     }
@@ -43,12 +45,15 @@ namespace Authink.Core.Model.Commands.Impl
 
         private readonly ILoginServices loginServices;
 
-        public int Create      (string firstname, string lastname       )
+        public int Create  (string firstname, string lastname, int? parentId = null)
         {
             using (var db=new database::AuthinkDataModel())
             {
                 var currentUser = loginServices.GetSignedInUser();
-                var parent      = db.Users.SingleOrDefault(x => x.Id == currentUser.Id);
+
+                var parent = currentUser != null? db.Users.SingleOrDefault(x => x.Id == currentUser.Id):
+                             parentId != null   ? db.Users.SingleOrDefault(x => x.Id == parentId) : 
+                                                  null;
 
                 var child = new database::Child
                 {
@@ -66,7 +71,7 @@ namespace Authink.Core.Model.Commands.Impl
                 return child.Id;
             }
         }
-        public void Update      (int id, string firstname, string lastname)
+        public void Update (int id, string firstname, string lastname)
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -78,7 +83,7 @@ namespace Authink.Core.Model.Commands.Impl
                 db.SaveChanges();
             }
         }
-        public void Delete      (int id)                                                                                                                                                                                            
+        public void Delete (int id)                                                                                                                                                                                            
         {
             using (var db = new database::AuthinkDataModel())
             {
@@ -238,6 +243,21 @@ namespace Authink.Core.Model.Commands.Impl
         public void ToggleAttachToChild(int childId, int testId)
         {
             throw new NotImplementedException();
+        }
+        public void AttachAllDefaultTestsToChild(int childId)
+        {
+            using (var db = new database::AuthinkDataModel())
+            {
+                var defaultTests = db.Tests.Where(test => (TestTypes) test.Type == TestTypes.Template);
+                var dbChild      = db.Children.Single(child => child.Id == childId);
+
+                foreach (var defaultTest in defaultTests)
+                {
+                    dbChild.Tests.Add(defaultTest);
+                }
+
+                db.SaveChanges();
+            }
         }
     }
     public class PictureCommandsImpl:     IPictureCommands   

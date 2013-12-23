@@ -55,7 +55,7 @@ namespace Authink.Core.Model.Commands
 {
     public interface IUserCommands
     {
-        void Create(string username, string password, string firstname, string lastname, string email                       );
+        int Create(string username, string password, string firstname, string lastname, string email);
     }
     public interface ITokenCommands
     {
@@ -64,7 +64,7 @@ namespace Authink.Core.Model.Commands
     }
     public interface IChildCommands
     {
-        int  Create(string firstname, string lastname                                  );
+        int Create(string firstname, string lastname, int? parentId = null);
         void Update(int id, string firstname, string lastname);
         void Delete(int id);
         void UpdatePicture(int id, string profilePictureUrl);
@@ -84,6 +84,7 @@ namespace Authink.Core.Model.Commands
         void Delete (int id);
 
         void ToggleAttachToChild(int childId, int testId);
+        void AttachAllDefaultTestsToChild(int childId);
     }
     public interface IPictureCommands
     {

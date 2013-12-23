@@ -125,7 +125,6 @@ namespace Authink.Core.Model.Queries.Impl
     {
         public IReadOnlyList<ent::Test.ShortDetails> GetAll_forChild(bool showHidden, int childId)
         {
-            
             using(var db= new database::AuthinkDataModel())
             {
                 return

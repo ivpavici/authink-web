@@ -10,6 +10,7 @@ namespace Authink.Data.DefaultData
         private static IEnumerable<db::Test> LiteData_HR()
         {
             return
+
                 new[]
                     {
                         new db::Test

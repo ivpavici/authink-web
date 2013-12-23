@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Domain_entities.cs" />
     <Compile Include="Domain_rules.cs" />
+    <Compile Include="Enums\TestTypes.cs" />
     <Compile Include="Fx\FileHelpers.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Model_commands_impl.cs" />
