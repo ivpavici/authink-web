@@ -14,9 +14,10 @@
 
     </div>
 
+    <div class="errorMessage" @*ng-if="isServerError"*@>@resources.TestConfirmationDialog_Error</div>
+
     <p>@resources.TestConfirmationDialog_Text</p>
 
-    <div ng-if="isServerError">@resources.TestConfirmationDialog_Error</div>
     <div class="actions">
 
         <a class="btn bottun" href="#" ng-click="confirm()"> @resources.ConfirmationDialog_Yes </a>

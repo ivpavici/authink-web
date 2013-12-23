@@ -151,6 +151,8 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 #main-content                                                       { position:absolute; top:0; left:400px; right:0; bottom:0; overflow:hidden;}
 
 #main-test                                                          { position:absolute; top:0; left:0; right:0; bottom:0; overflow:auto; border-left:1px solid #c7c7c7; padding: 20px 30px 0 30px;}
+#main-test .errorMessage                                            { position:absolute; top:20px; left: 0; right: 0; color:#ff7f50; font-size:14px; font-weight:bold; 
+                                                                      text-align: center;}
 
 #main-test .loading                                                 { position:absolute; top: 15px; left: 0; right: 0; text-align: center; }
 
@@ -205,6 +207,7 @@ textarea                { font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sa
 
 .main-test-task-left                                                { width: 100px;float: left;}
 .main-test-task-left img                                            { display: block;width: 80px; height: 80px;margin: 0 auto;}
+.main-test-task-left .taskType                                      { font-size: 11px; color:#888; text-align:center; text-overflow: ellipsis; width: 100px; white-space: nowrap; overflow: hidden;}
 .main-test-task-difficulty                                          { float:right; font-weight:normal; font-size:0.9em; padding:5px 4px 0 0; color: #1a6d97;}
 .main-test-task-difficulty-text                                     { padding-right:5px; float:left; text-align: center; display: block;font-size: 1em; color: #1a6d97;}
 .main-test-task-difficulty-value                                    { float:right; display: block;text-align: center;font-size: 1em;}

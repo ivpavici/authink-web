@@ -8,12 +8,13 @@
     </div>
 
 <div class="task-edit-container">
-    <div ng-if="isServerError">@resources.TaskEdit_Error</div>
+    <div class="errorMessage" ng-if="isServerError">@resources.TaskEdit_Error</div>
     <form ng-submit="editTask()">
         <div>
             <div class="task-edit-header clearfix">
                 <div class="task-edit-header-left">
                     <img ng-src="{{task.ProfilePictureUrl}}" alt="" />
+                    <div class="taskType">Vrsta zadatka</div>
                 </div>
                 <div class="task-edit-header-right">
                     <div>
