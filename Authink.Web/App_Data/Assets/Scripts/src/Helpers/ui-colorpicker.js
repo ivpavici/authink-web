@@ -3,7 +3,7 @@
         restrict: 'A',
         require: 'ngModel',
         link: function linkFn(scope, element, attrs, controller) {
-            console.log(element);
+
             element.spectrum({
                 showPalette: true,
                 showPaletteOnly: true,
