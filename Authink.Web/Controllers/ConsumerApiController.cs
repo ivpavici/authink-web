@@ -46,7 +46,7 @@ namespace Authink.Web.Controllers
                                                       ) ? HttpStatusCode.OK 
                                                         : HttpStatusCode.NotFound;
 
-                logger.Error("ConsumerApi: User loged in app: username: {0}", userData.Username);
+                logger.Error("ConsumerApi: User loged in app with username: {0}", userData.Username);
                 return new HttpResponseMessage(statusCode);
 	        }
 	        catch (Exception ex)
