@@ -123,11 +123,8 @@
   <data name="LoginForm_PasswordPlaceholder" xml:space="preserve">
     <value>lozinka</value>
   </data>
-  <data name="LoginForm_SignUpSwitch_Flavor" xml:space="preserve">
-    <value>Nemate korisnički račun?</value>
-  </data>
   <data name="LoginForm_SignUpSwitch_Link" xml:space="preserve">
-    <value>Registriraj se!</value>
+    <value>Nemate korisnički račun?</value>
   </data>
   <data name="LoginForm_Title" xml:space="preserve">
     <value>Prijava</value>
@@ -150,19 +147,13 @@
   <data name="SignUpForm_LastNamePlaceholder" xml:space="preserve">
     <value>prezime</value>
   </data>
-  <data name="SignUpForm_LoginSwitch_Flavor" xml:space="preserve">
-    <value>Već imate korisnički račun?</value>
-  </data>
   <data name="SignUpForm_PasswordPlaceholder" xml:space="preserve">
     <value>lozinka</value>
   </data>
   <data name="SignUpForm_SIgnUpButton" xml:space="preserve">
     <value>Registriraj se</value>
   </data>
-  <data name="SignUpForm_Title" xml:space="preserve">
-    <value>Registracija</value>
-  </data>
   <data name="SignUpForm_UsernamePlaceholder" xml:space="preserve">
     <value>korisničko ime</value>
-  </data>
+  </data>  
 </root>

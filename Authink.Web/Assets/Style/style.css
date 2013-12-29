@@ -16,139 +16,72 @@
 
 @import url('reset.css');
 
-body {
-    background: #f9f7f7;
-    font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-}
+html                                                        { background: url(../Images/Login/background.jpg) no-repeat center center fixed; 
+                                                              -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+body                                                        { background: #f9f7f7; font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif; height:100%; padding:0; margin:0; }
+input                                                       { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
 
-input {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-}
+
+#logInMainContainer                                         { position:absolute; top:0; bottom:0; left:0; right:0; }
+#loginContent                                               { position:absolute; bottom:40px; top:5%; left:0; right:0; text-align:center; }
+#loginContent #loginLogo                                    { height:150px; background: url(../Images/Login/login-logo.png) no-repeat center center; margin-bottom:20px; }
+
+
+#loginContainer                                                                  { position:absolute; top: 160px; left:0; right:0; }
+#loginContainer #loginForm                                                       { width: 350px; margin: 0 auto; background:white; border:#7faec2 2px solid; border-radius: 4px; }
+#loginContainer #loginForm .inputContainer                                       { padding:30px 0 20px 0;}
+
+#loginContainer #loginForm .inputData                                            { width:270px; height:40px; margin:10px auto; position:relative; }
+#loginContainer #loginForm .inputData #usernameIcon                              { position: absolute; top: 0; right: 0; height:34px; width:34px; margin-right:4px;
+                                                                                    background: url(../Images/Login/usernameIcon.png) no-repeat center center; 
+                                                                                    border-left:1px solid #ccc; }
+#loginContainer #loginForm .inputData #passwordIcon                              { position: absolute; top: 0; right: 0; height:34px; width:34px; margin-right:4px;
+                                                                                    background: url(../Images/Login/passwordIcon.png) no-repeat center center; 
+                                                                                    border-left:1px solid #ccc; }
+#loginContainer #loginForm .inputContainer input                                 { width:250px; height:25px;  text-transform:capitalize;}
+#loginContainer #loginForm .inputContainer input[type="text"]                    { background: url(../Images/Login/usernameBckg.jpg) repeat-x; }
+#loginContainer #loginForm .inputContainer input[type="password"]                { background: url(../Images/Login/passwordBckg.jpg) repeat-x; }
+#loginContainer #loginForm .inputContainer input[type="email"]                   { background: url(../Images/Login/usernameBckg.jpg) repeat-x; }
+#loginContainer #loginForm .inputContainer input:focus                           { background:white;}
+
+#loginContainer #loginForm .login-form-switch                                    { height:33px; padding:10px 44px; background:#ededed;}
+#loginContainer #loginForm .login-form-switch a                                  { display:block; float:left; padding: 5px 0 0 0; font-size:1.6em; color:#a9a9a9; cursor:pointer; text-decoration:underline; }
+#loginContainer #loginForm .login-form-switch a:hover                            { color:#999999;}
+#loginContainer #loginForm .login-form-switch a:active                           { text-decoration:none; }
+#loginContainer #loginForm  input[type="submit"]                                 { margin:0; padding:7px 10px; border:0; border-radius:3px; float:right; 
+                                                                                                     background:#116d98; color:white; font-weight:800; font-size:1.6em; }
+#loginContainer #loginForm  input[type="submit"]:hover                           { background:#1376a4; }
+#loginContainer #loginForm  input[type="submit"]:active                          { margin-top:1px; }
+
+#loginContainer #loginForm #login-form-signup .inputData input                   { width:250px; }
+
+
 
 /* LOGIN */
 
-#login-container {
-    width: 960px;
-    margin: 0 auto;   
-}
+/*#logInMainContainer                                         { min-height:100%; position:relative;/*position:absolute; top:0; left:0; right:0; bottom:40px; background:blue; }
+#login-logo                                                 { background: transparent url('../Images/Login/login-logo.png') no-repeat center center; height: 200px; }
+#login-content                                              { background:red; width:600px; margin:0 auto; padding-bottom:40px; }
+#login-about                                                { width: 600px; height: 400px; float: left; }
 
-    #login-logo {
-        background: transparent url('../Images/Login/login-logo.png') no-repeat center center;
-        height: 200px;
-    }
+#login-form                                                 { width: 320px; height: 400px; /* TODO : Delete  float: right; padding: 20px; }
+.login-form-field                                           { width: 304px; padding: 8px; background: white; border: #e0e0e0 1px solid; margin: 5px 0; font-size: 18px; }
+.login-form-button                                          { float: right; border: none; border-bottom: 5px solid #0c5371; background: #1a6d97; color: white; font-weight: bold; 
+                                                              text-transform: uppercase; font-size: 16px; padding: 6px 14px; margin-top: 15px; }
+.login-form-button:hover                                    { cursor: pointer; background: #2277a4; }
+.login-form-button:active                                   { position: relative; top: 1px; border-bottom: 4px solid #0c5371; }
+#login-form-login                                           { } 
+#login-form-login h1                                        { text-transform: uppercase; font-weight: bold; text-align: right; font-size: 21px; margin-bottom: 10px; }
+#login-form-signup h1                                       { text-transform: uppercase; font-weight: bold; text-align: right; font-size: 21px; margin-bottom: 10px; }
+.login-form-switch                                          { text-align: center; padding-top: 20px; }
+.login-form-switch p                                        { font-size: 16px; color: #888; }
+.login-form-switch a                                        { color: #fe9b26; font-weight: bold; font-size: 1.4em; }
+.login-form-switch a:hover                                  { cursor: pointer; color: #feaa26; }
+#login-footer                                               { background: yellowgreen; }*/
 
-    #login-content {
-        
-    }
+#loginFooter                                                { position:absolute; bottom:0; left:0; right:0; height:40px; background:#116d98; -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.57);
+                                                              -moz-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.57); box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.57); }
 
-        #login-about {
-            width: 600px;
-            height: 400px;
-            float: left;
-        }
-
-            #login-about-video {
-                
-            }
-
-                #login-about-video-image {
-                    width: 488px; height: 320px;
-                    margin: 0 auto;
-                    background: transparent url('../Images/Login/video-image.jpg');
-                }
-
-                #login-about-video p {
-                    width: 440px;
-                    text-align: center;
-                    margin: 0 auto;
-                    padding: 10px 0;
-                    color: #888;
-                    font-size: 14px;
-                    line-height: 21px;
-                }
-
-        #login-form {
-            width: 320px;
-            height: 400px; /* TODO : Delete */
-            float: right;
-            padding: 20px;
-        }
-
-            .login-form-field {
-                width: 304px;
-                padding: 8px;
-                background: white;
-                border: #e0e0e0 1px solid;
-                margin: 5px 0;
-                font-size: 18px;
-            }
-
-            .login-form-button {
-                float: right;
-                border: none;
-                border-bottom: 5px solid #0c5371;
-                background: #1a6d97;
-                color: white;
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 16px;
-                padding: 6px 14px;
-                margin-top: 15px;
-            }
-
-                .login-form-button:hover {
-                    cursor: pointer;
-                    background: #2277a4;
-                }
-
-                .login-form-button:active {
-                    position: relative;
-                    top: 1px;
-                    border-bottom: 4px solid #0c5371;
-                }
-
-            #login-form-login {
-            }
-
-                #login-form-login h1 {
-                    text-transform: uppercase;
-                    font-weight: bold;
-                    text-align: right;
-                    font-size: 21px;
-                    margin-bottom: 10px;
-                }
-
-                #login-form-signup h1 {
-                    text-transform: uppercase;
-                    font-weight: bold;
-                    text-align: right;
-                    font-size: 21px;
-                    margin-bottom: 10px;
-                }
-
-            .login-form-switch {
-                text-align: center;
-                padding-top: 20px;
-            }
-
-                .login-form-switch p {
-                    font-size: 16px;
-                    color: #888;
-                }
-
-                .login-form-switch a {
-                    color: #fe9b26;
-                    font-weight: bold;
-                    font-size: 1.4em;
-                }
-
-                    .login-form-switch a:hover {
-                        cursor: pointer;
-                        color: #feaa26;
-                    }
-
-    #login-footer {
-        background: yellowgreen;
-    }
-
-
+#loginFooter #content                                       { position: relative; width:310px; margin: 0 auto; font-size: 1.5em; color:black; }
+#loginFooter #content #copyright                            { float: left; padding:2px 10px; margin:10px 0; border-right: 1px solid #242424; vertical-align:middle; }
+#loginFooter #content #language                             { float: left; padding:0 10px; margin:12px 0;}
