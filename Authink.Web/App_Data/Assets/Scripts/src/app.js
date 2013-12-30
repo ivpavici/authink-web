@@ -5,11 +5,11 @@ var authink = angular.module('authink', ['ui.bootstrap', 'ngRoute', 'ngResource'
         
         $routeProvider.when('/', {
 
-            templateUrl: '/Assets/Templates/Home.html'
+            templateUrl: '/application/templates/home'
         })
         .when('/login', {
 
-            templateUrl: '/Assets/Templates/Login.html'
+            templateUrl: '/application/templates/login'
         });
         
         $locationProvider.html5Mode(true);

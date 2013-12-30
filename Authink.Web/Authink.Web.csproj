@@ -317,8 +317,6 @@
     <Content Include="Content\Sounds\guns.mp3" />
     <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
-    <Content Include="Assets\Templates\Home.html" />
-    <Content Include="Assets\Templates\Login.html" />
     <Content Include="Content\Images\Children\default-profile-picture.png" />
     <Content Include="Content\Images\Children\WomenChild.jpg" />
     <Content Include="Content\Images\TaskIcons\task-affiliation-256x256.png" />
@@ -524,6 +522,8 @@
     <Content Include="Views\Templates\TestDelete_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\TestEditCancel_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\ChildDelete_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Templates\Home.cshtml" />
+    <Content Include="Views\Templates\Login.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
