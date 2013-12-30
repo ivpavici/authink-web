@@ -81,15 +81,6 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
-        public static string LoginForm_SignUpSwitch_Flavor {
-            get {
-                return ResourceManager.GetString("LoginForm_SignUpSwitch_Flavor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sign up now!.
-        /// </summary>
         public static string LoginForm_SignUpSwitch_Link {
             get {
                 return ResourceManager.GetString("LoginForm_SignUpSwitch_Link", resourceCulture);
@@ -160,15 +151,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Already have an account?.
-        /// </summary>
-        public static string SignUpForm_LoginSwitch_Flavor {
-            get {
-                return ResourceManager.GetString("SignUpForm_LoginSwitch_Flavor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to password.
         /// </summary>
         public static string SignUpForm_PasswordPlaceholder {
@@ -178,20 +160,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SignUp.
+        ///   Looks up a localized string similar to Sign up.
         /// </summary>
         public static string SignUpForm_SIgnUpButton {
             get {
                 return ResourceManager.GetString("SignUpForm_SIgnUpButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SignUp.
-        /// </summary>
-        public static string SignUpForm_Title {
-            get {
-                return ResourceManager.GetString("SignUpForm_Title", resourceCulture);
             }
         }
         
