@@ -409,7 +409,6 @@ namespace Authink.Web.Controllers
                             );
                         }
 
-                        taskCommands.ToggleAttachToTest(taskId, testId);
                     }
                     catch (Exception ex)
                     {
@@ -423,6 +422,8 @@ namespace Authink.Web.Controllers
                     throw;
                 }
             }
+
+            taskCommands.ToggleAttachToTest(taskId, testId);
 
             return taskId;
         }
