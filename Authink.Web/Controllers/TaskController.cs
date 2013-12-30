@@ -19,7 +19,7 @@ namespace Authink.Web.Controllers
 {
     using Authink.Web.Controllers.Task.Helpers;
     using Authink.Core.Fx;
-using NLog;
+    using NLog;
 
     [Authorize]
     public partial class TaskController: Controller
@@ -96,6 +96,8 @@ using NLog;
                 return new HttpNotFoundResult();
             }
 
+            logger.Info("User {0} requested choose type in task wizard", httpContextBase.User.Identity.Name);
+
             var model       = chooseTypeModelFactory();
             model.TaskTypes = KnownTaskTypesMappings;
 
@@ -108,6 +110,8 @@ using NLog;
         }
         [HttpGet]  public ActionResult ChooseDifficulty(string taskType         )
         {
+            logger.Info("User {0} requested choose difficulty for task type {1}", httpContextBase.User.Identity.Name, taskType);
+
             var model = chooseDifficultyModelFactory();
 
             var taskKey = KnownTaskTypesMappings.Single(pair => pair.Value.UrlFriendyname == taskType)
@@ -118,6 +122,8 @@ using NLog;
             model.UploadPicturesRouteName   = KnownTaskTypesMappings[taskKey].UploadPicturesRouteName;
 
             httpContextBase.Session["TaskKey"] = taskKey;
+
+            logger.Info("Formed model for choose difficulty: task name = {0}", model.TaskName);
 
             return View
             (
@@ -132,11 +138,14 @@ using NLog;
                 return RedirectToRoute("Shell");
             }
 
+            logger.Info("User {0} requested general task data inputs", httpContextBase.User.Identity.Name);
+
             var model = inputMetaDataModelFactory();
 
             model.TaskKey                = httpContextBase.Session["TaskKey"].ToString();
             model.IsVoiceCommandRequired = model.TaskKey == buru::Task.Keys.VoiceCommands;
 
+            logger.Info("Formed model for choose difficulty: task key = {0} and voiceCommandRequired = {1}", model.TaskKey, model.IsVoiceCommandRequired);
             return View
             (
                 model:model
@@ -157,6 +166,8 @@ using NLog;
 
             if(sound == null && model.IsVoiceCommandRequired)
             {
+                logger.Info("Voice command is required but didn't get one here.");
+
                 model.ErrorMessage = "Voice command is required for this type of task";
                 return View(model);
             }
@@ -287,6 +298,8 @@ using NLog;
                 return 0;
             }
 
+            logger.Info("Creating simple task with pictures. Parameters: taskKey = {0},title = {1},description = {2}, userId = {3}, testId = {4}",taskKey, title, description, userId, testId );
+
             var taskDifficulty = Convert.ToInt32(httpContextBase.Session["TaskDifficulty"]);
             var pictures       = httpContextBase.Session["Pictures"] as List<SessionPictureData>;
 
@@ -305,15 +318,25 @@ using NLog;
             httpContextBase.Session["ImplementedTaskId"] = taskId;
             foreach (var pictureData in pictures)
             {
-                var savePath  = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
-                var pictureId = pictureCommands.Create
-                (
-                    url:      savePath,
-                    theme:    "",
-                    isAnswer: pictureData.IsAnswer
-                );
+                try
+                {
+                    logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", pictureData.FileName, pictureData.Content, taskId);
 
-                pictureCommands.AttachToTask(taskId, pictureId);
+                    var savePath = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                    var pictureId = pictureCommands.Create
+                    (
+                        url: savePath,
+                        theme: "",
+                        isAnswer: pictureData.IsAnswer
+                    );
+
+                    pictureCommands.AttachToTask(taskId, pictureId);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Failed to upload picture", ex);
+                    throw;
+                }
             }
 
             taskCommands.ToggleAttachToTest(taskId,testId);
@@ -327,6 +350,8 @@ using NLog;
                 logger.Warn("Detect colors task creation: Pictures, Colors or TaskDifficulty session variables expired for user {0}", httpContextBase.User.Identity.Name);
                 return 0;
             }
+
+            logger.Info("Creating task with colors. Parameters: taskKey = {0},title = {1},description = {2}, userId = {3}, testId = {4}", taskKey, title, description, userId, testId);
 
             var taskDifficulty = Convert.ToInt32(HttpContext.Session["TaskDifficulty"]);
             var pictures       = httpContextBase.Session["Pictures"] as List<SessionPictureData>;
@@ -346,38 +371,58 @@ using NLog;
 
             foreach (var pictureData in pictures)
             {
-                var savePath             = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
-                var picturePosition      = pictures.IndexOf(pictureData);
-                var colorsForThisPicture = colors[picturePosition];
-
-                var pictureId = pictureCommands.Create
-                (
-                    url:      savePath,
-                    theme:    "",
-                    isAnswer: null
-                );
-
-                pictureCommands.AttachToTask (taskId,pictureId);
-
-                Create_And_Attach_Color_To_Picture
-                (
-                    pictureId: pictureId, 
-                    value:     colorsForThisPicture.CorrectColor, 
-                    isCorrect: true
-                );
-
-                foreach (var wrongColor in colorsForThisPicture.WrongColors)
+                try
                 {
-                    Create_And_Attach_Color_To_Picture
+                    logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", pictureData.FileName, pictureData.Content, taskId);
+
+                    var savePath             = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                    var picturePosition      = pictures.IndexOf(pictureData);
+                    var colorsForThisPicture = colors[picturePosition];
+
+                    var pictureId = pictureCommands.Create
                     (
-                        pictureId: pictureId,
-                        value:     wrongColor,
-                        isCorrect: false
+                        url:      savePath,
+                        theme:    "",
+                        isAnswer: null
                     );
+
+                    pictureCommands.AttachToTask (taskId,pictureId);
+
+                    try
+                    {
+                        logger.Info("Uploaded picture. Attaching colors to picture. Parameters: pictureId = {0}, correctColor = {1}", pictureId, colorsForThisPicture.CorrectColor);
+
+                        Create_And_Attach_Color_To_Picture
+                        (
+                            pictureId: pictureId, 
+                            value:     colorsForThisPicture.CorrectColor, 
+                            isCorrect: true
+                        );
+
+                        foreach (var wrongColor in colorsForThisPicture.WrongColors)
+                        {
+                            Create_And_Attach_Color_To_Picture
+                            (
+                                pictureId: pictureId,
+                                value:     wrongColor,
+                                isCorrect: false
+                            );
+                        }
+
+                        taskCommands.ToggleAttachToTest(taskId, testId);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Failed to attach colors to picture", ex);
+                        throw;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Failed to upload pictures and attach colors", ex);
+                    throw;
                 }
             }
-
-            taskCommands.ToggleAttachToTest(taskId, testId);
 
             return taskId;
         }
@@ -388,6 +433,8 @@ using NLog;
                 logger.Warn("Order by size task creation: Picture or TaskDifficulty session variables expired for user {0} ", httpContextBase.User.Identity.Name);
                 return 0;
             }
+
+            logger.Info("Creating task order by size. Parameters: taskKey = {0},title = {1},description = {2}, userId = {3}, testId = {4}", taskKey, title, description, userId, testId);
 
             var taskDifficulty = Convert.ToInt32(httpContextBase.Session["TaskDifficulty"]);
             var picture        = httpContextBase.Session["Pictures"] as SessionPictureData;
@@ -405,16 +452,26 @@ using NLog;
             );
             httpContextBase.Session["ImplementedTaskId"] = taskId;
 
-            var savePath  = pictureServices.Save(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
-            var pictureId = pictureCommands.Create
-            (
-                url:      savePath,
-                theme:    "",
-                isAnswer: picture.IsAnswer
-            );
+            try
+            {
+                logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", picture.FileName, picture.Content, taskId);
 
-            pictureCommands.AttachToTask(taskId, pictureId);
+                var savePath  = pictureServices.Save(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                var pictureId = pictureCommands.Create
+                (
+                    url:      savePath,
+                    theme:    "",
+                    isAnswer: picture.IsAnswer
+                );
 
+                pictureCommands.AttachToTask(taskId, pictureId);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Failed to upload pictures", ex);
+                throw;
+            }
+           
             taskCommands.ToggleAttachToTest(taskId, testId);
 
             return taskId;

@@ -7,7 +7,7 @@ using Authink.Core.Model.Commands;
 using Authink.Core.Model.Services;
 using Authink.Web.Models.Session;
 using Authink.Web.Models.Picture;
-
+using NLog;
 using Resources;
 using buru = Authink.Core.Domain.Rules;
 using ent =  Authink.Core.Domain.Entities;
@@ -24,7 +24,8 @@ namespace Authink.Web.Controllers
             Func<UploadPictures_DetectItemModel>         uploadPictures_DetectItemModelFactory,
             Func<UploadPictures_OrderBySizeModel>        uploadPictures_OrderBySizeModelFactory,
 
-            HttpContextBase httpContextBase
+            HttpContextBase httpContextBase,
+            Logger          logger
         )
         {
 
@@ -33,7 +34,8 @@ namespace Authink.Web.Controllers
             this.uploadPictures_DetectItemModelFactory              = uploadPictures_DetectItemModelFactory;
             this.uploadPictures_OrderBySizeModelFactory             = uploadPictures_OrderBySizeModelFactory;
 
-            this.httpContextBase      = httpContextBase;
+            this.httpContextBase = httpContextBase;
+            this.logger          = logger;
         }
 
         private readonly Func<UploadPictures_SimpleTasksWithPictures> uploadPictures_SimpleTasksWithPicturesModelFactory;
@@ -42,6 +44,7 @@ namespace Authink.Web.Controllers
         private readonly Func<UploadPictures_OrderBySizeModel>        uploadPictures_OrderBySizeModelFactory;
 
         private readonly HttpContextBase httpContextBase;
+        private readonly Logger          logger;
     }
     public partial class PictureController
     {
@@ -52,11 +55,15 @@ namespace Authink.Web.Controllers
                 return new HttpNotFoundResult();
             }
 
+            logger.Info("User {0} requested simple picture upload with task difficulty {1}", httpContextBase.User.Identity.Name, taskDifficulty);
+
             var model = uploadPictures_SimpleTasksWithPicturesModelFactory();
             model.TaskDifficulty = taskDifficulty;
             model.TaskKey = httpContextBase.Session["TaskKey"].ToString();
 
             HttpContext.Session["TaskDifficulty"] = taskDifficulty;
+
+            logger.Info("Formed model for csimple picture upload: task difficulty = {0}, task key = {1}", model.TaskDifficulty, model.TaskKey);
 
             return View
             (
@@ -77,6 +84,8 @@ namespace Authink.Web.Controllers
                 return View(model);
             }
 
+            logger.Info("User {0} uploaded {1} simple pictures.", httpContextBase.User.Identity.Name, pictures.Count);
+
             var uploadedPicturesData = pictures.Select(picture => new SessionPictureData
             (
                 filename: picture.FileName,
@@ -95,10 +104,14 @@ namespace Authink.Web.Controllers
 
         [HttpGet]  public ActionResult UploadPictures_DetectColors(int taskDifficulty)
         {
+            logger.Info("User {0} requested simple picture upload with task difficulty {1}", httpContextBase.User.Identity.Name, taskDifficulty);
+
             var model = uploadPictures_DetectColorsModelFactory();
             model.TaskDifficulty = taskDifficulty;
 
             HttpContext.Session["TaskDifficulty"] = taskDifficulty;
+
+            logger.Info("Formed model for csimple picture upload: task difficulty = {0}.", model.TaskDifficulty);
 
             return View
             (
@@ -117,6 +130,8 @@ namespace Authink.Web.Controllers
                 model.ErrorMessage = GenerateTaskUploadErrorMessage(pictures.Count, model.TaskDifficulty);
                 return View(model);
             }
+
+            logger.Info("User {0} uploaded {1} pictures with colors.", httpContextBase.User.Identity.Name, pictures.Count);
 
             HttpContext.Session["Pictures"] = pictures.Select(picture => new SessionPictureData
             (
@@ -139,6 +154,8 @@ namespace Authink.Web.Controllers
 
         [HttpGet]  public ActionResult UploadPictures_DetectItem(int taskDifficulty)
         {
+            logger.Info("User {0} requested detect item picture upload with task difficulty {1}", httpContextBase.User.Identity.Name, taskDifficulty);
+
             var model = uploadPictures_DetectItemModelFactory();
             model.TaskDifficulty = taskDifficulty;
 
@@ -162,6 +179,8 @@ namespace Authink.Web.Controllers
                 model.ErrorMessage = GenerateTaskUploadErrorMessage(pictures.Count + 1, model.TaskDifficulty);
                 return View(model);
             }
+
+            logger.Info("User {0} uploaded {1} detect item pictures.", httpContextBase.User.Identity.Name, pictures.Count);
 
             var uploadedPicturesData = pictures.Select(picture => new SessionPictureData
             (
@@ -191,6 +210,8 @@ namespace Authink.Web.Controllers
 
         [HttpGet]  public ActionResult UploadPictures_OrderBySize(int taskDifficulty)
         {
+            logger.Info("User {0} requested order by size picture upload with task difficulty {1}", httpContextBase.User.Identity.Name, taskDifficulty);
+
             var model = uploadPictures_OrderBySizeModelFactory();
             model.TaskDifficulty = taskDifficulty;
 
@@ -208,6 +229,8 @@ namespace Authink.Web.Controllers
                 model.ErrorMessage = TaskWizard.UploadPicture_ValidationMessage;
                 return View(model);
             }
+
+            logger.Info("User {0} uploaded picture for order by size.", httpContextBase.User.Identity.Name);
 
             var uploadedPicturesData = new SessionPictureData
             (

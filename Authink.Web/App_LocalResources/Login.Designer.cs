@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid login or password..
+        /// </summary>
+        public static string LoginForm_ErrorMessage {
+            get {
+                return ResourceManager.GetString("LoginForm_ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string LoginForm_LoginButton {
@@ -129,6 +138,24 @@ namespace Resources {
         public static string SignUpForm_EmailPlaceholder {
             get {
                 return ResourceManager.GetString("SignUpForm_EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Došlo je do pogreške, provjerite jesu sva polja ispunjena..
+        /// </summary>
+        public static string SignUpForm_ErrorMessage_SignUpError {
+            get {
+                return ResourceManager.GetString("SignUpForm_ErrorMessage_SignUpError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username or email are already in use. Please choose another one..
+        /// </summary>
+        public static string SignUpForm_ErrorMessage_UsernameEmailTaken {
+            get {
+                return ResourceManager.GetString("SignUpForm_ErrorMessage_UsernameEmailTaken", resourceCulture);
             }
         }
         

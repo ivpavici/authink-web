@@ -9,19 +9,26 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
         
         controller: ['$scope', '$location', function ($scope, $location) {
 
-            $scope.login = function() {
+            $scope.errors = {
+                isLoginError: false,
+                isSignUpError: false,
+                isUsernameOrEmailTakeError: false
+            };
 
+            $scope.login = function() {
                 var user = { username: $scope.username, password: $scope.password };
 
-                var response = accountServices.login(user);
-                response.then(function(responseData) {
+                accountServices.login(user)
+                .then(function(responseData) {
                     
                     if (responseData.StatusCode === 200) {
 
+                        resetScopeState();
+
                         $location.path('/');
                     } else {
-                        
-                        $scope.loginErrorMessage = "Invalid login or password.";
+
+                        $scope.errors.isloginError = true;
                     }
                 });
             };
@@ -43,20 +50,31 @@ authink.directive('signUp', ['accountServices', function (accountServices) {
                     if (responseData.StatusCode === 200) {
 
                         $scope.isSignUp = false;
+
+                        resetScopeState();
                     } else if(responseData.StatusCode === 417){
-
-                        $scope.signUpErrorMessage = "You need to fill all fields!";
+                        
+                        $scope.errors.isSignUpError = true;
                     } else {
-
-                        $scope.signUpErrorMessage = "Username or email are already in use. Please choose another one.";
+                        $scope.errors.isUsernameOrEmailTakeError = true;
                     }
                 });
             };
 
+            var resetScopeState = function () {
+
+                $scope.errors = {
+                    isLoginError: false,
+                    isSignUpError: false,
+                    isUsernameOrEmailTakeError: false
+                };
+            };
             $scope.toggleForm = function () {
                 
                 $scope.isSignUp = !$scope.isSignUp;
             };
+
+            resetScopeState();
         }]
     };
 }]);

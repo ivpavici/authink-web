@@ -8,7 +8,10 @@
     <form ng-submit="login()" ng-show="!isSignUp">
         <div class="inputContainer">
             
-            <span>{{loginErrorMessage}}</span>
+            <div ng-if="errors.isloginError" class="alert alert-danger">
+                @resources.LoginForm_ErrorMessage
+            </div>
+
             <div class="inputData">
                 <input type="text" class="login-form-field" ng-model="username" placeholder="@resources.LoginForm_UsernamePlaceholder" required />
                 <div id="usernameIcon"></div>
@@ -32,7 +35,12 @@
         <div class="inputContainer">
             <form ng-submit="signUp()">
 
-            <span>{{signUpErrorMessage}}</span>
+                <div ng-if="errors.isSignUpError" class="alert alert-danger">
+                    @resources.SignUpForm_ErrorMessage_SignUpError
+                </div>
+                <div ng-if="errors.isUsernameOrEmailTakeError" class="alert alert-danger">
+                    @resources.SignUpForm_ErrorMessage_UsernameEmailTaken
+                </div>
 
             <div class="inputData">
                 <input type="text" ng-model="user.firstname" placeholder="@resources.SignUpForm_FirstNamePlaceholder" class="login-form-field" required />
@@ -57,16 +65,15 @@
             <div class="inputData">
                 <input type="password" ng-model="user.confirmPassword" placeholder="@resources.SignUpForm_ConfirmPasswordPlaceholder" class="login-form-field" required />
             </div>
+                <div class="login-form-switch">
 
+                    <input class="login-form-button" type="submit" value="@resources.SignUpForm_SIgnUpButton" />
+                    <a ng-click="toggleForm()">@resources.SignForm_LoginSwitch_Link</a>
+
+                </div>
         </form>
         </div> 
-        <div class="login-form-switch">
-
-            <input class="login-form-button" type="submit" value="@resources.SignUpForm_SIgnUpButton" />
-            <a ng-click="toggleForm()">@resources.SignForm_LoginSwitch_Link</a>
-
-        </div>
-       
+        
     </div>
 
 </div>
