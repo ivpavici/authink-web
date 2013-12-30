@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Services;
+using Authink.Data.ResourceFileStorage;
 using Authink.Web.Controllers.Task.Models;
 using Authink.Web.Models.Session;
 
@@ -31,7 +30,7 @@ namespace Authink.Web.Controllers
             ISoundCommands       soundCommands,
             IPictureServices     pictureServices,
             ILoginServices       loginServices,
-            ISoundServices       soundServices,
+            IFileStorageAdapter  fileStorageAdapter,
             IUserAccessRights    userAccessRights,
             
             Func<ChooseTypeModel>       chooseTypeModelFactory,
@@ -45,12 +44,11 @@ namespace Authink.Web.Controllers
         {
             this.taskCommands        = taskCommands;
             this.pictureCommands     = pictureCommands;
-            this.soundCommands       = soundCommands;
+            this.fileStorageAdapter  = fileStorageAdapter;
             this.pictureServices     = pictureServices;
             this.loginServices       = loginServices;
-            this.soundServices       = soundServices;
             this.userAccessRights    = userAccessRights;
-
+            this.soundCommands       = soundCommands;
             this.chooseTypeModelFactory       = chooseTypeModelFactory;
             this.chooseDifficultyModelFactory = chooseDifficultyModelFactory;
             this.inputMetaDataModelFactory    = inputMetaDataModelFactory;
@@ -62,10 +60,10 @@ namespace Authink.Web.Controllers
 
         private readonly ITaskCommands        taskCommands;
         private readonly IPictureCommands     pictureCommands;
-        private readonly ISoundCommands       soundCommands;
+        private readonly IFileStorageAdapter  fileStorageAdapter;
         private readonly IPictureServices     pictureServices;
         private readonly ILoginServices       loginServices;
-        private readonly ISoundServices       soundServices;
+        private readonly ISoundCommands       soundCommands;
         private readonly IUserAccessRights    userAccessRights;
 
         private readonly Func<ChooseTypeModel>       chooseTypeModelFactory;
@@ -228,15 +226,13 @@ namespace Authink.Web.Controllers
             {
                 if(sound != null && newTaskId != 0)
                 {
-                    var soundUrl = soundServices.Save
+                    var soundUrl = fileStorageAdapter.Upload
                     (
-                        soundName:    sound.FileName,
-                        soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
-                        relatedId:    newTaskId,
-                        baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
+                        resourceFile:   new ResourceFileStorageAdapter.ResourceFile(sound.FileName, FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound)),
+                        baseFoldername: buru::Sound.VoiceCommands.DefaultSavePath 
                     );
-
-                    var soundId = soundCommands.Create(soundUrl, sound.FileName, "ins");
+                   
+                    var soundId = soundCommands.Create(soundUrl.ToString(), sound.FileName, "ins");
 
                     soundCommands.AttachSoundToTask(soundId, newTaskId);
                 }
@@ -322,11 +318,18 @@ namespace Authink.Web.Controllers
                 {
                     logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", pictureData.FileName, pictureData.Content, taskId);
 
-                    var savePath = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                    var resizedPicture = pictureServices.ResizePicture(pictureData.Content, buru::Picture.Task.DefaultResizeQuerystring);
+
+                    var savePath = fileStorageAdapter.Upload
+                    (
+                        resourceFile:   new ResourceFileStorageAdapter.ResourceFile(pictureData.FileName, resizedPicture),
+                        baseFoldername: buru::Picture.Task.DefaultSavePath
+                    );
+
                     var pictureId = pictureCommands.Create
                     (
-                        url: savePath,
-                        theme: "",
+                        url:      savePath.ToString(),
+                        theme:    "",
                         isAnswer: pictureData.IsAnswer
                     );
 
@@ -375,13 +378,20 @@ namespace Authink.Web.Controllers
                 {
                     logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", pictureData.FileName, pictureData.Content, taskId);
 
-                    var savePath             = pictureServices.Save(pictureData.FileName, pictureData.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                    var resizedPicture = pictureServices.ResizePicture(pictureData.Content, buru::Picture.Task.DefaultResizeQuerystring);
+
+                    var savePath = fileStorageAdapter.Upload
+                    (
+                        resourceFile:   new ResourceFileStorageAdapter.ResourceFile(pictureData.FileName, resizedPicture),
+                        baseFoldername: buru::Picture.Task.DefaultSavePath
+                    );
+
                     var picturePosition      = pictures.IndexOf(pictureData);
                     var colorsForThisPicture = colors[picturePosition];
 
                     var pictureId = pictureCommands.Create
                     (
-                        url:      savePath,
+                        url:      savePath.ToString(),
                         theme:    "",
                         isAnswer: null
                     );
@@ -457,10 +467,17 @@ namespace Authink.Web.Controllers
             {
                 logger.Info("Uploading picture. Parameters: fileName = {0}, content = {1}, taskId = {2}", picture.FileName, picture.Content, taskId);
 
-                var savePath  = pictureServices.Save(picture.FileName, picture.Content, taskId, buru::Picture.Task.DefaultSavePath, buru::Picture.Task.DefaultResizeQuerystring);
+                var resizedPicture = pictureServices.ResizePicture(picture.Content, buru::Picture.Task.DefaultResizeQuerystring);
+
+                var savePath = fileStorageAdapter.Upload
+                (
+                    resourceFile:   new ResourceFileStorageAdapter.ResourceFile(picture.FileName, resizedPicture),
+                    baseFoldername: buru::Picture.Task.DefaultSavePath
+                );
+
                 var pictureId = pictureCommands.Create
                 (
-                    url:      savePath,
+                    url:      savePath.ToString(),
                     theme:    "",
                     isAnswer: picture.IsAnswer
                 );

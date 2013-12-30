@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Services;
+using Authink.Data.ResourceFileStorage;
 using Authink.Web.Models.Sound;
 
 using buru = Authink.Core.Domain.Rules;
@@ -17,23 +18,22 @@ namespace Authink.Web.Controllers
         public SoundController
         (
             ISoundCommands       soundCommands,
-            ISoundServices       soundServices,
+            IFileStorageAdapter  fileStorageAdapter,
             IUserAccessRights    userAccessRights,
 
             Func<CreateModel> createModelFactory,
             Func<EditModel>   editModelFactory 
         )
         {
-            this.soundCommands       = soundCommands;
-            this.soundServices       = soundServices;
-            this.userAccessRights    = userAccessRights;
-
+            this.soundCommands      = soundCommands;
+            this.userAccessRights   = userAccessRights;
+            this.fileStorageAdapter = fileStorageAdapter;
             this.createModelFactory = createModelFactory;
             this.editModelFactory   = editModelFactory;
         }
 
         private readonly ISoundCommands       soundCommands;
-        private readonly ISoundServices       soundServices;
+        private readonly IFileStorageAdapter  fileStorageAdapter;
         private readonly IUserAccessRights    userAccessRights;
 
         private readonly Func<CreateModel> createModelFactory;
@@ -67,15 +67,13 @@ namespace Authink.Web.Controllers
                 );
             }
 
-            var soundUrl = soundServices.Save
-            (
-                soundName:    sound.FileName,
-                soundContent: FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound),
-                relatedId:    model.TaskId,
-                baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
-            );
-
-            var soundId = soundCommands.Create(soundUrl, sound.FileName, "ins");
+            var soundUrl =
+                fileStorageAdapter.Upload(
+                    new ResourceFileStorageAdapter.ResourceFile(sound.FileName,
+                        FileHelpers.Transform_HttpPostedFileBase_Into_Bytes(sound)),
+                    buru::Sound.VoiceCommands.DefaultSavePath);
+            
+            var soundId = soundCommands.Create(soundUrl.ToString(), sound.FileName, "ins");
 
             soundCommands.AttachSoundToTask(soundId, model.TaskId);
             return RedirectToRoute("Home");

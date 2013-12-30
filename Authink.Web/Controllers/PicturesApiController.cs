@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Linq;
@@ -11,6 +9,7 @@ using System.Linq;
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
+using Authink.Data.ResourceFileStorage;
 using Authink.Web.Controllers.PicturesApi.Models;
 
 using buru = Authink.Core.Domain.Rules;
@@ -30,6 +29,7 @@ namespace Authink.Web.Controllers
             IPictureCommands     pictureCommands,
             IPictureQueries      pictureQueries,
             IPictureServices     pictureServices,
+            IFileStorageAdapter  fileStorageAdapter,
             IChildCommands       childrenCommands,
             Logger               logger
         )
@@ -38,6 +38,7 @@ namespace Authink.Web.Controllers
             this.pictureCommands     = pictureCommands;
             this.pictureQueries      = pictureQueries;
             this.pictureServices     = pictureServices;
+            this.fileStorageAdapter  = fileStorageAdapter;
             this.childrenCommands    = childrenCommands;
             this.logger              = logger;
         }
@@ -46,6 +47,7 @@ namespace Authink.Web.Controllers
         private readonly IPictureCommands     pictureCommands;
         private readonly IPictureQueries      pictureQueries;
         private readonly IPictureServices     pictureServices;
+        private readonly IFileStorageAdapter  fileStorageAdapter;
         private readonly IChildCommands       childrenCommands;
 
         private Logger logger;
@@ -71,24 +73,21 @@ namespace Authink.Web.Controllers
 
             try
             {
+                logger.Info("Updating task picture");
+
                 var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
                 await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
                 
                 var file     = memoryStreamProvider.Contents.First();
-                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileName = file.Headers.ContentDisposition.FileName.Trim('\"');
                 var fileData = await file.ReadAsByteArrayAsync();
-                
-                var savePath =  pictureServices.Save
-                (
-                    pictureName:       fileName, 
-                    pictureContent:    fileData,
-                    relatedId:         taskId,
-                    baseSavePath:      buru::Picture.Task.DefaultSavePath, 
-                    resizeQueryString: buru::Picture.Task.DefaultResizeQuerystring
-                );
-                
-                pictureCommands.Update(pictureId, savePath);
+
+                var resizedPicture = pictureServices.ResizePicture(fileData, buru::Picture.Task.DefaultResizeQuerystring);
+
+                var savePath = fileStorageAdapter.Upload(new ResourceFileStorageAdapter.ResourceFile(fileName, resizedPicture), buru::Picture.Task.DefaultSavePath);
+
+                pictureCommands.Update(pictureId, savePath.ToString());
                 
                 return pictureQueries.GetSingle_whereId(pictureId);
             }
@@ -97,7 +96,6 @@ namespace Authink.Web.Controllers
                 logger.Error("Update failed for picture with Id = {0}", pictureId, ex);
                 throw;
             }
-           
         }
 
         [System.Web.Http.HttpPost]
@@ -110,24 +108,20 @@ namespace Authink.Web.Controllers
 
             try
             {
+                logger.Info("Updating child picture");
+
                 var memoryStreamProvider = new MultipartMemoryStreamProvider();
 
                 await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
                 var file     = memoryStreamProvider.Contents.First();
-                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileName = file.Headers.ContentDisposition.FileName.Trim('\"');
                 var fileData = await file.ReadAsByteArrayAsync();
 
-                var savePath = pictureServices.Save
-                (
-                    pictureName:       fileName,
-                    pictureContent:    fileData,
-                    relatedId:         childId,
-                    baseSavePath:      buru::Picture.Children.DefaultSavePath,
-                    resizeQueryString: buru::Picture.Children.DefaultResizeQuerystring
-                );
+                var resizedPicture = pictureServices.ResizePicture(fileData, buru::Picture.Children.DefaultResizeQuerystring);
+                var savePath       = fileStorageAdapter.Upload(new ResourceFileStorageAdapter.ResourceFile(fileName, resizedPicture), buru::Picture.Children.DefaultSavePath);
 
-                childrenCommands.UpdatePicture(childId, savePath);
+                childrenCommands.UpdatePicture(childId, savePath.ToString());
                 return new { pictureUrl = savePath };
             }
             catch(Exception ex)
@@ -139,6 +133,7 @@ namespace Authink.Web.Controllers
         [System.Web.Http.HttpPost]
         public HttpStatusCodeResult UpdateColorsForPicture(UpdateColorsForPictureModel model)
         {
+            logger.Info("Updating colors for  picture");
             foreach (var color in model.WrongColors)
             {
                 pictureCommands.Update_color(color.Id, color.Value);

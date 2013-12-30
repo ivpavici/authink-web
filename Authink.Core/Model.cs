@@ -109,11 +109,7 @@ namespace Authink.Core.Model.Services
 {
     public interface IPictureServices
     {
-        string Save(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString);
-    }
-    public interface ISoundServices
-    {
-        string Save(string soundName, byte[] soundContent, int relatedId, string baseSavePath);
+        byte[] ResizePicture(byte[] pictureData, string resizeQuerystring);
     }
     public interface ILoginServices
     {

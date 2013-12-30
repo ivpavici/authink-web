@@ -260,6 +260,7 @@
     <Content Include="App_Data\Assets\Scripts\src\Components\editTaskPicturesList.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\picturesRepository.js" />
     <Content Include="App_Data\Assets\Scripts\src\Repositories\soundsRepository.js" />
+    <Content Include="Assets\Images\arrow-down.png" />
     <Content Include="Assets\Images\Home\cancelIcon.png" />
     <Content Include="Assets\Images\Home\cancelIcon_bckg.png" />
     <Content Include="Assets\Images\Home\child-button-delete.png" />
@@ -271,6 +272,12 @@
     <Content Include="Assets\Images\Home\testAdd.png" />
     <Content Include="Assets\Images\Home\testEditIcon.png" />
     <Content Include="Assets\Images\Home\X-black.png" />
+    <Content Include="Assets\Images\Login\background.jpg" />
+    <Content Include="Assets\Images\Login\login-logo-big.png" />
+    <Content Include="Assets\Images\Login\passwordBckg.jpg" />
+    <Content Include="Assets\Images\Login\passwordIcon.png" />
+    <Content Include="Assets\Images\Login\usernameBckg.jpg" />
+    <Content Include="Assets\Images\Login\usernameIcon.png" />
     <Content Include="Assets\Images\speaker.png" />
     <Content Include="Assets\Images\loading.gif" />
     <Content Include="Assets\Images\Home\add-icon.png" />
@@ -294,6 +301,7 @@
     <Content Include="Assets\Images\Login\video-image.jpg" />
     <Content Include="Assets\Images\Wizard\cancel.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-arrow.png" />
+    <Content Include="Assets\Images\Wizard\task-wizard-check.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-correct.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-cupcake.png" />
     <Content Include="Assets\Images\Wizard\task-wizard-error.png" />
@@ -314,57 +322,8 @@
     <Content Include="Assets\Style\style.css" />
     <Content Include="Assets\Style\popUpStyles\createTask.css" />
     <Content Include="Assets\Images\x.png" />
-    <Content Include="Content\Sounds\guns.mp3" />
     <Content Include="Views\Templates\SignUp.cshtml" />
     <Content Include="App_Data\Assets\Scripts\src\Services\accountServices.js" />
-    <Content Include="Content\Images\Children\default-profile-picture.png" />
-    <Content Include="Content\Images\Children\WomenChild.jpg" />
-    <Content Include="Content\Images\TaskIcons\task-affiliation-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-continue-sequence-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-detect-colors-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-detect-different-items-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-detect-same-items-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-order-by-size-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-pair-halves-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-pair-same-items-256x256.png" />
-    <Content Include="Content\Images\TaskIcons\task-voice-commands-256x256.png" />
-    <Content Include="Content\Images\Tasks\10\bowl.png" />
-    <Content Include="Content\Images\Tasks\10\casserole.png" />
-    <Content Include="Content\Images\Tasks\10\frying pan.png" />
-    <Content Include="Content\Images\Tasks\10\kitchen tool_2.png" />
-    <Content Include="Content\Images\Tasks\11\lonac.png" />
-    <Content Include="Content\Images\Tasks\11\Red_cambridge_mug.png" />
-    <Content Include="Content\Images\Tasks\12\individual-red-mug.png" />
-    <Content Include="Content\Images\Tasks\12\Red_cambridge_mug.png" />
-    <Content Include="Content\Images\Tasks\1\bowl.png" />
-    <Content Include="Content\Images\Tasks\1\casserole.png" />
-    <Content Include="Content\Images\Tasks\2\bowl.png" />
-    <Content Include="Content\Images\Tasks\2\casserole.png" />
-    <Content Include="Content\Images\Tasks\2\cup.png" />
-    <Content Include="Content\Images\Tasks\3\bowl.png" />
-    <Content Include="Content\Images\Tasks\3\casserole.png" />
-    <Content Include="Content\Images\Tasks\3\cup.png" />
-    <Content Include="Content\Images\Tasks\3\frying pan.png" />
-    <Content Include="Content\Images\Tasks\4\bowl.png" />
-    <Content Include="Content\Images\Tasks\4\greenCup.png" />
-    <Content Include="Content\Images\Tasks\4\red-casserole.png" />
-    <Content Include="Content\Images\Tasks\4\yellow kitchen tool_3.png" />
-    <Content Include="Content\Images\Tasks\5\bowl.png" />
-    <Content Include="Content\Images\Tasks\5\red-casserole.png" />
-    <Content Include="Content\Images\Tasks\6\frying pan.png" />
-    <Content Include="Content\Images\Tasks\6\kitchen tool_2.png" />
-    <Content Include="Content\Images\Tasks\6\kitchen tool_3.png" />
-    <Content Include="Content\Images\Tasks\6\kitchen tool_6.png" />
-    <Content Include="Content\Images\Tasks\7\jug-3.png" />
-    <Content Include="Content\Images\Tasks\8\casa.jpg" />
-    <Content Include="Content\Images\Tasks\8\tanjur.jpg" />
-    <Content Include="Content\Images\Tasks\8\tava.jpg" />
-    <Content Include="Content\Images\Tasks\8\ubrus.jpg" />
-    <Content Include="Content\Images\Tasks\9\bowl-left.png" />
-    <Content Include="Content\Images\Tasks\9\bowl-right.png" />
-    <Content Include="Content\Images\Tasks\9\casserole-left.png" />
-    <Content Include="Content\Images\Tasks\9\casserole-right.png" />
-    <Content Include="Content\Images\Tasks\defaultTaskProfile.png" />
     <Content Include="Assets\Style\popUpStyles\editTask.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -530,7 +489,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Assets\Scripts\lib-patches\" />
-    <Folder Include="Content\Sounds\VoiceCommands\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
