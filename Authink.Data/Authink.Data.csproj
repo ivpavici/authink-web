@@ -75,6 +75,9 @@
     <Compile Include="Color.cs">
       <DependentUpon>AuthinkData.tt</DependentUpon>
     </Compile>
+    <Compile Include="PasswordResetToken.cs">
+      <DependentUpon>AuthinkData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Picture.cs">
       <DependentUpon>AuthinkData.tt</DependentUpon>
     </Compile>

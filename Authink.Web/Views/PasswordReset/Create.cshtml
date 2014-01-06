@@ -1,0 +1,27 @@
+﻿@model Authink.Web.Controllers.PasswordResetToken.Models.PasswordResetTokenCreateModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Request password reset token</title>
+</head>
+<body>
+    <div>
+        
+        <p>@Html.ValidationSummary()</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.TextBoxFor(m=> m.Email)
+            @Html.ValidationMessageFor(m=>m.Email)
+            
+            <input type="submit" value="Send" />
+        }
+    </div>
+</body>
+</html>

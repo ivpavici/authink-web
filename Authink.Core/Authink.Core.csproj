@@ -79,6 +79,7 @@
     <Compile Include="Domain_entities.cs" />
     <Compile Include="Domain_rules.cs" />
     <Compile Include="Fx\FileHelpers.cs" />
+    <Compile Include="Fx\MailService.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Model_commands_impl.cs" />
     <Compile Include="Model_mappers_impl.cs" />

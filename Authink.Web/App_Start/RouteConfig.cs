@@ -9,6 +9,8 @@ namespace Authink.Web.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("PasswordReset_Create", "user/password", new {controller = "PasswordReset", action = "Create"});
+
             routes.MapRoute("GetTemplate", "application/templates/{template}", new { controller = "Templates", action = "GetTemplate"  });
             routes.MapRoute("ChangeCulture", "language/change/{lang}",         new { controller = "Language", action = "ChangeCulture" });
 

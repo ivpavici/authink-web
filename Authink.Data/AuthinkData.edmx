@@ -13,6 +13,7 @@
     <EntitySet Name="Tasks" EntityType="Authink.Data.Database.Store.Tasks" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tests" EntityType="Authink.Data.Database.Store.Tests" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="Authink.Data.Database.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PasswordResetTokens" EntityType="Authink.Data.Database.Store.PasswordResetTokens" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Child_Test" EntityType="Authink.Data.Database.Store.AS_Child_Test" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Picture_Task" EntityType="Authink.Data.Database.Store.AS_Picture_Task" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AS_Test_Task" EntityType="Authink.Data.Database.Store.AS_Test_Task" store:Type="Tables" Schema="dbo" />
@@ -68,6 +69,10 @@
     <AssociationSet Name="SoundPicture" Association="Authink.Data.Database.Store.SoundPicture">
       <End Role="Sound" EntitySet="Sounds" />
       <End Role="Picture" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="UserPasswordResetToken" Association="Authink.Data.Database.Store.UserPasswordResetToken">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PasswordResetToken" EntitySet="PasswordResetTokens" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Children">
@@ -152,6 +157,17 @@
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsHidden" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PasswordResetTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="IsUsed" Type="bit" Nullable="false" />
+    <Property Name="UsedOn" Type="datetime" Nullable="true" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AS_Child_Test">
     <Key>
@@ -242,6 +258,18 @@
       </Principal>
       <Dependent Role="Picture">
         <PropertyRef Name="Sound_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPasswordResetToken">
+    <End Role="User" Type="Authink.Data.Database.Store.Users" Multiplicity="1" />
+    <End Role="PasswordResetToken" Type="Authink.Data.Database.Store.PasswordResetTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PasswordResetToken">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -389,6 +417,11 @@
             <End Role="Sound" EntitySet="Sounds" />
             <End Role="Picture" EntitySet="Pictures" />
           </AssociationSet>
+          <EntitySet Name="PasswordResetTokens" EntityType="Authink.Data.Database.PasswordResetToken" />
+          <AssociationSet Name="UserPasswordResetToken" Association="Authink.Data.Database.UserPasswordResetToken">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PasswordResetToken" EntitySet="PasswordResetTokens" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Child">
           <Key>
@@ -488,6 +521,7 @@
           <NavigationProperty Name="Tasks" Relationship="Authink.Data.Database.FK_UserTask" FromRole="Users" ToRole="Tasks" />
           <NavigationProperty Name="Children" Relationship="Authink.Data.Database.UserChild" FromRole="Users" ToRole="Children" />
           <NavigationProperty Name="Tests" Relationship="Authink.Data.Database.UserTest" FromRole="User" ToRole="Test" />
+          <NavigationProperty Name="PasswordResetTokens" Relationship="Authink.Data.Database.UserPasswordResetToken" FromRole="User" ToRole="PasswordResetToken" />
         </EntityType>
         <Association Name="FK_PictureColor">
           <End Role="Pictures" Type="Authink.Data.Database.Picture" Multiplicity="1" />
@@ -548,6 +582,30 @@
         <Association Name="SoundPicture">
           <End Type="Authink.Data.Database.Sound" Role="Sound" Multiplicity="0..1" />
           <End Type="Authink.Data.Database.Picture" Role="Picture" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="PasswordResetToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+          <Property Name="UsedOn" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="User" Relationship="Authink.Data.Database.UserPasswordResetToken" FromRole="PasswordResetToken" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserPasswordResetToken">
+          <End Type="Authink.Data.Database.User" Role="User" Multiplicity="1" />
+          <End Type="Authink.Data.Database.PasswordResetToken" Role="PasswordResetToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PasswordResetToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -640,6 +698,18 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PasswordResetTokens">
+      <EntityTypeMapping TypeName="IsTypeOf(Authink.Data.Database.PasswordResetToken)">
+        <MappingFragment StoreEntitySet="PasswordResetTokens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="UsedOn" ColumnName="UsedOn" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

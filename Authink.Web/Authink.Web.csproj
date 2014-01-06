@@ -199,6 +199,7 @@
     <Compile Include="Controllers\ConsumerApiController.cs" />
     <Compile Include="Controllers\ChildrenApiController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\PasswordResetController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PicturesApiController.cs" />
     <Compile Include="Controllers\ShellController.cs" />
@@ -483,6 +484,7 @@
     <Content Include="Views\Templates\ChildDelete_ConfirmationDialog.cshtml" />
     <Content Include="Views\Templates\Home.cshtml" />
     <Content Include="Views\Templates\Login.cshtml" />
+    <Content Include="Views\PasswordReset\Create.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

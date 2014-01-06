@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using ent = Authink.Core.Domain.Entities;
 
@@ -11,6 +9,11 @@ namespace Authink.Core.Model.Queries
         ent::User.ShortDetails GetSingle_whereUsername           (string userName                 );
         ent::User.ShortDetails GetSingle_whereUsernameAndPassword(string username, string password);
         ent::User.ShortDetails GetSingle_whereEmail              (string email                    );
+    }
+
+    public interface IPasswordResetTokenCommands
+    {
+        string Create(int userId);
     }
     public interface IChildQueries
     {

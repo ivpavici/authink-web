@@ -21,6 +21,8 @@
         <AssociationConnector Association="Authink.Data.Database.UserTest" />
         <AssociationConnector Association="Authink.Data.Database.SoundTask" />
         <AssociationConnector Association="Authink.Data.Database.SoundPicture" />
+        <EntityTypeShape EntityType="Authink.Data.Database.PasswordResetToken" Width="1.5" PointX="1.75" PointY="8.375" />
+        <AssociationConnector Association="Authink.Data.Database.UserPasswordResetToken" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

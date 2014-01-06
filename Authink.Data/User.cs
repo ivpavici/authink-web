@@ -19,6 +19,7 @@ namespace Authink.Data
             this.Tasks = new HashSet<Task>();
             this.Children = new HashSet<Child>();
             this.Tests = new HashSet<Test>();
+            this.PasswordResetTokens = new HashSet<PasswordResetToken>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,6 @@ namespace Authink.Data
         public virtual ICollection<Task> Tasks { get; set; }
         public virtual ICollection<Child> Children { get; set; }
         public virtual ICollection<Test> Tests { get; set; }
+        public virtual ICollection<PasswordResetToken> PasswordResetTokens { get; set; }
     }
 }

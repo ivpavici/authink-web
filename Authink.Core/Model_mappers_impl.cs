@@ -39,6 +39,24 @@ namespace Authink.Core.Model.Mappers
             }
         }
     }
+
+    public static class PasswordResetToken
+    {
+        public static class ShortDetails
+        {
+            public static ent::PasswordResetToken.ShortDetails FromDatabae(database::PasswordResetToken passwordResetTokenData)
+            {
+                return new ent.PasswordResetToken.ShortDetails
+                (
+                    id        : passwordResetTokenData.Id,
+                    value     : passwordResetTokenData.Value,
+                    usedOn    : passwordResetTokenData.UsedOn,
+                    createdOn : passwordResetTokenData.CreatedOn,
+                    isUsed    : passwordResetTokenData.IsUsed
+                );
+            }
+        }
+    }
     public static class Child  
     {
         public static class LongDetails

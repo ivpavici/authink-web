@@ -61,6 +61,33 @@ namespace Authink.Core.Domain.Entities
             public string Email     { get; private set; }
         }
     }
+
+    public abstract class PasswordResetToken
+    {
+        public class ShortDetails
+        {
+            public ShortDetails
+            (
+                int       id,
+                string    value,
+                DateTime? usedOn,
+                DateTime  createdOn,
+                bool      isUsed
+            )             
+            {
+                this.Id        = id;
+                this.Value     = value;
+                this.UsedOn    = usedOn;
+                this.CreatedOn = createdOn;
+                this.IsUsed    = isUsed;
+            }
+            public int Id              { get; private set; }
+            public string Value        { get; private set; }
+            public DateTime? UsedOn    { get; private set; }
+            public DateTime CreatedOn  { get; private set; }
+            public bool IsUsed         { get; private set; }    
+        }
+    }
     public abstract class Child     
     {
         public class LongDetails

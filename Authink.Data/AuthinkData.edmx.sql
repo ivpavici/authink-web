@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/01/2013 22:25:30
--- Generated from EDMX file: C:\Users\mamar_000\Desktop\New folder\authink-web\Authink.Data\AuthinkData.edmx
+-- Date Created: 01/06/2014 20:06:30
+-- Generated from EDMX file: C:\Users\mamar_000\Desktop\authink-web\authink-web\Authink.Data\AuthinkData.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -56,6 +56,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SoundPicture]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pictures] DROP CONSTRAINT [FK_SoundPicture];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserPasswordResetToken]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PasswordResetTokens] DROP CONSTRAINT [FK_UserPasswordResetToken];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -81,6 +84,9 @@ IF OBJECT_ID(N'[dbo].[Tests]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[PasswordResetTokens]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PasswordResetTokens];
 GO
 IF OBJECT_ID(N'[dbo].[AS_Child_Test]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AS_Child_Test];
@@ -182,6 +188,17 @@ CREATE TABLE [dbo].[Users] (
 );
 GO
 
+-- Creating table 'PasswordResetTokens'
+CREATE TABLE [dbo].[PasswordResetTokens] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Value] nvarchar(max)  NOT NULL,
+    [CreatedOn] datetime  NOT NULL,
+    [IsUsed] bit  NOT NULL,
+    [UsedOn] datetime  NULL,
+    [UserId] int  NOT NULL
+);
+GO
+
 -- Creating table 'AS_Child_Test'
 CREATE TABLE [dbo].[AS_Child_Test] (
     [Children_Id] int  NOT NULL,
@@ -253,6 +270,12 @@ GO
 -- Creating primary key on [Id] in table 'Users'
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [PK_Users]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'PasswordResetTokens'
+ALTER TABLE [dbo].[PasswordResetTokens]
+ADD CONSTRAINT [PK_PasswordResetTokens]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -444,6 +467,20 @@ ADD CONSTRAINT [FK_SoundPicture]
 CREATE INDEX [IX_FK_SoundPicture]
 ON [dbo].[Pictures]
     ([Sound_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'PasswordResetTokens'
+ALTER TABLE [dbo].[PasswordResetTokens]
+ADD CONSTRAINT [FK_UserPasswordResetToken]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserPasswordResetToken'
+CREATE INDEX [IX_FK_UserPasswordResetToken]
+ON [dbo].[PasswordResetTokens]
+    ([UserId]);
 GO
 
 -- --------------------------------------------------

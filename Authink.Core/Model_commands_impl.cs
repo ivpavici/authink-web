@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Web.Security;
-
+using Authink.Core.Model.Queries;
 using Authink.Core.Model.Services;
 using Authink.Data.ResourceFileStorage;
 using ent      = Authink.Core.Domain.Entities;
@@ -29,6 +29,29 @@ namespace Authink.Core.Model.Commands.Impl
 
                 db.Users.Add(user);
                 db.SaveChanges();
+            }
+        }
+    }
+    public class PasswordResetTokenCommandsImpl : IPasswordResetTokenCommands
+    {
+        public string Create(int userId)
+        {
+            using (var db = new database::AuthinkDataModel())
+            {
+                var value = Guid.NewGuid().ToString();
+
+                var passwordResetToken = new database::PasswordResetToken()
+                {
+                    CreatedOn = DateTime.Now,
+                    IsUsed    = false,
+                    Value     = value,
+                    UserId    = userId
+                };
+
+                db.PasswordResetTokens.Add(passwordResetToken);
+                db.SaveChanges();
+
+                return value;
             }
         }
     }
