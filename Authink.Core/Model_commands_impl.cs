@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web.Security;
 
 using Authink.Core.Model.Services;
-
+using Authink.Data.ResourceFileStorage;
 using ent      = Authink.Core.Domain.Entities;
 using database = Authink.Data;
 using rules    = Authink.Core.Domain.Rules;
@@ -35,13 +36,16 @@ namespace Authink.Core.Model.Commands.Impl
     {
         public ChildCommandsImpl
         (
-            ILoginServices loginServices
+            ILoginServices      loginServices,
+            IFileStorageAdapter fileStorageAdapter
         )
         {
-            this.loginServices = loginServices;
+            this.loginServices      = loginServices;
+            this.fileStorageAdapter = fileStorageAdapter;
         }
 
-        private readonly ILoginServices loginServices;
+        private readonly ILoginServices      loginServices;
+        private readonly IFileStorageAdapter fileStorageAdapter;
 
         public int Create      (string firstname, string lastname       )
         {
@@ -84,6 +88,11 @@ namespace Authink.Core.Model.Commands.Impl
             {
                 var dbChild = db.Children.Single(child => child.Id == id);
 
+                if (dbChild.ProfilePictureUrl != rules::Children.DefaultProfilePictureUrl)
+                {
+                    fileStorageAdapter.Remove(new Uri(dbChild.ProfilePictureUrl));
+                }
+
                 dbChild.IsHidden = true;
                 db.SaveChanges();
             }
@@ -94,6 +103,11 @@ namespace Authink.Core.Model.Commands.Impl
             {
                 var dbChild = db.Children.Single(child => child.Id == id);
 
+                if (dbChild.ProfilePictureUrl != rules::Children.DefaultProfilePictureUrl)
+                {
+                    fileStorageAdapter.Remove(new Uri(dbChild.ProfilePictureUrl));
+                }
+
                 dbChild.ProfilePictureUrl = profilePictureUrl;
 
                 db.SaveChanges();
@@ -102,6 +116,12 @@ namespace Authink.Core.Model.Commands.Impl
     }
     public class TaskCommandsImpl:        ITaskCommands      
     {
+        public TaskCommandsImpl(IFileStorageAdapter fileStorageAdapter)
+        {
+            this.fileStorageAdapter = fileStorageAdapter;
+        }
+
+        private readonly IFileStorageAdapter fileStorageAdapter;
         public int  Create(string description, string name, int userId, string type, int difficulty, string profilePictureUrl, ent::Sound.Details voiceCommand)
         {
             using(var db = new database::AuthinkDataModel())
@@ -152,6 +172,11 @@ namespace Authink.Core.Model.Commands.Impl
                 var dbTask = db.Tasks.SingleOrDefault(task => task.Id == id);
                 if (dbTask != null)
                 {
+                    foreach (var picture in dbTask.Pictures)
+                    {
+                        fileStorageAdapter.Remove(new Uri(picture.Url));
+                    }
+
                     dbTask.IsHidden = true;
                     db.SaveChanges();
                 }
@@ -242,6 +267,12 @@ namespace Authink.Core.Model.Commands.Impl
     }
     public class PictureCommandsImpl:     IPictureCommands   
     {
+        public PictureCommandsImpl(IFileStorageAdapter fileStorageAdapter)
+        {
+            this.fileStorageAdapter = fileStorageAdapter;
+        }
+
+        private readonly IFileStorageAdapter fileStorageAdapter;
         public int  Create(string url, string theme, bool? isAnswer)
         {
             using(var db= new database::AuthinkDataModel())
@@ -265,6 +296,8 @@ namespace Authink.Core.Model.Commands.Impl
             using (var db = new database::AuthinkDataModel())
             {
                 var dbPicture = db.Pictures.Single(picture => picture.Id == id);
+
+                fileStorageAdapter.Remove(new Uri(dbPicture.Url));
 
                 dbPicture.Url = url;
                 db.SaveChanges();
@@ -327,6 +360,12 @@ namespace Authink.Core.Model.Commands.Impl
     }
     public class SoundCommandsImpl:       ISoundCommands     
     {
+        public SoundCommandsImpl(IFileStorageAdapter fileStorageAdapter)
+        {
+            this.fileStorageAdapter = fileStorageAdapter;
+        }
+
+        private readonly IFileStorageAdapter fileStorageAdapter;
         public int Create(string url, string title, string type)
         {
             using(var db = new database::AuthinkDataModel())
@@ -349,6 +388,8 @@ namespace Authink.Core.Model.Commands.Impl
             using(var db = new database::AuthinkDataModel())
             {
                 var dbSound = db.Sounds.Single(sound => sound.Id == id);
+
+                fileStorageAdapter.Remove(new Uri(dbSound.Url));
 
                 dbSound.Url = url;
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization.Formatters;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -10,7 +11,7 @@ using System.Web.Http;
 using Authink.Core.Model.Services;
 using Authink.Core.Model.Commands;
 using Authink.Core.Model.Queries;
-
+using Authink.Data.ResourceFileStorage;
 using buru = Authink.Core.Domain.Rules;
 using ent = Authink.Core.Domain.Entities;
 using Authink.Core.Fx;
@@ -22,24 +23,24 @@ namespace Authink.Web.Controllers
     {
         public SoundsApiController
         (
-            IUserAccessRights userAccessRights,
-            ISoundServices    soundServices,
-            ISoundCommands    soundCommands,
-            ISoundQueries     soundQueries,
-            Logger            logger
+            IUserAccessRights   userAccessRights,
+            ISoundCommands      soundCommands,
+            ISoundQueries       soundQueries,
+            IFileStorageAdapter fileStorageAdapter,
+            Logger              logger
         )
         {
-            this.userAccessRights = userAccessRights;
-            this.soundServices    = soundServices;
-            this.soundCommands    = soundCommands;
-            this.soundQueries     = soundQueries;
-            this.logger           = logger;
+            this.userAccessRights   = userAccessRights;
+            this.soundCommands      = soundCommands;
+            this.soundQueries       = soundQueries;
+            this.fileStorageAdapter = fileStorageAdapter;
+            this.logger             = logger;
         }
 
-        private readonly IUserAccessRights userAccessRights;
-        private readonly ISoundServices    soundServices;
-        private readonly ISoundCommands    soundCommands;
-        private readonly ISoundQueries     soundQueries;
+        private readonly IUserAccessRights   userAccessRights;
+        private readonly ISoundCommands      soundCommands;
+        private readonly ISoundQueries       soundQueries;
+        private readonly IFileStorageAdapter fileStorageAdapter;
 
         private Logger logger;
 
@@ -58,18 +59,15 @@ namespace Authink.Web.Controllers
                 await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
                 var file     = memoryStreamProvider.Contents.First();
-                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileName = file.Headers.ContentDisposition.FileName.Trim('\"');
                 var fileData = await file.ReadAsByteArrayAsync();
 
-                var savePath = soundServices.Save
-                (
-                    soundName:    fileName,
-                    soundContent: fileData,
-                    relatedId:    taskId,
-                    baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
-                );
+                var savePath =
+                fileStorageAdapter.Upload(
+                    new ResourceFileStorageAdapter.ResourceFile(fileName,fileData),
+                    buru::Sound.VoiceCommands.DefaultSavePath);
 
-                soundCommands.Update(soundId, savePath);
+                soundCommands.Update(soundId, savePath.ToString());
 
                 return new { Url = savePath };
             }
@@ -95,18 +93,15 @@ namespace Authink.Web.Controllers
                 await Request.Content.ReadAsMultipartAsync(memoryStreamProvider);
 
                 var file     = memoryStreamProvider.Contents.First();
-                var fileName = FileHelpers.CreateUniqueFileName(file.Headers.ContentDisposition.FileName.Trim('\"'));
+                var fileName = file.Headers.ContentDisposition.FileName.Trim('\"');
                 var fileData = await file.ReadAsByteArrayAsync();
 
-                var savePath =  soundServices.Save
-                (
-                    soundName:    fileName, 
-                    soundContent: fileData,
-                    relatedId:    taskId,
-                    baseSavePath: buru::Sound.VoiceCommands.DefaultSavePath
-                );
+                var savePath =
+               fileStorageAdapter.Upload(
+                   new ResourceFileStorageAdapter.ResourceFile(fileName, fileData),
+                   buru::Sound.VoiceCommands.DefaultSavePath);
 
-                var soundId = soundCommands.Create(savePath, fileName, "ttl");
+                var soundId = soundCommands.Create(savePath.ToString(), fileName, "ttl");
                 soundCommands.AttachSoundToTask(soundId, taskId);
 
                 return soundQueries.GetSingle_whereId(soundId);

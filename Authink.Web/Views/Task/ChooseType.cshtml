@@ -17,7 +17,7 @@
             @foreach(var pair in Model.TaskTypes)
             {
                 <a class="task-wizard-type-item newTaskItem" href="/test/tasks/create/step-2/@pair.Value.UrlFriendyname">
-                    <img class="newTaskImg" src="/@pair.Value.PictureUrl" alt="" />
+                    <img class="newTaskImg" src="@pair.Value.PictureUrl" alt="" />
                     <span class="newTaskSpan">@pair.Value.Name</span>
                 </a>
             }

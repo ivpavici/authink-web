@@ -47,7 +47,7 @@ namespace Authink.Data.Factory
                                                 FirstName = "Marry-ann",   
                                                 LastName = "Jennings",  
                                                 IsHidden = false,
-                                                ProfilePictureUrl ="Content/Images/Children/WomenChild.jpg",
+                                                ProfilePictureUrl ="http://data.authink.eu/Content/Images/default-child.png",
                                                 Tests  = {
                                                     new db::Test
                                                               {
@@ -67,22 +67,22 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "http://data.authink.eu/Content/Sounds/default-voice-command.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/1/bowl.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/1/bowl.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/1/casserole.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/1/casserole.png",
                                                                                                   IsAnswer = false
                                                                                               }
                                                                                      
@@ -97,29 +97,29 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "http://data.authink.eu/Content/Sounds/default-voice-command.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                                {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/2/bowl.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/2/bowl.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/2/casserole.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/2/casserole.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/2/cup.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/2/cup.png",
                                                                                                   IsAnswer = false,
                                                                                               }
                                                                                       }
@@ -133,36 +133,36 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#004",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-continue-sequence-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-continue-sequence-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "http://data.authink.eu/Content/Sounds/default-voice-command.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                                {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/3/bowl.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/3/bowl.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/3/casserole.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/3/casserole.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/3/cup.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/3/cup.png",
                                                                                                   IsAnswer = false
                                                                                               },
                                                                                                    new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/3/frying pan.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/3/frying pan.png",
                                                                                                   IsAnswer = false
                                                                                               }
                                                                                      
@@ -189,15 +189,15 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#003",
                                                                                   Difficulty = 4,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-detect-colors-256x256.png",
+                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "http://data.authink.eu/Content/Sounds/default-voice-command.mp3"},
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/4/bowl.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/4/bowl.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -209,7 +209,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/4/red-casserole.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/4/red-casserole.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -221,7 +221,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/4/greenCup.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/4/greenCup.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -233,7 +233,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/4/yellow kitchen tool_3.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/4/yellow kitchen tool_3.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -252,14 +252,14 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#003",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-detect-colors-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/5/bowl.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/5/bowl.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -274,7 +274,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/5/red-casserole.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/5/red-casserole.png",
                                                                                                   IsAnswer = true,
                                                                                                   Colors =
                                                                                                       {
@@ -307,14 +307,14 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#001",
                                                                                   Difficulty = 4,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-pair-same-items-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-pair-same-items-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/6/kitchen tool_2.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/6/kitchen tool_2.png",
                                                                                                   IsAnswer = true
                                                                                                
                                                                                               },
@@ -322,7 +322,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/6/kitchen tool_3.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/6/kitchen tool_3.png",
                                                                                                   IsAnswer = false
                                                                                                
                                                                                               },
@@ -330,7 +330,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/6/kitchen tool_6.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/6/kitchen tool_6.png",
                                                                                                   IsAnswer = false
                                                                                                
                                                                                               },
@@ -338,7 +338,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/6/frying pan.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/6/frying pan.png",
                                                                                                   IsAnswer = false
                                                                                                
                                                                                               },
@@ -353,7 +353,7 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#008",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-order-by-size-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-order-by-size-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -361,7 +361,7 @@ namespace Authink.Data.Factory
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/7/jug-3.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/7/jug-3.png"
                                                                                                   
                                                                                               }
                                                                                       }
@@ -375,14 +375,14 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#009",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-voice-commands-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-voice-commands-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/8/casa.jpg",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/8/casa.jpg",
                                                                                                   IsAnswer = true
                                                                                                   
                                                                                               },
@@ -390,7 +390,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/8/tanjur.jpg",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/8/tanjur.jpg",
                                                                                                   IsAnswer = false
                                                                                                   
                                                                                               },
@@ -398,7 +398,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/8/tava.jpg",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/8/tava.jpg",
                                                                                                   IsAnswer = false
                                                                                                   
                                                                                               },
@@ -406,7 +406,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/8/ubrus.jpg",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/8/ubrus.jpg",
                                                                                                   IsAnswer = false
                                                                                                   
                                                                                               }
@@ -421,21 +421,21 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#005",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-pair-halves-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-pair-halves-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/9/bowl-left.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/9/bowl-left.png",
                                                                                                   IsAnswer = true
                                                                                               },
                                                                                                new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/9/casserole-left.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/9/casserole-left.png",
                                                                                                   IsAnswer = true
                                                                                                   
                                                                                               },
@@ -443,7 +443,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/9/bowl-right.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/9/bowl-right.png",
                                                                                                   IsAnswer = false
                                                                                                   
                                                                                               },
@@ -451,7 +451,7 @@ namespace Authink.Data.Factory
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
-                                                                                                  Url = "Content/Images/Tasks/9/casserole-right.png",
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/9/casserole-right.png",
                                                                                                   IsAnswer = false
                                                                                                   
                                                                                               }
@@ -479,7 +479,7 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#002",
                                                                                   Difficulty = 4,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-detect-different-items-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -487,28 +487,28 @@ namespace Authink.Data.Factory
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/10/bowl.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/10/bowl.png"
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/10/casserole.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/10/casserole.png"
                                                                                               },
                                                                                              new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/10/frying pan.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/10/frying pan.png"
                                                                                               },
                                                                                              new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/10/kitchen tool_2.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/10/kitchen tool_2.png"
                                                                                               }
                                                                                       }
                                                                               },
@@ -521,7 +521,7 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#002",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-detect-different-items-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -529,14 +529,14 @@ namespace Authink.Data.Factory
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/11/lonac.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/11/lonac.png"
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/11/Red_cambridge_mug.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/11/Red_cambridge_mug.png"
                                                                                               }
                                                                                           
                                                                                       }
@@ -550,7 +550,7 @@ namespace Authink.Data.Factory
                                                                                   IsHidden = false,
                                                                                   Type = "#002",
                                                                                   Difficulty = 5,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-different-items-256x256.png",
+                                                                                  ProfilePictureUrl = "http://data.authink.eu/Content/Images/TaskIcons/task-detect-different-items-256x256.png",
                                                                                   Pictures =
                                                                                       {
                                                                                           new db::Picture
@@ -558,14 +558,14 @@ namespace Authink.Data.Factory
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/12/individual-red-mug.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/12/individual-red-mug.png"
                                                                                               },
                                                                                               new db::Picture
                                                                                               {
                                                                                                   Theme = "Kitchen",
                                                                                                   IsHidden = false,
                                                                                                   IsAnswer = true,
-                                                                                                  Url = "Content/Images/Tasks/12/Red_cambridge_mug.png"
+                                                                                                  Url = "http://data.authink.eu/Content/Images/Lite/12/Red_cambridge_mug.png"
                                                                                               }
                                                                                           
                                                                                       }
@@ -573,119 +573,7 @@ namespace Authink.Data.Factory
                                                                       }
                                                               },
                                                 }
-                                            },
-                                        new db::Child
-                                            {
-                                                FirstName = "Krešo",  
-                                                LastName = "Bengazi", 
-                                                IsHidden = false,
-                                                ProfilePictureUrl = "Content/Images/Children/default-profile-picture.png",
-                                                Tests  = {
-                                                    new db::Test
-                                                              {
-                                                                  UserId = 1,
-                                                                  IsDeleted = false,
-                                                                  Name = "Test tvrdoće",
-                                                                  LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dui purus, euismod eu sollicitudin sed, aliquet eu quam. Praesent suscipit aliquet accumsan. In gravida, est gravida adipiscing condimentum, justo libero fringilla turpis, sit amet dictum tortor tellus sit amet metus. Mauris vitae est eget metus eleifend laoreet. Phasellus luctus elementum convallis. Morbi volutpat ornare magna, eget accumsan ipsum pellentesque id. Curabitur blandit convallis elementum. Aenean quis libero velit. In hac habitasse platea dictumst. Aliquam sit amet iaculis nulla. Curabitur eleifend ullamcorper mauris vitae ullamcorper. Morbi porttitor vehicula orci sed laoreet. ",
-                                                                  ShortDescription = "Duis nec velit diam. Morbi adipiscing, ante ut condimentum cursus, tellus sem sollicitudin nisl, non dictum arcu purus ut magna. Morbi et erat tellus.",
-                                                                  Tasks =
-                                                                      {
-                                                                          new db::Task
-                                                                              {
-                                                                                  UserId = 1,
-                                                                                  Name = "Prepoznavanje boja na predmetima iz konzuma",
-                                                                                  Description = "Duis nec velit diam. Morbi adipiscing, ante ut condimentum cursus, tellus sem sollicitudin nisl, non dictum arcu purus ut magna. Morbi et erat tellus.",
-                                                                                  IsHidden = false,
-                                                                                  Type = "#003",
-                                                                                  Difficulty = 4,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-detect-colors-256x256.png",
-                                                                                  Pictures =
-                                                                                      {
-                                                                                          new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/031/03140185.gif?1338198944",
-                                                                                                  Colors =
-                                                                                                      {
-                                                                                                          new db::Color {IsCorrect = true,PictureId = 16,Value = "#00B2EE"},
-                                                                                                          new db::Color {IsCorrect = false,PictureId = 16,Value = "#838B8B"}
-                                                                                                      },
-                                                                                              },
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/040/04070135.gif",
-                                                                                                  Colors =
-                                                                                                      {
-                                                                                                          new db::Color {IsCorrect = true,PictureId = 17, Value = "#DB2929"},
-                                                                                                          new db::Color {IsCorrect = false,PictureId = 17,Value = "#EEB4B4"}
-                                                                                                      },
-                                                                                              },
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/021/02199579.gif",
-                                                                                                  Colors =
-                                                                                                      {
-                                                                                                          new db::Color {IsCorrect = true,PictureId = 17, Value = "#8B8989"},
-                                                                                                          new db::Color {IsCorrect = false,PictureId = 17,Value = "#00B2EE"}
-                                                                                                      },
-                                                                                              },
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/024/02404367.gif",
-                                                                                                  Colors =
-                                                                                                      {
-                                                                                                          new db::Color {IsCorrect = true, PictureId = 17, Value = "#A52A2A"},
-                                                                                                          new db::Color {IsCorrect = false,PictureId = 17,Value = "#3B5323"}
-                                                                                                      },
-                                                                                              }
-                                                                                      }
-                                                                              },
-                                                                              new db::Task
-                                                                              {
-                                                                                  UserId = 1,
-                                                                                  Name = "Prepoznaj mikser u konzuma",
-                                                                                  Description = "Duis nec velit diam. Morbi adipiscing, ante ut condimentum cursus, tellus sem sollicitudin nisl, non dictum arcu purus ut magna. Morbi et erat tellus.",
-                                                                                  IsHidden = false,
-                                                                                  Type = "#009",
-                                                                                  Difficulty = 3,
-                                                                                  ProfilePictureUrl = "Content/Images/TaskIcons/task-voice-commands-256x256.png",
-                                                                                  Sound = new db::Sound{IsHidden = false, Type = "ttl", Url = "Content/Sounds/guns.mp3"},
-                                                                                  Pictures =
-                                                                                      {
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/089/08974963.gif",
-                                                                                                  IsAnswer = true
-                                                                                              },
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/900/90033731.gif",
-                                                                                                  IsAnswer = false
-                                                                                              },
-                                                                                              new db::Picture
-                                                                                              {
-                                                                                                  Theme = "Kitchen",
-                                                                                                  IsHidden = false,
-                                                                                                  Url = "http://online.konzum.hr/images/products/900/90034261.gif",
-                                                                                                  IsAnswer = false
-                                                                                              }
-                                                                                      }
-                                                                              }
-                                                                      }
-                                                              }
-                                                }
-                                            }
+                                     }
                         }
                     },
                     new db::User

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Web;
+using Authink.Data.ResourceFileStorage;
+using Authink.Data.ResourceFileStorage.Configuration;
 using Authink.Web.Models.Picture;
 
 namespace Authink.Web.DependencyResolution {
@@ -21,6 +23,7 @@ namespace Authink.Web.DependencyResolution {
                             x.Scan(scan =>
                                     {
                                         scan.Assembly("Authink.Core");
+                                        scan.Assembly("Authink.Data");
                                         scan.SingleImplementationsOfInterface();
                                     });
 
@@ -29,6 +32,8 @@ namespace Authink.Web.DependencyResolution {
                             x.For<List<ColorData>>().Use(() => new List<ColorData>());
                             x.For<List<string>>().Use(() => new List<string>());
                             x.For<Logger>().Use(context => LogManager.GetLogger("AuThink"));
+
+                            x.For<ResourceFileStorageAdapter.Settings>().Use(() => ResourceFileStorageAdapterConfigurationSection.GetSettings());
                         });
 
             return ObjectFactory.Container;

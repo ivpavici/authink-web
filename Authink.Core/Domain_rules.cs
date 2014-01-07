@@ -10,7 +10,7 @@ namespace Authink.Core.Domain.Rules
     }
     public static class Children
     {
-        public static string DefaultProfilePictureUrl = "http://authink.blob.core.windows.net/content/Images/Children/1/3491161c-85d8-4abf-b399-20311e566708.png";
+        public static string DefaultProfilePictureUrl = "http://data.authink.eu/Content/Images/default-child.png";
     }
     public static class Task
     {
@@ -23,9 +23,9 @@ namespace Authink.Core.Domain.Rules
         };
         public static IDictionary<string, string> AvailableTaskTypesDefaultPictures = new Dictionary<string, string>
         {
-            { Keys.DetectDifferentItems, "Content/Images/TaskIcons/task-detect-different-items-256x256.png" }, { Keys.DetectColors, "Content/Images/TaskIcons/task-detect-colors-256x256.png" },
-            { Keys.ContinueSequence,     "Content/Images/TaskIcons/task-continue-sequence-256x256.png"      }, { Keys.PairHalves,   "Content/Images/TaskIcons/task-pair-halves-256x256.png"   }, {Keys.PairSameItems,"Content/Images/TaskIcons/task-pair-same-items-256x256.png" }, 
-            { Keys.Affiliation,          "Content/Images/TaskIcons/task-affiliation-256x256.png"            }, { Keys.OrderBySize,  "Content/Images/TaskIcons/task-order-by-size-256x256.png" }, {Keys.VoiceCommands,"Content/Images/TaskIcons/task-voice-commands-256x256.png"  }
+            { Keys.DetectDifferentItems, "http://data.authink.eu/Content/Images/TaskIcons/task-detect-different-items-256x256.png" }, { Keys.DetectColors, "http://data.authink.eu/Content/Images/TaskIcons/task-detect-colors-256x256.png" },
+            { Keys.ContinueSequence,     "http://data.authink.eu/Content/Images/TaskIcons/task-continue-sequence-256x256.png"      }, { Keys.PairHalves,   "http://data.authink.eu/Content/Images/TaskIcons/task-pair-halves-256x256.png"   }, {Keys.PairSameItems,"http://data.authink.eu/Content/Images/TaskIcons/task-pair-same-items-256x256.png" }, 
+            { Keys.Affiliation,          "http://data.authink.eu/Content/Images/TaskIcons/task-affiliation-256x256.png"            }, { Keys.OrderBySize,  "http://data.authink.eu/Content/Images/TaskIcons/task-order-by-size-256x256.png" }, {Keys.VoiceCommands,"http://data.authink.eu/Content/Images/TaskIcons/task-voice-commands-256x256.png"  }
         };
 
         public static class Keys
@@ -44,12 +44,12 @@ namespace Authink.Core.Domain.Rules
     {
         public static class Task
         {
-            public const string DefaultSavePath          = @"Images/Tasks";
+            public const string DefaultSavePath          = @"Content/Images/";
             public const string DefaultResizeQuerystring = "?W=150&Mode=Stretch&Scale=Both";
         }
         public static class Children
         {
-            public const string DefaultSavePath          = @"Images/Children";
+            public const string DefaultSavePath          = @"Content/Images/";
             public const string DefaultResizeQuerystring = "?W=150&Mode=Stretch&Scale=Both";
         }
     }
@@ -62,7 +62,7 @@ namespace Authink.Core.Domain.Rules
         };
         public static class VoiceCommands
         {
-            public const string DefaultSavePath = @"Sounds/VoiceCommands";
+            public const string DefaultSavePath = @"Content/Sounds/";
         }
     }
     public static class Api

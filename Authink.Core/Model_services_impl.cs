@@ -19,35 +19,7 @@ namespace Authink.Core.Model.Services.Impl
 {
     public class BlobPictureServiceImpl : IPictureServices
     {
-        public BlobPictureServiceImpl()
-        {
-            this.cloudStorageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AuthinkBlobStorage"].ConnectionString);
-            this.blobClient          = cloudStorageAccount.CreateCloudBlobClient();
-            this.cloudBlobContainer  = blobClient.GetContainerReference("content");
-        }
-        private CloudStorageAccount cloudStorageAccount;
-        private CloudBlobClient     blobClient;
-        private CloudBlobContainer  cloudBlobContainer;
-        public string Save(string pictureName, byte[] pictureContent, int relatedId, string baseSavePath, string resizeQueryString)
-        {
-            var resizedPicture = ResizePicture(pictureContent, resizeQueryString);
-            var blobSavePath   = string.Format("{0}/{1}/{2}", baseSavePath, relatedId,pictureName);
-            var blockBlob      = cloudBlobContainer.GetBlockBlobReference(blobSavePath);
-
-            using (var stream = new MemoryStream(resizedPicture))
-            {
-                blockBlob.UploadFromStream(stream);
-            }
-
-            return blockBlob.Uri.ToString();
-        }
-
-        public void Save(byte[] pictureContent, string savePath, string resizeQueryString)
-        {
-            throw new NotImplementedException();
-        }
-
-        private byte[] ResizePicture(byte[] pictureData, string resizeQuerystring)
+        public byte[] ResizePicture(byte[] pictureData, string resizeQuerystring)
         {
             using(var outputStream = new MemoryStream())
             {
@@ -66,34 +38,7 @@ namespace Authink.Core.Model.Services.Impl
             }
         }
     }
-    public class BlocSoundServicesImpl : ISoundServices
-    {
-        public BlocSoundServicesImpl()
-        {
-            this.cloudStorageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AuthinkBlobStorage"].ConnectionString);
-            this.blobClient          = cloudStorageAccount.CreateCloudBlobClient();
-            this.cloudBlobContainer  = blobClient.GetContainerReference("content");
-        }
-
-        private CloudStorageAccount cloudStorageAccount;
-        private CloudBlobClient     blobClient;
-        private CloudBlobContainer  cloudBlobContainer;
-        public string Save(string soundName, byte[] soundContent, int relatedId, string baseSavePath)
-        {
-            var blobSavePath = string.Format("{0}/{1}/{2}", baseSavePath, relatedId, soundName);
-            var blockBlob    = cloudBlobContainer.GetBlockBlobReference(blobSavePath);
-
-            blockBlob.Properties.ContentType = MimeMapping.GetMimeMapping(soundName);
-
-            using (var stream = new MemoryStream(soundContent))
-            {
-                blockBlob.UploadFromStream(stream);
-            }
-
-            return blockBlob.Uri.ToString();
-        }
-    }
-
+    
     public class LoginServicesImpl : ILoginServices
     {
         public LoginServicesImpl
