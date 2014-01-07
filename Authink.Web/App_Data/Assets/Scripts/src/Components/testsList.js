@@ -6,31 +6,40 @@ authink.directive('testsList', function () {
         
         restrict:   ' E',
         transclude: true,
-        
+        scope:      {
+            
+            api: '=',
+            onTestSelected: '&',
+            onTestEditCanceled: '&',
+            onTestCreatingStarted: '&'
+        },
         templateUrl: '/application/templates/testsList',
         
-        controller: ['$scope', 'testsRepository', 'testListApi', function ($scope, testsRepository, testListApi) {
+        controller: ['$scope', 'testsRepository', function ($scope, testsRepository) {
 
-            $scope.testListApi = testListApi;
-            
-            $scope.$watch('testListApi.childId', function (childId) {
-                
-                if (childId) {
-                    $scope.isLoading = true;
+            $scope.tests         = null;
+            $scope.childId       = null;
+            $scope.displayedTest = null;
 
-                    testsRepository.getAllTestsForChild_shortDetails(childId)
-                    .then(function (tests) {
+            $scope.init = function (childId) {
 
-                        $scope.isLoading         = false;
-                        $scope.testListApi.tests = tests;
+                $scope.childId = childId;
 
-                        if (!$scope.testListApi.displayedTest) {
+                $scope.isLoading = true;
 
-                            setActiveTestOnLoad(tests);
-                        }
-                    });
-                }
-            });
+                testsRepository.getAllTestsForChild_shortDetails(childId)
+                .then(function (tests) {
+
+                    $scope.isLoading = false;
+
+                    $scope.tests = tests;
+
+                    if (!$scope.displayedTest) {
+
+                        setActiveTestOnLoad(tests);
+                    }
+                });
+           }
             
             $scope.selectTest = function (test) {
 
@@ -38,20 +47,50 @@ authink.directive('testsList', function () {
                 
                 if ($scope.isTestEditModeOn) {
                     
-                    $scope.$emit('testsList:testEditCanceled');
+                    $scope.onTestEditCanceled();
                 }
                 
-                $scope.$emit('testsList:testSelected', test);
+                $scope.onTestSelected({ test: test });
             };
 
             $scope.addNewTest = function() {
 
-                var component = '<create-test> </create-test>';
+                var component = '<create-test api="createTestApi" on-test-created="onTestCreated(test)" on-test-selected="onTestSelected(test)"> </create-test>';
 
                 $scope.$emit('openModal', component);
 
-                $scope.$emit('testsList:testCreatingStarted', $scope.testListApi.childId);
+                $scope.onTestCreatingStarted({ childId: childId });
             };
+
+            $scope.addNewTest = function(test){
+
+                $scope.tests.unshift(test);
+
+                $scope.displayedTest = test;
+            }
+
+            $scope.reload = function () {
+
+                $scope.isLoading = true;
+
+                testsRepository.getAllTestsForChild_shortDetails($scope.childId)
+                .then(function (tests) {
+
+                    $scope.isLoading = false;
+
+                    $scope.tests = tests;
+
+                    if (!$scope.displayedTest) {
+
+                        setActiveTestOnLoad(tests);
+                    }
+                });
+            }
+
+            $scope.removeDisplayedTest = function () {
+
+                $scope.displayedTest = null;
+            }
 
             var setActiveTestOnLoad = function (tests) {
 
@@ -66,49 +105,20 @@ authink.directive('testsList', function () {
 
             var resetState = function() {
 
-                $scope.testListApi.reset();
+                $scope.tests = null;
+                $scope.childId = null;
+                $scope.displayedTest = null;
+            }
+
+            $scope.api = {
+
+                init: $scope.init,
+                addNewTest: $scope.addNewTest,
+                reload: $scope.reload,
+                removeDisplayedTest: $scope.removeDisplayedTest
             }
 
             resetState();
         }]
     };
 });
-
-authink.factory('testListApi', ['testsRepository', function (testsRepository) {
-
-    return {
-
-        tests:         null,
-        childId:       null,
-        displayedTest: null,
-
-        setChildId: function (childId) {
-
-            this.childId = new Number(childId);
-        },
-        
-        refreshTests: function () {
-            
-            this.childId = new Number(this.childId);
-        },
-
-        addNewTest: function(test){
-
-            this.tests.unshift(test);
-
-            this.displayedTest = test;
-        },
-
-        removeDisplayedTest: function(){
-
-            this.displayedTest = null;
-        },
-
-        reset: function () {
-
-            this.tests         =  null;
-            this.childId       =  null;
-            this.displayedTest =  null;
-        }
-    };
-}]);

@@ -1,10 +1,10 @@
 ﻿<omni-bar></omni-bar>
 
-<child-menu></child-menu>
+<child-menu api="childMenuApi" on-child-edit-started="onChildEditStarted(childId)" on-child-deleted="onChildDeleted()" on-child-selected="onChildSelected(childId)"></child-menu>
 
-<tests-list>
+<tests-list api="testsListApi" on-test-creating-started="onTestCreatingStarted(childId)" on-test-selected="onTestSelected(test)" on-test-edit-canceled="onTestEditCanceled()">
 
-    <test-preview ng-hide="isTestEditModeOn"></test-preview>
-    <edit-test ng-show="isTestEditModeOn"></edit-test>
+    <test-preview ng-hide="isTestEditModeOn" api="testPreviewApi" on-test-edit-started="onTestEditStarted(test)"></test-preview>
+    <edit-test ng-show="isTestEditModeOn" api="editTestApi" on-test-edit-ended="onTestEditEnded(test)" on-edit-canceled="onEditCanceled()" on-test-deleted="onTestDeleted()"></edit-test>
 
 </tests-list>

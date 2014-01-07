@@ -1,134 +1,133 @@
 ﻿'use strict';
 
-authink.controller('shellController', ['$rootScope', '$cookies', '$modal', 'application', function ($rootScope, $cookies, $modal, application) {
+authink.controller('shellController', ['$rootScope', '$scope', '$cookies', '$modal', function ($rootScope, $scope, $cookies, $modal) {
 
     $rootScope.currentModalInstances = [];
     $rootScope.isTestEditModeOn      = false;
 
     $rootScope.activeLanguage = $cookies.AuLanguage;
 
-    $rootScope.$on('testsList:testCreatingStarted', function (event, childId) {
+    $scope.onTestCreatingStarted = function(childId){
 
-        application.createTestApi.setChildToAddTests(childId);
-    });
-    $rootScope.$on('testsList:testCreated',         function (event, test) {
+        $scope.createTestApi.init(childId);
+    };
 
-        application.testListApi.addNewTest(test);
-    });
-    $rootScope.$on('testsList:testSelected',        function (event, test) {
+    $scope.onTestCreated = function (test) {
+
+        $scope.testsListApi.addNewTest(test);
+    }
+
+    $scope.onTestSelected = function (test) {
 
         if (test.Id) {
-            application.testPreviewApi.setActiveTest(test.Id);
+            $scope.testPreviewApi.setActiveTest(test.Id);
 
-            application.testTasksListApi.loadTasks(test.Id);
+            $scope.testTasksListApi.init(test.Id);
         } else {
 
-            application.testPreviewApi.reset();
+            $scope.testPreviewApi.reload();
         }
-    });
-    $rootScope.$on('testsList:testEditCanceled',    function (event) {
-        
+    }
+
+    $scope.onTestEditCanceled = function () {
+
         $rootScope.isTestEditModeOn = false;
-    });
+    }
     
-    $rootScope.$on('testPreview:testEditStarted', function (event, test) {
+    $scope.onTestEditStarted = function (test) {
 
         $rootScope.isTestEditModeOn = true;
-        
-        application.editTestApi.testToEdit = test;
-    });
 
-    $rootScope.$on('editTest:testEditEnded', function (event, test) {
-
-        $rootScope.isTestEditModeOn = false;
-
-        application.testPreviewApi.setActiveTest(test.Id);
-
-        application.testListApi.refreshTests();
-    });
-    $rootScope.$on('editTest:testDeleted',   function (event) {
+        $scope.editTestApi.init(test);
+    }
+    $scope.onTestEditEnded = function (test) {
 
         $rootScope.isTestEditModeOn = false;
 
-        application.testListApi.removeDisplayedTest();
+        $scope.testPreviewApi.setActiveTest(test.Id);
 
-        application.testListApi.refreshTests();
-
-        application.testPreviewApi.reset();
-
-    });
-    $rootScope.$on('editTest:editCanceled', function (event) {
-    
-        $rootScope.isTestEditModeOn = false;
-    });
-
-    $rootScope.$on('editTask:taskEditEnded',     function (event) {
-
-        application.testTasksListApi.refreshTasks();
-
-        application.taskPreviewApi.refresh();
-    });
-    $rootScope.$on('editTask:taskForEditLoaded', function (event, task) {
-
-        application.editTaskPicturesListApi.setupPicturesList(task.Type, task.Id, task.Pictures);
-    });
-
-    $rootScope.$on('testTasksList:taskSelected',    function (event, taskId) {
-
-        application.taskPreviewApi.taskId = taskId;
-    });
-    $rootScope.$on('testTasksList:taskEditStarted', function (event, taskId) {
-
-        application.editTaskApi.taskId = taskId;
-    });
-    
-    $rootScope.$on('editTaskPicturesList:taskPictureEditStarted', function (event, taskType, taskId, picture) {
-
-        application.taskPicturesEditorApi.setupPictureEditor(taskType, taskId, picture);
-    });
-    
-    $rootScope.$on('taskPicturesEditor:pictureUpdated', function(event) {
-
-        application.editTaskPicturesListApi.forceRefresh();
-    });
-    
-    $rootScope.$on('childMenu:childSelected', function (event, childId) {
-
-        application.testListApi.reset();
+        $scope.testListApi.reload();
+    }
+    $scope.onTestEditDeleted = function () {
 
         $rootScope.isTestEditModeOn = false;
 
-        application.childMenuApi.setDisplayedChild(childId);
+        $scope.testListApi.removeDisplayedTest();
+
+        $scope.testListApi.reload();
+
+        $scope.testPreviewApi.reset();
+    }
+    $scope.onTestEditCanceled = function() {
         
-        application.testListApi.setChildId(childId);
-    });
-    $rootScope.$on('childMenu:childEditStarted', function (event, childId) {
+        $rootScope.isTestEditModeOn = false;
+    }
 
-        application.editChildApi.setChildToEdit(childId);
-    });
-    $rootScope.$on('childMenu:childDeleted', function (event) {
+    $scope.onTaskEditEnded = function () {
 
-        window.location='/';
-    });
+        $scope.testTasksListApi.reload();
 
-    $rootScope.$on('createChild:childCreated', function (event, child) {
+        $scope.taskPreviewApi.refresh();
+    }
+    $scope.onLoaded = function (task) {
 
-        application.testPreviewApi.reset();
+        $scope.editTaskPicturesListApi.init(task.Type, task.Id, task.Pictures);
+    }
 
-        application.childMenuApi.addNewChild(child);
-    });
+    $scope.onTaskEditStarted = function (taskId) {
 
-    $rootScope.$on('editChild:childEditEnded', function (event, childId) {
+        $scope.taskPreviewApi.init(taskId);
+    }
+    $scope.onTaskEditStarted = function(taskId) {
+        $scope.editTaskApi.init(taskId);
+    }
 
-        application.childMenuApi.loadChildren();
-        
-        application.childMenuApi.setDisplayedChild(childId);
-    });
-    $rootScope.$on('editChild:pictureUpdated', function (event, childId) {
+    $scope.onTaskPictureEditStarted = function (taskType, taskId, picture) {
 
-        application.childMenuApi.setDisplayedChild(childId);
-    });
-        
+        $scope.taskPicturesEditorApi.init(taskType, taskId, picture);
+    }
+    $scope.onPictureUpdated = function() {
+        $scope.editTaskPicturesListApi.reload();
+    }
+    
+    $scope.onChildSelected = function (childId) {
+
+        $rootScope.isTestEditModeOn = false;
+
+        $scope.$watch('testsListApi', function (testsListApi) {
+            if (testsListApi) {
+
+                $scope.testsListApi.init(childId);
+            }
+        });
+    }
+    $scope.onChildEditStarted = function (childId) {
+
+        $scope.editChildApi.init(childId);
+    }
+    $scope.onChildDeleted = function() {
+
+        window.location = '/';
+    }
+
+    $scope.onChildCreated = function (child) {
+
+        $scope.testPreviewApi.reset();
+
+        $scope.childMenuApi.reload(child);
+    }
+
+    $scope.onChildEditEnded = function (childId) {
+
+        $scope.childMenuApi.reload();
+
+        $scope.childMenuApi.setDisplayedChild(childId);
+    }
+    $scope.onPictureUpdated = function (childId) {
+
+        $scope.childMenuApi.setDisplayedChild(childId);
+    }
+
     $rootScope.$on('closeModal', function (event) {
         
         var currentInstance = $rootScope.currentModalInstances.pop();

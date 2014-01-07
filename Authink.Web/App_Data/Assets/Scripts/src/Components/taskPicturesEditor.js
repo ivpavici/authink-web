@@ -6,11 +6,17 @@ authink.directive('taskPicturesEditor', function () {
 
         restrict: 'E',
         templateUrl: '/application/templates/taskPicturesEditor',
-        scope: {},
+        scope: {
+
+            api: '=',
+            onPictureUpdated: '&'
+        },
 
         controller: ['$scope', 'taskPicturesEditorApi', 'picturesRepository', function ($scope, taskPicturesEditorApi, picturesRepository) {
 
-            $scope.taskPicturesEditorApi = taskPicturesEditorApi;
+            $scope.picture = null;
+            $scope.taskType = null;
+            $scope.taskId = null;
 
             var taskTypes = {
                  
@@ -24,17 +30,16 @@ authink.directive('taskPicturesEditor', function () {
                 VoiceCommands:        '#009'
             };
 
-            $scope.$watch('taskPicturesEditorApi.picture', function (picture) {
+            $scope.init = function (taskType, taskId, picture) {
 
-                if (picture) {
-                    
-                    $scope.picture = picture;
-                }
-            });
+              $scope.taskType = taskType;
+              $scope.taskId  = taskId;
+              $scope.picture = picture;
+            }
 
             $scope.isSimpleEdit = function () {
 
-                var taskType = $scope.taskPicturesEditorApi.taskType;
+                var taskType = $scope.taskType;
 
                 return taskType === taskTypes.OrderBySize          || taskType === taskTypes.PairSameItems        ||
                        taskType === taskTypes.DetectDifferentItems || taskType === taskTypes.DetectDifferentItems ||
@@ -43,7 +48,7 @@ authink.directive('taskPicturesEditor', function () {
 
             $scope.isDetectColorsEdit = function () {
 
-                var taskType = $scope.taskPicturesEditorApi.taskType;
+                var taskType = $scope.taskType;
 
                 return taskType === taskTypes.DetectColors;
             };
@@ -52,7 +57,7 @@ authink.directive('taskPicturesEditor', function () {
 
                 angular.forEach($files, function(file) {
 
-                    picturesRepository.task_insertPictureForUpdate(file, { pictureId: $scope.taskPicturesEditorApi.picture.Id, taskId: $scope.taskPicturesEditorApi.taskId })
+                    picturesRepository.task_insertPictureForUpdate(file, { pictureId: $scope.picture.Id, taskId: $scope.taskId })
                     .progress(function(evt) {
 
                         $scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
@@ -63,7 +68,7 @@ authink.directive('taskPicturesEditor', function () {
                         $scope.picture = picture;
                         $scope.$apply();
 
-                        $scope.$emit('taskPicturesEditor:pictureUpdated');
+                        $scope.onPictureUpdated();
                     });
                 });
             };
@@ -90,23 +95,20 @@ authink.directive('taskPicturesEditor', function () {
 
                 $scope.$emit('closeModal');
             }
+
+            var resetScopeState = function () {
+
+                $scope.picture = null;
+                $scope.taskType = null;
+                $scope.taskId = null;
+            }
+
+            $scope.api = {
+                
+                init:$scope.init
+            }
+
+            resetScopeState();
         }]
-    };
-});
-
-authink.service('taskPicturesEditorApi', function () {
-
-    return {
-
-        picture:  null,
-        taskType: null,
-        taskId:   null,
-
-        setupPictureEditor: function (taskType, taskId, picture) {
-
-            this.taskType = taskType;
-            this.taskId   = taskId;
-            this.picture  = picture;
-        }
     };
 });

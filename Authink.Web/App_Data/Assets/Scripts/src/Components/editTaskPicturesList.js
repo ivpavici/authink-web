@@ -6,12 +6,18 @@ authink.directive('editTaskPicturesList', function () {
 
         restrict: 'E',
         templateUrl: '/application/templates/editTaskPicturesList',
-        scope: {},
-
-        controller: ['$scope', 'editTaskPicturesListApi', function ($scope, editTaskPicturesListApi) {
-
-            $scope.editTaskPicturesListApi = editTaskPicturesListApi;
+        scope: {
             
+            api: '=',
+            onTaskPictureEditStarted:'&'
+        },
+
+        controller: ['$scope', 'picturesRepository', function ($scope, picturesRepository) {
+
+            $scope.pictures = null;
+            $scope.taskType = null;
+            $scope.taskId = null;
+
             var taskTypes ={
                 
                 PairSameItems        : '#001',
@@ -24,10 +30,28 @@ authink.directive('editTaskPicturesList', function () {
                 VoiceCommands        : '#009'
             };
             
-            $scope.$watch('editTaskPicturesListApi.pictures', function(pictures) {
+            $scope.init = function (taskType, taskId, pictures) {
 
-                if (pictures) {
-                    
+                $scope.taskType = taskType;
+                $scope.taskId = taskId;
+                $scope.pictures = pictures;
+
+                transformPictures();
+            }
+
+            $scope.reload = function () {
+
+                picturesRepository.getAll_forTaskGameplay($scope.taskId)
+                .then(function (pictures) {
+
+                    $scope.pictures = pictures;
+
+                    transformPictures();
+                });
+            }
+            
+            var transformPictures = function() {
+
                     if ($scope.isSimpleEdit() || $scope.isDetectColorsEdit()) {
 
                         $scope.pictures = pictures;
@@ -47,7 +71,6 @@ authink.directive('editTaskPicturesList', function () {
                         });
                     }
                 }
-            });
 
             $scope.isSimpleEdit = function () {
                 
@@ -74,41 +97,26 @@ authink.directive('editTaskPicturesList', function () {
 
             $scope.editPicture = function (picture) {
                 
-                var component = '<task-pictures-editor> </task-pictures-editor>';
+                var component = '<task-pictures-editor api=""taskPicturesEditorApi" on-picture-updated="onPictureUpdated()"> </task-pictures-editor>';
                 
                 $scope.$emit('openModal', component);
 
-                $scope.$emit('editTaskPicturesList:taskPictureEditStarted', $scope.editTaskPicturesListApi.taskType, $scope.editTaskPicturesListApi.taskId, picture);
+                $scope.onTaskPictureEditStarted({ taskType: $scope.taskType, taskId: $scope.taskId, picture: picture });
             };
 
             var resetScopeState = function () {
 
                 $scope.editTaskPicturesListApi.pictures = null;
+                $scope.pictures = null;
+                $scope.taskType = null;
+                $scope.taskId  = null;
+            }
+
+            $scope.api = {
+                init: $scope.init
             }
 
             resetScopeState();
         }]
-    };
+    }
 });
-
-authink.service('editTaskPicturesListApi', ['picturesRepository', function (picturesRepository) {
-
-    return {
-
-        pictures: null,
-        taskType: null,
-        taskId:   null,
-        
-        setupPicturesList: function(taskType, taskId, pictures) {
-
-            this.taskType = taskType;
-            this.taskId   = taskId;
-            this.pictures = pictures;
-        },
-        
-        forceRefresh: function() {
-
-            this.pictures = picturesRepository.getAll_forTaskGameplay(this.taskId);
-        }
-    };
-}]);

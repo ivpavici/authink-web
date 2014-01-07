@@ -6,23 +6,26 @@ authink.directive('taskPreview', function() {
         
         restrict:   'E',
         templateUrl: '/application/templates/taskPreview',
-        scope:       {},
+        scope: {
+
+            api: '=',
+            onTaskEditStarted: '&'
+        },
         
-        controller: ['$scope', 'tasksRepository', 'taskPreviewApi', function ($scope, tasksRepository, taskPreviewApi) {
+        controller: ['$scope', 'tasksRepository', function ($scope, tasksRepository) {
 
-            $scope.taskPreviewApi = taskPreviewApi;
-            
-            $scope.$watch('taskPreviewApi.taskId', function (taskId) {
+            $scope.taskId = null;
 
-                if (taskId) {
+            $scope.init = function (taksId) {
 
-                    tasksRepository.getSingle_whereId($scope.taskPreviewApi.taskId)
-                    .then(function (task) {
+                $scope.taksId = taksId;
 
-                        $scope.task = task;
-                    });
-                }
-            });
+                tasksRepository.getSingle_whereId($scope.taskId)
+                .then(function (task) {
+
+                    $scope.task = task;
+                });
+            }
 
             $scope.editTask = function () {
 
@@ -30,26 +33,25 @@ authink.directive('taskPreview', function() {
 
                 $scope.$emit('openModal', component);
 
-                $scope.$emit('testTasksList:taskEditStarted', $scope.task.Id);
+                $scope.onTaskEditStarted({taskId:$scope.task.Id});
             };
 
             $scope.closeModal = function() {
 
                 $scope.$emit('closeModal');
             };
+
+            var resetScopeState = function() {
+
+                $scope.taskId = null;
+            };
+
+            $scope.api = {
+
+                init: $scope.init
+            }
+
+            resetScopeState();
         }]
-    };
-});
-
-authink.factory('taskPreviewApi', function() {
-
-    return {
-        
-        taskId: null,
-
-        refresh: function(){
-
-            this.taskId = new Number(this.taskId);
-        }
     };
 });

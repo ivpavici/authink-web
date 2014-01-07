@@ -6,29 +6,32 @@ authink.directive('editTest', function() {
       
         restrict: 'E',
         templateUrl: '/application/templates/editTest',
-        
-        controller: ['$scope', '$modal', 'editTestApi', 'testsRepository', function ($scope, $modal, editTestApi, testsRepository) {
+        scope: {
 
-            $scope.editTestApi   = editTestApi;
+            api: '=',
+            onTestEditEnded: '&',
+            onEditCanceled: '&',
+            onTestDeleted:'&'
+        },
+        controller: ['$scope', '$modal', 'testsRepository', function ($scope, $modal, testsRepository) {
 
-            $scope.$watch('editTestApi.testToEdit', function (testToEdit) {
-                
-                    if (testToEdit) {
-                    
-                        $scope.originalTest = testToEdit;
+            $scope.testToEdit = null;
 
-                        $scope.editableTest = {
-                            
-                            Id:               testToEdit.Id,
-                            Name:             testToEdit.Name,
-                            ShortDescription: testToEdit.ShortDescription,
-                            LongDescription:  testToEdit.LongDescription,
-                            IsDeleted:        testToEdit.IsDeleted,
-                            Tasks:            testToEdit.Tasks,
-                            UserId:           testToEdit.UserId
-                        };
-                }
-            });
+            $scope.init = function (testToEdit) {
+
+                $scope.originalTest = testToEdit;
+
+                $scope.editableTest = {
+
+                    Id: testToEdit.Id,
+                    Name: testToEdit.Name,
+                    ShortDescription: testToEdit.ShortDescription,
+                    LongDescription: testToEdit.LongDescription,
+                    IsDeleted: testToEdit.IsDeleted,
+                    Tasks: testToEdit.Tasks,
+                    UserId: testToEdit.UserId
+                };
+            }
             
             $scope.saveTest = function() {
 
@@ -37,7 +40,7 @@ authink.directive('editTest', function() {
 
                     if (response.StatusCode === 200) {
 
-                        $scope.$emit('editTest:testEditEnded', $scope.editableTest);
+                        $scope.onTestEditEnded({test:$scope.editableTest });
 
                         resetState();
 
@@ -67,7 +70,7 @@ authink.directive('editTest', function() {
 
                     $scope.exit = function () {
 
-                        $scope.$emit('editTest:editCanceled');
+                        $scope.onEditCanceled();
 
                         resetState();
                         modal.close();
@@ -80,7 +83,7 @@ authink.directive('editTest', function() {
 
                     resetState();
 
-                    $scope.$emit('editTest:editCanceled');
+                    $scope.onEditCanceled();
                 }
             };
 
@@ -99,7 +102,7 @@ authink.directive('editTest', function() {
 
                     if (response.StatusCode === 200) {
 
-                        $scope.$emit('editTest:testDeleted');
+                        $scope.onTestDeleted();
 
                         resetState();
 
@@ -128,21 +131,13 @@ authink.directive('editTest', function() {
 
             var resetState = function () {
 
-                $scope.editTestApi.testToEdit = null;
-                $scope.editableTest           = null;
-                $scope.originalTest           = null;
-                $scope.isServerError          = false;
+                $scope.testToEdit    = null;
+                $scope.editableTest  = null;
+                $scope.originalTest  = null;
+                $scope.isServerError = false;
             }
 
             resetState();
         }]
-    };
-});
-
-authink.factory('editTestApi', function() {
-
-    return {
-      
-        testToEdit: null
     };
 });

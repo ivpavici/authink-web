@@ -6,6 +6,10 @@ authink.directive('createChild', function() {
       
         restrict:    'E',
         templateUrl: '/application/templates/createChild',
+        scope: {
+            
+            onChildCreated: '&'
+        },
         
         controller: ['$scope', 'childrenRepository', function ($scope, childrenRepository) {
 
@@ -19,9 +23,7 @@ authink.directive('createChild', function() {
                 childrenRepository.create(child)
                 .then(function (newChild) {
 
-                    $scope.$emit('createChild:childCreated', newChild);
-
-                    $scope.$emit('childMenu:childSelected', newChild.Id);
+                    $scope.onChildCreated({ child: newChild });
 
                     reserScopeState();
 

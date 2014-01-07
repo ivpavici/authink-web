@@ -6,24 +6,30 @@ authink.directive('createTest', function () {
 
         restrict:    'E',
         templateUrl: '/application/templates/createTest',
+        scope: {
+            
+            api: '=',
+            onTestCreated: '&',
+            onTestSelected: '&'
+        },
 
-        controller: ['$scope', 'testsRepository', 'childrenRepository', 'createTestApi', function ($scope, testsRepository, childrenRepository, createTestApi) {
+        controller: ['$scope', 'testsRepository', 'childrenRepository', function ($scope, testsRepository, childrenRepository) {
 
             $scope.createTestApi = createTestApi;
             $scope.test          = {};
             $scope.isServerError = false;
+            $scope.childId       = null;
 
-            $scope.$watch('createTestApi.childId', function (childId) {
+            $scope.init = function (childId) {
 
-                if (childId) {
+                $scope.childId = childId;
 
-                    childrenRepository.getOne_shortDetails(childId)
-                    .then(function (child) {
+                childrenRepository.getOne_shortDetails(childId)
+                .then(function (child) {
 
-                        $scope.child = child;
-                    });
-                }
-            });
+                    $scope.child = child;
+                });
+            }
 
             $scope.createTest= function() {
                 
@@ -34,9 +40,9 @@ authink.directive('createTest', function () {
 
                     if (newTest) {
                         
-                        $scope.$emit('testsList:testCreated', newTest);
+                        $scope.onTestCreated({test: newTest});
                         
-                        $scope.$emit('testsList:testSelected', newTest);
+                        $scope.onTestSelected({test: newTest});
                         
                         resetScopeState();
 
@@ -57,22 +63,10 @@ authink.directive('createTest', function () {
 
                 $scope.test          = {};
                 $scope.isServerError = false;
+                $scope.childId = null;
             };
 
             resetScopeState();
         }]
-    };
-});
-
-authink.factory('createTestApi',  function () {
-
-    return {
-
-        childId: null,
-
-        setChildToAddTests: function (childId) {
-            
-            this.childId = childId;
-        }
     };
 });

@@ -6,28 +6,33 @@ authink.directive('editTask', function() {
       
         restrict:    'E',
         templateUrl: '/application/templates/editTask',
-        scope:       {},
+        scope: {
+
+            api: '=',
+            onTaskEditEnded: '&',
+            onLoaded: '&'
+        },
         
-        controller: ['$scope', '$element','$sce', 'editTaskApi', 'tasksRepository', 'soundsRepository', function ($scope, $element, $sce, editTaskApi, tasksRepository, soundsRepository) {
+        controller: ['$scope', '$element','$sce', 'tasksRepository', 'soundsRepository', function ($scope, $element, $sce, tasksRepository, soundsRepository) {
 
             $scope.editTaskApi             = editTaskApi;
             $scope.isVoiceCommandPlaying   = false;
             $scope.isVoiceCommandCollapsed = true;
+            $scope.taskId                  = taskId;
 
-            $scope.$watch('editTaskApi.taskId', function(taskId) {
+            $scope.init = function (taskId) {
 
-                if (taskId) {
+                $scope.taskId = taskId;
 
-                    tasksRepository.getSingle_whereId(taskId)
+                tasksRepository.getSingle_whereId(taskId)
                     .then(function (task) {
 
-                        $scope.$emit('editTask:taskForEditLoaded', task);
-                        
+                        $scope.onLoaded({task:task});
+
                         $scope.task = task;
                     });
-                }
-            });
-            
+            }
+
             $scope.editTask = function () {
 
                 tasksRepository.update($scope.task)
@@ -37,7 +42,7 @@ authink.directive('editTask', function() {
 
                         resetScopeState();
 
-                        $scope.$emit('editTask:taskEditEnded');
+                        $scope.onTaskEditEnded();
 
                         $scope.$emit('closeModal');
                     } else {
@@ -122,12 +127,4 @@ authink.directive('editTask', function() {
             resetScopeState();
         }]
     };
-});
-
-authink.service('editTaskApi', function() {
-
-    return {
-        
-        taskId: null
-    }; 
 });

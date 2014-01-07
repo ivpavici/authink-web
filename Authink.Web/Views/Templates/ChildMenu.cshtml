@@ -4,14 +4,14 @@
     
     <div id="child-menu-info" class="clearfix">
 
-        <img id="child-menu-info-image" ng-src={{childMenuApi.displayedChild.ProfilePictureUrl}} alt="" />
+        <img id="child-menu-info-image" ng-src={{displayedChild.ProfilePictureUrl}} alt="" />
 
         <div id="child-menu-info-menu" class="dropdown">
-
-            <a id="child-menu-info-menu-child-name" class="dropdown-toggle">{{childMenuApi.displayedChild.Firstname}} {{childMenuApi.displayedChild.Lastname}}</a>
+            
+            <a id="child-menu-info-menu-child-name" class="dropdown-toggle">{{displayedChild.Firstname}} {{displayedChild.Lastname}}</a>
             
             <ul class="dropdown-menu">
-                <li class="child-menu-select" ng-repeat="child in childMenuApi.children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == childMenuApi.displayedChild.Id}">
+                <li class="child-menu-select" ng-repeat="child in children" ng-click="selectChild(child)" ng-class="{'child-menu-info-menu-selected' : child.Id == displayedChild.Id}">
 
                     <span>{{child.Firstname}} {{child.Lastname}}</span>
 

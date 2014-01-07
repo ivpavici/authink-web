@@ -6,25 +6,34 @@ authink.directive('editChild', function () {
 
         restrict: 'E',
         templateUrl: '/application/templates/editChild',
+        scope: {
 
-        controller: ['$scope', 'childrenRepository', 'editChildApi', 'picturesRepository', function ($scope, childrenRepository, editChildApi, picturesRepository) {
+            api: '=',
+            onChildEditEnded: '&',
+            onPictureUpdated: '&'
+        },
 
-            $scope.editChildApi = editChildApi;
+        controller: ['$scope', 'childrenRepository', 'picturesRepository', function ($scope, childrenRepository, picturesRepository) {
+
+            $scope.child = null;
             $scope.isServerError = false;
 
-            $scope.$watch('editChildApi.child', function (child) {
+            $scope.init = function (childId) {
 
-                if (child) {
-                    
-                    $scope.child = {
+                childrenRepository.getOne_shortDetails(childId)
+                .then(function(child) {
 
-                        id:                child.Id,
-                        firstName:         child.Firstname,
-                        lastName:          child.Lastname,
-                        profilePictureUrl: child.ProfilePictureUrl
-                    };
-                }
-            });
+                    $scope.child = child;
+                })
+
+                //$scope.child = {
+
+                //    id: child.Id,
+                //    firstName: child.Firstname,
+                //    lastName: child.Lastname,
+                //    profilePictureUrl: child.ProfilePictureUrl
+                //};
+            }
 
             $scope.onFileSelect = function ($files) {
 
@@ -40,7 +49,7 @@ authink.directive('editChild', function () {
 
                         $scope.child.profilePictureUrl = data.pictureUrl;
 
-                        $scope.$emit('editChild:pictureUpdated', $scope.child.id);
+                        $scope.onPictureUpdated({childId: $scope.child.id});
 
                         $scope.$apply();
                     });
@@ -56,7 +65,7 @@ authink.directive('editChild', function () {
 
                     if (response.StatusCode === 200) {
 
-                        $scope.$emit('editChild:childEditEnded', $scope.child.id);
+                        $scope.onChildEditEnded({childId: $scope.child.id});
 
                         resetScopeState();
 
@@ -78,23 +87,16 @@ authink.directive('editChild', function () {
 
             var resetScopeState = function () {
 
+                $scope.child = null;
                 $scope.isServerError = false;
             };
+
+            $scope.api = {
+
+                init:$scope.init
+            }
 
             resetScopeState();
         }]
     };
 });
-
-authink.factory('editChildApi', ['childrenRepository', function (childrenRepository) {
-
-    return {
-
-        child: null,
-        
-        setChildToEdit: function(childId) {
-
-            this.child = childrenRepository.getOne_shortDetails(childId);
-        }
-    };
-}]);

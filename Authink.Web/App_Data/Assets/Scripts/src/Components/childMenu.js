@@ -6,59 +6,77 @@ authink.directive('childMenu', function () {
 
         restrict:    'E',
         templateUrl: '/application/templates/childMenu',
-        scope:       {},
+        scope: {
+            
+            api: '=',
+            onChildEditStarted: '&',
+            onChildDeleted: '&',
+            onChildSelected:'&'
+        },
         
-        controller: ['$scope', '$modal', 'childMenuApi', 'childrenRepository', function ($scope,$modal, childMenuApi, childrenRepository) {
+        controller: ['$scope', '$modal', 'childrenRepository', function ($scope, $modal, childrenRepository) {
 
-            $scope.childMenuApi = childMenuApi;
+            $scope.childId        = null;
+            $scope.needLoad       = false;
+            $scope.children       = null;
+            $scope.displayedChild = null;
 
-            $scope.$watch('childMenuApi.needLoad', function (needLoad) {
+            childrenRepository.getAllForUser_shortDetails()
+            .then(function (children) {
 
-                if(needLoad){
+                if (children.length > 0) {
 
-                    childrenRepository.getAllForUser_shortDetails()
-                    .then(function(children){
+                    $scope.displayedChild = children[0];
 
-                        $scope.childMenuApi.children = children;
-                        $scope.childMenuApi.needLoad = false;
-                    });
+                    $scope.onChildSelected({childId:children[0].Id});
+                } else {
+
+                    var component = '<create-child> </create-child>';
+
+                    $scope.$emit('openModal', component, 'static');
                 }
-            });
-            
-            $scope.$watch('childMenuApi.childId', function (childId) {
 
-                if (childId){
+                $scope.children = children;
+            })
 
-                    childrenRepository.getOne_shortDetails(childId)
-                    .then(function (child) {
+            $scope.reload = function () {
 
-                        $scope.childMenuApi.displayedChild = child;
-                    });
-                }
-            });
-            
+                childrenRepository.getOne_shortDetails(childId)
+                   .then(function (child) {
+
+                       $scope.displayedChild = child;
+                   });
+            }
+
+            $scope.addNewChild = function (child) {
+                
+                $scope.children.push(child);
+            }
+
             $scope.selectChild = function(child) {
 
-                if ($scope.isTestEditModeOn) {
+                //if ($scope.isTestEditModeOn) {
 
-                    $scope.$emit('testsList:testEditCanceled');
-                }
-                
-                $scope.$emit('childMenu:childSelected', child.Id);
+                //    $scope.$emit('testsList:testEditCanceled');
+                //}
+
+                $scope.displayedChild = child;
+
+                $scope.onChildSelected({ childId: child.Id });
             };
             
             $scope.addChild = function () {
 
-                var component = '<create-child> </create-child>';
+                var component = '<create-child on-child-created="onChildCreated(child)"> </create-child>';
                 
                 $scope.$emit('openModal', component);
             };
 
             $scope.editChild = function () {
                 
-                var component = '<edit-child> </edit-child>';
+                var component = '<edit-child api="editChildApi" on-child-edit-ended="onChildEditEnded(childId)" on-picture-updated="onPictureUpdated(childId)"> </edit-child>';
 
-                $scope.$emit('childMenu:childEditStarted', $scope.childMenuApi.displayedChild.Id);
+                $scope.onChildEditStarted({childId:$scope.displayedChild.Id});
                 
                 $scope.$emit('openModal', component);
             };
@@ -73,12 +91,13 @@ authink.directive('childMenu', function () {
                 
                 $scope.removeAndExit = function () {
                 
-                    childrenRepository.remove($scope.childMenuApi.displayedChild)
+                    childrenRepository.remove($scope.displayedChild)
                     .then(function (response) {
                 
                         if (response.StatusCode === 200) {
 
-                            $scope.$emit('childMenu:childDeleted');
+                            $scope.onChildDeleted();
+
                             modal.close();
                         } else {
 
@@ -102,64 +121,21 @@ authink.directive('childMenu', function () {
 
             var resetState = function () {
 
-                $scope.childMenuApi.reset();
-
+                $scope.childId = null;
+                $scope.needLoad = false;
+                $scope.children = null;
+                $scope.displayedChild = null;
                 $scope.isServerError = false;
 
-                childrenRepository.getAllForUser_shortDetails()
-                   .then(function (children) {
-
-                       if (children.length > 0) {
-
-                           $scope.childMenuApi.setDisplayedChild(children[0].Id);
-
-                           $scope.$emit('childMenu:childSelected', children[0].Id);
-                       } else {
-
-                           var component = '<create-child> </create-child>';
-
-                           $scope.$emit('openModal', component, 'static');
-                       }
-
-                       $scope.childMenuApi.children = children;
-                   })
             };
+
+            $scope.api = {
+                
+                reload: $scope.reload,
+                setDisplayedChild: $scope.setDisplayedChild
+            }
 
             resetState();
         }]
-    };
-});
-
-authink.factory('childMenuApi', function () {
-
-    return {
-
-        childId:        null,
-        needLoad:       false,
-        children:       null,
-        displayedChild: null,
-        
-        loadChildren: function () {
-            
-            this.needLoad = true;
-        },
-        
-        setDisplayedChild: function (childId) {
-            
-            this.childId = new Number(childId);
-        },
-
-        addNewChild: function (child) {
-
-            this.children.push(child);
-        },
-
-        reset: function () {
-
-            this.childId        = null;
-            this.children       = null;
-            this.needLoad       = false;
-            this.displayedChild = null;
-        }
     };
 });
